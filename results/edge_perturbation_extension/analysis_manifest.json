@@ -1,0 +1,507 @@
+{
+  "analysis": "sequential-edge-perturbation-extension",
+  "analysis_code": {
+    "path": "scripts/analyze_edge_perturbation_extension.py",
+    "sha256": "e53f8a4ff7bbc42192ed7ef71732b123c2084a355f0c895e38c89763b322d61d"
+  },
+  "design": {
+    "code_version": "0b37a25001b8b0e9f89d56cbb488c2db6a2ab8b5",
+    "design_id": "tail-half-registered-cell-extension-v1",
+    "sample_fraction": 0.5,
+    "seed_base": 2026073100
+  },
+  "experiment_manifest": {
+    "path": "experiment_manifest.json",
+    "sha256": "75b42ed89df86c10f536eb9c0dde425dcecb78ed2f9eb3ff0ba620d4f0b3c397"
+  },
+  "generated_outputs_sha256": {
+    "checkpoint_metrics.csv": "60006d8bf9517ec16ff2a82b9d9749973c3384b65490f565a3e1a92d5f389fb5",
+    "pair_summary.csv": "202333b2f42c489193c422949041a9557447ed507d604c2facd46237f8946187",
+    "running_convergence.png": "76a9e2dc2d31068cfb3ccbdf836c45e8026c49ec31b8b172843b3138ee8894ec",
+    "running_summary.csv": "bf2b19e90f59d0aa0fca171fd3de6a47bd06ddedc9eb8281960866e352c3c70a"
+  },
+  "included_pairs": [
+    {
+      "dataset": "pubmed",
+      "graph_mode": "reuse-original",
+      "model": "gcn",
+      "pair_index": 1
+    },
+    {
+      "dataset": "pubmed",
+      "graph_mode": "reuse-original",
+      "model": "gcn",
+      "pair_index": 2
+    },
+    {
+      "dataset": "pubmed",
+      "graph_mode": "reuse-original",
+      "model": "gcn",
+      "pair_index": 3
+    },
+    {
+      "dataset": "pubmed",
+      "graph_mode": "reuse-original",
+      "model": "gcn",
+      "pair_index": 4
+    },
+    {
+      "dataset": "pubmed",
+      "graph_mode": "reuse-original",
+      "model": "gcn",
+      "pair_index": 5
+    },
+    {
+      "dataset": "roman-empire",
+      "graph_mode": "reuse-original",
+      "model": "gcn",
+      "pair_index": 1
+    },
+    {
+      "dataset": "roman-empire",
+      "graph_mode": "reuse-original",
+      "model": "gcn",
+      "pair_index": 2
+    },
+    {
+      "dataset": "roman-empire",
+      "graph_mode": "reuse-original",
+      "model": "gcn",
+      "pair_index": 3
+    },
+    {
+      "dataset": "roman-empire",
+      "graph_mode": "reuse-original",
+      "model": "gcn",
+      "pair_index": 4
+    },
+    {
+      "dataset": "roman-empire",
+      "graph_mode": "reuse-original",
+      "model": "gcn",
+      "pair_index": 5
+    },
+    {
+      "dataset": "arxiv-year",
+      "graph_mode": "generate",
+      "model": "graphsage-mean",
+      "pair_index": 1
+    },
+    {
+      "dataset": "arxiv-year",
+      "graph_mode": "generate",
+      "model": "graphsage-mean",
+      "pair_index": 2
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "graph_mode": "generate",
+      "model": "graphsage-mean",
+      "pair_index": 1
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "graph_mode": "generate",
+      "model": "graphsage-mean",
+      "pair_index": 2
+    }
+  ],
+  "input_hashes": [
+    {
+      "dataset": "pubmed",
+      "graph_source": {
+        "mode": "reuse-original",
+        "source_metadata_sha256": "47eac5106537bdfbba7e960f29c649256a200dccb67c27d2bc320132b9a011c4",
+        "source_output_sha256": {
+          "graphs.npz": "1d308fabc5c62e23796421ad0dcd2f5ab37878a9b0496d845c6c4959ba7db67e",
+          "swaps.json": "6950893e5819fc8374b0fc62eb64adb29d7950e0e748cecd3700109eb635ecf7"
+        },
+        "source_pair": "artifacts/edge_perturbation/actual/pubmed/pair-0001"
+      },
+      "graphs_sha256": {
+        "control_edge_sha256": "0f535644d3555cc6496e8428473863e8dcbed7337d0c01f7a4c50e14cb09faf0",
+        "original_edge_sha256": "9c6d3eddb8801ca212993486c0400c3e88cc264168dd19d16ac04c79f0bd11b3",
+        "treatment_edge_sha256": "8792e4ea2afbbf49b4c2bc2816e26189b3e58ecea90c310c372c4ace85c81f6e"
+      },
+      "metadata_json_sha256": "04ab62c417c94e6ba41c8681e355162989e1d1d6284b7707a32ee9cb4cd936c2",
+      "model": "gcn",
+      "outputs_sha256": {
+        "checkpoint_metrics.csv": "e53c5735e5c7387303967babd506aabc74a5ce36a7118926a656358e53a21aae",
+        "graphs.npz": "1d308fabc5c62e23796421ad0dcd2f5ab37878a9b0496d845c6c4959ba7db67e",
+        "predictions.npz": "67f9925b5ae5b26c76dffa4640dc603ffe1d9d1e5f5be4b7dfa42c279cd4c461",
+        "swaps.json": "6950893e5819fc8374b0fc62eb64adb29d7950e0e748cecd3700109eb635ecf7"
+      },
+      "pair_index": 1
+    },
+    {
+      "dataset": "pubmed",
+      "graph_source": {
+        "mode": "reuse-original",
+        "source_metadata_sha256": "86b137a45d8cc172f092f1bb0b65b99ee599e67c4cfdcf4e5d94b99fbe86ebc5",
+        "source_output_sha256": {
+          "graphs.npz": "bb0d50385499e53ce3ef27e864f2edae23192100c270b95ae05d009d3d25a8c9",
+          "swaps.json": "7755c060b7bf30d3445e4df75681ac689a9766bf57a2fc63c935adc54181f437"
+        },
+        "source_pair": "artifacts/edge_perturbation/actual/pubmed/pair-0002"
+      },
+      "graphs_sha256": {
+        "control_edge_sha256": "da4ba79d40f52118237bf613bafc4d7d493bb6d47bf6300ed74feafcfe7bd6b2",
+        "original_edge_sha256": "9c6d3eddb8801ca212993486c0400c3e88cc264168dd19d16ac04c79f0bd11b3",
+        "treatment_edge_sha256": "f568ea81303d7ad5c6884f402e73f9c39a2aac9742d41267406f667b74213487"
+      },
+      "metadata_json_sha256": "f460e52f3271ba8636c189e2a7884463046791b6955194bbcd88d7f29a1fb655",
+      "model": "gcn",
+      "outputs_sha256": {
+        "checkpoint_metrics.csv": "3831ff00d466483524f930255b2d7475aef559284ed6bf443bd7914de5d4a24a",
+        "graphs.npz": "bb0d50385499e53ce3ef27e864f2edae23192100c270b95ae05d009d3d25a8c9",
+        "predictions.npz": "19941e9c09bf498e824751b5a4def14c22be4385fde972d28c75c604b407e049",
+        "swaps.json": "7755c060b7bf30d3445e4df75681ac689a9766bf57a2fc63c935adc54181f437"
+      },
+      "pair_index": 2
+    },
+    {
+      "dataset": "pubmed",
+      "graph_source": {
+        "mode": "reuse-original",
+        "source_metadata_sha256": "93c40e21589de62a24e4c49a7248000b90e1476bbc3c92c1a84a969cfedeaffd",
+        "source_output_sha256": {
+          "graphs.npz": "5058feceaf237cbce8275856f0e7283d38bd158118299bce31941bbd36e52ffd",
+          "swaps.json": "bdca7a455d35cf1592dbd5747a9960b2dded124b88b03b405442c3baed538a41"
+        },
+        "source_pair": "artifacts/edge_perturbation/actual/pubmed/pair-0003"
+      },
+      "graphs_sha256": {
+        "control_edge_sha256": "dcd1ce3657417c418e80af514651169bd7c3009d897599913c82ac3a44f6e20d",
+        "original_edge_sha256": "9c6d3eddb8801ca212993486c0400c3e88cc264168dd19d16ac04c79f0bd11b3",
+        "treatment_edge_sha256": "cfe08de4cc4eda5a0fdaf8abc489d69dc9402596133b3043bfd90c5fc2f184aa"
+      },
+      "metadata_json_sha256": "965c5bdcf5504468c3c71e06517ee877a6d42546a4ad3f06e255aa9433da3247",
+      "model": "gcn",
+      "outputs_sha256": {
+        "checkpoint_metrics.csv": "b31abb880d8f5b437a0e1eaaf7781b48fe970cb06e947d16f14b741f9faf7ef2",
+        "graphs.npz": "5058feceaf237cbce8275856f0e7283d38bd158118299bce31941bbd36e52ffd",
+        "predictions.npz": "2859db4dd9d1da1fe92e555ea82162428070f787fc52395222b2393bead44a7c",
+        "swaps.json": "bdca7a455d35cf1592dbd5747a9960b2dded124b88b03b405442c3baed538a41"
+      },
+      "pair_index": 3
+    },
+    {
+      "dataset": "pubmed",
+      "graph_source": {
+        "mode": "reuse-original",
+        "source_metadata_sha256": "7bf134015411b5a8527c1c35b16a82a8816c865c912401dcf543ea1964492e6d",
+        "source_output_sha256": {
+          "graphs.npz": "2ee9284a89957084d51ed0f6b2f779d5bd2dcc7b29fb381d2b02f3d105bddb10",
+          "swaps.json": "f61fa18b93324f3c30a33b7e1b0218ff927ce56fbdb33ccb755a1a2c1cda3af9"
+        },
+        "source_pair": "artifacts/edge_perturbation/actual/pubmed/pair-0004"
+      },
+      "graphs_sha256": {
+        "control_edge_sha256": "3e01baeb1e00d7dab24e0dd40903263ae85e7aae1482ab353bf5bbab8d50ae45",
+        "original_edge_sha256": "9c6d3eddb8801ca212993486c0400c3e88cc264168dd19d16ac04c79f0bd11b3",
+        "treatment_edge_sha256": "0fe7ef240d580ca8bfd19ce3a5bd9f1f4e68f09b1c0e11b7da606d3e47c3a461"
+      },
+      "metadata_json_sha256": "481575d021239c65c539624c7a77f0c02c71c786844aa0660ecb182451480fc2",
+      "model": "gcn",
+      "outputs_sha256": {
+        "checkpoint_metrics.csv": "fe0d5d20aad07bd39339322ade7c5fd91da4e003df14aec5a12dd8b4b0e80ab6",
+        "graphs.npz": "2ee9284a89957084d51ed0f6b2f779d5bd2dcc7b29fb381d2b02f3d105bddb10",
+        "predictions.npz": "efe159e716b307662a609e31add4ffa85d2852704a191f51c488cd1121a24092",
+        "swaps.json": "f61fa18b93324f3c30a33b7e1b0218ff927ce56fbdb33ccb755a1a2c1cda3af9"
+      },
+      "pair_index": 4
+    },
+    {
+      "dataset": "pubmed",
+      "graph_source": {
+        "mode": "reuse-original",
+        "source_metadata_sha256": "a9ca544b935b78d0d08ef132aed03c6d5a5db051d6b6274fdeafb5735fb55249",
+        "source_output_sha256": {
+          "graphs.npz": "9596183b47e534389f1156413b8dcbaa188423509e340f5379629b87bda864d2",
+          "swaps.json": "23dc609420d439e64c4b227486f5ac8ee21e6a797b483af92b05c6fdfefafafb"
+        },
+        "source_pair": "artifacts/edge_perturbation/actual/pubmed/pair-0005"
+      },
+      "graphs_sha256": {
+        "control_edge_sha256": "2ff0f677c03b8b7110c7ae4be23c69f7ae412c07553f3dfadbd93cbf8ac33a1b",
+        "original_edge_sha256": "9c6d3eddb8801ca212993486c0400c3e88cc264168dd19d16ac04c79f0bd11b3",
+        "treatment_edge_sha256": "77e409f832fd97e23a5975552e750584420c2e517e3ea59478f58f88ef4e11dc"
+      },
+      "metadata_json_sha256": "0f956041405021a296994d0bfc1432e35beb2fba0f79d62b1771ea22d6fb3dbc",
+      "model": "gcn",
+      "outputs_sha256": {
+        "checkpoint_metrics.csv": "93cdc5d84ecdab795eea3ad3e229a443b73b29bc2765c360fa666c7fc65b8036",
+        "graphs.npz": "9596183b47e534389f1156413b8dcbaa188423509e340f5379629b87bda864d2",
+        "predictions.npz": "7352246ff5065edc0b62be0febdd805f9a50e64cc604280f9000a08899f3e0a1",
+        "swaps.json": "23dc609420d439e64c4b227486f5ac8ee21e6a797b483af92b05c6fdfefafafb"
+      },
+      "pair_index": 5
+    },
+    {
+      "dataset": "roman-empire",
+      "graph_source": {
+        "mode": "reuse-original",
+        "source_metadata_sha256": "2ed701d5104d64880ed6b1b750e5f0bfba411a2ef4290729b5fad17a6346529b",
+        "source_output_sha256": {
+          "graphs.npz": "1bb4c6504287fea5db919b7b503ce4822acd2d72a028ad536e2076cf19270d06",
+          "swaps.json": "47f1332bdbac7010bf974f6fba10d2bae40b8c6c14aefb89a99bad18f40ad540"
+        },
+        "source_pair": "artifacts/edge_perturbation/actual/roman-empire/pair-0001"
+      },
+      "graphs_sha256": {
+        "control_edge_sha256": "d4bf53560f5a2466e2a109a2b22031794fb0127400922e2660ffee91dc490b1a",
+        "original_edge_sha256": "62103899eb69ad778ded6e88813f5da7ef1a6931a9989fefd0b93cf8622653fd",
+        "treatment_edge_sha256": "2c703fd7ec45ee96111c06d0e05099b7ed04abb077db1ae9a078c51d5bdbeaba"
+      },
+      "metadata_json_sha256": "c98363e89b8d3a6634b198fdf33d3c50f7b8cc9747272109f952b7583b8ec340",
+      "model": "gcn",
+      "outputs_sha256": {
+        "checkpoint_metrics.csv": "45bb9db8b9b66494ffa14f6b739746561a4fb482e69208f3758dac477147d403",
+        "graphs.npz": "1bb4c6504287fea5db919b7b503ce4822acd2d72a028ad536e2076cf19270d06",
+        "predictions.npz": "63e4e2ccbeb1af812f85530b3dfdb8d8daf4a8bb67d4b7f095d2c29467887e62",
+        "swaps.json": "47f1332bdbac7010bf974f6fba10d2bae40b8c6c14aefb89a99bad18f40ad540"
+      },
+      "pair_index": 1
+    },
+    {
+      "dataset": "roman-empire",
+      "graph_source": {
+        "mode": "reuse-original",
+        "source_metadata_sha256": "b16c4a7efb2b658726bbb77b784887ed103768477d99e3568eba2e3ac9882afb",
+        "source_output_sha256": {
+          "graphs.npz": "978607ad1e84c3ff7fa86e69931cf34eeb37cd94f34cef0de82040e9b8215065",
+          "swaps.json": "ccb777154ea7904cb40552ef2aa3d5be00a604db01d0ed99ddaf0d518f1a4edf"
+        },
+        "source_pair": "artifacts/edge_perturbation/actual/roman-empire/pair-0002"
+      },
+      "graphs_sha256": {
+        "control_edge_sha256": "1d13aca6ad256cd2ba0333f5531df5a87967e235b7017a45e1f85590be5d1792",
+        "original_edge_sha256": "62103899eb69ad778ded6e88813f5da7ef1a6931a9989fefd0b93cf8622653fd",
+        "treatment_edge_sha256": "add872a25920745e2af7cd157bc60ceec78ef0bd78854483c55bae581b3b2014"
+      },
+      "metadata_json_sha256": "2641dc82fd83426826d3eb8b06b42aac069f3851c8a5afc19c1a891deeebacdc",
+      "model": "gcn",
+      "outputs_sha256": {
+        "checkpoint_metrics.csv": "9040eecad180e393b40a56d70f8c15dacf3b5d49f2167ea8e1e6cd2032d8d83a",
+        "graphs.npz": "978607ad1e84c3ff7fa86e69931cf34eeb37cd94f34cef0de82040e9b8215065",
+        "predictions.npz": "34065097c0d7945ea4512fedc0ccef2d3946e3eab8b9a17757247abd29fc81db",
+        "swaps.json": "ccb777154ea7904cb40552ef2aa3d5be00a604db01d0ed99ddaf0d518f1a4edf"
+      },
+      "pair_index": 2
+    },
+    {
+      "dataset": "roman-empire",
+      "graph_source": {
+        "mode": "reuse-original",
+        "source_metadata_sha256": "bbb303a8247ca989c3ffc12ef5f7385e2561b5d965917ce795f932d4e7977db4",
+        "source_output_sha256": {
+          "graphs.npz": "5257b8ad415b49f1e92d3f68a8a32506e8e5631f2c5eb57e47af0cb84b693481",
+          "swaps.json": "20f273d41a253749c379a8a49e9d8f89954f3334259c2caa2aabc82b9409907c"
+        },
+        "source_pair": "artifacts/edge_perturbation/actual/roman-empire/pair-0003"
+      },
+      "graphs_sha256": {
+        "control_edge_sha256": "ec654c4d2bfb720bc84f0cc4f8474f0b11fef903e1539a4df0481a7cd828d46f",
+        "original_edge_sha256": "62103899eb69ad778ded6e88813f5da7ef1a6931a9989fefd0b93cf8622653fd",
+        "treatment_edge_sha256": "c66458f5e1352bc85b31c505e2899344c251300c53fbf0d0e00274f6d534db94"
+      },
+      "metadata_json_sha256": "d823832ffd84464561c20c9c912318c2dc4d9bde0cf5aaecba1b86a717410fc1",
+      "model": "gcn",
+      "outputs_sha256": {
+        "checkpoint_metrics.csv": "159b94ab2562836edc49e5463d8cedb5b0722d08d32efda66e680d6d4446582a",
+        "graphs.npz": "5257b8ad415b49f1e92d3f68a8a32506e8e5631f2c5eb57e47af0cb84b693481",
+        "predictions.npz": "52290d8b2e54e3e719e37e05cc48bf11acaf71e4eef559453ce73862b9a18ddc",
+        "swaps.json": "20f273d41a253749c379a8a49e9d8f89954f3334259c2caa2aabc82b9409907c"
+      },
+      "pair_index": 3
+    },
+    {
+      "dataset": "roman-empire",
+      "graph_source": {
+        "mode": "reuse-original",
+        "source_metadata_sha256": "89d5b92854a2c8619ca4c98ea7252d4e5aa1543ad93448fdcc87423faa75bc0b",
+        "source_output_sha256": {
+          "graphs.npz": "f5d08130444624c13e9cafb73a97147156deb6c202587f2d54cad1d4d5cb77c0",
+          "swaps.json": "63e7a534e867d5b8d8cbd2298e12200fd89d2590126006b6dee0cb0376663df1"
+        },
+        "source_pair": "artifacts/edge_perturbation/actual/roman-empire/pair-0004"
+      },
+      "graphs_sha256": {
+        "control_edge_sha256": "90e2860474c23f5e5201b01b1db6a3439cad2eeb3edfe46be229fdd7baad8bd2",
+        "original_edge_sha256": "62103899eb69ad778ded6e88813f5da7ef1a6931a9989fefd0b93cf8622653fd",
+        "treatment_edge_sha256": "73221adf42636e4c2c8c05d7912c1ab77f0a51964342c12e9e887db722f1c6fa"
+      },
+      "metadata_json_sha256": "624fda4e5a678ab4d9cbcd563dcb794e1e394deb86822234e2a5b10d82543e33",
+      "model": "gcn",
+      "outputs_sha256": {
+        "checkpoint_metrics.csv": "7e186f2d6df64a4803e220b993f956f92fe1240648391f1d86b72ee83ccf5668",
+        "graphs.npz": "f5d08130444624c13e9cafb73a97147156deb6c202587f2d54cad1d4d5cb77c0",
+        "predictions.npz": "bee19ab1b0832f7762911ab74b87c6dbc0e79cd202a6c6a643c9ec4a1510df93",
+        "swaps.json": "63e7a534e867d5b8d8cbd2298e12200fd89d2590126006b6dee0cb0376663df1"
+      },
+      "pair_index": 4
+    },
+    {
+      "dataset": "roman-empire",
+      "graph_source": {
+        "mode": "reuse-original",
+        "source_metadata_sha256": "ac7a4bb56fef5e8507dd32bf0b5c107454d3310df4d3ecd660947b855bf8f79c",
+        "source_output_sha256": {
+          "graphs.npz": "c44a047c1133b49eef42588b1847092cdc452e8221f73c834e982008f6e2c497",
+          "swaps.json": "2d8d101589a47555cc770a89202c5558ec073dacd19f92d78255c837c038d62b"
+        },
+        "source_pair": "artifacts/edge_perturbation/actual/roman-empire/pair-0005"
+      },
+      "graphs_sha256": {
+        "control_edge_sha256": "259a784b7d07108a785b100811fa9904b4939a7d2680664b0b50ab910d621be2",
+        "original_edge_sha256": "62103899eb69ad778ded6e88813f5da7ef1a6931a9989fefd0b93cf8622653fd",
+        "treatment_edge_sha256": "9be60ef9f41e09bcde6323f0742f09b0a9a0fa6af6fb8948c373b1e72e4105e2"
+      },
+      "metadata_json_sha256": "5c913ffc5bb99ed70392bb4e10533f87e2e739d46e55e4638b645de41c69a26a",
+      "model": "gcn",
+      "outputs_sha256": {
+        "checkpoint_metrics.csv": "422e1c9fa6224558d3040f4cf6b57c562f71d3663cbf21a592fc50afd15d82f9",
+        "graphs.npz": "c44a047c1133b49eef42588b1847092cdc452e8221f73c834e982008f6e2c497",
+        "predictions.npz": "204af9292f4caa38065c591ea6fcb277999eba66b79d0f613ada56320e5185c9",
+        "swaps.json": "2d8d101589a47555cc770a89202c5558ec073dacd19f92d78255c837c038d62b"
+      },
+      "pair_index": 5
+    },
+    {
+      "dataset": "arxiv-year",
+      "graph_source": {
+        "mode": "generate"
+      },
+      "graphs_sha256": {
+        "control_edge_sha256": "9deaa21ef4febb48df922fe229a0631188b2361e9939c5c77bdeedfd5354e6c0",
+        "original_edge_sha256": "73a48aca7c85a2364e876c3e3b663cb237fdd206850124edaac3d6a753d8a725",
+        "treatment_edge_sha256": "4ae843507830ab846392ef30a535be93fbb42f261b3a7931bcd82f6910f1f0da"
+      },
+      "metadata_json_sha256": "427d8680d81d4f3b6a70d29793477da9301b8b5dc1d81f95167c003e88b2649a",
+      "model": "graphsage-mean",
+      "outputs_sha256": {
+        "checkpoint_metrics.csv": "38e82bea0a71c170cf4fbca43ae0bdab28721b06f19540baf8dd6ffbc4e243b2",
+        "graphs.npz": "7ffcf2c1e33ee12d2cc554f29d18d4f7d06b6d04360f4588eddd24d06e85ae0b",
+        "predictions.npz": "5c1eaeb36792cc25276bea2c7707cf25a58befeadbd3a5c70479d8f4c6a9b2a6",
+        "swaps.json": "0cf6b1334dff0a5db7dbb32fdea500b1327f8144b4793d9f3f666d3c121e0e76"
+      },
+      "pair_index": 1
+    },
+    {
+      "dataset": "arxiv-year",
+      "graph_source": {
+        "mode": "generate"
+      },
+      "graphs_sha256": {
+        "control_edge_sha256": "ec393ebc28df2743eeba910b49a2351897491d1ecbd8d636f86293a0fe52e322",
+        "original_edge_sha256": "73a48aca7c85a2364e876c3e3b663cb237fdd206850124edaac3d6a753d8a725",
+        "treatment_edge_sha256": "40c7e94eb9dbac16c93e8c750f2a3b663756d281fa66a8fa19f7b00813e40dca"
+      },
+      "metadata_json_sha256": "9c00d0b83480e6d6447b6a353e5bd27f273d91630fe2c63c3a8d7339f33ab6c3",
+      "model": "graphsage-mean",
+      "outputs_sha256": {
+        "checkpoint_metrics.csv": "2a8d9a2909dbffa0572ac4b5a99c06121da062f9eae088cf6b58779882cadce4",
+        "graphs.npz": "bd84fc84bb3c4b30dbbfcf01e901ff94f188506588c412dd8d24daec2f2e2a1e",
+        "predictions.npz": "1a341778c8c66d2cb5105af3b25b7ada8396b1039b57052fdbea8cb861443371",
+        "swaps.json": "2f3c068d3f2bbf3665dc55a34a1d816c531e1a2da972d16fa3e10e32451ff725"
+      },
+      "pair_index": 2
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "graph_source": {
+        "mode": "generate"
+      },
+      "graphs_sha256": {
+        "control_edge_sha256": "c2af59a0a9ba90f889080136ac3b2b6bc96bb96d5806b53f06bcac9c97008791",
+        "original_edge_sha256": "73a48aca7c85a2364e876c3e3b663cb237fdd206850124edaac3d6a753d8a725",
+        "treatment_edge_sha256": "fa9a03ddb114e61359aea0b57b1d37abcd340b96da22bd87e25cd677947bf2a0"
+      },
+      "metadata_json_sha256": "586a697063d1441460b5c674d2a01b7b09daf76204d3dbdd4b6c9c25b07762e4",
+      "model": "graphsage-mean",
+      "outputs_sha256": {
+        "checkpoint_metrics.csv": "b7aac843f94ec4e5721dbbbe1c40aabdaf754edf5ed2471233f5b4596d7866d1",
+        "graphs.npz": "d112774427da16e136b6029557ef44fcc8de8cca33172b72352d8ec61617c67a",
+        "predictions.npz": "e725408402c5254c073110ec45b2c3c8a582cfa99a0fe9d248f12e06203380b0",
+        "swaps.json": "bad5ebd4836dde1120a5bff0aacced8edf3a47ced06272f35bb57bc7aa2aa35c"
+      },
+      "pair_index": 1
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "graph_source": {
+        "mode": "generate"
+      },
+      "graphs_sha256": {
+        "control_edge_sha256": "313a07ceb14157cf68380df7a19500cadf4bbcd1fb2e2105516baca5517c8fa6",
+        "original_edge_sha256": "73a48aca7c85a2364e876c3e3b663cb237fdd206850124edaac3d6a753d8a725",
+        "treatment_edge_sha256": "1391ad19bdd43c10ba1a34b6f2d1f6a086dd2e69dc89b9a0a40bfbff1246b153"
+      },
+      "metadata_json_sha256": "6a70164ab12a6fc6adbd465b5eb8f5d4f6b116a1e68ad02deaedc559384679ed",
+      "model": "graphsage-mean",
+      "outputs_sha256": {
+        "checkpoint_metrics.csv": "69217dc411a81ad6334f7140c574b0712063129e524e4781d5e336776a23bb60",
+        "graphs.npz": "705fe75dc9d8fad0a08528e1d781028cbc3648e5117667c63cb4a963d4f6794b",
+        "predictions.npz": "dfa2c2ec4c8f665fe70901ee3fbcfce2ebe59c0023199982031def667ce84b80",
+        "swaps.json": "9580a44afe9b6e398859470c3aeb86b407cefc7ca1c3b932a1e1d5ccd16dad64"
+      },
+      "pair_index": 2
+    }
+  ],
+  "schema_version": 1,
+  "scope": {
+    "cells": [
+      {
+        "checkpoints_per_pair": 30,
+        "dataset": "pubmed",
+        "graph_mode": "reuse-original",
+        "model": "gcn",
+        "n_pairs": 5,
+        "pair_indices": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "checkpoints_per_pair": 30,
+        "dataset": "roman-empire",
+        "graph_mode": "reuse-original",
+        "model": "gcn",
+        "n_pairs": 5,
+        "pair_indices": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "checkpoints_per_pair": 30,
+        "dataset": "arxiv-year",
+        "graph_mode": "generate",
+        "model": "graphsage-mean",
+        "n_pairs": 2,
+        "pair_indices": [
+          1,
+          2
+        ]
+      },
+      {
+        "checkpoints_per_pair": 30,
+        "dataset": "ogbn-arxiv",
+        "graph_mode": "generate",
+        "model": "graphsage-mean",
+        "n_pairs": 2,
+        "pair_indices": [
+          1,
+          2
+        ]
+      }
+    ],
+    "checkpoint_rows": 420
+  }
+}

@@ -1,0 +1,42 @@
+# Complete experiment panel used by the paper.
+#
+# Split identifiers and training seeds are read from the tracked dataset
+# manifests. Model hyperparameters are read from configs/models/<model>.yaml.
+# The product below is therefore the sole experiment-grid specification:
+# 5 datasets x 7 models x 4 preparations x 30 split/seed cells = 4,200 runs.
+schema_version: 1
+
+datasets:
+  - pubmed
+  - ogbn-arxiv
+  - roman-empire
+  - amazon-ratings
+  - arxiv-year
+
+models:
+  - mlp
+  - gcn
+  - graphsage-mean
+  - h2gcn
+  - gpr-gnn
+  - linkx
+  - acm-gcn
+
+preparations:
+  - name: erm
+  - name: last
+    depends_on: erm
+  - name: head
+    depends_on: erm
+  - name: full
+
+expected_runs_per_dataset_model_preparation: 30
+expected_total_runs: 4200
+default_device: cuda
+
+run_output_files:
+  - config.json
+  - metrics.json
+  - history.json
+  - checkpoint.pt
+  - run_data.npz

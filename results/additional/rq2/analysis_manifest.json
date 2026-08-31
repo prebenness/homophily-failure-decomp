@@ -1,0 +1,98 @@
+{
+  "schema_version": 4,
+  "analysis_version": "rq2-within-class-and-composition-adjusted-v4",
+  "analysis": "RQ2 within-class accuracy and class-composition-adjusted whole-test versus tail gaps",
+  "definitions": {
+    "unit": "one split-seed prediction set",
+    "within_class_eligible_class": "true class with at least one tail and one non-tail test node in that run",
+    "class_adjusted_tail_class": "true class with at least one tail test node in that run",
+    "within_class_accuracy_contrast": "unweighted mean over eligible true classes of non-tail accuracy minus tail accuracy",
+    "within_class_positive_contrast": "tail accuracy is lower within the average eligible class",
+    "reference_class_distribution": "whole-test true-class proportions renormalised over tail-present classes",
+    "tail_conditional_confusion_rows": "tail prediction-label distribution within each tail-present true class",
+    "class_reweighted_tail_confusion": "tail conditional confusion rows multiplied by the whole-test reference class proportions",
+    "whole_test_score": "ordinary score over whole-test nodes whose true class is present in the tail",
+    "excluded_true_classes": "classes absent from the tail are outside both evaluated populations",
+    "predictions_outside_tail_classes": "retained as false negatives for tail-present true classes",
+    "class_adjusted_contrast": "whole-test score minus class-reweighted tail score",
+    "class_adjusted_positive_contrast": "tail performance is lower after class-composition adjustment",
+    "cell_aggregation": "unweighted arithmetic mean of the 30 run-level contrasts",
+    "sample_standard_deviation": "ddof=1",
+    "bootstrap_intervals": {
+      "common": {
+        "method": "two-sided percentile bootstrap of complete runs",
+        "level": 0.95,
+        "resamples": 1000,
+        "global_seed": 20260716,
+        "quantile_method": "linear"
+      },
+      "within_class_accuracy_seed_derivation": "SHA256(global seed, dataset, model, preparation, class-macro-accuracy), matching the original RQ2 table",
+      "class_adjusted_seed_derivation": "SHA256(global seed, dataset, model, erm-tail-gap), matching RQ1"
+    },
+    "rq2_condition": "ERM macro-F1 tail-gap mean is positive and its 95% paired-bootstrap interval lies wholly above zero"
+  },
+  "scope": {
+    "dataset_mode": "additional",
+    "datasets": [
+      "actor",
+      "blogcatalog"
+    ],
+    "models": [
+      "mlp",
+      "gcn",
+      "graphsage-mean",
+      "h2gcn",
+      "gpr-gnn",
+      "linkx",
+      "acm-gcn"
+    ],
+    "validated_preparations": [
+      "erm",
+      "last",
+      "head",
+      "full"
+    ],
+    "adjusted_preparations": [
+      "erm"
+    ],
+    "expected_runs_per_cell": 30,
+    "adjusted_run_rows": 420,
+    "adjusted_cell_rows": 14,
+    "within_class_run_rows": 420,
+    "within_class_cell_rows": 14,
+    "registered_run_panel_exact_match": true,
+    "run_count": 1680,
+    "run_level_class_rows": 8400,
+    "combined_config_and_predictions_sha256": "f5aaee09ccc7d22244ee679ba2b9bd8ed6e3f5da47ace15206623cb7a4761caf",
+    "training_code_versions": [
+      "55bda6604749a84f8f47df19f15486bdd1c811c8"
+    ]
+  },
+  "inputs": {
+    "raw_store": "config.json and run_data.npz from the external run store, validated against manifests/additional-dataset-runs.jsonl and the dataset manifests",
+    "erm_macro_f1_gap_table": {
+      "path": "results/additional/aggregates/erm_tail_gaps.csv",
+      "sha256": "1776286845154453c79906263b1a82d317054331ff58dfbfc5ae97d419ddb9a4"
+    },
+    "erm_accuracy_gap_table": {
+      "path": "results/additional/rq1/accuracy/whole_vs_tail_accuracy.csv",
+      "sha256": "16adc97d84409215c542fbf5fa3bae24c7c6b37106d08e862d081783db275021"
+    }
+  },
+  "analysis_script": {
+    "path": "scripts/analyze_rq2_within_class.py",
+    "sha256": "f2b009c17dc52d49dafb227e760c33d44f0650033e8d8b254c60bd584b1c285b"
+  },
+  "software": {
+    "python": "3.11.15",
+    "numpy": "2.2.6"
+  },
+  "outputs": {
+    "results/additional/rq2/within_class_accuracy_run_contrasts.csv": "52a7de18d0006a9695c9fdd2020a5566a00d74109c289e841973e719ee2fa9aa",
+    "results/additional/rq2/within_class_accuracy_cell_summary.csv": "7a89c77ea559e7396c80b421f686f42514eec8a0e020a58d9be324259b0eb0b0",
+    "results/additional/rq2/class_adjusted_run_metrics.csv": "c913b41f09d836f1e70c78b576fde57b0354bb4752401b216e04c12d0bb14675",
+    "results/additional/rq2/class_adjusted_cell_summary.csv": "2df2e4c3037d016193f88b4f09bb22815e25b49185babb4fdaa781931a9644ec",
+    "results/additional/rq2/appendix_tables.tex": "0646616896a8c040c5cfa61ff951b4aaf89078a0601dfd5fa8784016d15227bf",
+    "results/additional/rq2/README.md": "800b9a820a0b49c6c5a4efb1eb6b2b7144db597e60719d54b10db1602017034c"
+  }
+}

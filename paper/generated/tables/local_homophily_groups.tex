@@ -1,0 +1,36 @@
+\begin{table}[H]
+    \centering\footnotesize
+    \begin{tabular}{@{}llrr}
+        \toprule
+        Dataset & Bin & Nodes & \% of nodes\\
+        \midrule
+        PubMed & $\mathbf{[0,0.25)}$ & 2{,}696 & 13.7\\
+        (homophilic, mean $h_v$ 0.792) & $[0.25,0.5)$ & 524 & 2.7\\
+         & $[0.5,0.75)$ & 1{,}891 & 9.6\\
+         & $[0.75,1]$ & 14{,}606 & 74.1\\
+        \midrule
+        ogbn-arxiv & $\mathbf{[0,0.25)}$ & 30{,}364 & 17.9\\
+        (homophilic, mean $h_v$ 0.635) & $[0.25,0.5)$ & 20{,}524 & 12.1\\
+         & $[0.5,0.75)$ & 35{,}690 & 21.1\\
+         & $[0.75,1]$ & 82{,}765 & 48.9\\
+        \midrule
+        Roman-empire & $[0,0.25)$ & 20{,}297 & 89.6\\
+        (heterophilic, mean $h_v$ 0.046) & $[0.25,0.5)$ & 1{,}353 & 6.0\\
+         & $\mathbf{[0.5,1]}$ (merged) & 1{,}012 & 4.5\\
+        \midrule
+        Amazon-ratings & $[0,0.25)$ & 9{,}465 & 38.6\\
+        (heterophilic, mean $h_v$ 0.376) & $[0.25,0.5)$ & 6{,}647 & 27.1\\
+         & $[0.5,0.75)$ & 5{,}437 & 22.2\\
+         & $\mathbf{[0.75,1]}$ & 2{,}943 & 12.0\\
+        \midrule
+        arxiv-year & $[0,0.25)$ & 95{,}006 & 56.1\\
+        (heterophilic, mean $h_v$ 0.289) & $[0.25,0.5)$ & 33{,}206 & 19.6\\
+         & $[0.5,0.75)$ & 19{,}262 & 11.4\\
+         & $\mathbf{[0.75,1]}$ & 21{,}869 & 12.9\\
+        \bottomrule
+    \end{tabular}
+    \caption{
+        The local homophily bins used throughout. \textbf{Bold} type marks the rare \(h_v\) tail---the low \(h_v\) bin on homophilic datasets and the high-\(h_v\) bin on heterophilic datasets.
+    }
+    \label{tab:groups}
+\end{table}

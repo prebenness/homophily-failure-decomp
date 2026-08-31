@@ -1,0 +1,1614 @@
+{
+  "schema_version": 1,
+  "analysis": "rq3-aggregation-tail-gap-contrast-against-mlp",
+  "dataset_mode": "additional",
+  "datasets": [
+    "actor",
+    "blogcatalog"
+  ],
+  "aggregation_models": [
+    "gcn",
+    "graphsage-mean",
+    "h2gcn",
+    "gpr-gnn",
+    "acm-gcn"
+  ],
+  "reference_model": "mlp",
+  "definitions": {
+    "erm_tail_gap": "whole-test macro-F1 minus tail macro-F1",
+    "contrast": "aggregation-model ERM tail gap minus MLP ERM tail gap",
+    "pairing": "same dataset, split, and seed",
+    "positive_contrast": "aggregation model has a larger tail gap than MLP",
+    "interval": {
+      "method": "paired non-parametric percentile bootstrap",
+      "level": 0.95,
+      "resamples": 1000,
+      "base_seed": 20260717,
+      "quantile_method": "linear"
+    }
+  },
+  "cells": [
+    {
+      "dataset": "actor",
+      "model": "gcn",
+      "n_pairs": 30,
+      "mean_contrast": -0.19660606589157864,
+      "bootstrap_ci": [
+        -0.22434938562717507,
+        -0.1693370297815841
+      ]
+    },
+    {
+      "dataset": "actor",
+      "model": "graphsage-mean",
+      "n_pairs": 30,
+      "mean_contrast": -0.016309909342704824,
+      "bootstrap_ci": [
+        -0.039888271497517544,
+        0.008185838532612346
+      ]
+    },
+    {
+      "dataset": "actor",
+      "model": "h2gcn",
+      "n_pairs": 30,
+      "mean_contrast": -0.0489269291755042,
+      "bootstrap_ci": [
+        -0.07060542795998988,
+        -0.02637096614349996
+      ]
+    },
+    {
+      "dataset": "actor",
+      "model": "gpr-gnn",
+      "n_pairs": 30,
+      "mean_contrast": -0.06171650595010858,
+      "bootstrap_ci": [
+        -0.08356603714295426,
+        -0.03930992562165879
+      ]
+    },
+    {
+      "dataset": "actor",
+      "model": "acm-gcn",
+      "n_pairs": 30,
+      "mean_contrast": 0.001834668965874268,
+      "bootstrap_ci": [
+        -0.019594261889518676,
+        0.024775451816810047
+      ]
+    },
+    {
+      "dataset": "blogcatalog",
+      "model": "gcn",
+      "n_pairs": 30,
+      "mean_contrast": -0.33465640676268027,
+      "bootstrap_ci": [
+        -0.3445849326736117,
+        -0.32388303785788014
+      ]
+    },
+    {
+      "dataset": "blogcatalog",
+      "model": "graphsage-mean",
+      "n_pairs": 30,
+      "mean_contrast": -0.1559736649469977,
+      "bootstrap_ci": [
+        -0.16827648095461056,
+        -0.14295151951576507
+      ]
+    },
+    {
+      "dataset": "blogcatalog",
+      "model": "h2gcn",
+      "n_pairs": 30,
+      "mean_contrast": -0.12967292911610614,
+      "bootstrap_ci": [
+        -0.1425987364558454,
+        -0.11595695121812642
+      ]
+    },
+    {
+      "dataset": "blogcatalog",
+      "model": "gpr-gnn",
+      "n_pairs": 30,
+      "mean_contrast": -0.14996510518191458,
+      "bootstrap_ci": [
+        -0.16174453925601612,
+        -0.14001395537947975
+      ]
+    },
+    {
+      "dataset": "blogcatalog",
+      "model": "acm-gcn",
+      "n_pairs": 30,
+      "mean_contrast": 0.008926966627950898,
+      "bootstrap_ci": [
+        -0.0029708659637186514,
+        0.021298993458114014
+      ]
+    }
+  ],
+  "software": {
+    "python": "3.11.15",
+    "numpy": "2.2.6",
+    "matplotlib": "3.11.0",
+    "seaborn": "0.13.2"
+  },
+  "analysis_script": {
+    "path": "scripts/plot_rq3_mlp_contrasts.py",
+    "sha256": "5e06e8cf1f081c9abd2221b87c3acb6419e75c580584316baae43764c4bed1aa"
+  },
+  "input_runs": {
+    "actor/mlp": {
+      "actor_mlp_erm_geomgcn-0_seed-1": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-0_seed-1.json",
+        "sha256": "8ff2bd02b27e4254ba5b9f3889faeb754b68d6d4df005499d633822537e154a9"
+      },
+      "actor_mlp_erm_geomgcn-0_seed-2": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-0_seed-2.json",
+        "sha256": "c7a94a413c6bc72db11e4eb72220c073dbe4f651fb6900d8ede0a663356c214f"
+      },
+      "actor_mlp_erm_geomgcn-0_seed-3": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-0_seed-3.json",
+        "sha256": "f5d0f7e046b3413162d3bf5c3ee7135afb18a7b0de68a40d36c7e9ad417fb8ec"
+      },
+      "actor_mlp_erm_geomgcn-1_seed-1": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-1_seed-1.json",
+        "sha256": "f03e33bc72cf493bf66661238dc23be06e9828f33a6bb82cb538909e474813aa"
+      },
+      "actor_mlp_erm_geomgcn-1_seed-2": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-1_seed-2.json",
+        "sha256": "479b9081a35a07bf6d636cac53739d3e4cea43481ba20f0ca2ec060843b0a092"
+      },
+      "actor_mlp_erm_geomgcn-1_seed-3": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-1_seed-3.json",
+        "sha256": "10901a1372bbb0d103d7f09c5ec800183b6fdea9bde118dcc06190a6daf26614"
+      },
+      "actor_mlp_erm_geomgcn-2_seed-1": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-2_seed-1.json",
+        "sha256": "36d01a5eb1913aa299747aa043338b8a1eb71a81ac43c3d6e7d4f199e77feaf6"
+      },
+      "actor_mlp_erm_geomgcn-2_seed-2": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-2_seed-2.json",
+        "sha256": "3e1d72dd27ec4e7e905e6de7c2671d5b74cf7da9d9ce2f640b0f701a03ac9aa4"
+      },
+      "actor_mlp_erm_geomgcn-2_seed-3": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-2_seed-3.json",
+        "sha256": "89079408c69340a725b0c6c8fcfcbdd2d4c731f89e483fef9a760dd27cc72cd6"
+      },
+      "actor_mlp_erm_geomgcn-3_seed-1": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-3_seed-1.json",
+        "sha256": "f9441ec2680c665d0e672947784edb6ccb252210ad709a6a3c1849822c2a0d10"
+      },
+      "actor_mlp_erm_geomgcn-3_seed-2": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-3_seed-2.json",
+        "sha256": "594fb5b264ce58480a669229691530a963b853a75ec8861608f8428ebc592f6e"
+      },
+      "actor_mlp_erm_geomgcn-3_seed-3": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-3_seed-3.json",
+        "sha256": "ef3d927f228000288540f36dd2ec85e95722242d490932f11f0329ae6252fc1a"
+      },
+      "actor_mlp_erm_geomgcn-4_seed-1": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-4_seed-1.json",
+        "sha256": "ff7ef70aa69d391e1bf38741ff3b8c59de3f8e4e8ff99b5eec4dfedb3a24ebc4"
+      },
+      "actor_mlp_erm_geomgcn-4_seed-2": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-4_seed-2.json",
+        "sha256": "c689440508b47b3c8279459b2b1c2c03fea4c0bdd5dad0abb3ca585357538690"
+      },
+      "actor_mlp_erm_geomgcn-4_seed-3": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-4_seed-3.json",
+        "sha256": "35916fee47f8a4640c38d44c641680c151052e044a159541c914d3cdb79071e0"
+      },
+      "actor_mlp_erm_geomgcn-5_seed-1": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-5_seed-1.json",
+        "sha256": "12583f73ec829f1c18ad6b8694f5fc16401a3b3853676d728bd622ca0510ba19"
+      },
+      "actor_mlp_erm_geomgcn-5_seed-2": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-5_seed-2.json",
+        "sha256": "ef2de247b95510e1e70fbe8a07dd675d655cfe222fbe69ec47ea2c0ebe5679c0"
+      },
+      "actor_mlp_erm_geomgcn-5_seed-3": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-5_seed-3.json",
+        "sha256": "9374557125b403e047ebe797d0a91b1415955d03deef151c6ff804de2a9519d3"
+      },
+      "actor_mlp_erm_geomgcn-6_seed-1": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-6_seed-1.json",
+        "sha256": "8c3d3bacd0850d21debbcea9bdaf4fbd2dc42aeaae58ff9ffaf142919aa76db9"
+      },
+      "actor_mlp_erm_geomgcn-6_seed-2": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-6_seed-2.json",
+        "sha256": "ac0f1a8b61fb5b1c86ed0f28652a11f1493fa5b52f11e5baa062790c872359b6"
+      },
+      "actor_mlp_erm_geomgcn-6_seed-3": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-6_seed-3.json",
+        "sha256": "032c25a4e5ed296d2404bf0d4496fdfbb2212be37753e6c05717ba392baacfe3"
+      },
+      "actor_mlp_erm_geomgcn-7_seed-1": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-7_seed-1.json",
+        "sha256": "69c12cdd184f0513056a456df354cd938b8a904a5532fce3a766cc8eacda5651"
+      },
+      "actor_mlp_erm_geomgcn-7_seed-2": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-7_seed-2.json",
+        "sha256": "a9552344cc3900e6376f5c3be41a3739e5cb471a543df01ee71945aa417529b3"
+      },
+      "actor_mlp_erm_geomgcn-7_seed-3": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-7_seed-3.json",
+        "sha256": "30b2ea4a17b4188074e82f500eab404ded50e66b1afb77b9a8230243fbca3f75"
+      },
+      "actor_mlp_erm_geomgcn-8_seed-1": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-8_seed-1.json",
+        "sha256": "8aa5f1c7f3e022442550a8eb7ad4ca65ee22e2336e3e17c387b12df3e24bca14"
+      },
+      "actor_mlp_erm_geomgcn-8_seed-2": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-8_seed-2.json",
+        "sha256": "41131ca29701e54d49ea4a84c1923bece8bb92474e18114cb84545e278130dd1"
+      },
+      "actor_mlp_erm_geomgcn-8_seed-3": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-8_seed-3.json",
+        "sha256": "59a8ba8212dcdf0ad8239efdf8979643ac45be903ba29ee9652836136c2c826b"
+      },
+      "actor_mlp_erm_geomgcn-9_seed-1": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-9_seed-1.json",
+        "sha256": "3a2074b831068ee92700609dca8c70dbb8af753f398d58f47a1b6dc7b148fa32"
+      },
+      "actor_mlp_erm_geomgcn-9_seed-2": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-9_seed-2.json",
+        "sha256": "d1cfe65c5b0788a48bf7fd53a424bda6d8c8a9e76c06a38895f1f4b2f9b4be08"
+      },
+      "actor_mlp_erm_geomgcn-9_seed-3": {
+        "path": "results/additional/runs/actor/mlp/actor_mlp_erm_geomgcn-9_seed-3.json",
+        "sha256": "68ccbe6d0f650119b2f6d0dd66b506d03b966305ecfbae39aa3de80a44cefcb2"
+      }
+    },
+    "actor/gcn": {
+      "actor_gcn_erm_geomgcn-0_seed-1": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-0_seed-1.json",
+        "sha256": "213e1bfad6e20085feec953c7935a350987de8cfb0c5f11303608ae2f3a7ebba"
+      },
+      "actor_gcn_erm_geomgcn-0_seed-2": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-0_seed-2.json",
+        "sha256": "bd9cb64d0448d6893b2a6e035d8cabc2cb3a8ab4a6b406cf534c0391f46e6263"
+      },
+      "actor_gcn_erm_geomgcn-0_seed-3": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-0_seed-3.json",
+        "sha256": "313d0fbba89647fd1d481d68c760a3b8e71945293fd05d3b0526b3d420b9c5e8"
+      },
+      "actor_gcn_erm_geomgcn-1_seed-1": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-1_seed-1.json",
+        "sha256": "4f2028fced87169474885b0ba4fef8beb6f5d45e05ec2ae9f95fcd5780340548"
+      },
+      "actor_gcn_erm_geomgcn-1_seed-2": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-1_seed-2.json",
+        "sha256": "a644542a40bc707eaf509f8b88928fcfa249ae7b52c321d13acbd071a970b154"
+      },
+      "actor_gcn_erm_geomgcn-1_seed-3": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-1_seed-3.json",
+        "sha256": "0a6627b64db7fba9ff59b1d7cf7511b8873ff09467429dfe27b4d3b99b592fef"
+      },
+      "actor_gcn_erm_geomgcn-2_seed-1": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-2_seed-1.json",
+        "sha256": "f0d82b12b954bfb03e8e9688434f7b13a27a2c4d869f8224acbfcccf72c5d96d"
+      },
+      "actor_gcn_erm_geomgcn-2_seed-2": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-2_seed-2.json",
+        "sha256": "4c3c6b5c1dedae852b38a64d11f85c3e015168e465e2d1e0ad11faac917093fe"
+      },
+      "actor_gcn_erm_geomgcn-2_seed-3": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-2_seed-3.json",
+        "sha256": "b7e2246bd7621452d6e2f7e912b9a832a717d657531693d11b5459e5da889259"
+      },
+      "actor_gcn_erm_geomgcn-3_seed-1": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-3_seed-1.json",
+        "sha256": "f01d815715e0f2054bf31911a5c5342e3ee5c84cf9fbfa7b13c239655c7aed1f"
+      },
+      "actor_gcn_erm_geomgcn-3_seed-2": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-3_seed-2.json",
+        "sha256": "16da3cc438a8a7e4cff1a3fb689d7ad9b1f1b39004029080d1ea1aef72bb5e57"
+      },
+      "actor_gcn_erm_geomgcn-3_seed-3": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-3_seed-3.json",
+        "sha256": "8cf3d909ced52b2820c27e3978186c09e0537aec074bf11831af5e75502851ec"
+      },
+      "actor_gcn_erm_geomgcn-4_seed-1": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-4_seed-1.json",
+        "sha256": "ae9e4b93a57af288bed3fe4572e1d59201721b4aa48fb125198edc3992ef9147"
+      },
+      "actor_gcn_erm_geomgcn-4_seed-2": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-4_seed-2.json",
+        "sha256": "ead4779c82706fbc9b2eefcaa923fddd1109c6416e791b34b06da64d850a5cc0"
+      },
+      "actor_gcn_erm_geomgcn-4_seed-3": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-4_seed-3.json",
+        "sha256": "d32fe69bd3787ce4857a39e0b80ed71167ec9acb36f0c130b4f9d7040ba92ab5"
+      },
+      "actor_gcn_erm_geomgcn-5_seed-1": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-5_seed-1.json",
+        "sha256": "f18f2a91cbdc8ca56aa8ba02d4b022a0ec520d97e5def56f98c5875e60fcc9f6"
+      },
+      "actor_gcn_erm_geomgcn-5_seed-2": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-5_seed-2.json",
+        "sha256": "40085cad5c960dc07e3bb5a6b7c01ca2c26818212bcc770f6ae5f93bb3362666"
+      },
+      "actor_gcn_erm_geomgcn-5_seed-3": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-5_seed-3.json",
+        "sha256": "5b258eee375bc58fc75e66d029ec96ee4763c2093c8b61a4a3554d5e8a8b863a"
+      },
+      "actor_gcn_erm_geomgcn-6_seed-1": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-6_seed-1.json",
+        "sha256": "0f309ea370a14ac56f5944f33e96ed00659833534471c207ada40229bd2140d1"
+      },
+      "actor_gcn_erm_geomgcn-6_seed-2": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-6_seed-2.json",
+        "sha256": "a165e69962d19b18eb4e9700e570df3f186500a14c3ce42ed7f57182280bf36d"
+      },
+      "actor_gcn_erm_geomgcn-6_seed-3": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-6_seed-3.json",
+        "sha256": "919544af1be2564d616eae74e1d3d57dceeb1c2799b7ed85415427941022eacc"
+      },
+      "actor_gcn_erm_geomgcn-7_seed-1": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-7_seed-1.json",
+        "sha256": "9a989ddf7b49079e7953c74ce9785f144590def3d29067ba9d9a4c01953971d5"
+      },
+      "actor_gcn_erm_geomgcn-7_seed-2": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-7_seed-2.json",
+        "sha256": "2c7acea1f4d4aab843868cf31cff53d787f2a3240a938b1f53cc73b5aa277dbc"
+      },
+      "actor_gcn_erm_geomgcn-7_seed-3": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-7_seed-3.json",
+        "sha256": "9eba829bef5b8560173832900a6010e5379de6e2c3fa8d36b6e6652474a9cce3"
+      },
+      "actor_gcn_erm_geomgcn-8_seed-1": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-8_seed-1.json",
+        "sha256": "8191f92a66aa80fb845d3460447b588137d7094aa8356d722ad48e4f34d3f580"
+      },
+      "actor_gcn_erm_geomgcn-8_seed-2": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-8_seed-2.json",
+        "sha256": "afc2f3e677779cb74b7ffbc1fad8bfbb96439f2c60a5d6a8de10b2efb7eb1d02"
+      },
+      "actor_gcn_erm_geomgcn-8_seed-3": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-8_seed-3.json",
+        "sha256": "47382146f071ba68631f7a61688891891362411ea512057f911d4e35135b8d2c"
+      },
+      "actor_gcn_erm_geomgcn-9_seed-1": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-9_seed-1.json",
+        "sha256": "73ab34b8a58ac746b059c96eb8d212fc10621b8e4af9ce2ae8349fe38de7e90b"
+      },
+      "actor_gcn_erm_geomgcn-9_seed-2": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-9_seed-2.json",
+        "sha256": "cb47135562b9db001a92a5de8caee2ac9f23f59fdf5b0a8b6825a84f4f65c4ee"
+      },
+      "actor_gcn_erm_geomgcn-9_seed-3": {
+        "path": "results/additional/runs/actor/gcn/actor_gcn_erm_geomgcn-9_seed-3.json",
+        "sha256": "197a07e41926deec84393f9ed5edd13387e1d0fe7b169fd12f30749b605670c7"
+      }
+    },
+    "actor/graphsage-mean": {
+      "actor_graphsage-mean_erm_geomgcn-0_seed-1": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-0_seed-1.json",
+        "sha256": "c3813aa19cc3c2a854aa694ff91599212e0c9fb07e0e59463f22a066ddb54fbf"
+      },
+      "actor_graphsage-mean_erm_geomgcn-0_seed-2": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-0_seed-2.json",
+        "sha256": "9e598ea3c45fd5609e40e9b1efd237d5b43778bd45c397456a9023cd05a98ebf"
+      },
+      "actor_graphsage-mean_erm_geomgcn-0_seed-3": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-0_seed-3.json",
+        "sha256": "1d1200ff1a51e9fa0c6ba571c7bac512ef735c0f7ed7861fcd37f0093a3bdf34"
+      },
+      "actor_graphsage-mean_erm_geomgcn-1_seed-1": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-1_seed-1.json",
+        "sha256": "c727f2c92ae45d4afee1d6e55b853774875fe1636f22e4e9c2a1e86c1d398c71"
+      },
+      "actor_graphsage-mean_erm_geomgcn-1_seed-2": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-1_seed-2.json",
+        "sha256": "68eda033411846460bc5bcb28f37c2cfc4dbcbe1693b1b444e47c4d9e910ae20"
+      },
+      "actor_graphsage-mean_erm_geomgcn-1_seed-3": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-1_seed-3.json",
+        "sha256": "63bbafe471fbfcde3f4a0d5284fbacc8d6fe2339e24766b1b3451e2ecf85f1b1"
+      },
+      "actor_graphsage-mean_erm_geomgcn-2_seed-1": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-2_seed-1.json",
+        "sha256": "610e79b78b72be5d7114199e1bcc4ab5818a561aead51fe94d8dd8781a445c93"
+      },
+      "actor_graphsage-mean_erm_geomgcn-2_seed-2": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-2_seed-2.json",
+        "sha256": "41c1bf03c0e1d94c2f8cafcec7bc71d386f7345f90cb3e4e34889f5db7666568"
+      },
+      "actor_graphsage-mean_erm_geomgcn-2_seed-3": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-2_seed-3.json",
+        "sha256": "162ed337faaf8e254b3656a302a206c6cb3b53c9efe53474faff5c1584198a8b"
+      },
+      "actor_graphsage-mean_erm_geomgcn-3_seed-1": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-3_seed-1.json",
+        "sha256": "a21f24d1fb19fd189aa05e188e24b053aadd3345eb5330236d6e24d34377215a"
+      },
+      "actor_graphsage-mean_erm_geomgcn-3_seed-2": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-3_seed-2.json",
+        "sha256": "463495bd63df7959f2add57e4f4d12023000045da0cc2abaccc5f112017aa76a"
+      },
+      "actor_graphsage-mean_erm_geomgcn-3_seed-3": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-3_seed-3.json",
+        "sha256": "92d207a6d19771b315a6c740c8d53168f2a328d40723f39fa3bb9579c7a4a867"
+      },
+      "actor_graphsage-mean_erm_geomgcn-4_seed-1": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-4_seed-1.json",
+        "sha256": "7aacdcd31360540b22a3ce4561088a55c55bb190125566406aee40e002548ccd"
+      },
+      "actor_graphsage-mean_erm_geomgcn-4_seed-2": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-4_seed-2.json",
+        "sha256": "1ccbf7ec97f3f88fdcf7ba8d084baa7fb2b7e825aaf5c1a8739a9dca79af3b31"
+      },
+      "actor_graphsage-mean_erm_geomgcn-4_seed-3": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-4_seed-3.json",
+        "sha256": "f48a1f131a6221678fe2104167cf7ad6ba073d40466a7835a7283848806320b4"
+      },
+      "actor_graphsage-mean_erm_geomgcn-5_seed-1": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-5_seed-1.json",
+        "sha256": "ad3f1aa2d385f03feb4e061616876da1b3901c4ffb39167eb787ca31b5c4b0b5"
+      },
+      "actor_graphsage-mean_erm_geomgcn-5_seed-2": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-5_seed-2.json",
+        "sha256": "a405d8c612460dcc629d3c52a39707ecea6ec752ca4618f32e752e822e21cf17"
+      },
+      "actor_graphsage-mean_erm_geomgcn-5_seed-3": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-5_seed-3.json",
+        "sha256": "2f5110e6430a8e4480c5a95d0a45d669271e22d0e705eff2a3e6b5572389f197"
+      },
+      "actor_graphsage-mean_erm_geomgcn-6_seed-1": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-6_seed-1.json",
+        "sha256": "4d71e73c88c2ee424ee66976ebea6a32127eb574965f374c3c61ff1d3d8d415e"
+      },
+      "actor_graphsage-mean_erm_geomgcn-6_seed-2": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-6_seed-2.json",
+        "sha256": "52b2a72ea1c25c7469c6a6ce6890b722ebab0f92fdfa74a58e6092b0649ae486"
+      },
+      "actor_graphsage-mean_erm_geomgcn-6_seed-3": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-6_seed-3.json",
+        "sha256": "fee4ec0cc65f1947d6ab98189ab63b81ad32296e1cee9cfdb57ff693912e477c"
+      },
+      "actor_graphsage-mean_erm_geomgcn-7_seed-1": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-7_seed-1.json",
+        "sha256": "12e7c16f609d1c47abfbf304dfe5ed10c15a3008deb4065a7f801758db664336"
+      },
+      "actor_graphsage-mean_erm_geomgcn-7_seed-2": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-7_seed-2.json",
+        "sha256": "3964c107e5180ae4d929883000ce456cd9c5d5b269d142397d899effb3ebc76e"
+      },
+      "actor_graphsage-mean_erm_geomgcn-7_seed-3": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-7_seed-3.json",
+        "sha256": "61f16092715aa995e62aeedd92bd444e2b22b183ff540a6fa106d4b9b5518178"
+      },
+      "actor_graphsage-mean_erm_geomgcn-8_seed-1": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-8_seed-1.json",
+        "sha256": "7b3e86eafc18235fe4a59d13998072c391d2d394f6907dfbf9f78c672289a6ba"
+      },
+      "actor_graphsage-mean_erm_geomgcn-8_seed-2": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-8_seed-2.json",
+        "sha256": "6ff0e1b4def47f0595e2f88db6d0678061c112342b6ebb9f2ee4e84ef1dd3fe7"
+      },
+      "actor_graphsage-mean_erm_geomgcn-8_seed-3": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-8_seed-3.json",
+        "sha256": "6b38fc67c25c726088a6197341de8fb2839584d84ee79ee3dd5674475dd5aada"
+      },
+      "actor_graphsage-mean_erm_geomgcn-9_seed-1": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-9_seed-1.json",
+        "sha256": "1cccd0556428dcdd23aef3c872cf1ff8e796ae4475d5c19dc9a22ba8d273b9a0"
+      },
+      "actor_graphsage-mean_erm_geomgcn-9_seed-2": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-9_seed-2.json",
+        "sha256": "d88dbb070c6034fbfff50d9ea234ad29b8e008db263fd961898e531f70fc5321"
+      },
+      "actor_graphsage-mean_erm_geomgcn-9_seed-3": {
+        "path": "results/additional/runs/actor/graphsage-mean/actor_graphsage-mean_erm_geomgcn-9_seed-3.json",
+        "sha256": "d9eca2c66f68be08f4e4ed9b65186c74e6254c5c788d3c4c9d3e87a3bb4065f8"
+      }
+    },
+    "actor/h2gcn": {
+      "actor_h2gcn_erm_geomgcn-0_seed-1": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-0_seed-1.json",
+        "sha256": "062886c7fe484b27cd1b3b0cb30c52aacd6a7b4bb62cc44521ae40b1da54a6fd"
+      },
+      "actor_h2gcn_erm_geomgcn-0_seed-2": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-0_seed-2.json",
+        "sha256": "242f895669539c8570f22713b7e800d5f8f4265f8c533e5ece7cc36f82e409e6"
+      },
+      "actor_h2gcn_erm_geomgcn-0_seed-3": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-0_seed-3.json",
+        "sha256": "af6798a9ed481ab788fd14fa6632e402043273aa72db35a6077903892c60fc0e"
+      },
+      "actor_h2gcn_erm_geomgcn-1_seed-1": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-1_seed-1.json",
+        "sha256": "db4fdc8085b12f62d36d619faebee353130173f5a4a71656c978aab51b9f754c"
+      },
+      "actor_h2gcn_erm_geomgcn-1_seed-2": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-1_seed-2.json",
+        "sha256": "0d3ef045a2317d88f45e44c3fc71cb0406a9b07991677788738385ac5e3d354c"
+      },
+      "actor_h2gcn_erm_geomgcn-1_seed-3": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-1_seed-3.json",
+        "sha256": "850aaeb9798bd32827af7de90086a57768fbc00ce1d7251967860844a9ec5ee7"
+      },
+      "actor_h2gcn_erm_geomgcn-2_seed-1": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-2_seed-1.json",
+        "sha256": "61c54abe6ec6c564476a332825da1bd0215c39908e849b00337c38efa94a72b3"
+      },
+      "actor_h2gcn_erm_geomgcn-2_seed-2": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-2_seed-2.json",
+        "sha256": "526d4e0d76e2e837d7928cc1d668219668f2959d2691b7c5b211844b71e3490c"
+      },
+      "actor_h2gcn_erm_geomgcn-2_seed-3": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-2_seed-3.json",
+        "sha256": "87e58eb8b602039956db695d56cbf3f0df11bfc45a49ad7fa34ebb2b4a3a0f13"
+      },
+      "actor_h2gcn_erm_geomgcn-3_seed-1": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-3_seed-1.json",
+        "sha256": "d9a84d42bef97e28295c95067abca2ed2c38c64d887549363d4d8877dc019490"
+      },
+      "actor_h2gcn_erm_geomgcn-3_seed-2": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-3_seed-2.json",
+        "sha256": "ed2eb64ab1be8e8bfd87ac3732856391337f222f18fa4b0eb02c571c6a616226"
+      },
+      "actor_h2gcn_erm_geomgcn-3_seed-3": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-3_seed-3.json",
+        "sha256": "fefe0e7b8026b6f00421914689bedc4aefe0c15e74f7e57f70529280da576342"
+      },
+      "actor_h2gcn_erm_geomgcn-4_seed-1": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-4_seed-1.json",
+        "sha256": "27fa13925ce79fb1186709dcd30eebb2dd9a6a336f4ff638c5a9e7435b1c230a"
+      },
+      "actor_h2gcn_erm_geomgcn-4_seed-2": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-4_seed-2.json",
+        "sha256": "291edca5d73d0334fe0cf71cee556ce24da017bfe217f861d98418435bcc9ca2"
+      },
+      "actor_h2gcn_erm_geomgcn-4_seed-3": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-4_seed-3.json",
+        "sha256": "8dcea744d677c79f557af7e6f8f1f8a4cd3baa03a2b00650556bf91db00d48fb"
+      },
+      "actor_h2gcn_erm_geomgcn-5_seed-1": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-5_seed-1.json",
+        "sha256": "3b877950a44f08d58aab93f189d1ef867f649d234390d98f5bdd7ff5c6c70028"
+      },
+      "actor_h2gcn_erm_geomgcn-5_seed-2": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-5_seed-2.json",
+        "sha256": "bb2a0ca138c52064e2cbc989e646cc712545efed3a3f878b12312e17e0802be4"
+      },
+      "actor_h2gcn_erm_geomgcn-5_seed-3": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-5_seed-3.json",
+        "sha256": "3a54f14c72cf52c57adca51c5cf166e2a2a5945bfecb91ce29f09faee8b9a6dc"
+      },
+      "actor_h2gcn_erm_geomgcn-6_seed-1": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-6_seed-1.json",
+        "sha256": "7b8e1bf5c1e9c13f642e665f48c2c31f21f37a83961da29cc0712c707e2be70a"
+      },
+      "actor_h2gcn_erm_geomgcn-6_seed-2": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-6_seed-2.json",
+        "sha256": "5207c36a532bc142db647e76d887b81729247808c7e6f836507092939949355a"
+      },
+      "actor_h2gcn_erm_geomgcn-6_seed-3": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-6_seed-3.json",
+        "sha256": "54c330ac54cf37c1b217b5f68830de4b622b6f5cacd8f201ed74e11ddee56169"
+      },
+      "actor_h2gcn_erm_geomgcn-7_seed-1": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-7_seed-1.json",
+        "sha256": "e9659f87fdc393fe5e80d5a53303b70e30e37808105dbc3f767319e9ce545c1a"
+      },
+      "actor_h2gcn_erm_geomgcn-7_seed-2": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-7_seed-2.json",
+        "sha256": "a67b24bcdbbd19a1ef222b0a59e888c63265d56ea3068d44a4558805378fbecb"
+      },
+      "actor_h2gcn_erm_geomgcn-7_seed-3": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-7_seed-3.json",
+        "sha256": "18becc3a339627310dbe8f40919a60d0a26e29fb2e37b94cb61beeb9c93b119f"
+      },
+      "actor_h2gcn_erm_geomgcn-8_seed-1": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-8_seed-1.json",
+        "sha256": "7d6ff451dc66686492420a2b1a90b4fa89187dab879a173ad285e4281eb62dcb"
+      },
+      "actor_h2gcn_erm_geomgcn-8_seed-2": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-8_seed-2.json",
+        "sha256": "58aa1b8acd88f2397200ffafc06a290f9fb62a511530f3596b273861ef130253"
+      },
+      "actor_h2gcn_erm_geomgcn-8_seed-3": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-8_seed-3.json",
+        "sha256": "0977ed5875725926e5e10e1557394fe7025bc78ac0b2438fc142910b53b4e947"
+      },
+      "actor_h2gcn_erm_geomgcn-9_seed-1": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-9_seed-1.json",
+        "sha256": "1a66c2b47de35e3d1f8414119a2e38bd7f66adb02d20521bbc109016a4372334"
+      },
+      "actor_h2gcn_erm_geomgcn-9_seed-2": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-9_seed-2.json",
+        "sha256": "0f41523101bd9ebcc49d676eeceba8a79d6bb58c5bc06934f1c5037bfaa7606e"
+      },
+      "actor_h2gcn_erm_geomgcn-9_seed-3": {
+        "path": "results/additional/runs/actor/h2gcn/actor_h2gcn_erm_geomgcn-9_seed-3.json",
+        "sha256": "8791f8d7753201e34491394f844d7d57ad7986f0c8bfc2355deb30cddbe2da15"
+      }
+    },
+    "actor/gpr-gnn": {
+      "actor_gpr-gnn_erm_geomgcn-0_seed-1": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-0_seed-1.json",
+        "sha256": "4f1004fe89cf704c8917e0be3449edcc442536ef2be5698ca5d9315092f4b725"
+      },
+      "actor_gpr-gnn_erm_geomgcn-0_seed-2": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-0_seed-2.json",
+        "sha256": "ca1e3186fe66f683b56f655506979adc4e7c14975845864a919b2367681983aa"
+      },
+      "actor_gpr-gnn_erm_geomgcn-0_seed-3": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-0_seed-3.json",
+        "sha256": "b8ce0002a7e57505bb2a4db59708af1d49bbc268d61c2b2257dde0cd67b0f6d2"
+      },
+      "actor_gpr-gnn_erm_geomgcn-1_seed-1": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-1_seed-1.json",
+        "sha256": "67627764728e607d70d9e8062d9db846efd2dd9262264521a01966ab4413e0ec"
+      },
+      "actor_gpr-gnn_erm_geomgcn-1_seed-2": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-1_seed-2.json",
+        "sha256": "40a294a8aad80430d5d60215e963e630ee51e9ebfd8800d4f09e83531de6f8f5"
+      },
+      "actor_gpr-gnn_erm_geomgcn-1_seed-3": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-1_seed-3.json",
+        "sha256": "6a2e128a51e3018e1975479df4220be9a2bed9c4fb38dbbc65e0bfa13f488fb2"
+      },
+      "actor_gpr-gnn_erm_geomgcn-2_seed-1": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-2_seed-1.json",
+        "sha256": "5fa6a4553b9d894eec8ea199510d91a647fb5271b0644b711b69bd2eb8ad4e98"
+      },
+      "actor_gpr-gnn_erm_geomgcn-2_seed-2": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-2_seed-2.json",
+        "sha256": "0c565a3ae36d047bbeacdc5a6bb82e17fe8a638904e694a76053ddb8edfcde70"
+      },
+      "actor_gpr-gnn_erm_geomgcn-2_seed-3": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-2_seed-3.json",
+        "sha256": "b8213c044f150bf7361be112963e1dddb78bce65385f760054b567640cdf9718"
+      },
+      "actor_gpr-gnn_erm_geomgcn-3_seed-1": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-3_seed-1.json",
+        "sha256": "f964c5eb22d3d314d9e1f6e99aacfef09c6c06521003febac38c6a001ec71658"
+      },
+      "actor_gpr-gnn_erm_geomgcn-3_seed-2": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-3_seed-2.json",
+        "sha256": "95665e0b8560475c4ff5bc103b20eb301cb0d2640aa4162e00a3c97db7c73a20"
+      },
+      "actor_gpr-gnn_erm_geomgcn-3_seed-3": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-3_seed-3.json",
+        "sha256": "e187032374a88c5e573f90a0c7c2bb1a9909909be35c2df95a29b75d0b008063"
+      },
+      "actor_gpr-gnn_erm_geomgcn-4_seed-1": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-4_seed-1.json",
+        "sha256": "1535effc663a0d14c3dabcae11a501225f1f5b7ed072f17b6ba64d27e3615b87"
+      },
+      "actor_gpr-gnn_erm_geomgcn-4_seed-2": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-4_seed-2.json",
+        "sha256": "bea079e5ab82a64fcc7ce6571997b494e677f3acdac8b41542fc4d0c6763202b"
+      },
+      "actor_gpr-gnn_erm_geomgcn-4_seed-3": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-4_seed-3.json",
+        "sha256": "f570c8061197e092228fdb5701622b581caab9b362aca502c446c144882bd98c"
+      },
+      "actor_gpr-gnn_erm_geomgcn-5_seed-1": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-5_seed-1.json",
+        "sha256": "68c86c55f0d5ef1b281ecabc58951e9b102f5dcd1d5c0f9ca4a86ac3b71f6be9"
+      },
+      "actor_gpr-gnn_erm_geomgcn-5_seed-2": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-5_seed-2.json",
+        "sha256": "5086815fcb4e5df85d763148f7d6eabdc70a5a7bd386f789889ad818de190690"
+      },
+      "actor_gpr-gnn_erm_geomgcn-5_seed-3": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-5_seed-3.json",
+        "sha256": "857619160aece1660b07c1fd816ff3744283427c0dc0da1cdeaaa0e0d59ae693"
+      },
+      "actor_gpr-gnn_erm_geomgcn-6_seed-1": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-6_seed-1.json",
+        "sha256": "74f764ae9ee258994f2cd5fbd6fded1c6dfa69c6335c6b1721f49cb89c0df0c7"
+      },
+      "actor_gpr-gnn_erm_geomgcn-6_seed-2": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-6_seed-2.json",
+        "sha256": "57e2189d03f07176fabe9aab576f6b1be7cc6950cfd7f52d125735b883a47a60"
+      },
+      "actor_gpr-gnn_erm_geomgcn-6_seed-3": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-6_seed-3.json",
+        "sha256": "67dc6ea7a79fbb29ff7310067476f9e9f9452e7b8523e7bdfa56554662581981"
+      },
+      "actor_gpr-gnn_erm_geomgcn-7_seed-1": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-7_seed-1.json",
+        "sha256": "f20cd2230de6594924c451d614d26a82fc79e6a81267aaa708e5a7c51cd1b2ab"
+      },
+      "actor_gpr-gnn_erm_geomgcn-7_seed-2": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-7_seed-2.json",
+        "sha256": "ce87df944c32cbc594eca9ddcf221177a24bd1f650fba506e37f7b368eec9918"
+      },
+      "actor_gpr-gnn_erm_geomgcn-7_seed-3": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-7_seed-3.json",
+        "sha256": "c8804784f88e3b68bcca8bb52abaab211dfc255dbe5aa02c396226c784c7830b"
+      },
+      "actor_gpr-gnn_erm_geomgcn-8_seed-1": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-8_seed-1.json",
+        "sha256": "c4b31bcd936a643680f95a97543d55587990479823365ae00cca686ec3711526"
+      },
+      "actor_gpr-gnn_erm_geomgcn-8_seed-2": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-8_seed-2.json",
+        "sha256": "23a028cdadca8fcd55d00c4a872f4a8a223f99c0c2b13808033e7c6fbbe175dd"
+      },
+      "actor_gpr-gnn_erm_geomgcn-8_seed-3": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-8_seed-3.json",
+        "sha256": "55668a45c8d4e4d2170b2cde4c7226d5e0ad28c44e4a2151f9c71dc1b7d6a425"
+      },
+      "actor_gpr-gnn_erm_geomgcn-9_seed-1": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-9_seed-1.json",
+        "sha256": "d97264310c958409a3ff36d5574500f81c5ee97d08d09fb7c3c6381715468212"
+      },
+      "actor_gpr-gnn_erm_geomgcn-9_seed-2": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-9_seed-2.json",
+        "sha256": "41fbf452a01f9886b36eeed3c849c1b862794b9694dc540442d97e9b9da7891d"
+      },
+      "actor_gpr-gnn_erm_geomgcn-9_seed-3": {
+        "path": "results/additional/runs/actor/gpr-gnn/actor_gpr-gnn_erm_geomgcn-9_seed-3.json",
+        "sha256": "ae1cc05ad350a77956d2f659cfcfb80526a3109381d8740be72309a194859a5d"
+      }
+    },
+    "actor/acm-gcn": {
+      "actor_acm-gcn_erm_geomgcn-0_seed-1": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-0_seed-1.json",
+        "sha256": "846145335c612e1779d4bf65fd0bdc9afe7076c40a17efb4406f478eba1ca9b2"
+      },
+      "actor_acm-gcn_erm_geomgcn-0_seed-2": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-0_seed-2.json",
+        "sha256": "829af99e372d7001e8a657bb782aee769ca756cd3c7813d72ca531a3e3f9119c"
+      },
+      "actor_acm-gcn_erm_geomgcn-0_seed-3": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-0_seed-3.json",
+        "sha256": "054183b8a4f405b3c091beb946b0a1c4a21099c7f54f300218a747eb5aafc9ff"
+      },
+      "actor_acm-gcn_erm_geomgcn-1_seed-1": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-1_seed-1.json",
+        "sha256": "73baf1a35c077dbb7446a780cc5c8a28968fad9467b0f9b7966f24a19c3f224e"
+      },
+      "actor_acm-gcn_erm_geomgcn-1_seed-2": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-1_seed-2.json",
+        "sha256": "3e867b890afa4debefb310d776a8f3ae05765cbe9a0189aa1bc78e787c3dbe5f"
+      },
+      "actor_acm-gcn_erm_geomgcn-1_seed-3": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-1_seed-3.json",
+        "sha256": "6ef9a6c9f70f72ee55fff81e5a519a66c677efdc15de66e49a4eac66c5efa332"
+      },
+      "actor_acm-gcn_erm_geomgcn-2_seed-1": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-2_seed-1.json",
+        "sha256": "0887ac611db4d9618c09e417f32b9d9da694b2a3b27d1e093977f8cdb0b2c577"
+      },
+      "actor_acm-gcn_erm_geomgcn-2_seed-2": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-2_seed-2.json",
+        "sha256": "10352fec781d7c5825cfbad0ff89f1fde73da6328e897d3b5120238e1e28437b"
+      },
+      "actor_acm-gcn_erm_geomgcn-2_seed-3": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-2_seed-3.json",
+        "sha256": "2a7eb4eede4e1486e2a8f10f153436c09c7737ab569c13e2fc8b1354dce3cd2f"
+      },
+      "actor_acm-gcn_erm_geomgcn-3_seed-1": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-3_seed-1.json",
+        "sha256": "949ed45699263c803b6cf954ee58d4427cf8a6e3f4a3a48a8406d5e1de34c501"
+      },
+      "actor_acm-gcn_erm_geomgcn-3_seed-2": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-3_seed-2.json",
+        "sha256": "3285933eeb1fd3ab6950a419bc2b489487b310671ceb3417b49669d92da7ca32"
+      },
+      "actor_acm-gcn_erm_geomgcn-3_seed-3": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-3_seed-3.json",
+        "sha256": "f2d77b2c25e92181d16f15bf2ad1f840e5504c5f4c87c59a05c47745243b96e2"
+      },
+      "actor_acm-gcn_erm_geomgcn-4_seed-1": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-4_seed-1.json",
+        "sha256": "6a89007313c31d2e13feb81a38b213c96cbe26fe38b72de8b6aab251e9db39f8"
+      },
+      "actor_acm-gcn_erm_geomgcn-4_seed-2": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-4_seed-2.json",
+        "sha256": "4a63daeb962b2ca490321a02b528f054a4006db19de586d4be5b2fae37783a09"
+      },
+      "actor_acm-gcn_erm_geomgcn-4_seed-3": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-4_seed-3.json",
+        "sha256": "179cb08c8a2d7446ca3f739264362d4329bbfb35dfc1bdc6e9cc7fb678b2e9cb"
+      },
+      "actor_acm-gcn_erm_geomgcn-5_seed-1": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-5_seed-1.json",
+        "sha256": "9afce720bc0b35509976c92481c689e1aa819f6c780ea13ed32d986759ff46f7"
+      },
+      "actor_acm-gcn_erm_geomgcn-5_seed-2": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-5_seed-2.json",
+        "sha256": "c1ac42399db02cb5c52b470bd629ad288288e77ca7b830f68d5b1fef5a21e0e3"
+      },
+      "actor_acm-gcn_erm_geomgcn-5_seed-3": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-5_seed-3.json",
+        "sha256": "1a6d1297a9388a8cb302320d74bc2cea6364c6fb2ccb377db1576d36c041f83b"
+      },
+      "actor_acm-gcn_erm_geomgcn-6_seed-1": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-6_seed-1.json",
+        "sha256": "efe7014f5dab0156797ec71b03b5d9b9ba106c311cf59c5fdf1719d7a0193cd2"
+      },
+      "actor_acm-gcn_erm_geomgcn-6_seed-2": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-6_seed-2.json",
+        "sha256": "2cca801acb13776a00116f91ea19115f06609134772008a788644d311c81d1fd"
+      },
+      "actor_acm-gcn_erm_geomgcn-6_seed-3": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-6_seed-3.json",
+        "sha256": "b54b2ed2565c905db6b5a8b41e42590837d3d83703679350ae1d95cef44f29d4"
+      },
+      "actor_acm-gcn_erm_geomgcn-7_seed-1": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-7_seed-1.json",
+        "sha256": "ac654ee6f46dc59cdab6f9ab3e3873f86479aa7793b736243ccf3a50cefbd265"
+      },
+      "actor_acm-gcn_erm_geomgcn-7_seed-2": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-7_seed-2.json",
+        "sha256": "fc628a898460a8667f63b8c297e426106d947836153f44ecf862c3697ee78326"
+      },
+      "actor_acm-gcn_erm_geomgcn-7_seed-3": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-7_seed-3.json",
+        "sha256": "502d7135b39fef239b1be1055320e724a92a7a70045c9a5c3099dab6d7e35a84"
+      },
+      "actor_acm-gcn_erm_geomgcn-8_seed-1": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-8_seed-1.json",
+        "sha256": "1a3ba66182b69ce167d49a9e0b6f6cac5241a1465d60a5df6f6577fcb3b9509e"
+      },
+      "actor_acm-gcn_erm_geomgcn-8_seed-2": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-8_seed-2.json",
+        "sha256": "a3e910ee6dc69b8055d419c0ba81d2ff905a894abdd97984b84de9301b80b147"
+      },
+      "actor_acm-gcn_erm_geomgcn-8_seed-3": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-8_seed-3.json",
+        "sha256": "7004af1da1d8a740a16c041a513655a5da1f0f6ac68723a9b7cb955702397e04"
+      },
+      "actor_acm-gcn_erm_geomgcn-9_seed-1": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-9_seed-1.json",
+        "sha256": "0a2dc6f5a4cba203a612202dc39e21ba8d03d7de05225ea6b4e0c205e014bc80"
+      },
+      "actor_acm-gcn_erm_geomgcn-9_seed-2": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-9_seed-2.json",
+        "sha256": "d09f09b609be2a8a9235d5b2deb35af174269af2d79a164e9c067ca61de94a3c"
+      },
+      "actor_acm-gcn_erm_geomgcn-9_seed-3": {
+        "path": "results/additional/runs/actor/acm-gcn/actor_acm-gcn_erm_geomgcn-9_seed-3.json",
+        "sha256": "87d1860217058017442bee2684bde382097e5bcf96275f9113add7d5b90c76f4"
+      }
+    },
+    "blogcatalog/mlp": {
+      "blogcatalog_mlp_erm_gaug-public_seed-1": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-1.json",
+        "sha256": "0c5bcc35db67a69a76fd26989c373f1c100a68a62334ef1e55257f46a2630fb4"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-2": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-2.json",
+        "sha256": "8e6dd31363c4f19a7edfff46f9f6db19419848701dd09113cd02c75ae93ae559"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-3": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-3.json",
+        "sha256": "699cc4c2c7a81612f7f6cc64d0c7588b30496baedbe9b33d92cf6881225c810b"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-4": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-4.json",
+        "sha256": "d7ba7e95ad211407c25f2e3bb984138bc75190cf3e290cd190b6076642b86585"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-5": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-5.json",
+        "sha256": "17d130a0a9957e2b89c6afe823ac4e772d16cbac4681beb763cc7fe232fd370d"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-6": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-6.json",
+        "sha256": "c88cd5c1916a4b474074bc32399e9b2cd2735a8da69641a5d4b3a62cbfd159e7"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-7": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-7.json",
+        "sha256": "c0115b7cdc1c0cf79e15130d348c62f0be45c90cfd74488b83b0b77b543ffb67"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-8": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-8.json",
+        "sha256": "5b7c5d8ab111715b48759df3fdb8df3b3e1044260a1fd065117c1dc8c304f0ec"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-9": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-9.json",
+        "sha256": "a276635371d2365c46d48d118105ae54e82f9486f9ac8b3406e37e8391ca317d"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-10": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-10.json",
+        "sha256": "d155eec359799c915430197d432eb0ec636fc18e0d4a10ca7a8e052b8bc1c20b"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-11": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-11.json",
+        "sha256": "1ea99ac6cd444817fb478a05941b38bc73787a86238274d72f95143dc50fccba"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-12": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-12.json",
+        "sha256": "219149bbd3cba6da097a14b48171d6205189e2f22946105bce8650e121c8b366"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-13": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-13.json",
+        "sha256": "9b67ae912d0444fe628335621854f0822ec970b969d6afb7d1c0cfaa69fecce8"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-14": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-14.json",
+        "sha256": "6adc09452d27ccec71ec48a46f4eb3c4fca85378d0d3e402ff937be0a2900010"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-15": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-15.json",
+        "sha256": "689c86fbca37bfcf945c3b4689c0302e2f9d92e012e5d9e7d69222494c05175f"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-16": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-16.json",
+        "sha256": "d533b26397098347a55ff78855608d0a58c7be7528634a02fe06e59d06cbcf74"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-17": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-17.json",
+        "sha256": "70a8ff70637dcbfc5e86d7795073d5f7048b2f2b45ed7a05c72ff17ca0d1138a"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-18": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-18.json",
+        "sha256": "75190e057aa58d668039effcbc408f893a45f6db68bcf80ac0996515565645c1"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-19": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-19.json",
+        "sha256": "60b77104f05680f93d81b71d34388dd7de5093aa7d33b81238bd813c24361ed6"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-20": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-20.json",
+        "sha256": "b58a72136e706e127e89ee7f513a4d67377cb2b937013753b6fbf43bc6b735a2"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-21": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-21.json",
+        "sha256": "26b21f2a13ff9f81011d241643d5e69e07759582780de9c3dcdd50f39acdfff5"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-22": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-22.json",
+        "sha256": "d71499bb78008b4efbfc85c53cf8dcae5963091a37cf97dc6c165db98018d064"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-23": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-23.json",
+        "sha256": "26eddf0a573328add779c7b27a501f4d21809a7d7cb49e81b25ea3ee22b2dd53"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-24": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-24.json",
+        "sha256": "89d7084f9cc365ecd7e999f75894f9f81730122689e6468d1f33bb0b7499649d"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-25": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-25.json",
+        "sha256": "3fc644e75818c291bcfda67e25ddb026e65921e13052f932b06dddf6f0d01134"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-26": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-26.json",
+        "sha256": "e616f46a07889e54953598ab22f526bcb0deed4c0fc5cbc0bc9662da96d3633c"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-27": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-27.json",
+        "sha256": "4f3be16724d00a36f52bebb6cdaabf5d54dc8a442685c032f0749db86aa1136b"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-28": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-28.json",
+        "sha256": "d5cef03f0e2c7c3c41b050ac34f83cbf57c5db4ef98cf61d99801e8c897c7f0d"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-29": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-29.json",
+        "sha256": "7cf82044bb6cf2e322322411eb9efdbcaa13b35c527f27f32ec5c7e97ed07ae8"
+      },
+      "blogcatalog_mlp_erm_gaug-public_seed-30": {
+        "path": "results/additional/runs/blogcatalog/mlp/blogcatalog_mlp_erm_gaug-public_seed-30.json",
+        "sha256": "39c8af2b732b2689cde8bb4a1299b520f5532bc37c48fe99605ed93fc5631a4a"
+      }
+    },
+    "blogcatalog/gcn": {
+      "blogcatalog_gcn_erm_gaug-public_seed-1": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-1.json",
+        "sha256": "65a0df1b8f778d1f96a7e589dcde2c54077cde930b77abd2641a4e4ddf3c6dd4"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-2": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-2.json",
+        "sha256": "2bab2a4eeb7188aa33ff1ea9980e7e2e31c4562f3d3eb8109321c938977e45c3"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-3": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-3.json",
+        "sha256": "a6fd667ef9c3b6e3e413bf37c40b22f710e3b16d702856c56821ef56c947ec13"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-4": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-4.json",
+        "sha256": "1add3a4511a307269863b65930b44b1de133e6764f6dc257ba6273cd700c6513"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-5": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-5.json",
+        "sha256": "df1c804ce1cabde5349de4f737ee0ead821669550c4acc49985070d69f8ff0e9"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-6": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-6.json",
+        "sha256": "7917ad8ee3fab0ea32bc8857a1db366884d1dda4bb6b7fe238ed1040bea32bd7"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-7": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-7.json",
+        "sha256": "f9e9f07b8700f75cd581d75f60e6ffb88f80b6570d1f35b0387b13ac511d5a93"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-8": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-8.json",
+        "sha256": "6b0cabe20a1ea2c3439081057d8a4791286f01ac7e965569335dc4090b272ea9"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-9": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-9.json",
+        "sha256": "6af44fa2aa6fac0ca9927e598c5df4628c9dfb4dbc5e21901544b1387e65e9e7"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-10": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-10.json",
+        "sha256": "c0e6421d3e7b73d5ed24808c61a29d13aafbe6f4a569483ec6f33cad25fe173e"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-11": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-11.json",
+        "sha256": "67618295601e076e044ae4816a52747ef858cd2a67e998ade156bc7a720db0aa"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-12": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-12.json",
+        "sha256": "edb49263ff7fcbed98e5069bb84f59a269296b3630da815315c925761c55c516"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-13": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-13.json",
+        "sha256": "02df45012907301134d5b946b04e4dd8513c9fe879282070c0368689dcb5a6a6"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-14": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-14.json",
+        "sha256": "aa96e18927dfa85a32b82775e3af97047300abaf69d6ed3eacdf439e8ee73919"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-15": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-15.json",
+        "sha256": "39e3953744d889eba14a546d3cc54953a62eb29b9af7ad685789015b8aa25171"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-16": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-16.json",
+        "sha256": "db29b3eb010854f5364d5378a30dd9e6b7807d2a9aea92de87869b28bf7ee91f"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-17": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-17.json",
+        "sha256": "9b4fd91015073cf503c34d007aae70ef01cf65f47d41002f94d123019ab4d685"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-18": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-18.json",
+        "sha256": "83de28125e2206f31a9868d42266289f0a08a2cfd8a1c4497e258662ad65fd10"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-19": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-19.json",
+        "sha256": "3eb7233537717d63c86f686b517df69f42842a806f9a00578180f0ebe6d02951"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-20": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-20.json",
+        "sha256": "a9731ef88cb7b45737cce33f695da0fc634e3a86899a324f34467f5d9d91998c"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-21": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-21.json",
+        "sha256": "970d525b8ea824c94b2f89ade28840fa800d615454d637bd23a2460dbbb55633"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-22": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-22.json",
+        "sha256": "d123e46b06775b24c4a57d4f078c431a808cd6dbbe1cc8739ac1072ac9ba5b7e"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-23": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-23.json",
+        "sha256": "5a0e02a33c42a58c1618e2876bb164751602c4265aff53df6c01c928cc3d9f7b"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-24": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-24.json",
+        "sha256": "167219fba9ccb54b0194c7cfa4f515c349762fb957899036af777dd56a9f2b11"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-25": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-25.json",
+        "sha256": "b7aeaa37de32341c6209270910e423ab7d94ce725a4359ec7f9e7bf65d8ef0d8"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-26": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-26.json",
+        "sha256": "790c4767cf82f538c937dca68800aca9ce839b49509eda9d922b6a2ed245d1a9"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-27": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-27.json",
+        "sha256": "4ae7446011ac833c69a4467c024615e81276bb62c115757df007ba63ac37c67a"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-28": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-28.json",
+        "sha256": "f76915a0791edf0971600283142eb266058799358db0daf7a42edc9f7899b01c"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-29": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-29.json",
+        "sha256": "f5837a930663c1bf2fb7a963621474a3da94e0b89973f640ddc70f5213964263"
+      },
+      "blogcatalog_gcn_erm_gaug-public_seed-30": {
+        "path": "results/additional/runs/blogcatalog/gcn/blogcatalog_gcn_erm_gaug-public_seed-30.json",
+        "sha256": "abd02d0237012af7dabde9d37a3841fd66559a286a4344e4ac33fe2dfd9710ad"
+      }
+    },
+    "blogcatalog/graphsage-mean": {
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-1": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-1.json",
+        "sha256": "38fccc49d6c7ab38c9b0db41580762cfbe47f85fc7b72734568a582754ffa030"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-2": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-2.json",
+        "sha256": "1fc53eeb5e5bd0afc40966c606661bda7989dbd50b76a6302f1aa5d8a26028e6"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-3": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-3.json",
+        "sha256": "0c53e1467710f9b4b1adb53879ee3bfe491194879f94dbd1c04ec87ff4385325"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-4": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-4.json",
+        "sha256": "92d221e16415ce2547505a8005c7cf42f030c2462930cc2c4bc5622e80667f45"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-5": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-5.json",
+        "sha256": "705c1d0b7523486080df8140648b14fbb2c5da08a79231b8f120e85a5bdb4786"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-6": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-6.json",
+        "sha256": "4c887e37049402e6c2353fcfbb0c1bfe606f2802a89602da0dbe16a91e792049"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-7": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-7.json",
+        "sha256": "ef0c0977202c08e38f56aaf8216f9cfdcc62a6a0697cac6ef41b05f67bfe0dc4"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-8": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-8.json",
+        "sha256": "ec02fdfff9637f78999ef7fd45035dc4c7ce12cd5bedbf6ef15152dc1e214485"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-9": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-9.json",
+        "sha256": "6adc1aa4970356c9b4ee7fcd4b4e94924a9a5f7e13d8572fe8c4dff8608c83f6"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-10": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-10.json",
+        "sha256": "71f71b747c03edcecdc7b08c75e1286802c4d95d3f679749d5012e7c29d9a293"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-11": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-11.json",
+        "sha256": "28b5a1cee50758bc487afffb1f24e8677628433e879ed12c0e57addbca6c1836"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-12": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-12.json",
+        "sha256": "d1cd2137ba081aac1d710e05e5b3c32bc81aefc87cf84e3b946888795b5150ad"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-13": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-13.json",
+        "sha256": "3c0bf4bccde1aa576c16dd697110cf0cda11465b0a83c8c70e2b23b51ac0ea55"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-14": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-14.json",
+        "sha256": "a1da9a681e7a38a6575bb8d197e5d1267c83ac7d416197bde65d1b282acd1315"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-15": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-15.json",
+        "sha256": "65cd79f2d04081e72915cb82fe88e1d49d875d484e4d8c5a33db55b4a26438b8"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-16": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-16.json",
+        "sha256": "6d4483c75286d1d5a10e1bcf91cb151f3b61e9a0532fc8a77f7b08e4cccf166f"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-17": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-17.json",
+        "sha256": "a9c7c6d332fb82c43ce8dfa4263935b449fe79fded822475c2d522d90103e932"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-18": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-18.json",
+        "sha256": "ebfe6d2ceedbbc065cc476d2f3729587b71bd2f5fbb8a3233437ea420d8b224b"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-19": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-19.json",
+        "sha256": "fa309c7d0a284cf4f559fd054a10b8efa9917e26d0f78f42cf5e55907810f75d"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-20": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-20.json",
+        "sha256": "2c0f7489e997657af819425b39b9db1281e7a3163164649f1163fffcba4713fb"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-21": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-21.json",
+        "sha256": "fb6c9a4091da9365e512d43323c5c6bd6c4395cb5d80a475d148c6bdaf0466fb"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-22": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-22.json",
+        "sha256": "4e8790652084c964fb769f3392bf60955a99631e59a0ecd9bd8c83c805e5f938"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-23": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-23.json",
+        "sha256": "7111c829386b170b1cf5e25cb3966d4e6c65d538e8ba35b3f65c7cfb73dd6319"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-24": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-24.json",
+        "sha256": "5ac5ddb8641021e278b937bbb1b611b42a023ba59c4c1103baffb1df5f6d34b2"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-25": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-25.json",
+        "sha256": "31471b53eef109df804e5827f2ccccf2fd195195d91ee5f9ea550bcbae688840"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-26": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-26.json",
+        "sha256": "45e43797ab6e7085894dddcc930a2b2eb625b9ab2ee900b8a379dbe484f6bcfa"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-27": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-27.json",
+        "sha256": "75bba1cd126241fcf52886c236a271031589c1bb55e895ab9deebbf94eeb698e"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-28": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-28.json",
+        "sha256": "1cd0ee1843ed0eb5475ebf5e2460278fa28190d780ed470113fb667af58d91d6"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-29": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-29.json",
+        "sha256": "ae53dc7b20965d8f259b72a8177bfccdddd8d029801146052efcafdce6431403"
+      },
+      "blogcatalog_graphsage-mean_erm_gaug-public_seed-30": {
+        "path": "results/additional/runs/blogcatalog/graphsage-mean/blogcatalog_graphsage-mean_erm_gaug-public_seed-30.json",
+        "sha256": "90a59e14e449ac5922f0c8d176bf31aa29b737af11a7639121744598c1355d4f"
+      }
+    },
+    "blogcatalog/h2gcn": {
+      "blogcatalog_h2gcn_erm_gaug-public_seed-1": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-1.json",
+        "sha256": "6573aa32f18dcfce9fe0e9827c320e2c61173ba9c8cef4980581d5f2666cfb97"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-2": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-2.json",
+        "sha256": "3124c06c011c6cf6dcbeb29c2dff6de651a4ce59abb866f46f57ffcfd8d96761"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-3": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-3.json",
+        "sha256": "c3d40bc6833cd48fc63d5cf9ddfdb78878e580b2a2b6a6a4f1c58fe5e007ece7"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-4": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-4.json",
+        "sha256": "cb08208996f985b42120355b94b98d2c4f15fdcff838c3b51a6a5227ed0ab08e"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-5": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-5.json",
+        "sha256": "a9812384e992725c6e23672bcfdd0fd25f516c692cd0b97902b8d918850b8ced"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-6": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-6.json",
+        "sha256": "7b84c87c4a807b04b43dd5152bd1d0e2a3cb1ae4e0e622f43c9ff0532296bb4a"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-7": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-7.json",
+        "sha256": "66ee5ce7ba254691087c365175855f960ebdf978682d3c9403693592163a358d"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-8": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-8.json",
+        "sha256": "6900daf8c3acd2c2143bb05310f1e06b76222f4dc493217e4a691afe8b313878"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-9": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-9.json",
+        "sha256": "9ebdd0085e2e0b8e4a39126d31cbe3c1109e68166469749d145c007f6aca6ac3"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-10": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-10.json",
+        "sha256": "51ea3fb6eca16a4057bf54ca450ef9f9ffc002353516ad26e86ba1f486c8b3cd"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-11": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-11.json",
+        "sha256": "cbc1699274fc9f575be482bd716c0a61d14a947b9ffb0f7d8342605089b7e95e"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-12": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-12.json",
+        "sha256": "bc0f7d2c5cdb5ca5151d41a01ccc1e71729b76f3d2cde2690a2bdb518162cdd0"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-13": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-13.json",
+        "sha256": "6fb464de03af235e188b93b35a5412eed93cbb233abd4bbf7bd35f75cd498725"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-14": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-14.json",
+        "sha256": "33fdc31757a6e972f606d35a46350c095e273b2f6a11915f73cb59db073cfa2a"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-15": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-15.json",
+        "sha256": "6065048501dbe09e4bfab143bad8b89b550e38c15bcae8db3d62dfc523b6c087"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-16": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-16.json",
+        "sha256": "c5fbc20db0e7ee75df66619cddd131a37f5e125ce4e307b6f1698bc5b1fcfd3f"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-17": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-17.json",
+        "sha256": "067b85efba3b88e704326e2d8759ee44dc24de7520c0f54c70e30755283ab727"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-18": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-18.json",
+        "sha256": "371bffcbd2d48ea1f131bb4b1cf997743c225325eae258b5a3406b0f13d66052"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-19": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-19.json",
+        "sha256": "e66a4fab2bd02543c07756760e41516346737f8d798cfeac73b29fd76918edf6"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-20": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-20.json",
+        "sha256": "94674963ee4beb81f7b9c04cef7911b8643cbcd0792c805c08b7bccf4906bca4"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-21": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-21.json",
+        "sha256": "2a480e091f2340ac7de08119d4dd29987b821939f207c86d2294e3ebcfb9924f"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-22": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-22.json",
+        "sha256": "ca13136a1896d664871b3fc34baadc07fca9012e13beb5234383195c15cec993"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-23": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-23.json",
+        "sha256": "d12aa1972397995bc558aaabb9de71967092c04bbfc714582ecd5d986d66f7c0"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-24": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-24.json",
+        "sha256": "b98925e940e69c303b7d164afc62c2cb2e45238ef7be3800c8ec59352047fd0e"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-25": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-25.json",
+        "sha256": "04ef97debb981a1a47239ff37e7b3a595f5c52128729e0e2065008b02256c88f"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-26": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-26.json",
+        "sha256": "028a440603b0d9f0892061b1069629dc0ffc9fba2293b89f2bc5a47f3028e343"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-27": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-27.json",
+        "sha256": "6f69eed5bd8e8d8e46a8f8fc98effa9f158966269fae8aa4f7e565f35d7e24d6"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-28": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-28.json",
+        "sha256": "94797021c8eb25973311c8f9ddaed92427db2dd08d04c8d995c230235612dfdd"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-29": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-29.json",
+        "sha256": "fcc0b02cccb37af35e0ceb16e0c00e484ea187d3ab0772b540b72e94640a76f7"
+      },
+      "blogcatalog_h2gcn_erm_gaug-public_seed-30": {
+        "path": "results/additional/runs/blogcatalog/h2gcn/blogcatalog_h2gcn_erm_gaug-public_seed-30.json",
+        "sha256": "fe7788545b04290afbaf554113b9a9776d5f04add29d6477996287f58fd2d95f"
+      }
+    },
+    "blogcatalog/gpr-gnn": {
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-1": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-1.json",
+        "sha256": "5b79aded335baebd765d23c9f4a18f7145c11781215bedb8f5f3392fb66bf8ce"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-2": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-2.json",
+        "sha256": "6bb6aac1bc4ba9e4c1daf074ad0a51ede990cce1c8cfc8507612ddb49477a19e"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-3": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-3.json",
+        "sha256": "38bde4101bfef57fc5cfc74182a8779d3f2965b23eaac2b582204ba7a4656bf4"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-4": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-4.json",
+        "sha256": "1b9218ca2f17e12307885ca41e0e49025ab5ae1a383c41193334268e69909c87"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-5": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-5.json",
+        "sha256": "c7afed7e248a42310f2fbc05a54514888a03c6dbc565b9dd2eb025efa71f31ee"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-6": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-6.json",
+        "sha256": "89b54bfe0febe1f73cd73530596b28e62ad2da758a928af35660883618925bc1"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-7": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-7.json",
+        "sha256": "01b943ecedfc8c62e101c2492f4104ddb02cc2d9623f3a483322815ce11d61eb"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-8": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-8.json",
+        "sha256": "55c3ec24fc92048031118052373739c259abc9a4f3567ac53edfc3fd33d1dbd7"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-9": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-9.json",
+        "sha256": "a53682c4bb2b7cef28c7ce6ee2d90e114fd718af64d0a927038a4050d9759fb6"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-10": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-10.json",
+        "sha256": "648d276bb6a401cfc1954f8319da989064720f72b42dcbe51f1028aca070792c"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-11": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-11.json",
+        "sha256": "3cfc9acd0871fb36301abb7abc2a2cd88b7f79f7e785f0ae746c4283452e9b5e"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-12": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-12.json",
+        "sha256": "0923f2be3e7ac3d8ce9b103a12034628d21f5e85632c1f64b2a72c3fa6b0d8ae"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-13": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-13.json",
+        "sha256": "e18fd00f6c9026e6db5c149fceacb73f62f84a806506bcd2828be6efafcbca8e"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-14": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-14.json",
+        "sha256": "84ae1b1ffabb34b544d918add21d7cd3d09fd8a8f6cb1138e92ef2be54b609a1"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-15": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-15.json",
+        "sha256": "8e6569d3235c29a6469d272b395b6064fcf17e9481d15878d0a5683ddd0e7aa5"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-16": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-16.json",
+        "sha256": "cef30b75708d2fb1b9dbe40447439f4448fbfbba298e534e385db856344bc9e6"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-17": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-17.json",
+        "sha256": "8fe598cf9a77d36943c7f424c70e0b82500312221c7c5812d401cb8dfb9d4e6c"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-18": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-18.json",
+        "sha256": "564e1f19795cb1577f5db4bdccec4bd9bf52043bc0b5e4f83f8e065c0367ee95"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-19": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-19.json",
+        "sha256": "ba69447ff96767533d1d9042a8a5fc806f4eb8c686e5be109a5021a4cffeffa5"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-20": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-20.json",
+        "sha256": "bf8b76c3a4132ec565a42b4c436356c36afb98bd31e9c652dc432b6e705b51e2"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-21": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-21.json",
+        "sha256": "962b6702bb8df61642e6e2e24f40a8de31767606cbdbc8e12a4a625cc473f6cf"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-22": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-22.json",
+        "sha256": "0cc5a9bb9d35e5317ee8106b41d06397944252e9e7c4a4407525a40ed2478e96"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-23": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-23.json",
+        "sha256": "833b33d6ac9ccc4d82ae6fe5930231e9d7d929e424103992bb7fc193c4dbfd9d"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-24": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-24.json",
+        "sha256": "e0a368ddb36d548575e46e9d86be085c7f27c6195ae56ea4a70a42a5b1654dff"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-25": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-25.json",
+        "sha256": "bdc6f7dcc47ed7c066b86b12552cb09e00e33266d03a8e664ba4229bdedf9597"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-26": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-26.json",
+        "sha256": "66a576a3bb2d8aede3b480c347bb049b9b604dfbcad23a486f3854e39e36dbca"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-27": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-27.json",
+        "sha256": "a8919baffac1ac092d9d9322088e94085ff67702ee3bf070c627e5c3191d0a09"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-28": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-28.json",
+        "sha256": "f930ef9991fc7c38116b0ffd453558421381349b270dfad5a27c5e0185ba3c8d"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-29": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-29.json",
+        "sha256": "fb8040e268275f0ab7be810b779a27daf7d70b112f85b8bc05a3662f6f0d196e"
+      },
+      "blogcatalog_gpr-gnn_erm_gaug-public_seed-30": {
+        "path": "results/additional/runs/blogcatalog/gpr-gnn/blogcatalog_gpr-gnn_erm_gaug-public_seed-30.json",
+        "sha256": "a2e6d401f6167b0c5f396ab0beb944d64e253c2c5a512fb95f74587d46f7bbe1"
+      }
+    },
+    "blogcatalog/acm-gcn": {
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-1": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-1.json",
+        "sha256": "98a7011771ddb34a22daf657771aebded92d9e87499b76ff5c5836581ac91970"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-2": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-2.json",
+        "sha256": "d85097338c3746a58224af9cab2e218e2e0f68e35aa811ce77f00e19c28c10da"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-3": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-3.json",
+        "sha256": "add5af63d8986c79757a9344a8b859419df31c68dbf8b64c318305a31ea5598a"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-4": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-4.json",
+        "sha256": "d009a033cacbbb49be38260fddf5e345b34731e0318fb2235df2b8f2470d065c"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-5": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-5.json",
+        "sha256": "944e4a65ce9a631d1e4919c5f77c991b4eb2ffd952da4e3bc31b7a464fccd166"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-6": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-6.json",
+        "sha256": "152fcfe058deea2b503c7856393dfcab2457ea7ce3a6ec2148ab112ace16de9c"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-7": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-7.json",
+        "sha256": "ed14675c4c37805febb6624e9d6d61c22af0c7d2522b188569cc2bf1cdaeab48"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-8": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-8.json",
+        "sha256": "476025a8a2f6259a1ca348ae5a163134df636057615ea55688be856eab269a29"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-9": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-9.json",
+        "sha256": "e0ec128b2fb88b836299c878a0bbc57fc2c8b5aafbaf6836bd24eb319027d236"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-10": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-10.json",
+        "sha256": "d8e6c8c31a82b77997807576a352fadcf9c8eebb492ba8cede0b4c82eecc24b8"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-11": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-11.json",
+        "sha256": "3e9b64552c625d5feb2add27e26847d08ef1c2b514ae185cf4d7767c3f8a6a37"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-12": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-12.json",
+        "sha256": "62161e74a191d50d0787375474ded79d0c510d55005fb407cd62faaa2e1bf276"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-13": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-13.json",
+        "sha256": "568935f0969d0758493e7f4403b62feb0d8f2cfef45a919dabc194eeae850e97"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-14": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-14.json",
+        "sha256": "87812d3459036f42a8491738e23bea22c27078390554f4282cf1f0bdd0991e8b"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-15": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-15.json",
+        "sha256": "c017930b56ee8a6cb392b51e23c3556a2711372011f796e1f94fd4493d10b415"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-16": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-16.json",
+        "sha256": "95bcf61fde48f2a40876879a5c42831ec5edd65405bb95ba010980839fc60912"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-17": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-17.json",
+        "sha256": "f96ae0fe09ef9a7abff1fa24fcbaf4311cd3d044883a0056bd83906656be4cee"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-18": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-18.json",
+        "sha256": "7a1cabcaa4766514bb295e0fc8e42d4c0df507c46219fd4e18533d34b3f43024"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-19": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-19.json",
+        "sha256": "3c24fff94967240570ecabd61c25cd46c5c45eddda44e194fff8e56f10e799fc"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-20": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-20.json",
+        "sha256": "506749a802594052f66cb972fef4602783b9a827d703186192d631cbc8d726eb"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-21": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-21.json",
+        "sha256": "d1e4c692039691eec79b4f6394865fcf2e90f5bfd08c0d88a4f439cc2718ca49"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-22": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-22.json",
+        "sha256": "48245f8b7b6f5762db8c94f9f286d093d9874ea2b0ad7157cbd8e3fde357aad5"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-23": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-23.json",
+        "sha256": "cdc56e5c0cac75ba6ba9d0e80dcdeff9ab87e134bbe403b6f71267727f6402ef"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-24": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-24.json",
+        "sha256": "f2a5275adc3d904194369f5e2afcb986f2ae285d5afd3bff20a493c1b279aad9"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-25": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-25.json",
+        "sha256": "62948c30493bf87792fff4e03983465cefcf59796f0d2f0db26db81f4caa790e"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-26": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-26.json",
+        "sha256": "b9f3f09cec53150690c6fd716d4fb6b1f7959d2c50ee173979a69aadc197e571"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-27": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-27.json",
+        "sha256": "1baa3b89245c44fb73d15bce0a359a1fb30e82ce254b4d8da882b6ffed0f6b9d"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-28": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-28.json",
+        "sha256": "a940615f493720e891447d5fcf899f6ba973a5419094e5e314bffb8cdc3afc52"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-29": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-29.json",
+        "sha256": "1d5364e9cf978004a6ff44ca3b41fabda717e70f5dfa3074c17de0b9639fe1c9"
+      },
+      "blogcatalog_acm-gcn_erm_gaug-public_seed-30": {
+        "path": "results/additional/runs/blogcatalog/acm-gcn/blogcatalog_acm-gcn_erm_gaug-public_seed-30.json",
+        "sha256": "d4c756cb116c2f820948ceda6184193f184ac6dcfb8052d57fe4b6e7b1adcd3b"
+      }
+    }
+  },
+  "outputs": [
+    "results/additional/figures/rq3/rq3_aggregation_vs_mlp_tail_gap_contrast.pdf",
+    "results/additional/figures/rq3/rq3_aggregation_vs_mlp_tail_gap_contrast.png",
+    "results/additional/rq3/mlp_tail_gap_contrasts.csv",
+    "results/additional/rq3/analysis_manifest.json"
+  ]
+}

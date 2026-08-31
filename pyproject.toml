@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hfd"
+version = "0.1.0"
+description = "Local-homophily failure decomposition experiments"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "scipy",
+    "scikit-learn",
+    "torch",
+    "torch_geometric",
+    "ogb",
+    "pandas",
+    "pyyaml",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+analysis = [
+    "matplotlib>=3.8,<4",
+    "seaborn>=0.13,<0.14",
+]
+parity = ["tensorflow-cpu==2.21.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

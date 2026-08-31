@@ -1,0 +1,22 @@
+\begin{table}[H]
+  \centering
+  \caption{
+    \textbf{RQ2c}. Change in tail macro-F1 after full model retraining, \(\Afull-\Aerm\). Each cell gives the mean difference over the 30 runs and its 95\% percentile-bootstrap interval. Grey cells contain zero and hence are not statistically significant.
+  }
+  \label{tab:additional-full-tail-gain}
+  \begin{tabular}{@{\extracolsep{\fill}}lcc@{}}
+    \toprule
+    & \multicolumn{2}{c}{High-homophily tail} \\
+    \cmidrule(lr){2-3}
+    Model & Actor & BlogCatalog \\
+    \midrule
+    MLP             & \uncertaingaincell{.000}{[-.023,.023]} & \uncertaingaincell{-.002}{[-.013,.007]} \\
+    GCN             & \gaincell{+.054}{[.028,.079]} & \gaincell{-.046}{[-.067,-.029]} \\
+    GraphSAGE-mean  & \gaincell{+.163}{[.140,.184]} & \gaincell{-.023}{[-.037,-.009]} \\
+    H2GCN-2         & \gaincell{+.050}{[.026,.074]} & \uncertaingaincell{.000}{[-.012,.014]} \\
+    GPR-GNN         & \gaincell{+.121}{[.092,.150]} & \gaincell{-.022}{[-.039,-.007]} \\
+    ACM-GCN         & \gaincell{+.126}{[.104,.147]} & \gaincell{+.050}{[.032,.066]} \\
+    LINKX           & \gaincell{+.080}{[.055,.106]} & \gaincell{-.024}{[-.037,-.010]} \\
+    \bottomrule
+  \end{tabular}
+\end{table}

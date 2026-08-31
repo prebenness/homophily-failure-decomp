@@ -1,0 +1,14 @@
+# GraphSAGE-mean: Platonov skeleton with their SAGEModule block
+# (concat of node state and neighbour mean, 1024->512 FFN, no self-loops).
+model: graphsage-mean
+z_dim: 512
+head_dropout: 0.2
+encoder:
+  hidden_dim: 512
+  num_blocks: 5
+  dropout: 0.2
+train:
+  optimizer: adamw
+  lr: 3.0e-5
+  weight_decay: 0.0
+  max_epochs: 1000

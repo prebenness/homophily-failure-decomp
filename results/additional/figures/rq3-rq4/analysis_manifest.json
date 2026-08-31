@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "analysis": "rq3-rq4-compact-whole-test-and-tail-macro-f1",
+  "dataset_mode": "additional",
+  "definition": "arithmetic mean over the 30 corrected ERM split-seed runs; the vertical segment is whole-test macro-F1 minus tail macro-F1",
+  "datasets": [
+    "actor",
+    "blogcatalog"
+  ],
+  "models": [
+    "mlp",
+    "gcn",
+    "graphsage-mean",
+    "h2gcn",
+    "gpr-gnn",
+    "acm-gcn",
+    "linkx"
+  ],
+  "input": {
+    "path": "results/additional/rq3/mlp_tail_gap_components.csv",
+    "sha256": "a311ab051ac4fdaee1ff9b30d0936b27cd7308718f5b31e63e99314d81596dc9"
+  },
+  "linkx_input": {
+    "path": "results/additional/rq5/preparation_tail_vs_whole_macro_f1.csv",
+    "sha256": "e0c31b52ceadd0cf4678d67bf955e1b0d151502aead680df2fc8348b41284ae2"
+  },
+  "outputs": [
+    {
+      "path": "results/additional/figures/rq3-rq4/rq3_rq4_whole_test_and_tail_macro_f1_by_model_family.pdf",
+      "sha256": "3d60731aae00182d69336c57d15d2c4bcacc38b5a8c72b7aec0f9c7b5975b2f5"
+    },
+    {
+      "path": "results/additional/figures/rq3-rq4/rq3_rq4_whole_test_and_tail_macro_f1_by_model_family.png",
+      "sha256": "ce84f456def2760e7735f4f01daa3603a120a584e9f640957af38132956aae06"
+    }
+  ],
+  "software": {
+    "python": "3.11.15",
+    "matplotlib": "3.11.0",
+    "numpy": "2.2.6"
+  },
+  "rendering": {
+    "dpi": 300,
+    "formats": [
+      "pdf",
+      "png"
+    ],
+    "font_fallbacks": [
+      "Arial",
+      "Arimo",
+      "TeX Gyre Heros",
+      "DejaVu Sans"
+    ],
+    "y_axis_range": [
+      0.0,
+      1.06
+    ]
+  }
+}

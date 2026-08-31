@@ -1,0 +1,20 @@
+\begin{table}[H]
+  \centering
+  \caption{\textbf{RQ2a}. Recovered share \(\rho_{\mathrm{last}}\) after final-layer refitting; cells are grey when the 95\% paired-bootstrap interval for the numerator contains zero or \(\hat A_{\mathrm{full}}-\hat A_{\mathrm{ERM}}<0.03\).}
+  \label{tab:additional-rho-last-recovered-share}
+  \setlength{\tabcolsep}{5.5pt}
+  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lcc@{}}
+    \toprule
+    & \multicolumn{2}{c}{High-homophily tail} \\
+    \cmidrule(lr){2-3}
+    Model & Actor & BlogCatalog \\
+    \midrule
+    GCN & $-0.628$ & \cellcolor{black!10}$1.011$ \\
+    GraphSAGE-mean & $-0.186$ & \cellcolor{black!10}$0.894$ \\
+    H2GCN-2 & \cellcolor{black!10}$0.155$ & \cellcolor{black!10}$-20.054$ \\
+    GPR-GNN & $0.304$ & \cellcolor{black!10}$1.020$ \\
+    ACM-GCN & $0.121$ & $0.329$ \\
+    LINKX & $0.415$ & \cellcolor{black!10}$0.645$ \\
+    \bottomrule
+  \end{tabular*}
+\end{table}

@@ -1,0 +1,120 @@
+{
+  "analysis_script_sha256": "a642ba31ce72ffbae34bea0dca31ae9713f1b4cf2108f45fb5f24839a3267fe3",
+  "analysis_version": "true-label-support-v1",
+  "dataset": "arxiv-year",
+  "input_checksums_sha256": {
+    "labels": "5441fcc1b5709c5b0d047c56ab1cd8058bc4d916235fd17f92bc7cfefe8947b8",
+    "merged_bin": "9698615fbec5f8682ef6875f49f51a76fbd7b3c5606daf310c2c48498923ee2d",
+    "predictions": "7421a9e82038ebe9e929c09edc7563912f95d559373a22c4c0fb032a73cffbe9",
+    "tail_mask": "6f3e2d1b8030bf6839d3dd917a2815e087989d58dbc10971a55a8e0ed5bf39c4",
+    "test_idx": "99e2507a55825f403c8e1799f52e447f23383153fd80e9f9662fbbd649c646ba"
+  },
+  "metric_definition": {
+    "dataset_labels": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "labels": "classes present in the evaluated subset's true labels",
+    "name": "macro-F1",
+    "zero_division": 0
+  },
+  "metric_definition_commit": "91b2518af84cf7150d6f498360f5ab00ac5dc079",
+  "metrics": {
+    "per_bin": [
+      {
+        "bin_index": 0,
+        "interval": "[0,0.25)",
+        "is_tail": false,
+        "macro_f1": 0.22188315367337835,
+        "n_test": 23758,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "bin_index": 1,
+        "interval": "[0.25,0.5)",
+        "is_tail": false,
+        "macro_f1": 0.27284091254436016,
+        "n_test": 8247,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "bin_index": 2,
+        "interval": "[0.5,0.75)",
+        "is_tail": false,
+        "macro_f1": 0.27812474247809843,
+        "n_test": 4746,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "bin_index": 3,
+        "interval": "[0.75,1]",
+        "is_tail": true,
+        "macro_f1": 0.28487462263843916,
+        "n_test": 5586,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    ],
+    "tail": {
+      "macro_f1": 0.28487462263843916,
+      "n_test": 5586,
+      "true_labels": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "tail_gap": -0.005077369475608773,
+    "whole_test": {
+      "macro_f1": 0.2797972531628304,
+      "n_test": 42337,
+      "true_labels": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "worst_bin": {
+      "bin_index": 0,
+      "interval": "[0,0.25)",
+      "macro_f1": 0.22188315367337835
+    }
+  },
+  "model": "gcn",
+  "preparation": "last",
+  "run_id": "arxiv-year_gcn_last_lim-4_seed-1",
+  "schema_version": 1,
+  "seed": 1,
+  "split": "lim-4",
+  "training_code_version": "e3384abc853f7701f8ac9b624eba20b2838c6eaf"
+}

@@ -1,0 +1,17 @@
+{
+  "dataset": "amazon-ratings",
+  "model": "graphsage-mean",
+  "split": "platonov-0",
+  "seed": 1,
+  "test_metric_pct": 52.93,
+  "reference_pct": 53.63,
+  "grade": "anchored",
+  "deviation_pct": -0.7,
+  "gate_margin": 5.0,
+  "majority_class_pct": 36.8,
+  "verdict": "ok",
+  "best_epoch": 976,
+  "epochs_run": 1000,
+  "train_seconds": 200.0,
+  "code_version": "b1f4c4e40d35277144cddb220ce0944527e13ddf"
+}

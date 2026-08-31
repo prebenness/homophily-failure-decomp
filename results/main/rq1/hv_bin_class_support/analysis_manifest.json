@@ -1,0 +1,567 @@
+{
+  "schema_version": 1,
+  "analysis": "test-class-support-across-equal-width-hv-bins",
+  "datasets": [
+    "pubmed",
+    "ogbn-arxiv",
+    "roman-empire",
+    "amazon-ratings",
+    "arxiv-year"
+  ],
+  "bin_counts": [
+    4,
+    6,
+    8,
+    10,
+    20
+  ],
+  "definitions": {
+    "population": "registered test nodes in each frozen dataset split",
+    "bins": "n equal-width intervals over [0,1], left-closed and right-open except that h_v=1 belongs to the final interval",
+    "class_presence": "a true class is present in a bin when the bin contains at least one test node of that class",
+    "common_class_set": "intersection of the true classes present in every h_v bin within the same test split",
+    "split_range": "minimum and maximum common-class count over the registered test splits of a dataset"
+  },
+  "validation": {
+    "frozen_array_checksums_verified": true,
+    "registered_test_index_checksums_verified": true,
+    "registered_test_sizes_verified": true,
+    "test_indices_unique_and_in_range": true,
+    "test_labels_in_registered_class_range": true,
+    "test_hv_finite_and_in_unit_interval": true,
+    "split_rows": 180
+  },
+  "inputs": [
+    {
+      "dataset": "pubmed",
+      "manifest_path": "manifests/datasets/pubmed.json",
+      "manifest_sha256": "261fdd7daf825f8e28053e8ef0f3ef3b5c93f71af32f048c5594cb950bda8e70",
+      "arrays_path": "artifacts/manifests/pubmed.npz",
+      "arrays_sha256": "8a4695bd32d16fa26b7cf57c341de678f88099cacc43bce3b47e35bab2219854",
+      "split_ids": [
+        "geomgcn-0",
+        "geomgcn-1",
+        "geomgcn-2",
+        "geomgcn-3",
+        "geomgcn-4",
+        "geomgcn-5",
+        "geomgcn-6",
+        "geomgcn-7",
+        "geomgcn-8",
+        "geomgcn-9"
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "manifest_path": "manifests/datasets/ogbn-arxiv.json",
+      "manifest_sha256": "2bf7284b3519a02e4aff8779a549efcc24dbea7f7ad78842cdb8704848772c02",
+      "arrays_path": "artifacts/manifests/ogbn-arxiv.npz",
+      "arrays_sha256": "7e5994fcf1685e3d3d03b704fc116aa0d67f355656ff277314cabf4720e5ca51",
+      "split_ids": [
+        "ogb-time"
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "manifest_path": "manifests/datasets/roman-empire.json",
+      "manifest_sha256": "b0c66d70c7dc72ed8ba6dcd8b281fe76545f36031f6dd9cd3874bd938177add0",
+      "arrays_path": "artifacts/manifests/roman-empire.npz",
+      "arrays_sha256": "ed6359b8b6f71630acb5a3c7e9dc8c527ed719de7973d4c58746aa98bbd26e2d",
+      "split_ids": [
+        "platonov-0",
+        "platonov-1",
+        "platonov-2",
+        "platonov-3",
+        "platonov-4",
+        "platonov-5",
+        "platonov-6",
+        "platonov-7",
+        "platonov-8",
+        "platonov-9"
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "manifest_path": "manifests/datasets/amazon-ratings.json",
+      "manifest_sha256": "22decd73924450e18449d30fcb8b1201daecf75ad514cf65b8fb9d34096b69cb",
+      "arrays_path": "artifacts/manifests/amazon-ratings.npz",
+      "arrays_sha256": "b16742d9e00923687c50eac366c5e0ed8767f08f0c58629d5d07198ed7db68b5",
+      "split_ids": [
+        "platonov-0",
+        "platonov-1",
+        "platonov-2",
+        "platonov-3",
+        "platonov-4",
+        "platonov-5",
+        "platonov-6",
+        "platonov-7",
+        "platonov-8",
+        "platonov-9"
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "manifest_path": "manifests/datasets/arxiv-year.json",
+      "manifest_sha256": "ce4c7effe33c97f6ec2f77e623d0cc13d67c807f5ea98a9712a1a24eb960dcab",
+      "arrays_path": "artifacts/manifests/arxiv-year.npz",
+      "arrays_sha256": "cfb2b788230d4eab7526a7bbaa84a38cfe3d78001d57285730b405c2ffb53931",
+      "split_ids": [
+        "lim-0",
+        "lim-1",
+        "lim-2",
+        "lim-3",
+        "lim-4"
+      ]
+    }
+  ],
+  "script": {
+    "path": "scripts/analyze_hv_bin_class_support.py",
+    "sha256": "459c2ec72c81986cd2d024cb2e94c5872d3f0650acedc74cf0c55f391f81b422"
+  },
+  "outputs": [
+    {
+      "path": "results/main/rq1/hv_bin_class_support/split_class_support.csv",
+      "sha256": "a451f9d1a756e2ff66d3833ccfc5da12d0e1db602bc846debbece105c017d7d5"
+    },
+    {
+      "path": "results/main/rq1/hv_bin_class_support/dataset_class_support_summary.csv",
+      "sha256": "4cfac7b3b6fa85513645346eca067f1e36891e5ec25633158a7d4bc5aed198ad"
+    }
+  ],
+  "summary": [
+    {
+      "dataset": "pubmed",
+      "num_total_classes": 3,
+      "num_splits": 10,
+      "n_bins": 4,
+      "min_classes_present_every_bin": 3,
+      "max_classes_present_every_bin": 3,
+      "counts_by_split": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "num_total_classes": 3,
+      "num_splits": 10,
+      "n_bins": 6,
+      "min_classes_present_every_bin": 3,
+      "max_classes_present_every_bin": 3,
+      "counts_by_split": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "num_total_classes": 3,
+      "num_splits": 10,
+      "n_bins": 8,
+      "min_classes_present_every_bin": 3,
+      "max_classes_present_every_bin": 3,
+      "counts_by_split": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "num_total_classes": 3,
+      "num_splits": 10,
+      "n_bins": 10,
+      "min_classes_present_every_bin": 3,
+      "max_classes_present_every_bin": 3,
+      "counts_by_split": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "num_total_classes": 3,
+      "num_splits": 10,
+      "n_bins": 20,
+      "min_classes_present_every_bin": 0,
+      "max_classes_present_every_bin": 3,
+      "counts_by_split": [
+        1,
+        2,
+        0,
+        3,
+        1,
+        3,
+        2,
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "num_total_classes": 40,
+      "num_splits": 1,
+      "n_bins": 4,
+      "min_classes_present_every_bin": 38,
+      "max_classes_present_every_bin": 38,
+      "counts_by_split": [
+        38
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "num_total_classes": 40,
+      "num_splits": 1,
+      "n_bins": 6,
+      "min_classes_present_every_bin": 36,
+      "max_classes_present_every_bin": 36,
+      "counts_by_split": [
+        36
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "num_total_classes": 40,
+      "num_splits": 1,
+      "n_bins": 8,
+      "min_classes_present_every_bin": 34,
+      "max_classes_present_every_bin": 34,
+      "counts_by_split": [
+        34
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "num_total_classes": 40,
+      "num_splits": 1,
+      "n_bins": 10,
+      "min_classes_present_every_bin": 33,
+      "max_classes_present_every_bin": 33,
+      "counts_by_split": [
+        33
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "num_total_classes": 40,
+      "num_splits": 1,
+      "n_bins": 20,
+      "min_classes_present_every_bin": 20,
+      "max_classes_present_every_bin": 20,
+      "counts_by_split": [
+        20
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "num_total_classes": 18,
+      "num_splits": 10,
+      "n_bins": 4,
+      "min_classes_present_every_bin": 3,
+      "max_classes_present_every_bin": 6,
+      "counts_by_split": [
+        5,
+        4,
+        4,
+        5,
+        4,
+        3,
+        4,
+        4,
+        6,
+        4
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "num_total_classes": 18,
+      "num_splits": 10,
+      "n_bins": 6,
+      "min_classes_present_every_bin": 2,
+      "max_classes_present_every_bin": 4,
+      "counts_by_split": [
+        3,
+        3,
+        3,
+        2,
+        4,
+        2,
+        3,
+        2,
+        3,
+        3
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "num_total_classes": 18,
+      "num_splits": 10,
+      "n_bins": 8,
+      "min_classes_present_every_bin": 1,
+      "max_classes_present_every_bin": 2,
+      "counts_by_split": [
+        2,
+        1,
+        2,
+        2,
+        1,
+        2,
+        2,
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "num_total_classes": 18,
+      "num_splits": 10,
+      "n_bins": 10,
+      "min_classes_present_every_bin": 0,
+      "max_classes_present_every_bin": 2,
+      "counts_by_split": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "num_total_classes": 18,
+      "num_splits": 10,
+      "n_bins": 20,
+      "min_classes_present_every_bin": 0,
+      "max_classes_present_every_bin": 0,
+      "counts_by_split": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "num_total_classes": 5,
+      "num_splits": 10,
+      "n_bins": 4,
+      "min_classes_present_every_bin": 5,
+      "max_classes_present_every_bin": 5,
+      "counts_by_split": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "num_total_classes": 5,
+      "num_splits": 10,
+      "n_bins": 6,
+      "min_classes_present_every_bin": 4,
+      "max_classes_present_every_bin": 5,
+      "counts_by_split": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        4,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "num_total_classes": 5,
+      "num_splits": 10,
+      "n_bins": 8,
+      "min_classes_present_every_bin": 3,
+      "max_classes_present_every_bin": 4,
+      "counts_by_split": [
+        4,
+        3,
+        4,
+        4,
+        4,
+        3,
+        4,
+        4,
+        3,
+        4
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "num_total_classes": 5,
+      "num_splits": 10,
+      "n_bins": 10,
+      "min_classes_present_every_bin": 3,
+      "max_classes_present_every_bin": 4,
+      "counts_by_split": [
+        4,
+        3,
+        3,
+        4,
+        4,
+        3,
+        4,
+        3,
+        3,
+        4
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "num_total_classes": 5,
+      "num_splits": 10,
+      "n_bins": 20,
+      "min_classes_present_every_bin": 3,
+      "max_classes_present_every_bin": 3,
+      "counts_by_split": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "num_total_classes": 5,
+      "num_splits": 5,
+      "n_bins": 4,
+      "min_classes_present_every_bin": 5,
+      "max_classes_present_every_bin": 5,
+      "counts_by_split": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "num_total_classes": 5,
+      "num_splits": 5,
+      "n_bins": 6,
+      "min_classes_present_every_bin": 5,
+      "max_classes_present_every_bin": 5,
+      "counts_by_split": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "num_total_classes": 5,
+      "num_splits": 5,
+      "n_bins": 8,
+      "min_classes_present_every_bin": 5,
+      "max_classes_present_every_bin": 5,
+      "counts_by_split": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "num_total_classes": 5,
+      "num_splits": 5,
+      "n_bins": 10,
+      "min_classes_present_every_bin": 5,
+      "max_classes_present_every_bin": 5,
+      "counts_by_split": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "num_total_classes": 5,
+      "num_splits": 5,
+      "n_bins": 20,
+      "min_classes_present_every_bin": 2,
+      "max_classes_present_every_bin": 4,
+      "counts_by_split": [
+        3,
+        3,
+        4,
+        2,
+        4
+      ]
+    }
+  ],
+  "software": {
+    "python": "3.11.15",
+    "numpy": "2.2.6"
+  }
+}

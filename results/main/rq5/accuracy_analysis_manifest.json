@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "analysis": "rq5-tail-and-whole-test-accuracy-by-preparation",
+  "analysis_version": "rq5-tail-whole-accuracy-v1",
+  "scope": {
+    "datasets": [
+      "pubmed",
+      "ogbn-arxiv",
+      "roman-empire",
+      "amazon-ratings",
+      "arxiv-year"
+    ],
+    "models": [
+      "mlp",
+      "gcn",
+      "graphsage-mean",
+      "h2gcn",
+      "gpr-gnn",
+      "linkx",
+      "acm-gcn"
+    ],
+    "plotted_models": [
+      "gcn",
+      "graphsage-mean",
+      "h2gcn",
+      "gpr-gnn",
+      "acm-gcn",
+      "linkx"
+    ],
+    "preparations": [
+      "erm",
+      "last",
+      "head",
+      "full"
+    ],
+    "n_runs": 4200,
+    "n_cells": 140,
+    "runs_per_cell": 30
+  },
+  "definitions": {
+    "whole_test_accuracy": "fraction of all test_idx nodes predicted correctly within each run",
+    "tail_accuracy": "fraction of test_idx nodes in the manifest-registered tail predicted correctly within each run",
+    "cell_mean": "unweighted arithmetic mean over 30 runs"
+  },
+  "tail_definitions": {
+    "pubmed": {
+      "side": "low-h_v",
+      "interval": "[0,0.25)"
+    },
+    "ogbn-arxiv": {
+      "side": "low-h_v",
+      "interval": "[0,0.25)"
+    },
+    "roman-empire": {
+      "side": "high-h_v",
+      "interval": "[0.5,1]"
+    },
+    "amazon-ratings": {
+      "side": "high-h_v",
+      "interval": "[0.75,1]"
+    },
+    "arxiv-year": {
+      "side": "high-h_v",
+      "interval": "[0.75,1]"
+    }
+  },
+  "validation": {
+    "complete_registered_split_seed_panel": true,
+    "raw_and_corrected_run_identifiers_match": true,
+    "fixed_arrays_match_manifest_sha256": true,
+    "recomputed_values_match_stored_accuracy": true,
+    "maximum_whole_stored_absolute_error": 0.0,
+    "maximum_tail_stored_absolute_error": 0.0,
+    "stored_comparison_tolerance": 1e-12,
+    "erm_means_match_rq1_accuracy_audit": true,
+    "maximum_erm_reference_absolute_difference": 0.0
+  },
+  "input_run_panel_sha256": "fb5ee736162571237ee6fbf22c646cf7d62c121549e63b5a096f4a09bbff68ff",
+  "analysis_scripts": {
+    "scripts/analyze_rq5_accuracy.py": "902990841b151af88bd0cb4f38e31767cc8ee950cea1b9ba034ccd39e7d3828b",
+    "scripts/analyze_rq1_accuracy.py": "6ac5a4cb29b808dce6f8c48f0bfb8f80833537ad1301a2c611595be5c52dd40f",
+    "scripts/analyze_rq5_preparations.py": "0eaca7a3c04495117a01faa1409f5cdc1c43aa8239cf1f29e1486638754d252e"
+  },
+  "software": {
+    "python": "3.11.15",
+    "numpy": "2.2.6",
+    "matplotlib": "3.11.0",
+    "seaborn": "0.13.2"
+  },
+  "outputs": [
+    {
+      "path": "results/main/rq5/preparation_accuracy_run_values.csv",
+      "sha256": "8161ca10fff5d6f4cee21b7f181b3783e4657792d4ecc53ea55c6d4b83f55a6b"
+    },
+    {
+      "path": "results/main/rq5/preparation_tail_vs_whole_accuracy.csv",
+      "sha256": "64b2a5c198c02a086a7432cc968d8aa93525d46d1206679b5ed0aa9c9316a4c2"
+    },
+    {
+      "path": "results/main/rq5/ACCURACY.md",
+      "sha256": "e3e87afd45f1c84f52cf35541423a70d3b18bd7087a50383e9534ea7431f2d9b"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_pubmed_tail_vs_whole_accuracy_by_preparation.pdf",
+      "sha256": "fe0dacad6a92bc8002e5617e191bca9edbc0e6100c74adbda89fac3c1664fb8d"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_pubmed_tail_vs_whole_accuracy_by_preparation.png",
+      "sha256": "b4d32da9c1830d86c3ef7a881d4c0cf0b62cf9af05b2caa4b45e36c1e7ea87b7"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_ogbn-arxiv_tail_vs_whole_accuracy_by_preparation.pdf",
+      "sha256": "2531414769ff85b22a010d2efe346d67b1d16af8462fe5b1afb2b7ecf9c05fb9"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_ogbn-arxiv_tail_vs_whole_accuracy_by_preparation.png",
+      "sha256": "30716875c51d68cfce0d0f37c5f9166073885cc54bf28e9c63a69b554a426dcb"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_roman-empire_tail_vs_whole_accuracy_by_preparation.pdf",
+      "sha256": "9952d967f61eca257e6948c74712a184510d7af6b4dd0ee2e5178f22bdf33aba"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_roman-empire_tail_vs_whole_accuracy_by_preparation.png",
+      "sha256": "0069745963ec30ba4d8156cab776d9d6f8421327281c3d9125a07655d375f77f"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_amazon-ratings_tail_vs_whole_accuracy_by_preparation.pdf",
+      "sha256": "eb30c8c8d2e0acd89cdc6514659d1c3dd2539c65b35231584da794e56b65d049"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_amazon-ratings_tail_vs_whole_accuracy_by_preparation.png",
+      "sha256": "c0e041de9395033d3b37f819317a7a5ed3a614cc55e854529f0bb141b045a482"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_arxiv-year_tail_vs_whole_accuracy_by_preparation.pdf",
+      "sha256": "b021568d4c848ac2c09fb2bbc0e393af904d7671fce8b59c4bc2be1ba520a871"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_arxiv-year_tail_vs_whole_accuracy_by_preparation.png",
+      "sha256": "a211f9f2c5884149305a00155afad305506b5fcbe7b14254f37a63b608f97d74"
+    }
+  ]
+}

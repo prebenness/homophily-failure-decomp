@@ -1,0 +1,15 @@
+{
+  "dataset": "roman-empire",
+  "model": "acm-gcn",
+  "preparation": "full",
+  "split": "platonov-0",
+  "seed": 1,
+  "ran": true,
+  "best_epoch": 66,
+  "epochs_run": 500,
+  "budget": 500,
+  "converged_within_budget": true,
+  "train_seconds": 13.2,
+  "code_version": "c516195ef906fe459db729f108ac2895aa2fec26",
+  "note": "no val/test score recorded (pre-registration)"
+}

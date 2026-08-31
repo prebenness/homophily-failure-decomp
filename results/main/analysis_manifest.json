@@ -1,0 +1,81 @@
+{
+  "aggregates": {
+    "paired_bootstrap": {
+      "decision_threshold": 0.05,
+      "global_seed": 20260716,
+      "interval": "two-sided percentile 95%",
+      "multiple_comparison_correction": null,
+      "p_value": "two-sided percentile-bootstrap tail area: min(1, 2 * min(count(mean <= 0), count(mean >= 0)) / resamples)",
+      "quantile_method": "linear",
+      "resamples": 1000,
+      "seed_derivation": "SHA256(global seed, dataset, model, preparation)",
+      "zero_tail_reporting": "p < 2 / resamples"
+    },
+    "standard_deviation": "sample standard deviation (ddof=1)"
+  },
+  "analysis_code": {
+    "numpy_version": "2.2.6",
+    "script": "scripts/recalculate_macro_f1.py",
+    "script_hash_normalisation": "UTF-8 text with LF line endings",
+    "script_sha256": "a642ba31ce72ffbae34bea0dca31ae9713f1b4cf2108f45fb5f24839a3267fe3"
+  },
+  "analysis_version": "true-label-support-v1",
+  "comparison_with_stored_raw_metrics": {
+    "comparison_tolerance": 1e-12,
+    "maximum_per_bin_abs_change": 0.0,
+    "maximum_tail_abs_change": 0.0,
+    "maximum_whole_test_abs_change": 0.0,
+    "per_bin_rows": 15960,
+    "per_bin_rows_changed": 0,
+    "runs_with_changed_tail_macro_f1": 0,
+    "runs_with_changed_whole_test_macro_f1": 0
+  },
+  "metric": {
+    "label_set": "classes present in each evaluated subset's true labels, fixed before predictions are evaluated",
+    "name": "macro-F1",
+    "zero_division": 0
+  },
+  "metric_definition_commit": "91b2518af84cf7150d6f498360f5ab00ac5dc079",
+  "schema_version": 1,
+  "scope": {
+    "dataset_order": [
+      "pubmed",
+      "ogbn-arxiv",
+      "roman-empire",
+      "amazon-ratings",
+      "arxiv-year"
+    ],
+    "erm_tail_gap_cells": 35,
+    "excluded_datasets": [],
+    "included_datasets": [
+      "pubmed",
+      "ogbn-arxiv",
+      "roman-empire",
+      "amazon-ratings",
+      "arxiv-year"
+    ],
+    "model_order": [
+      "mlp",
+      "gcn",
+      "graphsage-mean",
+      "h2gcn",
+      "gpr-gnn",
+      "linkx",
+      "acm-gcn"
+    ],
+    "paired_gain_cells": 105,
+    "preparation_order": [
+      "erm",
+      "last",
+      "head",
+      "full"
+    ],
+    "prepared_score_cells": 140,
+    "recovered_share_rows": 70,
+    "runs": 4200
+  },
+  "training_code_versions": [
+    "00bc07934e50c94cbd4415ffa974fc704dd0aafd",
+    "e3384abc853f7701f8ac9b624eba20b2838c6eaf"
+  ]
+}

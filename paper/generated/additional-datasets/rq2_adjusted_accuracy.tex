@@ -1,0 +1,22 @@
+\begin{table}[H]
+  \centering
+  \caption{
+    Class-adjusted accuracy tail gaps for all models on Actor and BlogCatalog. Entries are the mean and 95\% bootstrap interval across 30 runs. Grey cells include zero, and $\dagger$ marks cells whose unadjusted accuracy tail gap includes zero.
+  }
+  \label{tab:additional-rq2-adjusted-accuracy}
+  \begin{tabular}{@{\extracolsep{\fill}}lcc@{}}
+    \toprule
+    & \multicolumn{2}{c}{High-homophily tail} \\
+    \cmidrule(lr){2-3}
+    Model & Actor & BlogCatalog \\
+    \midrule
+    MLP              & \uncertaingaincell{.000}{[-.017,.016]} & \gaincell{+.047}{[.037,.059]} \\
+    GCN              & \gaincell{-.171}{[-.197,-.143]} & \gaincell{-.256}{[-.258,-.253]} \\
+    GraphSAGE-mean   & \uncertaingaincell{-.013^{\dagger}}{[-.031,.003]} & \gaincell{-.076}{[-.083,-.069]} \\
+    H2GCN-2          & \gaincell{-.019}{[-.037,-.003]} & \gaincell{-.040}{[-.049,-.032]} \\
+    GPR-GNN          & \gaincell{-.038}{[-.053,-.022]} & \gaincell{-.057}{[-.067,-.049]} \\
+    ACM-GCN          & \gaincell{+.050}{[.037,.063]} & \gaincell{+.062^{\dagger}}{[.051,.072]} \\
+    LINKX            & \gaincell{-.019}{[-.038,-.003]} & \gaincell{-.123}{[-.132,-.112]} \\
+    \bottomrule
+  \end{tabular}
+\end{table}

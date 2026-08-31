@@ -1,0 +1,21 @@
+\begin{table}[H]
+  \centering
+  \caption{
+    \textbf{RQ2a}. Change in tail macro-F1 after last layer retraining, \(\Alast-\Aerm\). Each cell gives the mean difference over the 30 runs and its 95\% percentile-bootstrap interval. Grey cells contain zero and hence are not statistically significant.}
+  \label{tab:additional-last-tail-gain}
+  \begin{tabular}{@{\extracolsep{\fill}}lcc@{}}
+    \toprule
+    & \multicolumn{2}{c}{High-homophily tail} \\
+    \cmidrule(lr){2-3}
+    Model & Actor & BlogCatalog \\
+    \midrule
+    MLP             & \uncertaingaincell{+.008}{[-.015,.033]} & \gaincell{-.010}{[-.020,-.001]} \\
+    GCN             & \gaincell{-.034}{[-.053,-.017]} & \gaincell{-.046}{[-.067,-.029]} \\
+    GraphSAGE-mean  & \gaincell{-.030}{[-.054,-.006]} & \gaincell{-.021}{[-.036,-.007]} \\
+    H2GCN-2         & \uncertaingaincell{+.008}{[-.009,.024]} & \uncertaingaincell{-.005}{[-.016,.005]} \\
+    GPR-GNN         & \gaincell{+.037}{[.019,.060]} & \gaincell{-.023}{[-.037,-.010]} \\
+    ACM-GCN         & \gaincell{+.015}{[.002,.030]} & \gaincell{+.017}{[.004,.029]} \\
+    LINKX           & \gaincell{+.033}{[.019,.047]} & \gaincell{-.016}{[-.024,-.008]} \\
+    \bottomrule
+  \end{tabular}
+\end{table}

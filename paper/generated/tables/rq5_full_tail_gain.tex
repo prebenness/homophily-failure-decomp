@@ -1,0 +1,25 @@
+\begin{table}[H]
+  \centering
+  \caption{Full-model change in tail macro-F1, \(\Afull-\Aerm\). Each cell
+  gives the mean paired difference over 30 matched split--seed runs and its
+  95\% percentile-bootstrap interval. Positive values indicate improvement;
+  grey cells contain zero.}
+  \label{tab:full-tail-gain}
+  \scriptsize
+  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lccccc@{}}
+    \toprule
+    & \multicolumn{2}{c}{Low-homophily tail}
+    & \multicolumn{3}{c}{High-homophily tail} \\
+    \cmidrule(lr){2-3}\cmidrule(lr){4-6}
+    Model & PubMed & ogbn-arxiv & Roman-empire & Amazon-ratings & arxiv-year \\
+    \midrule
+    MLP             & \uncertaingaincell{+0.004}{[-0.001,0.010]} & \gaincell{+0.023}{[0.022,0.025]} & \gaincell{+0.057}{[0.044,0.069]} & \gaincell{-0.099}{[-0.111,-0.087]} & \uncertaingaincell{-0.001}{[-0.004,0.003]} \\
+    GCN             & \gaincell{+0.122}{[0.115,0.129]} & \gaincell{+0.094}{[0.090,0.097]} & \gaincell{-0.039}{[-0.062,-0.020]} & \gaincell{-0.150}{[-0.177,-0.119]} & \gaincell{+0.022}{[0.020,0.024]} \\
+    GraphSAGE-mean  & \gaincell{+0.162}{[0.156,0.169]} & \gaincell{+0.128}{[0.126,0.130]} & \gaincell{+0.036}{[0.027,0.046]} & \gaincell{-0.084}{[-0.105,-0.067]} & \gaincell{+0.018}{[0.016,0.019]} \\
+    H2GCN-2         & \gaincell{+0.064}{[0.056,0.072]} & \gaincell{+0.081}{[0.078,0.084]} & \gaincell{+0.084}{[0.072,0.097]} & \uncertaingaincell{-0.011}{[-0.039,0.017]} & \gaincell{-0.017}{[-0.022,-0.014]} \\
+    GPR-GNN         & \gaincell{+0.095}{[0.089,0.102]} & \gaincell{+0.074}{[0.071,0.077]} & \gaincell{+0.054}{[0.043,0.065]} & \gaincell{-0.287}{[-0.327,-0.244]} & \gaincell{+0.006}{[0.003,0.009]} \\
+    ACM-GCN         & \gaincell{+0.101}{[0.095,0.108]} & \gaincell{+0.064}{[0.061,0.066]} & \gaincell{+0.042}{[0.034,0.052]} & \gaincell{-0.060}{[-0.078,-0.042]} & \gaincell{+0.015}{[0.012,0.019]} \\
+    LINKX           & \gaincell{+0.089}{[0.070,0.108]} & \gaincell{+0.031}{[0.028,0.034]} & \gaincell{+0.058}{[0.039,0.076]} & \gaincell{+0.075}{[0.050,0.101]} & \gaincell{+0.061}{[0.053,0.068]} \\
+    \bottomrule
+  \end{tabular*}
+\end{table}

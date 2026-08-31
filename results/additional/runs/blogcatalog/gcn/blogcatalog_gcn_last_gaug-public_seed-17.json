@@ -1,0 +1,125 @@
+{
+  "analysis_script_sha256": "3312cbd9560dc7564ffe668e6daf1f3f0e66d41a7c5343423f1fac60a87b95d0",
+  "analysis_version": "true-label-support-v1",
+  "dataset": "blogcatalog",
+  "input_checksums_sha256": {
+    "labels": "39aa04b9434d31a173f1a5e601e612559520d7ffbead3050e4bc7cc21f5032a7",
+    "merged_bin": "5f424c248d0ec95079d8e17ac758436814d7c0846e10eedcb5523edaeb37f7d1",
+    "predictions": "92c033a8419674501c75bd417e32227c29eeb8191f32d2b3434205b9ece5979b",
+    "tail_mask": "5f1e94e76344d6a08db62876c8dcda074745b7c42339c43d34f79fa8c6d8ec83",
+    "test_idx": "8957c523c146f8e296e52cd4c9384a7b03261b4f3825b8a75723edddce9dd9f3"
+  },
+  "metric_definition": {
+    "dataset_labels": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "labels": "classes present in the evaluated subset's true labels",
+    "name": "macro-F1",
+    "zero_division": 0
+  },
+  "metric_definition_commit": "91b2518af84cf7150d6f498360f5ab00ac5dc079",
+  "metrics": {
+    "per_bin": [
+      {
+        "bin_index": 0,
+        "interval": "[0,0.25)",
+        "is_tail": false,
+        "macro_f1": 0.3157726602898342,
+        "n_test": 845,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "bin_index": 1,
+        "interval": "[0.25,0.5)",
+        "is_tail": false,
+        "macro_f1": 0.6675771393911446,
+        "n_test": 1789,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "bin_index": 2,
+        "interval": "[0.5,0.75)",
+        "is_tail": false,
+        "macro_f1": 0.9188370408205899,
+        "n_test": 786,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "bin_index": 3,
+        "interval": "[0.75,1]",
+        "is_tail": true,
+        "macro_f1": 0.984235294117647,
+        "n_test": 218,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          5
+        ]
+      }
+    ],
+    "tail": {
+      "macro_f1": 0.984235294117647,
+      "n_test": 218,
+      "true_labels": [
+        0,
+        1,
+        2,
+        3,
+        5
+      ]
+    },
+    "tail_gap": -0.29948523886544576,
+    "whole_test": {
+      "macro_f1": 0.6847500552522012,
+      "n_test": 3638,
+      "true_labels": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "worst_bin": {
+      "bin_index": 0,
+      "interval": "[0,0.25)",
+      "macro_f1": 0.3157726602898342
+    }
+  },
+  "model": "gcn",
+  "preparation": "last",
+  "run_id": "blogcatalog_gcn_last_gaug-public_seed-17",
+  "schema_version": 1,
+  "seed": 17,
+  "split": "gaug-public",
+  "training_code_version": "55bda6604749a84f8f47df19f15486bdd1c811c8"
+}

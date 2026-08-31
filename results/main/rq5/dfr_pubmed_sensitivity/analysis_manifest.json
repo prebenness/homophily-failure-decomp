@@ -1,0 +1,157 @@
+{
+  "analysis": "post-registration-dfr-pubmed-sensitivity",
+  "analysis_code": {
+    "numpy_version": "2.2.6",
+    "path": "scripts/analyze_dfr_pubmed.py",
+    "sha256": "a4c357a6dbb93391fa162a28cfaa0e4841e4c5733a316a9cad1c36cafaa4ada8"
+  },
+  "analysis_id": "d8291d4410de67730d6d91a7ea768695c7828a10755c22b76436f3956f88d745",
+  "bootstrap": {
+    "base_seed": 20260728,
+    "intervals_with_fewer_than_two_runs": null,
+    "method": "two-sided percentile bootstrap",
+    "multiple_comparison_correction": null,
+    "quantile_method": "linear",
+    "resamples": 10000,
+    "unit": "complete matched split-seed run"
+  },
+  "external_inputs": {
+    "canonical_raw_store": {
+      "argument": "--canonical-raw-root",
+      "role": "canonical ERM and recovery raw result store"
+    },
+    "dfr_raw_store": {
+      "argument": "--dfr-raw-root",
+      "role": "90-run PubMed DFR raw result store"
+    },
+    "panel_status": {
+      "present": true,
+      "relative_path": "panel_status.json",
+      "semantic_sha256": "ced0e095f888359c4da7010e58cc01e96a0694deaba1bec0c9c2762832112d6f"
+    }
+  },
+  "metrics": {
+    "macro_f1": "classes present in each evaluated subset's true labels, fixed before predictions are evaluated; zero_division=0",
+    "non_tail": "fixed eligible test nodes outside the minority-pattern tail",
+    "primary_recovery_metric": "tail_macro_f1",
+    "reported": [
+      "tail_macro_f1",
+      "whole_test_macro_f1",
+      "non_tail_macro_f1",
+      "tail_accuracy",
+      "whole_test_accuracy",
+      "non_tail_accuracy"
+    ],
+    "standard_metric": "accuracy",
+    "tail": "fixed minority-pattern tail test nodes",
+    "whole_test": "all fixed test nodes"
+  },
+  "outputs_sha256": {
+    "absolute_score_summary.csv": "469f4ab957946e96b66cb746d912bb8304fc45f6620b456bc96f6ae651b3ad46",
+    "matched_run_metrics.csv": "3c5031f99f479d72bb77ee892918ac6638880698e34fc56f72155b6f43a4a767",
+    "paired_contrasts.csv": "9becaebf580a77a22e8dfb93aece219e5dd5956686d17b287b1ba0aeb8c14602",
+    "panel_audit.csv": "0368a33a0c1dff9f6fadddf190b9518ef702b0dc966da5a27fe687e273776287",
+    "recovered_shares.csv": "344fa85ecb55cb2fd393732cc569cdf89516cdf32a74580b01fbb275afd1c073"
+  },
+  "recovered_share": {
+    "definition": "mean paired DFR-minus-ERM tail macro-F1 divided by mean paired A_full-minus-ERM tail macro-F1",
+    "interpretation_rule": "The ERM tail-gap mean is positive with 95% paired-bootstrap lower bound > 0; A_full mean gain >= 0.03 and its 95% paired-bootstrap interval has lower bound > 0",
+    "ratio_interval": "paired bootstrap of the ratio of resampled mean gains"
+  },
+  "schema_assumptions": {
+    "canonical_metric_version": "true-label-support-v1",
+    "canonical_preparations": [
+      "erm",
+      "last",
+      "head",
+      "full"
+    ],
+    "dfr_config_required_fields": [
+      "run_id",
+      "dataset",
+      "model",
+      "dfr_mode",
+      "split",
+      "seed",
+      "parent_run_id",
+      "code_version",
+      "protocol_id",
+      "C_grid",
+      "n_final_fits",
+      "feature_cut"
+    ],
+    "dfr_protocol": "dfr_l1_joint_balanced_v1",
+    "dfr_required_files": [
+      "config.json",
+      "metrics.json",
+      "coefficients.npz",
+      "run_data.npz"
+    ],
+    "dfr_run_data_required_arrays": [
+      "probabilities",
+      "probability_classes",
+      "predictions",
+      "labels",
+      "train_idx",
+      "val_idx",
+      "test_idx",
+      "merged_bin",
+      "tail_mask",
+      "eligible",
+      "refit_idx",
+      "external_tuning_idx"
+    ],
+    "dfr_run_id": "pubmed_{model}_dfr-{val|train}_{split}_seed-{seed}",
+    "fixed_primary_mode": [
+      "val"
+    ]
+  },
+  "schema_version": 1,
+  "scope": {
+    "allow_partial": false,
+    "complete": true,
+    "dataset": "pubmed",
+    "full_reported_panel_runs": 90,
+    "optional_modes_outside_primary_panel": [
+      "train"
+    ],
+    "primary_scope": true,
+    "selected_expected_runs": 90,
+    "selected_models": [
+      "acm-gcn",
+      "gcn",
+      "graphsage-mean"
+    ],
+    "selected_modes": [
+      "val"
+    ],
+    "selected_seeds": [
+      1,
+      2,
+      3
+    ],
+    "selected_splits": [
+      "geomgcn-0",
+      "geomgcn-1",
+      "geomgcn-2",
+      "geomgcn-3",
+      "geomgcn-4",
+      "geomgcn-5",
+      "geomgcn-6",
+      "geomgcn-7",
+      "geomgcn-8",
+      "geomgcn-9"
+    ],
+    "validated_dfr_runs": 90
+  },
+  "status": "exploratory_complete_primary_panel",
+  "training_code_versions": {
+    "canonical": [
+      "e3384abc853f7701f8ac9b624eba20b2838c6eaf"
+    ],
+    "dfr": [
+      "6864ffd0a0c5167f40963bf3ee9ce91abefa0f6b"
+    ]
+  },
+  "warning": "This is a post-registration sensitivity. Only the complete validation-refit panel represents the reported analysis. Partial, restricted, and training-refit summaries are provisional."
+}

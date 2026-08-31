@@ -1,0 +1,4 @@
+gpu_model,memory_gb
+AMD Instinct MI210,
+NVIDIA A100-PCIE-40GB,
+NVIDIA A100-SXM4-80GB,

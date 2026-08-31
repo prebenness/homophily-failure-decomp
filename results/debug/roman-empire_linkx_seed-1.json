@@ -1,0 +1,17 @@
+{
+  "dataset": "roman-empire",
+  "model": "linkx",
+  "split": "platonov-0",
+  "seed": 1,
+  "test_metric_pct": 40.01,
+  "reference_pct": null,
+  "grade": "unanchored",
+  "deviation_pct": null,
+  "gate_margin": null,
+  "majority_class_pct": 13.96,
+  "verdict": "sanity-ok (becomes reference)",
+  "best_epoch": 12,
+  "epochs_run": 500,
+  "train_seconds": 28.2,
+  "code_version": "dccb573ba378f91cfd79c947de9db2bfcfaf076d"
+}

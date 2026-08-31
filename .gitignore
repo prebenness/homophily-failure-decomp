@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.egg-info/
+*.py[cod]
+.pytest_cache/
+pytest-cache-files-*/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+tmp/
+
+# Site-local runtime state
+/.bootstrap/
+/.env/
+/.runtime/
+/.miniforge/
+/inputs/
+/outputs/
+/logs/
+/.cluster-local/
+
+# Local run outputs
+artifacts/*
+!artifacts/.gitkeep
+results/provisional/
+results/main/figures/**/exploratory/
+results/main/figures/compact-review/
+results/main/rq1/accuracy/whole_vs_tail_accuracy.xlsx
+
+# Large generated intermediates
+*.pt
+*.pth
+*.ckpt
+*.npz
+*.npy
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

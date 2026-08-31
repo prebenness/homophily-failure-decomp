@@ -1,0 +1,23 @@
+\begin{table}[H]
+  \centering
+  \caption{ERM accuracy gap, whole-test accuracy minus tail
+  accuracy. Each cell gives the mean paired difference over 30 matched
+  split--seed runs and its 95\% percentile-bootstrap interval. Positive
+  values indicate lower tail accuracy; grey cells contain zero.}
+  \label{tab:additional-erm-tail-gap-accuracy}
+  \begin{tabular}{@{\extracolsep{\fill}}lcc@{}}
+    \toprule
+    & \multicolumn{2}{c}{High-homophily tail} \\
+    \cmidrule(lr){2-3}
+    Model & Actor & BlogCatalog \\
+    \midrule
+    MLP              & \gaincell{+.036}{[.022,.050]} & \gaincell{-.011}{[-.016,-.006]} \\
+    GCN              & \gaincell{-.164}{[-.184,-.145]} & \gaincell{-.239}{[-.241,-.237]} \\
+    GraphSAGE-mean   & \uncertaingaincell{-.006}{[-.022,.013]} & \gaincell{-.074}{[-.077,-.071]} \\
+    H2GCN-2          & \gaincell{-.031}{[-.047,-.014]} & \gaincell{-.073}{[-.077,-.068]} \\
+    GPR-GNN          & \gaincell{-.031}{[-.045,-.017]} & \gaincell{-.075}{[-.078,-.072]} \\
+    ACM-GCN          & \gaincell{+.028}{[.017,.039]} & \uncertaingaincell{-.008}{[-.018,.001]} \\
+    LINKX            & \gaincell{-.035}{[-.052,-.018]} & \gaincell{-.114}{[-.118,-.109]} \\
+    \bottomrule
+  \end{tabular}
+\end{table}

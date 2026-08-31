@@ -1,0 +1,24 @@
+\begin{table}[H]
+  \centering
+  \caption{Paired ERM tail-gap contrast between each heterophily-designed model and each standard aggregation baseline. Each cell is designed-model gap minus standard-baseline gap, with its 95\% percentile-bootstrap interval over 30 matched split--seed runs. Negative values indicate a smaller signed tail gap for the heterophily-designed model; grey cells contain zero.}
+  \label{tab:rq4-designed-vs-standard}
+  \scriptsize
+  \setlength{\tabcolsep}{2.5pt}
+  \begin{tabular}{@{}llccccc@{}}
+    \toprule
+    & & \multicolumn{2}{c}{Low-homophily tail}
+    & \multicolumn{3}{c}{High-homophily tail} \\
+    \cmidrule(lr){3-4}\cmidrule(lr){5-7}
+    Designed model & Standard baseline & PubMed & ogbn-arxiv & Roman-empire & Amazon-ratings & arxiv-year \\
+    \midrule
+    \multirow{2}{*}{H2GCN-2} & GCN & \gaincell{-0.064}{[-0.071,-0.059]} & \gaincell{-0.031}{[-0.033,-0.029]} & \gaincell{+0.121}{[+0.104,+0.140]} & \gaincell{+0.216}{[+0.189,+0.243]} & \gaincell{-0.070}{[-0.074,-0.065]} \\
+     & GraphSAGE-mean & \gaincell{-0.053}{[-0.059,-0.048]} & \gaincell{-0.054}{[-0.056,-0.053]} & \gaincell{-0.064}{[-0.077,-0.051]} & \uncertaingaincell{+0.005}{[-0.012,+0.023]} & \uncertaingaincell{0.000}{[-0.003,+0.004]} \\
+    \addlinespace[2pt]
+    \multirow{2}{*}{GPR-GNN} & GCN & \gaincell{-0.013}{[-0.019,-0.008]} & \gaincell{-0.027}{[-0.029,-0.025]} & \gaincell{+0.102}{[+0.090,+0.114]} & \uncertaingaincell{-0.011}{[-0.030,+0.009]} & \gaincell{-0.085}{[-0.089,-0.080]} \\
+     & GraphSAGE-mean & \uncertaingaincell{-0.002}{[-0.009,+0.004]} & \gaincell{-0.051}{[-0.053,-0.049]} & \gaincell{-0.083}{[-0.097,-0.070]} & \gaincell{-0.222}{[-0.240,-0.203]} & \gaincell{-0.015}{[-0.019,-0.011]} \\
+    \addlinespace[2pt]
+    \multirow{2}{*}{ACM-GCN} & GCN & \gaincell{-0.031}{[-0.039,-0.023]} & \gaincell{-0.107}{[-0.109,-0.105]} & \gaincell{+0.059}{[+0.047,+0.073]} & \gaincell{+0.200}{[+0.169,+0.231]} & \gaincell{-0.094}{[-0.097,-0.091]} \\
+     & GraphSAGE-mean & \gaincell{-0.020}{[-0.025,-0.015]} & \gaincell{-0.131}{[-0.133,-0.129]} & \gaincell{-0.126}{[-0.139,-0.113]} & \uncertaingaincell{-0.011}{[-0.033,+0.009]} & \gaincell{-0.024}{[-0.027,-0.021]} \\
+    \bottomrule
+  \end{tabular}
+\end{table}

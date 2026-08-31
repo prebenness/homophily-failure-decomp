@@ -1,0 +1,145 @@
+{
+  "analysis": "complete-edge-perturbation-dose-response",
+  "analysis_code": {
+    "path": "scripts/analyze_edge_dose_response_full.py",
+    "sha256": "391dccc4c18347fdcbf4e556b715c3769c66f2c4f1c69772d684c97a167a377f"
+  },
+  "design": {
+    "checkpoint_identities_per_model": 30,
+    "conditions": [
+      "treatment",
+      "control"
+    ],
+    "datasets": [
+      "pubmed",
+      "ogbn-arxiv",
+      "roman-empire",
+      "amazon-ratings",
+      "arxiv-year"
+    ],
+    "graph_replicates": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "metric": "tail_test_macro_f1",
+    "metric_population": "fixed-full-tail-test",
+    "models": [
+      "gcn",
+      "graphsage-mean",
+      "h2gcn",
+      "gpr-gnn",
+      "acm-gcn",
+      "linkx"
+    ],
+    "p_percentages": [
+      0,
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      95,
+      100
+    ],
+    "roman_empire_p_percentages": [
+      0,
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70
+    ]
+  },
+  "estimand": {
+    "checkpoint_aggregation": "unweighted mean macro-F1 over the 30 registered ERM checkpoints within each graph replicate",
+    "graph_aggregation": "unweighted mean and sample standard deviation across the five graph-replicate means",
+    "p_zero": "one original-graph baseline per checkpoint copied to all five graph replicates and both conditions"
+  },
+  "generated_outputs_sha256": {
+    "dose_response_summary.csv": "6088808d3fee3f2b098574c9148a9a9885bfc79ec4d432c3592784ed9aa71bfc",
+    "replicate_summary.csv": "8a4c72dde223d0783dfc19675463804d915edf3ac2af1663e8385ab8fc5f3bf2"
+  },
+  "schema_version": 1,
+  "sources": {
+    "expansion": {
+      "design_id": "appendix-j-edge-dose-response-expansion-v1",
+      "experiment_code_version": "f66a53999fc01ae52a1e4aeaaf618409abab8fa7",
+      "graph_catalog_sha256": {
+        "amazon-ratings": "8c4ff23d7a4ddf09b8c9a5df0cc7c7b11157dab2580f7c13591ab40520af67b1",
+        "arxiv-year": "05165287b940ac08d37e53c54997c0bfb596097b541ad758f81d8ebe0cd18a97",
+        "ogbn-arxiv": "5f106237e1385628ad03b0f6d2681e246eacfe99260e36a7733586c000fead44",
+        "pubmed": "104e1afc91749745a21dfa19a37a3f01495f1d2a6b716e1c681b866b924988ab",
+        "roman-empire": "733ea7a1d0057052f57fccebac75fee2603add00e1cbaf40d5f747d5962733b8"
+      },
+      "input_sha256": {
+        "baseline_rows.jsonl": "c674f7150bbe93de916686bff70a08238eab6c029857738f036a53ce1c60547a",
+        "paired_rows.jsonl": "7e81fdbf5322d203d052a3f777c89118e5c32644a609d5de7d1e07490e65af29",
+        "validation.json": "3fa5b1f1db3e39a085d53cf3d80be051ddfe6b626ff8b51ed048755f633f5283"
+      },
+      "validated_at": "2026-08-28T11:28:59.030867+00:00"
+    },
+    "submitted_cells": {
+      "datasets": [
+        "pubmed",
+        "ogbn-arxiv",
+        "arxiv-year"
+      ],
+      "input_sha256": {
+        "results/edge_perturbation_dose_response_large/arxiv-year/analysis_manifest.json": "fb4db6373489d717323637568f7232592fdf5fb9829ee941d8e0d814487d72f3",
+        "results/edge_perturbation_dose_response_large/arxiv-year/dose_response_summary.csv": "fa6b2bf76db9b49ac53449f4152d5ff5e5b6d191258c109bbe0e7124618a42e4",
+        "results/edge_perturbation_dose_response_large/arxiv-year/replicate_summary.csv": "72d3e72d0e889221e9f141a909306e7bff84c7f751b2f5ea2d4fe7f7b42914b9",
+        "results/edge_perturbation_dose_response_large/ogbn-arxiv/analysis_manifest.json": "c3329b4d35a297b05f3d0e7f8a8f08dc2c1f29ef20b9c24b53d79e366dd4165d",
+        "results/edge_perturbation_dose_response_large/ogbn-arxiv/dose_response_summary.csv": "b8c7cb0f442e161d380e9b9333d5ecb68dbcf488c51fe030aa70b264f0d9a673",
+        "results/edge_perturbation_dose_response_large/ogbn-arxiv/replicate_summary.csv": "18d88d3a2af724d44cdab8f7a400f4d584f56e75717ec8d0b18da3b416f616b5",
+        "results/edge_perturbation_dose_response_pubmed/analysis_manifest.json": "25decf2d680f161a75f5efa045571b4ec7edf68310530c45579941e944463d24",
+        "results/edge_perturbation_dose_response_pubmed/dose_response_summary.csv": "00836d3dbb8d392fe0c288a43548e6d108efa41a945364375564e399afe4674b",
+        "results/edge_perturbation_dose_response_pubmed/replicate_summary.csv": "f3c1557f18ea58b53414c7617c0f87b4f68d5bf0b37d85030dccf6f6f4dc637c"
+      },
+      "models": [
+        "gcn",
+        "graphsage-mean"
+      ]
+    }
+  },
+  "validation": {
+    "all_baseline_identities_unique": true,
+    "all_checkpoint_graph_pairs_complete": true,
+    "all_graph_provenance_constant_within_pair": true,
+    "all_scores_finite_and_in_unit_interval": true,
+    "complete_model_dataset_cells": 30,
+    "dose_response_summary_rows": 1188,
+    "raw_baseline_rows": 720,
+    "raw_checkpoint_shards": 720,
+    "raw_paired_rows": 66600,
+    "replicate_summary_rows": 5940,
+    "roman_empire_max_percentage": 70,
+    "treatment_control_pairing_valid": true,
+    "unique_control_prediction_keys": 66600,
+    "unique_treatment_prediction_keys": 66600
+  }
+}

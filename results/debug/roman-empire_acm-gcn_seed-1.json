@@ -1,0 +1,17 @@
+{
+  "dataset": "roman-empire",
+  "model": "acm-gcn",
+  "split": "platonov-0",
+  "seed": 1,
+  "test_metric_pct": 69.29,
+  "reference_pct": null,
+  "grade": "unanchored",
+  "deviation_pct": null,
+  "gate_margin": null,
+  "majority_class_pct": 13.96,
+  "verdict": "sanity-ok (becomes reference)",
+  "best_epoch": 322,
+  "epochs_run": 500,
+  "train_seconds": 21.8,
+  "code_version": "51247dcb42f2e10871a755a840b2c260aed1b1d8"
+}

@@ -1,0 +1,23 @@
+\begin{table}[H]
+  \centering
+  \caption{PubMed tail macro-F1 gain relative to \(\Aerm\) under FG-CCDB and GroupDRO. Values are means over 30 matched split--seed runs. FG-CCDB entries include 95\% percentile-bootstrap intervals; grey intervals contain zero.}
+  \label{tab:fg-ccdb-pubmed}
+  \small
+  \begin{tabular}{@{}llcc@{}}
+    \toprule
+    Model & Preparation & FG-CCDB gain [95\% CI] & GroupDRO gain \\
+    \midrule
+    \multirow{3}{*}{GraphSAGE-mean} & \(\Alast\) & \gaincell{+0.007}{[0.004,0.010]} & +0.116 \\
+     & \(\Ahead\) & \gaincell{+0.043}{[0.039,0.048]} & +0.156 \\
+     & \(\Afull\) & \gaincell{+0.013}{[0.006,0.020]} & +0.162 \\
+    \addlinespace[2pt]
+    \multirow{3}{*}{GCN} & \(\Alast\) & \gaincell{-0.015}{[-0.019,-0.011]} & +0.025 \\
+     & \(\Ahead\) & \gaincell{+0.012}{[0.007,0.016]} & +0.108 \\
+     & \(\Afull\) & \uncertaingaincell{+0.002}{[-0.005,0.008]} & +0.122 \\
+    \addlinespace[2pt]
+    \multirow{3}{*}{ACM-GCN} & \(\Alast\) & \uncertaingaincell{-0.001}{[-0.004,0.002]} & +0.005 \\
+     & \(\Ahead\) & \gaincell{+0.008}{[0.004,0.013]} & +0.018 \\
+     & \(\Afull\) & \uncertaingaincell{+0.003}{[-0.001,0.008]} & +0.101 \\
+    \bottomrule
+  \end{tabular}
+\end{table}

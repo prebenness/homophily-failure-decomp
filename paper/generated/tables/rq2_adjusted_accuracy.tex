@@ -1,0 +1,22 @@
+\begin{table}[H]
+  \centering
+  \caption{Class-composition-adjusted ERM accuracy gap, whole test minus tail. The tail is reweighted to the whole-test proportions of true classes present in the tail; the whole-test score uses the same class set. Entries are the mean and 95\% bootstrap interval across 30 runs. Positive values indicate lower tail accuracy; grey cells include zero; $\dagger$ marks cells whose unadjusted RQ1 accuracy interval includes zero.}
+  \label{tab:rq2-adjusted-accuracy}
+  \scriptsize
+  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lccccc@{}}
+    \toprule
+    & \multicolumn{2}{c}{Low-homophily tail}
+    & \multicolumn{3}{c}{High-homophily tail} \\
+    \cmidrule(lr){2-3}\cmidrule(lr){4-6}
+    Model & PubMed & ogbn-arxiv & Roman-empire & Amazon-ratings & arxiv-year \\
+    \midrule
+    MLP              & \gaincell{+0.197}{[0.191,0.203]} & \gaincell{+0.188}{[0.187,0.190]} & \uncertaingaincell{+0.008}{[-0.013,0.029]} & \gaincell{-0.137}{[-0.145,-0.128]} & \gaincell{+0.017}{[0.014,0.018]} \\
+    GCN              & \gaincell{+0.376}{[0.369,0.383]} & \gaincell{+0.498}{[0.497,0.500]} & \gaincell{-0.044}{[-0.071,-0.020]} & \gaincell{-0.437}{[-0.441,-0.433]} & \gaincell{+0.088}{[0.085,0.091]} \\
+    GraphSAGE-mean   & \gaincell{+0.366}{[0.360,0.373]} & \gaincell{+0.524}{[0.523,0.527]} & \gaincell{+0.115}{[0.086,0.146]} & \gaincell{-0.284}{[-0.292,-0.277]} & \gaincell{+0.004}{[0.001,0.006]} \\
+    H2GCN-2          & \gaincell{+0.306}{[0.298,0.313]} & \gaincell{+0.427}{[0.426,0.429]} & \gaincell{+0.058}{[0.031,0.084]} & \gaincell{-0.254}{[-0.261,-0.247]} & \gaincell{+0.052}{[0.048,0.055]} \\
+    GPR-GNN          & \gaincell{+0.354}{[0.346,0.361]} & \gaincell{+0.451}{[0.449,0.452]} & \gaincell{+0.031}{[0.009,0.052]} & \gaincell{-0.401}{[-0.406,-0.395]} & \gaincell{+0.023}{[0.021,0.025]} \\
+    ACM-GCN          & \gaincell{+0.335}{[0.329,0.342]} & \gaincell{+0.353}{[0.351,0.354]} & \uncertaingaincell{-0.005}{[-0.023,0.015]} & \gaincell{-0.238}{[-0.246,-0.229]} & \gaincell{+0.021}{[0.018,0.024]} \\
+    LINKX            & \gaincell{+0.345}{[0.325,0.365]} & \gaincell{+0.282}{[0.274,0.292]} & \uncertaingaincell{-0.021}{[-0.044,0.001]} & \gaincell{-0.265}{[-0.274,-0.255]} & \gaincell{+0.057}{[0.052,0.061]} \\
+    \bottomrule
+  \end{tabular*}
+\end{table}

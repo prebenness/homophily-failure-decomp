@@ -1,0 +1,15 @@
+dataset,model,pair_index,n_checkpoints,mean_treatment_minus_control_macro_f1
+pubmed,gcn,1,30,0.4175673821812557
+pubmed,gcn,2,30,0.4014869892803384
+pubmed,gcn,3,30,0.3994693505460661
+pubmed,gcn,4,30,0.41609356380743195
+pubmed,gcn,5,30,0.40985540051970354
+roman-empire,gcn,1,30,-0.16029353535080515
+roman-empire,gcn,2,30,-0.13127689033090725
+roman-empire,gcn,3,30,-0.1369974668008883
+roman-empire,gcn,4,30,-0.09535483024459013
+roman-empire,gcn,5,30,-0.11746383854275073
+arxiv-year,graphsage-mean,1,30,-0.07573969366372195
+arxiv-year,graphsage-mean,2,30,-0.07507812264898059
+ogbn-arxiv,graphsage-mean,1,30,0.2798026528892963
+ogbn-arxiv,graphsage-mean,2,30,0.28506939203718584

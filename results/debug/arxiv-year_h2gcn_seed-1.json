@@ -1,0 +1,17 @@
+{
+  "dataset": "arxiv-year",
+  "model": "h2gcn",
+  "split": "lim-0",
+  "seed": 1,
+  "test_metric_pct": 44.52,
+  "reference_pct": null,
+  "grade": "unanchored",
+  "deviation_pct": null,
+  "gate_margin": null,
+  "majority_class_pct": 28.82,
+  "verdict": "sanity-ok (becomes reference)",
+  "best_epoch": 1302,
+  "epochs_run": 2000,
+  "train_seconds": 7669.6,
+  "code_version": "14895ec4306649596ce6983f0276dd75a41ad73d"
+}

@@ -1,0 +1,14 @@
+# Dataset registry: fixed inputs for the core experiments.
+# Loaders, split panels, and seeds are implemented in src/hfd/datasets.py
+# following the proposal's Experimental Contract appendix.
+
+data_root: artifacts/data          # downloaded raw datasets (ignored)
+array_dir: artifacts/manifests     # frozen node-level arrays, .npz (ignored)
+manifest_dir: manifests/datasets   # git-tracked JSON manifests
+
+datasets:
+  - pubmed
+  - ogbn-arxiv
+  - roman-empire
+  - amazon-ratings
+  - arxiv-year

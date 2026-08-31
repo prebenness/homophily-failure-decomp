@@ -1,0 +1,85 @@
+{
+  "analysis": "RQ4 class-composition-adjusted score figure",
+  "bootstrap": {
+    "base_seed": 20260717,
+    "interval": "95% percentile",
+    "resamples": 1000,
+    "unit": "complete split-seed run"
+  },
+  "dataset_mode": "additional",
+  "datasets": [
+    "actor",
+    "blogcatalog"
+  ],
+  "estimand": {
+    "gap": "whole component minus tail component",
+    "reference_distribution": "whole-test proportions of true classes present in the tail",
+    "tail_component": "class-adjusted tail macro-F1",
+    "whole_component": "ordinary whole-test macro-F1 over tail-present true classes"
+  },
+  "input": {
+    "path": "results/additional/rq2/class_adjusted_run_metrics.csv",
+    "sha256": "c913b41f09d836f1e70c78b576fde57b0354bb4752401b216e04c12d0bb14675"
+  },
+  "model_families": {
+    "heterophily-designed": [
+      "H2GCN-2",
+      "GPR-GNN",
+      "ACM-GCN"
+    ],
+    "mlp": [
+      "MLP"
+    ],
+    "non-aggregation": [
+      "LINKX"
+    ],
+    "standard": [
+      "GCN",
+      "GraphSAGE-mean"
+    ]
+  },
+  "model_order": [
+    "MLP",
+    "GCN",
+    "GraphSAGE-mean",
+    "H2GCN-2",
+    "GPR-GNN",
+    "ACM-GCN",
+    "LINKX"
+  ],
+  "outputs": [
+    {
+      "path": "results/additional/figures/rq4/rq4_class_adjusted_whole_test_and_tail_macro_f1_by_model_family.pdf",
+      "sha256": "403ba4b4dc34d6e666679841982676da62fa19833443314ae8ed2c4cb2205a84"
+    },
+    {
+      "path": "results/additional/figures/rq4/rq4_class_adjusted_whole_test_and_tail_macro_f1_by_model_family.png",
+      "sha256": "b68770d81d46d60419323e081930862c2e9833d0855cc82c76590ca014ca5b88"
+    },
+    {
+      "path": "results/additional/rq4/class_adjusted_erm_whole_tail_macro_f1.csv",
+      "sha256": "23d6bb67ab8f044b26522f7f27cc3ffbdd860ef16f70175d92c3cb1342ab4efa"
+    }
+  ],
+  "support": {
+    "actor": {
+      "maximum_tail_classes": 5,
+      "minimum_tail_classes": 5
+    },
+    "blogcatalog": {
+      "maximum_tail_classes": 5,
+      "minimum_tail_classes": 5
+    }
+  },
+  "visual_encoding": {
+    "confidence_intervals_shown": false,
+    "connector": "solid line for each dataset-model cell",
+    "model_family": "same colour mapping as main-text Figure 5",
+    "tail": "filled circle",
+    "whole_test": "filled diamond",
+    "y_axis_range": [
+      0.0,
+      1.06
+    ]
+  }
+}

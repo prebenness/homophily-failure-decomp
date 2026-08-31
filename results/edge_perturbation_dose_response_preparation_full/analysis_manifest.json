@@ -1,0 +1,124 @@
+{
+  "analysis": "complete-edge-perturbation-dose-response",
+  "analysis_code": {
+    "path": "scripts/analyze_edge_dose_response_full.py",
+    "sha256": "c902098ef45a2168fffee79ff938222b4be7a56d5998ac31ef9dd99797b1d809"
+  },
+  "design": {
+    "checkpoint_identities_per_model": 30,
+    "conditions": [
+      "treatment",
+      "control"
+    ],
+    "datasets": [
+      "pubmed",
+      "ogbn-arxiv",
+      "roman-empire",
+      "amazon-ratings",
+      "arxiv-year"
+    ],
+    "graph_replicates": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "metric": "tail_test_macro_f1",
+    "metric_population": "fixed-full-tail-test",
+    "models": [
+      "gcn",
+      "graphsage-mean",
+      "h2gcn",
+      "gpr-gnn",
+      "acm-gcn",
+      "linkx"
+    ],
+    "p_percentages": [
+      0,
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      95,
+      100
+    ],
+    "preparation": "full",
+    "roman_empire_p_percentages": [
+      0,
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70
+    ]
+  },
+  "estimand": {
+    "checkpoint_aggregation": "unweighted mean macro-F1 over the 30 registered full checkpoints within each graph replicate",
+    "graph_aggregation": "unweighted mean and sample standard deviation across the five graph-replicate means",
+    "p_zero": "one original-graph baseline per checkpoint copied to all five graph replicates and both conditions"
+  },
+  "generated_outputs_sha256": {
+    "dose_response_summary.csv": "79973a3765111f058c948a5ac41285c987de341c8b75be600a30cf08183f9e8d",
+    "replicate_summary.csv": "eed263134564772e0a38f8e76df80c3cf90f4d92f375101b1ddb473127ba48f8"
+  },
+  "schema_version": 1,
+  "sources": {
+    "expansion": {
+      "design_id": "appendix-j-edge-dose-response-full-full-matrix-v1",
+      "experiment_code_version": "49ece6706d743cd17da9e9843c04cbb6cc85a777",
+      "graph_catalog_sha256": {
+        "amazon-ratings": "d4d398cb0ffaa64b96c91ebd3fe2e47fbb51370f8ad1a1a0814749555c3ce2cd",
+        "arxiv-year": "d71e4e7706f0f4a0caa27794fec23d11004e6d9a2478cfb207a432cc60048e4a",
+        "ogbn-arxiv": "e722f6b67a2985d0f23da454bcc761a741b43460866b022d18d8317f73ddd176",
+        "pubmed": "882e79a909ab2424118b6fda7abada56b511a228bc8eb240252c293058f01825",
+        "roman-empire": "5f93b4527a91e4d74b09ba815ccede930c7ad94c765a6095cd0337d5675aaffa"
+      },
+      "input_sha256": {
+        "baseline_rows.jsonl": "484ecc7d2a1ef00e2418de1b0171d18b28c24d3b528a8d325ac3c4d71869cef9",
+        "paired_rows.jsonl": "8f8fa0371b2eed6b3273a9b12d1af215aa7e8a376f21141c6589eb61a2a7d5f5",
+        "validation.json": "5c35bedb4424e796745a13e4bc9edfae55c15e57538ab658de8837d32770944a"
+      },
+      "validated_at": "2026-08-31T02:22:08.977673+00:00"
+    }
+  },
+  "validation": {
+    "all_baseline_identities_unique": true,
+    "all_checkpoint_graph_pairs_complete": true,
+    "all_graph_provenance_constant_within_pair": true,
+    "all_scores_finite_and_in_unit_interval": true,
+    "complete_model_dataset_cells": 30,
+    "dose_response_summary_rows": 1188,
+    "raw_baseline_rows": 900,
+    "raw_checkpoint_shards": 900,
+    "raw_paired_rows": 84600,
+    "replicate_summary_rows": 5940,
+    "roman_empire_max_percentage": 70,
+    "treatment_control_pairing_valid": true,
+    "unique_control_prediction_keys": 84600,
+    "unique_treatment_prediction_keys": 84600
+  }
+}

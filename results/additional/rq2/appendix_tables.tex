@@ -1,0 +1,80 @@
+\section{RQ2: Within-Class and Class-Composition Analyses}
+\label{app:additional-rq2-within-class}
+
+\paragraph{Within-class accuracy.}
+Table~\ref{tab:additional-rq2-class-macro-accuracy} directly evaluates the comparison stated in RQ2. For each run, we include each true class represented among both tail and non-tail test nodes. Within each included class, we calculate accuracy separately for tail and non-tail test nodes and subtract tail accuracy from non-tail accuracy. We then average these class contrasts equally. The resulting run-level value is the mean class contrast.
+Each cell is the mean of the 30 run-level values, with a 95\% percentile-bootstrap interval obtained by resampling complete runs. Positive values indicate lower tail accuracy. Grey shading marks an interval containing zero. The table reports all 14 model--dataset cells. The RQ2 comparison concerns the 5 cells whose RQ1 macro-F1 gap in Table~\ref{tab:additional-erm-tail-gap} is positive and has an interval wholly above zero.
+
+\begin{table}[H]
+  \centering
+  \caption{Per-class non-tail accuracy minus tail accuracy, averaged equally over classes. Each cell reports the mean over the 30 runs and the 95\% percentile-bootstrap interval. Grey cells denote confidence intervals that contain zero.}
+  \label{tab:additional-rq2-class-macro-accuracy}
+  \scriptsize
+  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lcc@{}}
+    \toprule
+    & \multicolumn{2}{c}{High-homophily tail} \\
+    \cmidrule(lr){2-3}
+    Model & Actor & BlogCatalog \\
+    \midrule
+    MLP              & \uncertaingaincell{-.009}{[-.032,.014]} & \gaincell{+.046}{[.037,.058]} \\
+    GCN              & \gaincell{-.197}{[-.231,-.160]} & \gaincell{-.282}{[-.285,-.279]} \\
+    GraphSAGE-mean   & \uncertaingaincell{-.011}{[-.036,.013]} & \gaincell{-.084}{[-.090,-.075]} \\
+    H2GCN-2          & \gaincell{-.039}{[-.066,-.018]} & \gaincell{-.049}{[-.057,-.040]} \\
+    GPR-GNN          & \gaincell{-.046}{[-.069,-.024]} & \gaincell{-.066}{[-.075,-.057]} \\
+    ACM-GCN          & \gaincell{+.046}{[.025,.064]} & \gaincell{+.066}{[.056,.076]} \\
+    LINKX            & \gaincell{-.024}{[-.048,-.003]} & \gaincell{-.133}{[-.143,-.123]} \\
+    \bottomrule
+  \end{tabular*}
+\end{table}
+
+\paragraph{Class-composition-adjusted RQ1 gaps.}
+Tables~\ref{tab:additional-rq2-adjusted-accuracy} and \ref{tab:additional-rq2-adjusted-macro-f1} give class-composition-adjusted versions of the two RQ1 gap calculations. All 14 ERM model--dataset cells use the same procedure.
+For run $r$, let $W_r$ be the whole test set, $T_r$ the tail, and $C_r$ the true classes present in the tail. For $c\in C_r$, we assign the reference weight $w_{c,r}=n^{W_r}_{c,r}/\sum_{k\in C_r}n^{W_r}_{k,r}$: the class's proportion in the whole test set, renormalised over $C_r$.
+For each class in $C_r$, we divide its tail confusion-matrix row by the number of tail nodes in that class, giving the conditional distribution of predicted labels. We multiply this row by $w_{c,r}$, thereby replacing the tail's class proportions with those of the whole test set. The whole-test score is calculated over the same classes; its class proportions already equal $w_{c,r}$. True classes outside $C_r$ are outside the adjusted population. Predictions outside $C_r$ remain errors for included classes. Macro-F1 is the equal-weighted mean of the one-vs-rest F1 values for the classes in $C_r$.
+We calculate accuracy and macro-F1 for the whole test and the class-reweighted tail. The run-level value is the whole-test score minus the reweighted tail score. Each table cell is the mean of the 30 run-level differences. Its 95\% confidence interval is obtained by resampling the 30 complete runs as in Appendix~\ref{app:significance}.
+Positive values mean that the tail scores lower after adjusting for true-class composition; negative values mean that it scores higher. Grey shading marks an adjusted interval containing zero. A $\dagger$ marks a cell whose corresponding unadjusted RQ1 interval in Table~\ref{tab:additional-erm-tail-gap-accuracy} or Table~\ref{tab:additional-erm-tail-gap} contains zero.
+The adjusted estimates concern classes present in the tail. When $C_r$ omits a class included by RQ1, the difference between an adjusted cell and its RQ1 counterpart contains two changes: restriction to $C_r$ and reweighting of the tail to the whole-test class proportions.
+
+\begin{table}[H]
+  \centering
+  \caption{Class-adjusted accuracy tail gaps for all models on all datasets. Entries are the mean and 95\% bootstrap interval across 30 runs. Grey cells include zero, and $\dagger$ marks cells whose unadjusted accuracy tail gap includes zero.}
+  \label{tab:additional-rq2-adjusted-accuracy}
+  \scriptsize
+  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lcc@{}}
+    \toprule
+    & \multicolumn{2}{c}{High-homophily tail} \\
+    \cmidrule(lr){2-3}
+    Model & Actor & BlogCatalog \\
+    \midrule
+    MLP              & \uncertaingaincell{.000}{[-.017,.016]} & \gaincell{+.047}{[.037,.059]} \\
+    GCN              & \gaincell{-.171}{[-.197,-.143]} & \gaincell{-.256}{[-.258,-.253]} \\
+    GraphSAGE-mean   & \uncertaingaincell{-.013^{\dagger}}{[-.031,.003]} & \gaincell{-.076}{[-.083,-.069]} \\
+    H2GCN-2          & \gaincell{-.019}{[-.037,-.003]} & \gaincell{-.040}{[-.049,-.032]} \\
+    GPR-GNN          & \gaincell{-.038}{[-.053,-.022]} & \gaincell{-.057}{[-.067,-.049]} \\
+    ACM-GCN          & \gaincell{+.050}{[.037,.063]} & \gaincell{+.062^{\dagger}}{[.051,.072]} \\
+    LINKX            & \gaincell{-.019}{[-.038,-.003]} & \gaincell{-.123}{[-.132,-.112]} \\
+    \bottomrule
+  \end{tabular*}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Class-adjusted macro-F1 tail gaps for all models on all datasets. Entries are the mean and 95\% bootstrap interval across 30 runs. Grey cells include zero, and $\dagger$ marks cells whose unadjusted macro-F1 tail gap includes zero.}
+  \label{tab:additional-rq2-adjusted-macro-f1}
+  \scriptsize
+  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lcc@{}}
+    \toprule
+    & \multicolumn{2}{c}{High-homophily tail} \\
+    \cmidrule(lr){2-3}
+    Model & Actor & BlogCatalog \\
+    \midrule
+    MLP              & \uncertaingaincell{-.002}{[-.021,.015]} & \gaincell{+.057}{[.046,.068]} \\
+    GCN              & \gaincell{-.183}{[-.214,-.149]} & \gaincell{-.242}{[-.245,-.240]} \\
+    GraphSAGE-mean   & \uncertaingaincell{-.007}{[-.026,.012]} & \gaincell{-.071}{[-.077,-.065]} \\
+    H2GCN-2          & \gaincell{-.028^{\dagger}}{[-.050,-.009]} & \gaincell{-.034}{[-.043,-.025]} \\
+    GPR-GNN          & \gaincell{-.037^{\dagger}}{[-.057,-.017]} & \gaincell{-.053}{[-.062,-.044]} \\
+    ACM-GCN          & \gaincell{+.046}{[.029,.064]} & \gaincell{+.077}{[.066,.085]} \\
+    LINKX            & \uncertaingaincell{-.005^{\dagger}}{[-.026,.014]} & \gaincell{-.113}{[-.120,-.104]} \\
+    \bottomrule
+  \end{tabular*}
+\end{table}

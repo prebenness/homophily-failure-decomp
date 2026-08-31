@@ -1,0 +1,182 @@
+{
+  "dataset": "blogcatalog",
+  "metric": "accuracy",
+  "split_panel": "gaug-opengsl-public-10-20-70",
+  "training_seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30
+  ],
+  "n_runs": 30,
+  "graph": {
+    "num_nodes": 5196,
+    "num_edges_as_released": 343486,
+    "num_undirected_simple_edges": 171743,
+    "feature_dim": 8189,
+    "num_classes": 6
+  },
+  "local_homophily": {
+    "n_labelled": 5196,
+    "n_undefined_h": 0,
+    "n_eligible": 5196,
+    "mean_h": 0.3914025553723795,
+    "direction": "heterophilic",
+    "tail_side": "high-h_v",
+    "base_bins": [
+      {
+        "interval": "[0,0.25)",
+        "count": 1235,
+        "fraction_of_eligible": 0.23768283294842185
+      },
+      {
+        "interval": "[0.25,0.5)",
+        "count": 2566,
+        "fraction_of_eligible": 0.4938414164742109
+      },
+      {
+        "interval": "[0.5,0.75)",
+        "count": 1080,
+        "fraction_of_eligible": 0.20785219399538107
+      },
+      {
+        "interval": "[0.75,1]",
+        "count": 315,
+        "fraction_of_eligible": 0.06062355658198614
+      }
+    ],
+    "merge_history": [],
+    "merged_bins": [
+      {
+        "interval": "[0,0.25)",
+        "base_bins": [
+          0
+        ],
+        "count": 1235,
+        "fraction_of_eligible": 0.23768283294842185,
+        "is_tail": false,
+        "class_composition": {
+          "0": 111,
+          "1": 502,
+          "2": 93,
+          "3": 290,
+          "4": 20,
+          "5": 219
+        }
+      },
+      {
+        "interval": "[0.25,0.5)",
+        "base_bins": [
+          1
+        ],
+        "count": 2566,
+        "fraction_of_eligible": 0.4938414164742109,
+        "is_tail": false,
+        "class_composition": {
+          "0": 448,
+          "1": 112,
+          "2": 484,
+          "3": 412,
+          "4": 629,
+          "5": 481
+        }
+      },
+      {
+        "interval": "[0.5,0.75)",
+        "base_bins": [
+          2
+        ],
+        "count": 1080,
+        "fraction_of_eligible": 0.20785219399538107,
+        "is_tail": false,
+        "class_composition": {
+          "0": 191,
+          "1": 77,
+          "2": 276,
+          "3": 135,
+          "4": 243,
+          "5": 158
+        }
+      },
+      {
+        "interval": "[0.75,1]",
+        "base_bins": [
+          3
+        ],
+        "count": 315,
+        "fraction_of_eligible": 0.06062355658198614,
+        "is_tail": true,
+        "class_composition": {
+          "0": 135,
+          "1": 86,
+          "2": 68,
+          "3": 21,
+          "5": 5
+        }
+      }
+    ],
+    "tail": {
+      "interval": "[0.75,1]",
+      "count": 315,
+      "fraction_of_eligible": 0.06062355658198614
+    }
+  },
+  "splits": [
+    {
+      "split_id": "gaug-public",
+      "n_train": 519,
+      "n_val": 1039,
+      "n_test": 3638,
+      "n_train_tail": 35,
+      "n_val_tail": 62,
+      "n_test_eligible": 3638,
+      "n_test_tail": 218
+    }
+  ],
+  "notes": {
+    "source": "PyTorch Geometric AttributedGraphDataset BlogCatalog",
+    "splits": "Fixed 10/20/70 train/validation/test split released with GAug and used as the public BlogCatalog split by OpenGSL; split SHA256=36fefb7c7a3389e96d84b7c48df7822bc6c252097418631e4b5bc1d9757e9a3e; label-order SHA256=f0a45d1592df650149112a7bb9728127d8fa52dd5466dab2af496de519170d76; adjacency SHA256=d154390ee5ac35d5bcafbdc80c0b2ef9fabe460280de7ecf51ea8e5332583b9d",
+    "features": "The released sparse binary attribute matrix is materialised as float32 because all registered models expect dense input"
+  },
+  "graph_checksums_sha256": {
+    "features": "a03dfaf372820d4e010a57c9834fcfcaabe634281573c46f75cd18435794db5a",
+    "simple_edge_index": "8f9ce46f01f157d171a57c41c6c52bece954257e42582d8ba3b077ad3bee5b6d"
+  },
+  "array_checksums_sha256": {
+    "base_bin": "5f424c248d0ec95079d8e17ac758436814d7c0846e10eedcb5523edaeb37f7d1",
+    "eligible": "4ee32d302dcd77fd4a3436e5485d5c978aac73c3bc88677643b8b8531e97d21d",
+    "gaug-public.test": "8957c523c146f8e296e52cd4c9384a7b03261b4f3825b8a75723edddce9dd9f3",
+    "gaug-public.train": "b5deb753a251ed7c730e959199b91ae62cdfc3aaa71dd57f26a46d41a7e0dc29",
+    "gaug-public.val": "af483f5e4dae03424ebb63ecea6d9d4b736b10ba96f1b74280a16cf6d2ce9ca9",
+    "h": "5cf4c784556fccc3a2ad3ac0cee1a73bf44f05371f2db24f82ecdb9c17c8837d",
+    "labels": "39aa04b9434d31a173f1a5e601e612559520d7ffbead3050e4bc7cc21f5032a7",
+    "merged_bin": "5f424c248d0ec95079d8e17ac758436814d7c0846e10eedcb5523edaeb37f7d1",
+    "tail_mask": "5f1e94e76344d6a08db62876c8dcda074745b7c42339c43d34f79fa8c6d8ec83"
+  }
+}

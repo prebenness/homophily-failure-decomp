@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "description": "Machine-readable contract for the canonical per-run result store.",
+  "panel_manifest": "manifests/main-runs.jsonl",
+  "dataset_manifest_dir": "manifests/datasets",
+  "model_config_dir": "configs/models",
+  "active_run_layout": "<raw_root>/<run_id>/",
+  "allowed_root_files": [
+    "README.md"
+  ],
+  "excluded_root_directories": {
+    "historical-records": {
+      "purpose": "Superseded derived files retained solely for auditability.",
+      "analysis_input": false
+    }
+  },
+  "required_run_files": {
+    "config.json": "Resolved run configuration and provenance.",
+    "metrics.json": "Derived evaluation metrics for the selected checkpoint.",
+    "history.json": "Per-epoch training history.",
+    "checkpoint.pt": "Selected PyTorch model state.",
+    "run_data.npz": "Node-level logits, predictions, labels, split indices and registered group assignments."
+  },
+  "required_config_fields": [
+    "run_id",
+    "dataset",
+    "model",
+    "preparation",
+    "split",
+    "seed",
+    "parent_run_id",
+    "code_version",
+    "versions",
+    "fixed_input_checksums"
+  ],
+  "fresh_run_additional_config_fields": [
+    "git_dirty",
+    "command",
+    "experiment_manifest_sha256",
+    "parent_checkpoint_sha256",
+    "accelerator",
+    "graph_checksums"
+  ],
+  "required_metric_fields": [
+    "whole_test_standard",
+    "whole_test_macro_f1",
+    "tail_macro_f1",
+    "tail_gap",
+    "per_bin",
+    "within_class_tail_contrast",
+    "checkpoint"
+  ],
+  "required_run_data_arrays": [
+    "logits",
+    "predictions",
+    "labels",
+    "train_idx",
+    "val_idx",
+    "test_idx",
+    "merged_bin",
+    "tail_mask"
+  ],
+  "array_checksum_keys": {
+    "labels": "labels",
+    "train_idx": "{split}.train",
+    "val_idx": "{split}.val",
+    "test_idx": "{split}.test",
+    "merged_bin": "merged_bin",
+    "tail_mask": "tail_mask"
+  },
+  "reference_training_versions": {
+    "python": "3.11.15",
+    "torch": "2.6.0+cu124",
+    "numpy": "2.2.6"
+  },
+  "run_id_template": "{dataset}_{model}_{preparation}_{split}_seed-{seed}",
+  "parent_rule": {
+    "last": "matching ERM run",
+    "head": "matching ERM run",
+    "erm": null,
+    "full": null
+  }
+}

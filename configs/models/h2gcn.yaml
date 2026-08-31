@@ -1,0 +1,18 @@
+# H2GCN-2 (GemsLab/H2GCN source defaults; network_setup
+# M73-R-T1-G-V-T2-G-V-C1-C2-D0.5, i.e. M64 -> M73 and MO removed).
+# z_v is the native 7-block concatenation, 511-dimensional (rule 4
+# exception); the shared readout attaches directly. Row-normalised
+# features; exact 1-hop and 2-hop sym-normalised adjacencies; L2 5e-4 on
+# the dense kernel via regularization_loss (weight_decay stays 0 so Adam
+# does not double-count it).
+model: h2gcn
+z_dim: 511
+head_dropout: 0.2
+encoder:
+  hidden_dim: 73
+  dropout: 0.5
+train:
+  optimizer: adam
+  lr: 0.01
+  weight_decay: 0.0
+  max_epochs: 2000

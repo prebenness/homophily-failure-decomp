@@ -1,0 +1,22 @@
+\begin{table}[H]
+  \centering
+  \caption{\textbf{RQ1c}. Macro-F1 tail-gap comparison between each heterophily-designed model and each standard aggregation baseline. Each cell is heterophily-model gap minus standard-baseline gap, with its 95\% percentile-bootstrap interval over the 30 matched split--seed runs. Negative values indicate a smaller tail gap for the heterophily-designed model; grey cells contain zero and are not statistically significant.}
+  \label{tab:additional-rq4-designed-vs-standard}
+  \setlength{\tabcolsep}{5pt}
+  \begin{tabular}{@{}llcc@{}}
+    \toprule
+    & & \multicolumn{2}{c}{High-homophily tail} \\
+    \cmidrule(lr){3-4}
+    Designed model & Standard baseline & Actor & BlogCatalog \\
+    \midrule
+    \multirow{2}{*}{H2GCN-2} & GCN & \gaincell{+.148}{[+.119,+.175]} & \gaincell{+.205}{[+.195,+.217]} \\
+     & GraphSAGE-mean & \gaincell{-.033}{[-.051,-.012]} & \gaincell{+.026}{[+.013,+.039]} \\
+    \addlinespace[2pt]
+    \multirow{2}{*}{GPR-GNN} & GCN & \gaincell{+.135}{[+.099,+.168]} & \gaincell{+.185}{[+.179,+.191]} \\
+     & GraphSAGE-mean & \gaincell{-.045}{[-.065,-.025]} & \uncertaingaincell{+.006}{[-.002,+.015]} \\
+    \addlinespace[2pt]
+    \multirow{2}{*}{ACM-GCN} & GCN & \gaincell{+.198}{[+.172,+.224]} & \gaincell{+.344}{[+.333,+.353]} \\
+     & GraphSAGE-mean & \uncertaingaincell{+.018}{[-.002,+.037]} & \gaincell{+.165}{[+.152,+.178]} \\
+    \bottomrule
+  \end{tabular}
+\end{table}

@@ -1,0 +1,19 @@
+# ACM-GCN, plain acmgcn (SitaoLuan/ACM-GNN). Architecture identity from the
+# small-dataset parser (one ACM layer, width 512, variant 0, structure_info
+# 0); the source second layer (hidden -> classes) is the final classifier,
+# replaced by the shared readout. Row-normalised features.
+# Training: the authors' large-scale protocol (ACM-Geometric tree): AdamW,
+# lr 0.01, weight decay 1e-3, dropout 0.5, 500 epochs, no early stopping.
+# The small-dataset defaults (Adam, lr 0.05, dropout 0, 5000 epochs) fail to
+# train on Amazon-ratings; see model-hyperparameter-defaults.md.
+model: acm-gcn
+z_dim: 512
+head_dropout: 0.2
+encoder:
+  hidden_dim: 512
+  dropout: 0.5
+train:
+  optimizer: adamw
+  lr: 0.01
+  weight_decay: 1.0e-3
+  max_epochs: 500

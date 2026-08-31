@@ -1,0 +1,206 @@
+{
+  "dataset": "arxiv-year",
+  "metric": "accuracy",
+  "split_panel": "lim-fixed-5",
+  "training_seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "n_runs": 30,
+  "graph": {
+    "num_nodes": 169343,
+    "num_edges_as_released": 1166243,
+    "num_undirected_simple_edges": 1157799,
+    "feature_dim": 128,
+    "num_classes": 5
+  },
+  "local_homophily": {
+    "n_labelled": 169343,
+    "n_undefined_h": 0,
+    "n_eligible": 169343,
+    "mean_h": 0.2893270753655836,
+    "direction": "heterophilic",
+    "tail_side": "high-h_v",
+    "base_bins": [
+      {
+        "interval": "[0,0.25)",
+        "count": 95006,
+        "fraction_of_eligible": 0.5610270279846229
+      },
+      {
+        "interval": "[0.25,0.5)",
+        "count": 33206,
+        "fraction_of_eligible": 0.19608723124073626
+      },
+      {
+        "interval": "[0.5,0.75)",
+        "count": 19262,
+        "fraction_of_eligible": 0.1137454751598826
+      },
+      {
+        "interval": "[0.75,1]",
+        "count": 21869,
+        "fraction_of_eligible": 0.12914026561475822
+      }
+    ],
+    "merge_history": [],
+    "merged_bins": [
+      {
+        "interval": "[0,0.25)",
+        "base_bins": [
+          0
+        ],
+        "count": 95006,
+        "fraction_of_eligible": 0.5610270279846229,
+        "is_tail": false,
+        "class_composition": {
+          "0": 4978,
+          "1": 12456,
+          "2": 20628,
+          "3": 23540,
+          "4": 33404
+        }
+      },
+      {
+        "interval": "[0.25,0.5)",
+        "base_bins": [
+          1
+        ],
+        "count": 33206,
+        "fraction_of_eligible": 0.19608723124073626,
+        "is_tail": false,
+        "class_composition": {
+          "0": 4495,
+          "1": 4641,
+          "2": 10261,
+          "3": 4143,
+          "4": 9666
+        }
+      },
+      {
+        "interval": "[0.5,0.75)",
+        "base_bins": [
+          2
+        ],
+        "count": 19262,
+        "fraction_of_eligible": 0.1137454751598826,
+        "is_tail": false,
+        "class_composition": {
+          "0": 6877,
+          "1": 2580,
+          "2": 4624,
+          "3": 1414,
+          "4": 3767
+        }
+      },
+      {
+        "interval": "[0.75,1]",
+        "base_bins": [
+          3
+        ],
+        "count": 21869,
+        "fraction_of_eligible": 0.12914026561475822,
+        "is_tail": true,
+        "class_composition": {
+          "0": 15621,
+          "1": 1512,
+          "2": 2268,
+          "3": 702,
+          "4": 1766
+        }
+      }
+    ],
+    "tail": {
+      "interval": "[0.75,1]",
+      "count": 21869,
+      "fraction_of_eligible": 0.12914026561475822
+    }
+  },
+  "splits": [
+    {
+      "split_id": "lim-0",
+      "n_train": 84671,
+      "n_val": 42335,
+      "n_test": 42337,
+      "n_train_tail": 11002,
+      "n_val_tail": 5451,
+      "n_test_eligible": 42337,
+      "n_test_tail": 5416
+    },
+    {
+      "split_id": "lim-1",
+      "n_train": 84671,
+      "n_val": 42335,
+      "n_test": 42337,
+      "n_train_tail": 11017,
+      "n_val_tail": 5459,
+      "n_test_eligible": 42337,
+      "n_test_tail": 5393
+    },
+    {
+      "split_id": "lim-2",
+      "n_train": 84671,
+      "n_val": 42335,
+      "n_test": 42337,
+      "n_train_tail": 10949,
+      "n_val_tail": 5362,
+      "n_test_eligible": 42337,
+      "n_test_tail": 5558
+    },
+    {
+      "split_id": "lim-3",
+      "n_train": 84671,
+      "n_val": 42335,
+      "n_test": 42337,
+      "n_train_tail": 10892,
+      "n_val_tail": 5478,
+      "n_test_eligible": 42337,
+      "n_test_tail": 5499
+    },
+    {
+      "split_id": "lim-4",
+      "n_train": 84671,
+      "n_val": 42335,
+      "n_test": 42337,
+      "n_train_tail": 10870,
+      "n_val_tail": 5413,
+      "n_test_eligible": 42337,
+      "n_test_tail": 5586
+    }
+  ],
+  "notes": {
+    "labels": "5-class even-quantile bins of node_year, following Lim et al. Non-Homophily-Large-Scale dataset.py",
+    "splits": "5 fixed 50/25/25 splits from arxiv-year-splits.npy in the Non-Homophily-Large-Scale repository (Lim et al.)"
+  },
+  "graph_checksums_sha256": {
+    "features": "40adbe7fe3b8762a41a4a061dd3709434867fb80c81800038d4300eb17a62a9c",
+    "simple_edge_index": "73a48aca7c85a2364e876c3e3b663cb237fdd206850124edaac3d6a753d8a725"
+  },
+  "array_checksums_sha256": {
+    "base_bin": "9698615fbec5f8682ef6875f49f51a76fbd7b3c5606daf310c2c48498923ee2d",
+    "eligible": "b8fee7b2a0bdb171e19b9ee2e26c32c9bfdbcbe6607b2610065e96983951e473",
+    "h": "19da3ee1b6cdb3e9dfd37fa293094cea8bbdb4626b40ff244cde3cc9b0227b69",
+    "labels": "5441fcc1b5709c5b0d047c56ab1cd8058bc4d916235fd17f92bc7cfefe8947b8",
+    "lim-0.test": "bb9c0effb021a6050a5202ce776abe8d742b1a7a33a2d3983fda4d117d4b2285",
+    "lim-0.train": "79b0fd225d4ea1224b543cf215b95b1109c51ed86d9bce3dacbaa526b85fa5d7",
+    "lim-0.val": "15b5e659de29acfe931c01d79b5273b5eb493609c033807ff6a6e1a82f3fbc6d",
+    "lim-1.test": "c27f798334b7025893ffdef65f224125b37dcfe611c7844ee5d86b10126064c9",
+    "lim-1.train": "c0df2ecfbb53e9acf85c69589f6157a7e853077480e88f5041559933878a0a1a",
+    "lim-1.val": "d140d98bd3243c634bbdb80fd970a5af7afc52bec5883882083f41b5407b501d",
+    "lim-2.test": "e74a4fd5b42bcdcf2d553148e86460a1d0c7ec9c857cd5fbbd4bb8da4704f6e4",
+    "lim-2.train": "1f04995428dc5ad76cef4c73d916e0938a98c291a325faaef39d6931a3f6b0ba",
+    "lim-2.val": "956be62df9f3868bf3e0ded2ee32eef8cd05be2dc278c971c292a02495a289d9",
+    "lim-3.test": "8c668e29e9de65a313fe54aa62bc7f47c8acfc4be6afb41782ba534187434ac9",
+    "lim-3.train": "17f6417356a9007105c658227e091a622ec72c9d6015169c092f2c4613b08561",
+    "lim-3.val": "981dabc42da65dd8d95eb15a7eb91ad278696f620361ca944dddd4c6b3650d71",
+    "lim-4.test": "99e2507a55825f403c8e1799f52e447f23383153fd80e9f9662fbbd649c646ba",
+    "lim-4.train": "e308e6266b6f79f35c5fac4229bfa531ce408cc3709db8d36561529dac293415",
+    "lim-4.val": "8288c5325c0769fec25b9bfb0c7143fc7a839e6048fa238d157cd98ad0eb4008",
+    "merged_bin": "9698615fbec5f8682ef6875f49f51a76fbd7b3c5606daf310c2c48498923ee2d",
+    "tail_mask": "6f3e2d1b8030bf6839d3dd917a2815e087989d58dbc10971a55a8e0ed5bf39c4"
+  }
+}

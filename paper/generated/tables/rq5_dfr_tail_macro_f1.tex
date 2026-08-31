@@ -1,0 +1,15 @@
+\begin{table}[H]
+  \centering
+  \caption{PubMed tail macro-F1 for ERM, the three registered retraining preparations, and a DFR-style frozen-representation refit. Each cell gives the mean over 30 matched split--seed runs and its 95\% percentile-bootstrap interval.}
+  \label{tab:rq5-dfr-tail-macro-f1}
+  \scriptsize
+  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lccccc@{}}
+    \toprule
+    Model & \(\Aerm\) & \(\Alast\) & \(\Ahead\) & \(\Afull\) & \(A_{\mathrm{DFR}}\) \\
+    \midrule
+    ACM-GCN & \shortstack{$0.557$\\[-1pt]{\tiny $[0.550,0.564]$}} & \shortstack{$0.562$\\[-1pt]{\tiny $[0.555,0.569]$}} & \shortstack{$0.575$\\[-1pt]{\tiny $[0.568,0.581]$}} & \shortstack{$0.658$\\[-1pt]{\tiny $[0.652,0.665]$}} & \shortstack{$0.593$\\[-1pt]{\tiny $[0.586,0.600]$}} \\
+    GCN & \shortstack{$0.512$\\[-1pt]{\tiny $[0.506,0.518]$}} & \shortstack{$0.537$\\[-1pt]{\tiny $[0.531,0.543]$}} & \shortstack{$0.620$\\[-1pt]{\tiny $[0.614,0.626]$}} & \shortstack{$0.634$\\[-1pt]{\tiny $[0.628,0.639]$}} & \shortstack{$0.551$\\[-1pt]{\tiny $[0.542,0.560]$}} \\
+    GraphSAGE-mean & \shortstack{$0.532$\\[-1pt]{\tiny $[0.526,0.538]$}} & \shortstack{$0.648$\\[-1pt]{\tiny $[0.635,0.660]$}} & \shortstack{$0.688$\\[-1pt]{\tiny $[0.678,0.697]$}} & \shortstack{$0.694$\\[-1pt]{\tiny $[0.689,0.700]$}} & \shortstack{$0.629$\\[-1pt]{\tiny $[0.621,0.636]$}} \\
+    \bottomrule
+  \end{tabular*}
+\end{table}

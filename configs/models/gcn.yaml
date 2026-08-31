@@ -1,0 +1,17 @@
+# GCN in the Platonov benchmark configuration (model-hyperparameter-defaults.md).
+# Skeleton: input linear -> 512, dropout 0.2, GELU; five pre-norm residual
+# blocks (parameter-free normalised aggregation + feed-forward module);
+# output LayerNorm = z_v. Self-loops added. Blocks are Platonov modules.py,
+# not PyG GCNConv.
+model: gcn
+z_dim: 512
+head_dropout: 0.2
+encoder:
+  hidden_dim: 512
+  num_blocks: 5
+  dropout: 0.2
+train:
+  optimizer: adamw
+  lr: 3.0e-5
+  weight_decay: 0.0
+  max_epochs: 1000        # Platonov num_steps; full-batch step == epoch

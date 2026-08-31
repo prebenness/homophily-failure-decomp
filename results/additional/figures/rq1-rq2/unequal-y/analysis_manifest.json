@@ -1,0 +1,432 @@
+{
+  "schema_version": 1,
+  "analysis": "rq1-rq2-grouped-macro-f1-tail-gap-plot",
+  "dataset_mode": "additional",
+  "definitions": {
+    "unadjusted_gap": "whole-test macro-F1 minus registered-tail macro-F1",
+    "class_adjusted_gap": "ordinary whole-test macro-F1 over tail-present classes minus tail macro-F1 after reweighting to the whole-test class composition",
+    "intervals": "95% percentile bootstrap intervals over 30 complete split-seed runs, read from the source analyses",
+    "open_marker": "the corresponding interval contains zero",
+    "filled_marker": "the corresponding interval excludes zero",
+    "connector": "descriptive line joining the two point estimates; not an interval for their difference"
+  },
+  "panel": {
+    "dataset_order": [
+      "actor",
+      "blogcatalog"
+    ],
+    "model_order": [
+      "mlp",
+      "gcn",
+      "graphsage-mean",
+      "h2gcn",
+      "gpr-gnn",
+      "acm-gcn",
+      "linkx"
+    ],
+    "n_cells": 14,
+    "n_unadjusted_intervals_including_zero": 3,
+    "n_class_adjusted_intervals_including_zero": 3
+  },
+  "figure_design": {
+    "width_inches": 5.5,
+    "height_inches": 1.8,
+    "minimum_text_size_points": 8.0,
+    "composition": "1-by-three grid with 2 dataset slope panels and one legend cell",
+    "styling_reference": "paper Figure 3, RQ1 continuous local-homophily composite",
+    "grid_shape": [
+      1,
+      3
+    ],
+    "dataset_layout": {
+      "actor": [
+        0,
+        0
+      ],
+      "blogcatalog": [
+        0,
+        1
+      ]
+    },
+    "legend_cell": [
+      0,
+      2
+    ],
+    "y_scale_mode": "dataset",
+    "y_limits": {
+      "actor": [
+        -0.31500000000000006,
+        0.115
+      ],
+      "blogcatalog": [
+        -0.31500000000000006,
+        0.21500000000000002
+      ]
+    },
+    "y_ticks": {
+      "actor": [
+        -0.30000000000000004,
+        -0.20000000000000004,
+        -0.10000000000000003,
+        0.0,
+        0.09999999999999998
+      ],
+      "blogcatalog": [
+        -0.30000000000000004,
+        -0.20000000000000004,
+        -0.10000000000000003,
+        0.0,
+        0.09999999999999998,
+        0.19999999999999996
+      ]
+    },
+    "shared_scale": false,
+    "condition_positions": {
+      "unadjusted": 0.0,
+      "class_adjusted": 1.0
+    },
+    "model_jitter_span": 0.2,
+    "model_jitters": {
+      "mlp": -0.1,
+      "gcn": -0.06666666666666668,
+      "graphsage-mean": -0.03333333333333334,
+      "h2gcn": 0.0,
+      "gpr-gnn": 0.033333333333333326,
+      "acm-gcn": 0.06666666666666665,
+      "linkx": 0.1
+    },
+    "model_palette": "seaborn colorblind",
+    "model_markers": {
+      "mlp": "o",
+      "gcn": "s",
+      "graphsage-mean": "^",
+      "h2gcn": "D",
+      "gpr-gnn": "P",
+      "acm-gcn": "v",
+      "linkx": "X"
+    },
+    "marker_size_points": 3.5,
+    "ci_line_width_points": 0.75,
+    "connector_line_width_points": 0.55,
+    "connector_alpha": 0.25,
+    "zero_line_width_points": 1.25,
+    "zero_line_colour": "0.25"
+  },
+  "inputs": {
+    "unadjusted": {
+      "path": "results/additional/aggregates/erm_tail_gaps.csv",
+      "sha256": "1776286845154453c79906263b1a82d317054331ff58dfbfc5ae97d419ddb9a4"
+    },
+    "class_adjusted": {
+      "path": "results/additional/rq2/class_adjusted_cell_summary.csv",
+      "sha256": "2df2e4c3037d016193f88b4f09bb22815e25b49185babb4fdaa781931a9644ec"
+    }
+  },
+  "software": {
+    "python": "3.11.15",
+    "numpy": "2.2.6",
+    "matplotlib": "3.11.0",
+    "seaborn": "0.13.2"
+  },
+  "script": {
+    "path": "scripts/plot_rq1_rq2_paired_forest.py",
+    "sha256": "e05c5886490fc31525fa72912c47e8d97d04e909b58ac9c3841348af86d312a4"
+  },
+  "command": {
+    "dataset_mode": "additional",
+    "formats": [
+      "pdf",
+      "png"
+    ],
+    "dpi": 400,
+    "y_scale": "dataset"
+  },
+  "outputs": {
+    "results/additional/figures/rq1-rq2/unequal-y/rq1_rq2_additional_datasets_unadjusted_and_class_adjusted_macro_f1_tail_gaps_unequal_y.pdf": "e1a886c220a44f9082091035f237f00751de78c315c4842bf54a7d9689bddf36",
+    "results/additional/figures/rq1-rq2/unequal-y/rq1_rq2_additional_datasets_unadjusted_and_class_adjusted_macro_f1_tail_gaps_unequal_y.png": "8e1dc646553dbc060bd1f27fd7f6e05cc12da22f227186718be807096fbaee0e",
+    "results/additional/figures/rq1-rq2/unequal-y/paired_tail_gap_values.csv": "cee1c58c0bf060f35280b4490b8a7448aa37d504c6d9a9adb8df9a9d1d674766",
+    "results/additional/figures/rq1-rq2/unequal-y/README.md": "d593ef595c9df231da45db353acea60bdb97de9616265362b50eab98215a1272"
+  },
+  "cells": [
+    {
+      "dataset": "actor",
+      "dataset_order": 0,
+      "tail_side": "high-h_v",
+      "model": "mlp",
+      "model_order": 0,
+      "n_runs": 30,
+      "unadjusted": {
+        "mean": 0.05435895494299388,
+        "ci_lower": 0.03953212667721264,
+        "ci_upper": 0.06753285569032107,
+        "ci_excludes_zero": true
+      },
+      "class_adjusted": {
+        "mean": -0.002094507146847203,
+        "ci_lower": -0.021411887437064434,
+        "ci_upper": 0.015117965505948915,
+        "ci_excludes_zero": false
+      }
+    },
+    {
+      "dataset": "actor",
+      "dataset_order": 0,
+      "tail_side": "high-h_v",
+      "model": "gcn",
+      "model_order": 1,
+      "n_runs": 30,
+      "unadjusted": {
+        "mean": -0.14224711094858475,
+        "ci_lower": -0.1650755562594564,
+        "ci_upper": -0.11734757518646,
+        "ci_excludes_zero": true
+      },
+      "class_adjusted": {
+        "mean": -0.18265411592695474,
+        "ci_lower": -0.21424060289524877,
+        "ci_upper": -0.1492999336354888,
+        "ci_excludes_zero": true
+      }
+    },
+    {
+      "dataset": "actor",
+      "dataset_order": 0,
+      "tail_side": "high-h_v",
+      "model": "graphsage-mean",
+      "model_order": 2,
+      "n_runs": 30,
+      "unadjusted": {
+        "mean": 0.03804904560028905,
+        "ci_lower": 0.023195946244752293,
+        "ci_upper": 0.053170099026861775,
+        "ci_excludes_zero": true
+      },
+      "class_adjusted": {
+        "mean": -0.006929490165722753,
+        "ci_lower": -0.02647651267509514,
+        "ci_upper": 0.011534063770540594,
+        "ci_excludes_zero": false
+      }
+    },
+    {
+      "dataset": "actor",
+      "dataset_order": 0,
+      "tail_side": "high-h_v",
+      "model": "h2gcn",
+      "model_order": 3,
+      "n_runs": 30,
+      "unadjusted": {
+        "mean": 0.005432025767489664,
+        "ci_lower": -0.0105481685382548,
+        "ci_upper": 0.02120835752188107,
+        "ci_excludes_zero": false
+      },
+      "class_adjusted": {
+        "mean": -0.02827586705916278,
+        "ci_lower": -0.05017046247896909,
+        "ci_upper": -0.009035796772628253,
+        "ci_excludes_zero": true
+      }
+    },
+    {
+      "dataset": "actor",
+      "dataset_order": 0,
+      "tail_side": "high-h_v",
+      "model": "gpr-gnn",
+      "model_order": 4,
+      "n_runs": 30,
+      "unadjusted": {
+        "mean": -0.007357551007114715,
+        "ci_lower": -0.020954930826203436,
+        "ci_upper": 0.007944634863136464,
+        "ci_excludes_zero": false
+      },
+      "class_adjusted": {
+        "mean": -0.03708729933942686,
+        "ci_lower": -0.05675493862449903,
+        "ci_upper": -0.01693161183062498,
+        "ci_excludes_zero": true
+      }
+    },
+    {
+      "dataset": "actor",
+      "dataset_order": 0,
+      "tail_side": "high-h_v",
+      "model": "acm-gcn",
+      "model_order": 5,
+      "n_runs": 30,
+      "unadjusted": {
+        "mean": 0.05619362390886814,
+        "ci_lower": 0.043411019180723764,
+        "ci_upper": 0.06888009236270887,
+        "ci_excludes_zero": true
+      },
+      "class_adjusted": {
+        "mean": 0.046477790100652894,
+        "ci_lower": 0.02884524279685439,
+        "ci_upper": 0.06416942415289793,
+        "ci_excludes_zero": true
+      }
+    },
+    {
+      "dataset": "actor",
+      "dataset_order": 0,
+      "tail_side": "high-h_v",
+      "model": "linkx",
+      "model_order": 6,
+      "n_runs": 30,
+      "unadjusted": {
+        "mean": 0.013576681533414845,
+        "ci_lower": -0.003238918944423347,
+        "ci_upper": 0.02954716477108594,
+        "ci_excludes_zero": false
+      },
+      "class_adjusted": {
+        "mean": -0.004875363963685777,
+        "ci_lower": -0.02647845899413603,
+        "ci_upper": 0.014379079579414165,
+        "ci_excludes_zero": false
+      }
+    },
+    {
+      "dataset": "blogcatalog",
+      "dataset_order": 1,
+      "tail_side": "high-h_v",
+      "model": "mlp",
+      "model_order": 0,
+      "n_runs": 30,
+      "unadjusted": {
+        "mean": 0.0912668891457701,
+        "ci_lower": 0.08135709229746846,
+        "ci_upper": 0.10118985089921867,
+        "ci_excludes_zero": true
+      },
+      "class_adjusted": {
+        "mean": 0.05730690309855044,
+        "ci_lower": 0.04628685655798675,
+        "ci_upper": 0.06837927581775122,
+        "ci_excludes_zero": true
+      }
+    },
+    {
+      "dataset": "blogcatalog",
+      "dataset_order": 1,
+      "tail_side": "high-h_v",
+      "model": "gcn",
+      "model_order": 1,
+      "n_runs": 30,
+      "unadjusted": {
+        "mean": -0.24338951761691024,
+        "ci_lower": -0.245390632442868,
+        "ci_upper": -0.2411036816501939,
+        "ci_excludes_zero": true
+      },
+      "class_adjusted": {
+        "mean": -0.2423619600514652,
+        "ci_lower": -0.2449617697001598,
+        "ci_upper": -0.23955574102919083,
+        "ci_excludes_zero": true
+      }
+    },
+    {
+      "dataset": "blogcatalog",
+      "dataset_order": 1,
+      "tail_side": "high-h_v",
+      "model": "graphsage-mean",
+      "model_order": 2,
+      "n_runs": 30,
+      "unadjusted": {
+        "mean": -0.06470677580122759,
+        "ci_lower": -0.07040595214746675,
+        "ci_upper": -0.05797670185335355,
+        "ci_excludes_zero": true
+      },
+      "class_adjusted": {
+        "mean": -0.07102224096433053,
+        "ci_lower": -0.07716633189482154,
+        "ci_upper": -0.06461031982001912,
+        "ci_excludes_zero": true
+      }
+    },
+    {
+      "dataset": "blogcatalog",
+      "dataset_order": 1,
+      "tail_side": "high-h_v",
+      "model": "h2gcn",
+      "model_order": 3,
+      "n_runs": 30,
+      "unadjusted": {
+        "mean": -0.03840603997033603,
+        "ci_lower": -0.048366517479832886,
+        "ci_upper": -0.02727880520786414,
+        "ci_excludes_zero": true
+      },
+      "class_adjusted": {
+        "mean": -0.034107200087152116,
+        "ci_lower": -0.04267276733754208,
+        "ci_upper": -0.02544282677165676,
+        "ci_excludes_zero": true
+      }
+    },
+    {
+      "dataset": "blogcatalog",
+      "dataset_order": 1,
+      "tail_side": "high-h_v",
+      "model": "gpr-gnn",
+      "model_order": 4,
+      "n_runs": 30,
+      "unadjusted": {
+        "mean": -0.05869821603614451,
+        "ci_lower": -0.06490670747394058,
+        "ci_upper": -0.05261293160706183,
+        "ci_excludes_zero": true
+      },
+      "class_adjusted": {
+        "mean": -0.052724599709745405,
+        "ci_lower": -0.06225734991251751,
+        "ci_upper": -0.0435056764603223,
+        "ci_excludes_zero": true
+      }
+    },
+    {
+      "dataset": "blogcatalog",
+      "dataset_order": 1,
+      "tail_side": "high-h_v",
+      "model": "acm-gcn",
+      "model_order": 5,
+      "n_runs": 30,
+      "unadjusted": {
+        "mean": 0.10019385577372099,
+        "ci_lower": 0.09026998010588104,
+        "ci_upper": 0.11033678379021356,
+        "ci_excludes_zero": true
+      },
+      "class_adjusted": {
+        "mean": 0.07654065946050423,
+        "ci_lower": 0.06622912544175104,
+        "ci_upper": 0.08542621037594712,
+        "ci_excludes_zero": true
+      }
+    },
+    {
+      "dataset": "blogcatalog",
+      "dataset_order": 1,
+      "tail_side": "high-h_v",
+      "model": "linkx",
+      "model_order": 6,
+      "n_runs": 30,
+      "unadjusted": {
+        "mean": -0.11094886377748209,
+        "ci_lower": -0.1166141865650862,
+        "ci_upper": -0.10464707956293975,
+        "ci_excludes_zero": true
+      },
+      "class_adjusted": {
+        "mean": -0.11258555821906885,
+        "ci_lower": -0.11961616043399416,
+        "ci_upper": -0.10388852294814274,
+        "ci_excludes_zero": true
+      }
+    }
+  ]
+}

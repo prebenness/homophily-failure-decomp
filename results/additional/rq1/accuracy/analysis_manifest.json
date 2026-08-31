@@ -1,0 +1,68 @@
+{
+  "aggregation": "Unweighted arithmetic mean of the 30 split-seed run values in each dataset-model cell",
+  "analysis_script": "scripts/analyze_rq1_accuracy.py",
+  "analysis_script_sha256": "afddf7501e05ef7ddaf7b13c899edeba48d8be9cd149c1b06bc1fd833e84b325",
+  "analysis_version": "rq1-whole-tail-accuracy-v2",
+  "metric_definition": {
+    "gap": "whole_accuracy minus tail_accuracy within each run",
+    "tail_accuracy": "fraction of test_idx nodes in the manifest-registered tail predicted correctly within each run",
+    "whole_accuracy": "fraction of all test_idx nodes predicted correctly within each run"
+  },
+  "output_sha256": {
+    "appendix_table.tex": "347ea207cbdfac247986e975e6d51101c5d23945bb6dd4f79e0a6f1086d09a40",
+    "run_accuracy.csv": "12c3552362aded4f13e16f8dff3c8a83ee99efa2a9ea5b59adc9e45747b1e9f0",
+    "whole_vs_tail_accuracy.csv": "16adc97d84409215c542fbf5fa3bae24c7c6b37106d08e862d081783db275021",
+    "whole_vs_tail_accuracy_wide.csv": "e33fc6455ddb54cc7408bf6f41095001cae2ef5e802e0deb7fcbd0008ed9b4df"
+  },
+  "paired_bootstrap": {
+    "cell_seed_key": "sha256(global_seed:dataset:model:erm-tail-gap), first 8 bytes interpreted little-endian",
+    "global_seed": 20260716,
+    "interval": "2.5th and 97.5th percentiles",
+    "multiple_comparison_correction": null,
+    "quantile_method": "linear",
+    "resampled_values": "30 paired whole-minus-tail run gaps",
+    "resamples": 1000,
+    "two_sided_p_value": "2 * min(fraction of bootstrap means <= 0, fraction >= 0), capped at 1"
+  },
+  "schema_version": 1,
+  "scope": {
+    "dataset_mode": "additional",
+    "datasets": [
+      "actor",
+      "blogcatalog"
+    ],
+    "models": [
+      "mlp",
+      "gcn",
+      "graphsage-mean",
+      "h2gcn",
+      "gpr-gnn",
+      "linkx",
+      "acm-gcn"
+    ],
+    "n_cells": 14,
+    "n_runs": 420,
+    "preparation": "erm",
+    "registered_run_panel_exact_match": true
+  },
+  "tail_definitions": {
+    "actor": {
+      "interval": "[0.75,1]",
+      "side": "high-h_v"
+    },
+    "blogcatalog": {
+      "interval": "[0.75,1]",
+      "side": "high-h_v"
+    }
+  },
+  "training_code_versions": [
+    "55bda6604749a84f8f47df19f15486bdd1c811c8"
+  ],
+  "validation": {
+    "complete_registered_split_seed_panel": true,
+    "fixed_arrays_match_manifest_sha256": true,
+    "maximum_tail_stored_absolute_error": 0.0,
+    "maximum_whole_stored_absolute_error": 0.0,
+    "stored_comparison_tolerance": 1e-12
+  }
+}

@@ -1,0 +1,25 @@
+\begin{table}[H]
+  \centering
+  \caption{ERM accuracy gap, whole-test accuracy minus tail
+  accuracy. Each cell gives the mean paired difference over 30 matched
+  split--seed runs and its 95\% percentile-bootstrap interval. Positive
+  values indicate lower tail accuracy; grey cells contain zero.}
+  \label{tab:erm-tail-gap-accuracy}
+  \scriptsize
+  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lccccc@{}}
+    \toprule
+    & \multicolumn{2}{c}{Low-homophily tail}
+    & \multicolumn{3}{c}{High-homophily tail} \\
+    \cmidrule(lr){2-3}\cmidrule(lr){4-6}
+    Model & PubMed & ogbn-arxiv & Roman-empire & Amazon-ratings & arxiv-year \\
+    \midrule
+    MLP              & \gaincell{+0.211}{[0.206,0.217]} & \gaincell{+0.270}{[0.269,0.271]} & \gaincell{+0.111}{[0.099,0.121]} & \gaincell{-0.159}{[-0.165,-0.153]} & \gaincell{-0.124}{[-0.127,-0.122]} \\
+    GCN              & \gaincell{+0.369}{[0.363,0.375]} & \gaincell{+0.520}{[0.519,0.521]} & \gaincell{-0.061}{[-0.069,-0.053]} & \gaincell{-0.438}{[-0.442,-0.434]} & \gaincell{-0.075}{[-0.085,-0.065]} \\
+    GraphSAGE-mean   & \gaincell{+0.359}{[0.354,0.365]} & \gaincell{+0.555}{[0.553,0.557]} & \gaincell{+0.077}{[0.069,0.086]} & \gaincell{-0.304}{[-0.310,-0.299]} & \gaincell{-0.181}{[-0.188,-0.174]} \\
+    H2GCN-2          & \gaincell{+0.302}{[0.295,0.308]} & \gaincell{+0.493}{[0.492,0.495]} & \gaincell{+0.089}{[0.079,0.099]} & \gaincell{-0.292}{[-0.298,-0.285]} & \gaincell{-0.232}{[-0.236,-0.229]} \\
+    GPR-GNN          & \gaincell{+0.355}{[0.349,0.360]} & \gaincell{+0.517}{[0.515,0.519]} & \gaincell{+0.052}{[0.044,0.059]} & \gaincell{-0.424}{[-0.429,-0.420]} & \gaincell{-0.249}{[-0.257,-0.240]} \\
+    ACM-GCN          & \gaincell{+0.338}{[0.332,0.345]} & \gaincell{+0.428}{[0.427,0.430]} & \gaincell{+0.065}{[0.058,0.072]} & \gaincell{-0.273}{[-0.280,-0.265]} & \gaincell{-0.273}{[-0.278,-0.268]} \\
+    LINKX            & \gaincell{+0.337}{[0.317,0.357]} & \gaincell{+0.310}{[0.298,0.322]} & \gaincell{+0.098}{[0.086,0.110]} & \gaincell{-0.282}{[-0.288,-0.275]} & \gaincell{-0.170}{[-0.178,-0.162]} \\
+    \bottomrule
+  \end{tabular*}
+\end{table}

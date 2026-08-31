@@ -1,0 +1,120 @@
+{
+  "analysis_script_sha256": "a642ba31ce72ffbae34bea0dca31ae9713f1b4cf2108f45fb5f24839a3267fe3",
+  "analysis_version": "true-label-support-v1",
+  "dataset": "amazon-ratings",
+  "input_checksums_sha256": {
+    "labels": "e509d03ad344580a1539730a6d31d77b9d09c83ab12f5f995dd1abd50e909883",
+    "merged_bin": "58af70f16c761090e694bf0fe95a3b2e329cac23a36150f312e64023da9aca46",
+    "predictions": "f26d91e5b89eda934ebe1c72daffe7013308c821da2133cf444804f0a5be3264",
+    "tail_mask": "1d7c678c5ef2ece072c2f2d18cd6099066a2e940687d6eb6d61761ef7396e543",
+    "test_idx": "53e3a13c9feb53793a7bde0dc438d56c33b2ccc59f633171c1ffc23877f3c0aa"
+  },
+  "metric_definition": {
+    "dataset_labels": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "labels": "classes present in the evaluated subset's true labels",
+    "name": "macro-F1",
+    "zero_division": 0
+  },
+  "metric_definition_commit": "91b2518af84cf7150d6f498360f5ab00ac5dc079",
+  "metrics": {
+    "per_bin": [
+      {
+        "bin_index": 0,
+        "interval": "[0,0.25)",
+        "is_tail": false,
+        "macro_f1": 0.34341039888034486,
+        "n_test": 2370,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "bin_index": 1,
+        "interval": "[0.25,0.5)",
+        "is_tail": false,
+        "macro_f1": 0.465338788307011,
+        "n_test": 1682,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "bin_index": 2,
+        "interval": "[0.5,0.75)",
+        "is_tail": false,
+        "macro_f1": 0.5993692179429075,
+        "n_test": 1363,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "bin_index": 3,
+        "interval": "[0.75,1]",
+        "is_tail": true,
+        "macro_f1": 0.691562425644337,
+        "n_test": 708,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    ],
+    "tail": {
+      "macro_f1": 0.691562425644337,
+      "n_test": 708,
+      "true_labels": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "tail_gap": -0.21791461327610445,
+    "whole_test": {
+      "macro_f1": 0.47364781236823256,
+      "n_test": 6123,
+      "true_labels": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "worst_bin": {
+      "bin_index": 0,
+      "interval": "[0,0.25)",
+      "macro_f1": 0.34341039888034486
+    }
+  },
+  "model": "graphsage-mean",
+  "preparation": "erm",
+  "run_id": "amazon-ratings_graphsage-mean_erm_platonov-8_seed-1",
+  "schema_version": 1,
+  "seed": 1,
+  "split": "platonov-8",
+  "training_code_version": "e3384abc853f7701f8ac9b624eba20b2838c6eaf"
+}

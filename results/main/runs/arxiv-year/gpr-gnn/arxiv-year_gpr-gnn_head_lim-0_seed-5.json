@@ -1,0 +1,120 @@
+{
+  "analysis_script_sha256": "a642ba31ce72ffbae34bea0dca31ae9713f1b4cf2108f45fb5f24839a3267fe3",
+  "analysis_version": "true-label-support-v1",
+  "dataset": "arxiv-year",
+  "input_checksums_sha256": {
+    "labels": "5441fcc1b5709c5b0d047c56ab1cd8058bc4d916235fd17f92bc7cfefe8947b8",
+    "merged_bin": "9698615fbec5f8682ef6875f49f51a76fbd7b3c5606daf310c2c48498923ee2d",
+    "predictions": "827bd2bfdfc1ddf154d4d0706f698e28c232916fbf272ddd2d5142cbe2fec172",
+    "tail_mask": "6f3e2d1b8030bf6839d3dd917a2815e087989d58dbc10971a55a8e0ed5bf39c4",
+    "test_idx": "bb9c0effb021a6050a5202ce776abe8d742b1a7a33a2d3983fda4d117d4b2285"
+  },
+  "metric_definition": {
+    "dataset_labels": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "labels": "classes present in the evaluated subset's true labels",
+    "name": "macro-F1",
+    "zero_division": 0
+  },
+  "metric_definition_commit": "91b2518af84cf7150d6f498360f5ab00ac5dc079",
+  "metrics": {
+    "per_bin": [
+      {
+        "bin_index": 0,
+        "interval": "[0,0.25)",
+        "is_tail": false,
+        "macro_f1": 0.21012239770598412,
+        "n_test": 23664,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "bin_index": 1,
+        "interval": "[0.25,0.5)",
+        "is_tail": false,
+        "macro_f1": 0.28262695058769766,
+        "n_test": 8371,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "bin_index": 2,
+        "interval": "[0.5,0.75)",
+        "is_tail": false,
+        "macro_f1": 0.3030630143495545,
+        "n_test": 4886,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "bin_index": 3,
+        "interval": "[0.75,1]",
+        "is_tail": true,
+        "macro_f1": 0.31793830501656317,
+        "n_test": 5416,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    ],
+    "tail": {
+      "macro_f1": 0.31793830501656317,
+      "n_test": 5416,
+      "true_labels": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "tail_gap": -0.03382547222790461,
+    "whole_test": {
+      "macro_f1": 0.28411283278865856,
+      "n_test": 42337,
+      "true_labels": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "worst_bin": {
+      "bin_index": 0,
+      "interval": "[0,0.25)",
+      "macro_f1": 0.21012239770598412
+    }
+  },
+  "model": "gpr-gnn",
+  "preparation": "head",
+  "run_id": "arxiv-year_gpr-gnn_head_lim-0_seed-5",
+  "schema_version": 1,
+  "seed": 5,
+  "split": "lim-0",
+  "training_code_version": "e3384abc853f7701f8ac9b624eba20b2838c6eaf"
+}

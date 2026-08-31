@@ -1,0 +1,81 @@
+{
+  "aggregation": "Unweighted arithmetic mean of the 30 split-seed run values in each dataset-model cell",
+  "analysis_script": "scripts/analyze_rq1_accuracy.py",
+  "analysis_script_sha256": "6ac5a4cb29b808dce6f8c48f0bfb8f80833537ad1301a2c611595be5c52dd40f",
+  "analysis_version": "rq1-whole-tail-accuracy-v2",
+  "metric_definition": {
+    "gap": "whole_accuracy minus tail_accuracy within each run",
+    "tail_accuracy": "fraction of test_idx nodes in the manifest-registered tail predicted correctly within each run",
+    "whole_accuracy": "fraction of all test_idx nodes predicted correctly within each run"
+  },
+  "output_sha256": {
+    "appendix_table.tex": "6bff0f1a666e3e1ab93d062d76bacdb110669ea48d6d61332b90b1ba8cb9962f",
+    "run_accuracy.csv": "9f2b112b3d1f5195e631282136760e7725a9b407116292ca0596112341f9eba6",
+    "whole_vs_tail_accuracy.csv": "9104a238b68653cac4819a45b327cc53821f25d649758e3c2f3f0d277f2a6675",
+    "whole_vs_tail_accuracy_wide.csv": "fa09b3bad680fe5990cd7b0f628e2c312c0dabdc36a3754d6453b4e48d15dbf2"
+  },
+  "paired_bootstrap": {
+    "cell_seed_key": "sha256(global_seed:dataset:model:erm-tail-gap), first 8 bytes interpreted little-endian",
+    "global_seed": 20260716,
+    "interval": "2.5th and 97.5th percentiles",
+    "multiple_comparison_correction": null,
+    "quantile_method": "linear",
+    "resampled_values": "30 paired whole-minus-tail run gaps",
+    "resamples": 1000,
+    "two_sided_p_value": "2 * min(fraction of bootstrap means <= 0, fraction >= 0), capped at 1"
+  },
+  "schema_version": 1,
+  "scope": {
+    "datasets": [
+      "pubmed",
+      "ogbn-arxiv",
+      "roman-empire",
+      "amazon-ratings",
+      "arxiv-year"
+    ],
+    "models": [
+      "mlp",
+      "gcn",
+      "graphsage-mean",
+      "h2gcn",
+      "gpr-gnn",
+      "linkx",
+      "acm-gcn"
+    ],
+    "n_cells": 35,
+    "n_runs": 1050,
+    "preparation": "erm"
+  },
+  "tail_definitions": {
+    "amazon-ratings": {
+      "interval": "[0.75,1]",
+      "side": "high-h_v"
+    },
+    "arxiv-year": {
+      "interval": "[0.75,1]",
+      "side": "high-h_v"
+    },
+    "ogbn-arxiv": {
+      "interval": "[0,0.25)",
+      "side": "low-h_v"
+    },
+    "pubmed": {
+      "interval": "[0,0.25)",
+      "side": "low-h_v"
+    },
+    "roman-empire": {
+      "interval": "[0.5,1]",
+      "side": "high-h_v"
+    }
+  },
+  "training_code_versions": [
+    "e3384abc853f7701f8ac9b624eba20b2838c6eaf"
+  ],
+  "validation": {
+    "complete_registered_split_seed_panel": true,
+    "fixed_arrays_match_manifest_sha256": true,
+    "maximum_tail_stored_absolute_error": 0.0,
+    "maximum_whole_stored_absolute_error": 0.0,
+    "stored_comparison_tolerance": 1e-12
+  }
+}

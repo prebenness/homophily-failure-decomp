@@ -1,0 +1,120 @@
+{
+  "analysis_script_sha256": "a642ba31ce72ffbae34bea0dca31ae9713f1b4cf2108f45fb5f24839a3267fe3",
+  "analysis_version": "true-label-support-v1",
+  "dataset": "amazon-ratings",
+  "input_checksums_sha256": {
+    "labels": "e509d03ad344580a1539730a6d31d77b9d09c83ab12f5f995dd1abd50e909883",
+    "merged_bin": "58af70f16c761090e694bf0fe95a3b2e329cac23a36150f312e64023da9aca46",
+    "predictions": "ff940dee76fe4050ba0fd9046d66f6b1f869f61b0afb50da8aea1cba5d631be3",
+    "tail_mask": "1d7c678c5ef2ece072c2f2d18cd6099066a2e940687d6eb6d61761ef7396e543",
+    "test_idx": "46f54c222687e414983e8ac0b955ecc494a9e5f4ef43b5523ba32afd79b3da7b"
+  },
+  "metric_definition": {
+    "dataset_labels": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "labels": "classes present in the evaluated subset's true labels",
+    "name": "macro-F1",
+    "zero_division": 0
+  },
+  "metric_definition_commit": "91b2518af84cf7150d6f498360f5ab00ac5dc079",
+  "metrics": {
+    "per_bin": [
+      {
+        "bin_index": 0,
+        "interval": "[0,0.25)",
+        "is_tail": false,
+        "macro_f1": 0.2437460654964823,
+        "n_test": 2339,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "bin_index": 1,
+        "interval": "[0.25,0.5)",
+        "is_tail": false,
+        "macro_f1": 0.3246318957292286,
+        "n_test": 1682,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "bin_index": 2,
+        "interval": "[0.5,0.75)",
+        "is_tail": false,
+        "macro_f1": 0.4596761778861741,
+        "n_test": 1340,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "bin_index": 3,
+        "interval": "[0.75,1]",
+        "is_tail": true,
+        "macro_f1": 0.5441188107429127,
+        "n_test": 762,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    ],
+    "tail": {
+      "macro_f1": 0.5441188107429127,
+      "n_test": 762,
+      "true_labels": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "tail_gap": -0.19584252077869901,
+    "whole_test": {
+      "macro_f1": 0.34827628996421367,
+      "n_test": 6123,
+      "true_labels": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "worst_bin": {
+      "bin_index": 0,
+      "interval": "[0,0.25)",
+      "macro_f1": 0.2437460654964823
+    }
+  },
+  "model": "acm-gcn",
+  "preparation": "full",
+  "run_id": "amazon-ratings_acm-gcn_full_platonov-5_seed-2",
+  "schema_version": 1,
+  "seed": 2,
+  "split": "platonov-5",
+  "training_code_version": "e3384abc853f7701f8ac9b624eba20b2838c6eaf"
+}

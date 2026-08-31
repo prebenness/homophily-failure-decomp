@@ -1,0 +1,349 @@
+{
+  "schema_version": 1,
+  "expected_counts": {
+    "figures": 23,
+    "tables": 25
+  },
+  "figures": [
+    {
+      "label": "fig:local-homophily-gap",
+      "artifact_path": "paper/figures/decomposing-heterophilic.drawio.pdf",
+      "kind": "versioned-source",
+      "generator": null,
+      "generated_path": null,
+      "component_generator": "scripts/plot_rq5_pubmed_gcn_recovery_panel.py",
+      "component_generated_path": "results/main/figures/rq5/rq5_pubmed_gcn_tail_vs_non_tail_macro_f1_panel.pdf",
+      "sha256": "a9e7af6cd8ab40c91bd7c12962edf23b25adad206756856654ccafcc270b9c6f",
+      "note": "The quantitative PubMed-GCN panel is generated separately."
+    },
+    {
+      "label": "fig:local-homophily-bins-tikz",
+      "artifact_path": "paper/figures/local_homophily_bin.tex",
+      "kind": "generated",
+      "generator": "scripts/generate_local_homophily_bin_figure.py",
+      "generated_path": "results/main/figures/datasets/local_homophily_bin.tex",
+      "sha256": "f315f795746508a780bb814cf352be2ee0100925d6115566a5d4ff3f87025614",
+      "note": "TikZ figure generated from the registered dataset manifests."
+    },
+    {
+      "label": "fig:edge-perturbation-dose-response",
+      "artifact_path": "paper/figures/edge_perturbation_dose_response.pdf",
+      "kind": "generated",
+      "generator": "scripts/plot_edge_dose_response_composite.py",
+      "generated_path": "results/edge_perturbation_dose_response_composite/edge_perturbation_dose_response.pdf",
+      "sha256": "9c509206f5478636e890018e618b8fbb39aee1dd46c9b560b0902ddcd4831857"
+    },
+    {
+      "label": "fig:edge-perturbation-dose-response-last",
+      "artifact_path": "paper/figures/edge_perturbation_dose_response_last.pdf",
+      "kind": "generated",
+      "generator": "scripts/plot_edge_dose_response_composite.py",
+      "generated_path": "results/edge_perturbation_dose_response_composite_last/edge_perturbation_dose_response.pdf",
+      "sha256": "3c15f9752e3ca262dad980af1439560dc3850b2bde2e5bb5fb7c630eeb8e45b1"
+    },
+    {
+      "label": "fig:edge-perturbation-dose-response-head",
+      "artifact_path": "paper/figures/edge_perturbation_dose_response_head.pdf",
+      "kind": "generated",
+      "generator": "scripts/plot_edge_dose_response_composite.py",
+      "generated_path": "results/edge_perturbation_dose_response_composite_head/edge_perturbation_dose_response.pdf",
+      "sha256": "47e7ab3254713a4cc6b771bdbdf567eee4769c9713821026b18770f131723a5e"
+    },
+    {
+      "label": "fig:edge-perturbation-dose-response-full",
+      "artifact_path": "paper/figures/edge_perturbation_dose_response_full.pdf",
+      "kind": "generated",
+      "generator": "scripts/plot_edge_dose_response_composite.py",
+      "generated_path": "results/edge_perturbation_dose_response_composite_full/edge_perturbation_dose_response.pdf",
+      "sha256": "601e4ffc1b807d4b49f8efcbbbef1d8da0849094609625d6ed9a914302944927"
+    },
+    {
+      "label": "fig:rq1-rq2-tail-gaps",
+      "artifact_path": "paper/figures/rq1_rq2_unadjusted_and_class_adjusted_macro_f1_tail_gaps_unequal_y.pdf",
+      "kind": "generated",
+      "generator": "scripts/plot_rq1_rq2_paired_forest.py",
+      "generated_path": "results/main/figures/rq1-rq2/unequal-y/rq1_rq2_unadjusted_and_class_adjusted_macro_f1_tail_gaps_unequal_y.pdf",
+      "sha256": "1cd5f497348c8ea1ac5f34ec70fe611025908ef7018826ebb5290f42fb1ff5fd"
+    },
+    {
+      "label": "fig:rq1-continuous-macro-f1",
+      "artifact_path": "paper/figures/rq1_macro_f1_by_local_homophily_composite.pdf",
+      "kind": "generated",
+      "generator": "scripts/plot_rq1_composite.py",
+      "generated_path": "results/main/figures/rq1/rq1_erm_five-datasets_all-models_12-bin_macro_f1_by_local_homophily_with-ci.pdf",
+      "sha256": "cd000da98b479c77002fe77a59aee43f31f1210cf1e667388dc944fbdc03ec1c"
+    },
+    {
+      "label": "fig:rq1-continuous-accuracy",
+      "artifact_path": "paper/figures/rq1_accuracy_by_local_homophily_composite.pdf",
+      "kind": "generated",
+      "generator": "scripts/plot_rq1_composite.py",
+      "generated_path": "results/main/figures/rq1/rq1_erm_five-datasets_all-models_12-bin_accuracy_by_local_homophily_with-ci.pdf",
+      "sha256": "29b9e5588e83a0c2af742b81a3dba24365e77fa84a42eff99662e9c5df1bffe1"
+    },
+    {
+      "label": "fig:rq3-rq4-whole-tail-scores",
+      "artifact_path": "paper/figures/rq3_rq4_whole_test_and_tail_macro_f1_by_model_family.pdf",
+      "kind": "generated",
+      "generator": "scripts/plot_compact_main_figures.py",
+      "generated_path": "results/main/figures/rq3-rq4/rq3_rq4_whole_test_and_tail_macro_f1_by_model_family.pdf",
+      "sha256": "3203075e136d6a88b82efbef0690eeb17557c2c05be2d0dec6767404487fac85"
+    },
+    {
+      "label": "fig:rq5-preparations-overview",
+      "artifact_path": "paper/figures/rq5_tail_vs_non_tail_macro_f1_compact.pdf",
+      "kind": "generated",
+      "generator": "scripts/plot_rq5_tail_vs_non_tail.py",
+      "generated_path": "results/main/figures/rq5/rq5_tail_vs_non_tail_macro_f1_compact.pdf",
+      "sha256": "871dea6eabec722a596f5edb094adb05f1d3c5aa731a1437b1913491db11a8ef"
+    },
+    {
+      "label": "fig:rq3-tail-gap-contrast",
+      "artifact_path": "paper/figures/rq3_aggregation_vs_mlp_tail_gap_contrast.pdf",
+      "kind": "generated",
+      "generator": "scripts/plot_rq3_mlp_contrasts.py",
+      "generated_path": "results/main/figures/rq3/rq3_aggregation_vs_mlp_tail_gap_contrast.pdf",
+      "sha256": "d877232e8e9ecc52dea6434d0af26513bb929337fcbe02a1462dd1dca78adf28"
+    },
+    {
+      "label": "fig:rq3-aggregation-vs-mlp-class-adjusted",
+      "artifact_path": "paper/figures/rq3_aggregation_vs_mlp_class_adjusted_tail_gap_contrast.pdf",
+      "kind": "generated",
+      "generator": "scripts/plot_rq3_mlp_contrasts.py",
+      "generated_path": "results/main/figures/rq3/rq3_aggregation_vs_mlp_class_adjusted_tail_gap_contrast.pdf",
+      "sha256": "e48e9d0da7dc229e96d8b673232c677bb3204aa926b8a6f59069960552844ad4"
+    },
+    {
+      "label": "fig:rq4-class-adjusted-whole-tail-scores",
+      "artifact_path": "paper/figures/rq4_class_adjusted_whole_test_and_tail_macro_f1_by_model_family.pdf",
+      "kind": "generated",
+      "generator": "scripts/plot_rq4_class_adjusted_model_families.py",
+      "generated_path": "results/main/figures/rq4/rq4_class_adjusted_whole_test_and_tail_macro_f1_by_model_family.pdf",
+      "sha256": "ea24f7f2eed3b47a6dff373c4fa23a553343cbf851ac6cdfc04c434d4bc7b581"
+    },
+    {
+      "label": "fig:additional-local-homophily-bins-tikz",
+      "artifact_path": "paper/figures/additional-datasets/local_homophily_bin.tex",
+      "kind": "generated",
+      "generator": "scripts/generate_local_homophily_bin_figure.py",
+      "generated_path": "results/additional/figures/datasets/local_homophily_bin.tex",
+      "sha256": "67c1a0ec5b4bdf6aab3686b76819f520c10cc4408a10e5873e03dc356c8eac64"
+    },
+    {
+      "label": "fig:additional-rq1-continuous-macro-f1",
+      "artifact_path": "paper/figures/additional-datasets/rq1_macro_f1_by_local_homophily.pdf",
+      "kind": "generated",
+      "generator": "scripts/plot_rq1_composite.py",
+      "generated_path": "results/additional/figures/rq1/rq1_erm_additional-datasets_all-models_12-bin_macro_f1_by_local_homophily_with-ci.pdf",
+      "sha256": "6752eca183daf9528ca35b5ac155c4f40ec6290053d0e4140a337e808ddf91ed"
+    },
+    {
+      "label": "fig:additional-rq1-rq2-tail-gaps",
+      "artifact_path": "paper/figures/additional-datasets/rq1_rq2_tail_gaps.pdf",
+      "kind": "generated",
+      "generator": "scripts/plot_rq1_rq2_paired_forest.py",
+      "generated_path": "results/additional/figures/rq1-rq2/unequal-y/rq1_rq2_additional_datasets_unadjusted_and_class_adjusted_macro_f1_tail_gaps_unequal_y.pdf",
+      "sha256": "e1a886c220a44f9082091035f237f00751de78c315c4842bf54a7d9689bddf36"
+    },
+    {
+      "label": "fig:additional-rq3-rq4-whole-tail-scores",
+      "artifact_path": "paper/figures/additional-datasets/rq3_rq4_whole_tail_scores.pdf",
+      "kind": "generated",
+      "generator": "scripts/plot_compact_main_figures.py",
+      "generated_path": "results/additional/figures/rq3-rq4/rq3_rq4_whole_test_and_tail_macro_f1_by_model_family.pdf",
+      "sha256": "3d60731aae00182d69336c57d15d2c4bcacc38b5a8c72b7aec0f9c7b5975b2f5"
+    },
+    {
+      "label": "fig:additional-rq5-preparations-overview",
+      "artifact_path": "paper/figures/additional-datasets/rq5_preparations_overview.pdf",
+      "kind": "generated",
+      "generator": "scripts/plot_rq5_tail_vs_non_tail.py",
+      "generated_path": "results/additional/figures/rq5/rq5_tail_vs_non_tail_macro_f1_compact.pdf",
+      "sha256": "e64afa178fbdbefd109899cc04129cbef8c3f9347e8c44bca55a919ff824bea9"
+    },
+    {
+      "label": "fig:additional-rq1-continuous-accuracy",
+      "artifact_path": "paper/figures/additional-datasets/rq1_accuracy_by_local_homophily.pdf",
+      "kind": "generated",
+      "generator": "scripts/plot_rq1_composite.py",
+      "generated_path": "results/additional/figures/rq1/rq1_erm_additional-datasets_all-models_12-bin_accuracy_by_local_homophily_with-ci.pdf",
+      "sha256": "332d2a0633b823fce4f333fca36f6b85b5f1d85abf8d2761edcb4120370a6a3a"
+    },
+    {
+      "label": "fig:additional-rq3-tail-gap-contrast",
+      "artifact_path": "paper/figures/additional-datasets/rq3_tail_gap_contrast.pdf",
+      "kind": "generated",
+      "generator": "scripts/plot_rq3_mlp_contrasts.py",
+      "generated_path": "results/additional/figures/rq3/rq3_aggregation_vs_mlp_tail_gap_contrast.pdf",
+      "sha256": "feda4d5beeb86a663d5cc54ae5ba3965ecc80d226ec50320ce69b966d9a87691"
+    },
+    {
+      "label": "fig:additional-rq3-aggregation-vs-mlp-class-adjusted",
+      "artifact_path": "paper/figures/additional-datasets/rq3_class_adjusted_tail_gap_contrast.pdf",
+      "kind": "generated",
+      "generator": "scripts/plot_rq3_mlp_contrasts.py",
+      "generated_path": "results/additional/figures/rq3/rq3_aggregation_vs_mlp_class_adjusted_tail_gap_contrast.pdf",
+      "sha256": "abbb1973aabd681620bc2e55044e7f27a9e05dca002f7c99781f5e37341e3165"
+    },
+    {
+      "label": "fig:additional-rq4-class-adjusted-whole-tail-scores",
+      "artifact_path": "paper/figures/additional-datasets/rq4_class_adjusted_whole_tail_scores.pdf",
+      "kind": "generated",
+      "generator": "scripts/plot_rq4_class_adjusted_model_families.py",
+      "generated_path": "results/additional/figures/rq4/rq4_class_adjusted_whole_test_and_tail_macro_f1_by_model_family.pdf",
+      "sha256": "403ba4b4dc34d6e666679841982676da62fa19833443314ae8ed2c4cb2205a84"
+    }
+  ],
+  "tables": [
+    {
+      "label": "tab:groups",
+      "kind": "generated",
+      "generator": "scripts/render_paper_tables.py",
+      "generated_path": "paper/generated/tables/local_homophily_groups.tex"
+    },
+    {
+      "label": "tab:training-gpu-hours",
+      "kind": "generated",
+      "generator": "scripts/render_paper_tables.py",
+      "generated_path": "paper/generated/tables/training_gpu_hours.tex"
+    },
+    {
+      "label": "tab:erm-tail-gap",
+      "kind": "generated",
+      "generator": "scripts/render_paper_tables.py",
+      "generated_path": "paper/generated/tables/rq1_macro_f1_tail_gap.tex"
+    },
+    {
+      "label": "tab:erm-tail-gap-accuracy",
+      "kind": "generated",
+      "generator": "scripts/render_paper_tables.py",
+      "generated_path": "paper/generated/tables/rq1_accuracy_tail_gap.tex"
+    },
+    {
+      "label": "tab:rq2-class-macro-accuracy",
+      "kind": "generated",
+      "generator": "scripts/render_paper_tables.py",
+      "generated_path": "paper/generated/tables/rq2_within_class_accuracy.tex"
+    },
+    {
+      "label": "tab:rq2-adjusted-accuracy",
+      "kind": "generated",
+      "generator": "scripts/render_paper_tables.py",
+      "generated_path": "paper/generated/tables/rq2_adjusted_accuracy.tex"
+    },
+    {
+      "label": "tab:rq2-adjusted-macro-f1",
+      "kind": "generated",
+      "generator": "scripts/render_paper_tables.py",
+      "generated_path": "paper/generated/tables/rq2_adjusted_macro_f1.tex"
+    },
+    {
+      "label": "tab:rq4-designed-vs-standard",
+      "kind": "generated",
+      "generator": "scripts/render_paper_tables.py",
+      "generated_path": "paper/generated/tables/rq4_designed_vs_standard.tex"
+    },
+    {
+      "label": "tab:last-tail-gain",
+      "kind": "generated",
+      "generator": "scripts/render_paper_tables.py",
+      "generated_path": "paper/generated/tables/rq5_last_tail_gain.tex"
+    },
+    {
+      "label": "tab:head-tail-gain",
+      "kind": "generated",
+      "generator": "scripts/render_paper_tables.py",
+      "generated_path": "paper/generated/tables/rq5_head_tail_gain.tex"
+    },
+    {
+      "label": "tab:full-tail-gain",
+      "kind": "generated",
+      "generator": "scripts/render_paper_tables.py",
+      "generated_path": "paper/generated/tables/rq5_full_tail_gain.tex"
+    },
+    {
+      "label": "tab:rq5-dfr-tail-macro-f1",
+      "kind": "generated",
+      "generator": "scripts/render_paper_tables.py",
+      "generated_path": "paper/generated/tables/rq5_dfr_tail_macro_f1.tex"
+    },
+    {
+      "label": "tab:fg-ccdb-pubmed",
+      "kind": "generated",
+      "generator": "scripts/render_paper_tables.py",
+      "generated_path": "paper/generated/tables/fg_ccdb_pubmed.tex"
+    },
+    {
+      "label": "tab:additional-groups",
+      "kind": "generated",
+      "generator": "scripts/render_paper_tables.py",
+      "generated_path": "paper/generated/additional-datasets/local_homophily_groups.tex"
+    },
+    {
+      "label": "tab:additional-erm-tail-gap",
+      "kind": "generated",
+      "generator": "scripts/render_paper_tables.py",
+      "generated_path": "paper/generated/additional-datasets/rq1_macro_f1_tail_gap.tex"
+    },
+    {
+      "label": "tab:additional-erm-tail-gap-accuracy",
+      "kind": "generated",
+      "generator": "scripts/render_paper_tables.py",
+      "generated_path": "paper/generated/additional-datasets/rq1_accuracy_tail_gap.tex"
+    },
+    {
+      "label": "tab:additional-rq2-class-macro-accuracy",
+      "kind": "generated",
+      "generator": "scripts/render_paper_tables.py",
+      "generated_path": "paper/generated/additional-datasets/rq2_within_class_accuracy.tex"
+    },
+    {
+      "label": "tab:additional-rq2-adjusted-accuracy",
+      "kind": "generated",
+      "generator": "scripts/render_paper_tables.py",
+      "generated_path": "paper/generated/additional-datasets/rq2_adjusted_accuracy.tex"
+    },
+    {
+      "label": "tab:additional-rq2-adjusted-macro-f1",
+      "kind": "generated",
+      "generator": "scripts/render_paper_tables.py",
+      "generated_path": "paper/generated/additional-datasets/rq2_adjusted_macro_f1.tex"
+    },
+    {
+      "label": "tab:additional-rq4-designed-vs-standard",
+      "kind": "generated",
+      "generator": "scripts/render_paper_tables.py",
+      "generated_path": "paper/generated/additional-datasets/rq4_designed_vs_standard.tex"
+    },
+    {
+      "label": "tab:additional-last-tail-gain",
+      "kind": "generated",
+      "generator": "scripts/render_paper_tables.py",
+      "generated_path": "paper/generated/additional-datasets/rq5_last_tail_gain.tex"
+    },
+    {
+      "label": "tab:additional-head-tail-gain",
+      "kind": "generated",
+      "generator": "scripts/render_paper_tables.py",
+      "generated_path": "paper/generated/additional-datasets/rq5_head_tail_gain.tex"
+    },
+    {
+      "label": "tab:additional-full-tail-gain",
+      "kind": "generated",
+      "generator": "scripts/render_paper_tables.py",
+      "generated_path": "paper/generated/additional-datasets/rq5_full_tail_gain.tex"
+    },
+    {
+      "label": "tab:additional-rho-last-recovered-share",
+      "kind": "generated",
+      "generator": "scripts/render_paper_tables.py",
+      "generated_path": "paper/generated/additional-datasets/rq2_last_recovered_share.tex"
+    },
+    {
+      "label": "tab:additional-rho-head-recovered-share",
+      "kind": "generated",
+      "generator": "scripts/render_paper_tables.py",
+      "generated_path": "paper/generated/additional-datasets/rq2_head_recovered_share.tex"
+    }
+  ]
+}

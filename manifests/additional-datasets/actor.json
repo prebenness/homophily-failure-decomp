@@ -1,0 +1,271 @@
+{
+  "dataset": "actor",
+  "metric": "accuracy",
+  "split_panel": "geom-gcn-film-10",
+  "training_seeds": [
+    1,
+    2,
+    3
+  ],
+  "n_runs": 30,
+  "graph": {
+    "num_nodes": 7600,
+    "num_edges_as_released": 30019,
+    "num_undirected_simple_edges": 26659,
+    "feature_dim": 932,
+    "num_classes": 5
+  },
+  "local_homophily": {
+    "n_labelled": 7600,
+    "n_undefined_h": 0,
+    "n_eligible": 7600,
+    "mean_h": 0.21993501116900094,
+    "direction": "heterophilic",
+    "tail_side": "high-h_v",
+    "base_bins": [
+      {
+        "interval": "[0,0.25)",
+        "count": 4663,
+        "fraction_of_eligible": 0.6135526315789473
+      },
+      {
+        "interval": "[0.25,0.5)",
+        "count": 1685,
+        "fraction_of_eligible": 0.22171052631578947
+      },
+      {
+        "interval": "[0.5,0.75)",
+        "count": 771,
+        "fraction_of_eligible": 0.10144736842105263
+      },
+      {
+        "interval": "[0.75,1]",
+        "count": 481,
+        "fraction_of_eligible": 0.06328947368421052
+      }
+    ],
+    "merge_history": [],
+    "merged_bins": [
+      {
+        "interval": "[0,0.25)",
+        "base_bins": [
+          0
+        ],
+        "count": 4663,
+        "fraction_of_eligible": 0.6135526315789473,
+        "is_tail": false,
+        "class_composition": {
+          "0": 720,
+          "1": 962,
+          "2": 1070,
+          "3": 894,
+          "4": 1017
+        }
+      },
+      {
+        "interval": "[0.25,0.5)",
+        "base_bins": [
+          1
+        ],
+        "count": 1685,
+        "fraction_of_eligible": 0.22171052631578947,
+        "is_tail": false,
+        "class_composition": {
+          "0": 79,
+          "1": 238,
+          "2": 326,
+          "3": 471,
+          "4": 571
+        }
+      },
+      {
+        "interval": "[0.5,0.75)",
+        "base_bins": [
+          2
+        ],
+        "count": 771,
+        "fraction_of_eligible": 0.10144736842105263,
+        "is_tail": false,
+        "class_composition": {
+          "0": 36,
+          "1": 84,
+          "2": 147,
+          "3": 254,
+          "4": 250
+        }
+      },
+      {
+        "interval": "[0.75,1]",
+        "base_bins": [
+          3
+        ],
+        "count": 481,
+        "fraction_of_eligible": 0.06328947368421052,
+        "is_tail": true,
+        "class_composition": {
+          "0": 18,
+          "1": 53,
+          "2": 87,
+          "3": 196,
+          "4": 127
+        }
+      }
+    ],
+    "tail": {
+      "interval": "[0.75,1]",
+      "count": 481,
+      "fraction_of_eligible": 0.06328947368421052
+    }
+  },
+  "splits": [
+    {
+      "split_id": "geomgcn-0",
+      "n_train": 3648,
+      "n_val": 2432,
+      "n_test": 1520,
+      "n_train_tail": 236,
+      "n_val_tail": 151,
+      "n_test_eligible": 1520,
+      "n_test_tail": 94
+    },
+    {
+      "split_id": "geomgcn-1",
+      "n_train": 3648,
+      "n_val": 2432,
+      "n_test": 1520,
+      "n_train_tail": 235,
+      "n_val_tail": 152,
+      "n_test_eligible": 1520,
+      "n_test_tail": 94
+    },
+    {
+      "split_id": "geomgcn-2",
+      "n_train": 3648,
+      "n_val": 2432,
+      "n_test": 1520,
+      "n_train_tail": 233,
+      "n_val_tail": 160,
+      "n_test_eligible": 1520,
+      "n_test_tail": 88
+    },
+    {
+      "split_id": "geomgcn-3",
+      "n_train": 3648,
+      "n_val": 2432,
+      "n_test": 1520,
+      "n_train_tail": 233,
+      "n_val_tail": 161,
+      "n_test_eligible": 1520,
+      "n_test_tail": 87
+    },
+    {
+      "split_id": "geomgcn-4",
+      "n_train": 3648,
+      "n_val": 2432,
+      "n_test": 1520,
+      "n_train_tail": 234,
+      "n_val_tail": 141,
+      "n_test_eligible": 1520,
+      "n_test_tail": 106
+    },
+    {
+      "split_id": "geomgcn-5",
+      "n_train": 3648,
+      "n_val": 2432,
+      "n_test": 1520,
+      "n_train_tail": 226,
+      "n_val_tail": 145,
+      "n_test_eligible": 1520,
+      "n_test_tail": 110
+    },
+    {
+      "split_id": "geomgcn-6",
+      "n_train": 3648,
+      "n_val": 2432,
+      "n_test": 1520,
+      "n_train_tail": 232,
+      "n_val_tail": 157,
+      "n_test_eligible": 1520,
+      "n_test_tail": 92
+    },
+    {
+      "split_id": "geomgcn-7",
+      "n_train": 3648,
+      "n_val": 2432,
+      "n_test": 1520,
+      "n_train_tail": 234,
+      "n_val_tail": 171,
+      "n_test_eligible": 1520,
+      "n_test_tail": 76
+    },
+    {
+      "split_id": "geomgcn-8",
+      "n_train": 3648,
+      "n_val": 2432,
+      "n_test": 1520,
+      "n_train_tail": 216,
+      "n_val_tail": 175,
+      "n_test_eligible": 1520,
+      "n_test_tail": 90
+    },
+    {
+      "split_id": "geomgcn-9",
+      "n_train": 3648,
+      "n_val": 2432,
+      "n_test": 1520,
+      "n_train_tail": 220,
+      "n_val_tail": 152,
+      "n_test_eligible": 1520,
+      "n_test_tail": 109
+    }
+  ],
+  "notes": {
+    "aliases": [
+      "Actor",
+      "Film"
+    ],
+    "source": "PyTorch Geometric Actor loader; graph and ten released Geom-GCN splits (48/32/20 train/validation/test), source commit 74ed69daf738ab90a0fb593379311969c8244f39"
+  },
+  "graph_checksums_sha256": {
+    "features": "7d80e95b495d1cb0db75066f8ab8e30f45d88065cb68535a364dbda5e1928539",
+    "simple_edge_index": "de474d418d83a8a27f39e8228e08ef5122f9f5bffcab6c1e3cda9ee06921fb69"
+  },
+  "array_checksums_sha256": {
+    "base_bin": "51060fc42524e46e089c9f6ea3bd72d3a8d9a57a0c8facbb7c45cd45247944cc",
+    "eligible": "6b6a439b32fb28c5229f21cce2307736dcb9f76b54d693ebde3a6ba1f917500b",
+    "geomgcn-0.test": "e4e3ef2c0d399e7325f7e19410e4e578a4bdfa056b50bdfffb1ee1bddfe13b2b",
+    "geomgcn-0.train": "d2f506bd4a41069a34a6eb7f78c1db9310c913442c2f8c98f9c13602363e7f73",
+    "geomgcn-0.val": "1988a86547ed82f836e595e23393a91f0092819da7911488d6c687bf3e20fd98",
+    "geomgcn-1.test": "517041f439b18ea8614e56096cb700e8ea1c307c68e3f98b4518a53f7aa3cffa",
+    "geomgcn-1.train": "4f47a891737545957f1d7efcf8e5c66e9160adf0f45f1af13a1c303c9df58231",
+    "geomgcn-1.val": "981b2beb6e1d490b1b70ba1221b23fbfd8ec44f810ff40820d1bba35488f1ee8",
+    "geomgcn-2.test": "4c5f2354f9cba89e61ef8e74079555533d414e3af8cf5eeb2927e8ab4f01e00f",
+    "geomgcn-2.train": "62c2fd5f8947bb76b45afc5b243d625a4f9e49e612432db213a842e9414b3e23",
+    "geomgcn-2.val": "f1b628b26d6df8601f98582fb19d5e3a1514fe52e8723fe6f970dce14b33dceb",
+    "geomgcn-3.test": "d67e1324039e1833c7cba66bebf9d0854ff0ab6cf7954322b97f8913171ab61e",
+    "geomgcn-3.train": "bdf14bb138c65c72772e7405d595d04757b3e0664bdc91888ca2a5e4cddf0b46",
+    "geomgcn-3.val": "d1bf2f2320fac5fdc35c0527091e9919302d77ccc084b047ff8c63975ecc4b91",
+    "geomgcn-4.test": "0a4865bdef7218d7de7a4ce902c5578f0c6e4745f97de5efbc227de157d16570",
+    "geomgcn-4.train": "868f36d6b0ecb763c008fd6505317486dd41e85e7d90438d043cb350b93a1826",
+    "geomgcn-4.val": "f294c428b56ed006e21d27f8c966b22f436c5fa69714a4690d8803f59118f8a9",
+    "geomgcn-5.test": "5bae6654f3b37b8e9aa78963b91c1ac23ef7243fab2716169a4ed078f4060f7b",
+    "geomgcn-5.train": "45260721785538ec06348206a986164f44e682fb5fe129a1d557f5527e006429",
+    "geomgcn-5.val": "35d105db653c3148652813ff03dfcab5e95c00c1955feedb54182ea84ab93dee",
+    "geomgcn-6.test": "ddfe1bb4babaed3cb9bc59358f4d32f9baee9bdd6aecdd9691457d9de866bb30",
+    "geomgcn-6.train": "9105150a48cd484a971b57c2ae91723d665a116b74e951cf1a8ca275bbc84caa",
+    "geomgcn-6.val": "9d92db8731ec564c05460274afaa1eb9e6c4d78a5bcc3846eb993f2dec32cf60",
+    "geomgcn-7.test": "3f1c865529b3e57e018897a283a4500f2cabcff1214ed2fc919bbe7738d5e85b",
+    "geomgcn-7.train": "79c5a878bc2e974ba59bfb6cc695e678a6f84edee9d7e11248924cc3048303eb",
+    "geomgcn-7.val": "7980b61ed138207922dc1aa28131b442318ae8815a64a1ef31336fd806ad32fd",
+    "geomgcn-8.test": "d2b666bf857b3692ed6d2dc13a392e52b54ab97217a8a996745ba5d459616eeb",
+    "geomgcn-8.train": "dbe15559b2074df918f6f0caf1f0ac2bd54fe2d6605f45208cee184f5000382d",
+    "geomgcn-8.val": "b0f198ed6d56775919a9426ea38fd39bcea51da230cf485475d7fad80c7b49a2",
+    "geomgcn-9.test": "7fe2aee5978303a0a427f78afb0455fb57ba481b494ef0a91617df5e2ae1cb72",
+    "geomgcn-9.train": "6dc2d081eb7fa131bfa0a585987da1269177f8c80add072eb2fa2ea94e899096",
+    "geomgcn-9.val": "2f6f7a86aa66243b74b9cd4191ef6f884de73fa8b0291ec65552eb9b18c6f4fa",
+    "h": "d49e0825fa59a47ad36da5612ff0371f0550cfdc472fa1b5c75ef36ac26c5a95",
+    "labels": "697482f1b5f45e095c1723513016cecea43c757d2f5f779c3042a95aada7894b",
+    "merged_bin": "51060fc42524e46e089c9f6ea3bd72d3a8d9a57a0c8facbb7c45cd45247944cc",
+    "tail_mask": "a4ba1fc2a21852b30f368f3592f29c938d59dcc1e0c9505c5b84e38a09f5440b"
+  }
+}

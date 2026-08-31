@@ -1,0 +1,120 @@
+{
+  "analysis_script_sha256": "3312cbd9560dc7564ffe668e6daf1f3f0e66d41a7c5343423f1fac60a87b95d0",
+  "analysis_version": "true-label-support-v1",
+  "dataset": "actor",
+  "input_checksums_sha256": {
+    "labels": "697482f1b5f45e095c1723513016cecea43c757d2f5f779c3042a95aada7894b",
+    "merged_bin": "51060fc42524e46e089c9f6ea3bd72d3a8d9a57a0c8facbb7c45cd45247944cc",
+    "predictions": "5b644eefcfca0834c24c63d3e67f85a60df69ad3e80e117ddca479c1768e692b",
+    "tail_mask": "a4ba1fc2a21852b30f368f3592f29c938d59dcc1e0c9505c5b84e38a09f5440b",
+    "test_idx": "d67e1324039e1833c7cba66bebf9d0854ff0ab6cf7954322b97f8913171ab61e"
+  },
+  "metric_definition": {
+    "dataset_labels": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "labels": "classes present in the evaluated subset's true labels",
+    "name": "macro-F1",
+    "zero_division": 0
+  },
+  "metric_definition_commit": "91b2518af84cf7150d6f498360f5ab00ac5dc079",
+  "metrics": {
+    "per_bin": [
+      {
+        "bin_index": 0,
+        "interval": "[0,0.25)",
+        "is_tail": false,
+        "macro_f1": 0.3208928339889254,
+        "n_test": 919,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "bin_index": 1,
+        "interval": "[0.25,0.5)",
+        "is_tail": false,
+        "macro_f1": 0.32513365780235776,
+        "n_test": 353,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "bin_index": 2,
+        "interval": "[0.5,0.75)",
+        "is_tail": false,
+        "macro_f1": 0.3308132655946678,
+        "n_test": 161,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "bin_index": 3,
+        "interval": "[0.75,1]",
+        "is_tail": true,
+        "macro_f1": 0.5170177404295051,
+        "n_test": 87,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    ],
+    "tail": {
+      "macro_f1": 0.5170177404295051,
+      "n_test": 87,
+      "true_labels": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "tail_gap": -0.171247885898219,
+    "whole_test": {
+      "macro_f1": 0.3457698545312861,
+      "n_test": 1520,
+      "true_labels": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "worst_bin": {
+      "bin_index": 0,
+      "interval": "[0,0.25)",
+      "macro_f1": 0.3208928339889254
+    }
+  },
+  "model": "graphsage-mean",
+  "preparation": "full",
+  "run_id": "actor_graphsage-mean_full_geomgcn-3_seed-2",
+  "schema_version": 1,
+  "seed": 2,
+  "split": "geomgcn-3",
+  "training_code_version": "55bda6604749a84f8f47df19f15486bdd1c811c8"
+}

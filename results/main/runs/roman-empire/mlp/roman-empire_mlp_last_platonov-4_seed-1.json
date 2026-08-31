@@ -1,0 +1,170 @@
+{
+  "analysis_script_sha256": "a642ba31ce72ffbae34bea0dca31ae9713f1b4cf2108f45fb5f24839a3267fe3",
+  "analysis_version": "true-label-support-v1",
+  "dataset": "roman-empire",
+  "input_checksums_sha256": {
+    "labels": "9be3c1257b4cfebeca26f57787166dfd3d76b5db7b0fc6376d82e14a8aa23e13",
+    "merged_bin": "e0c85dc1937e855b06017f39fd4d19c41535248cf4fc3d25659c7e8b462bb830",
+    "predictions": "666613bb26882e9e6b38f42d37a542f02606ed11d75c260de5cc3c2c29c378fa",
+    "tail_mask": "02f75c1305067d9622712324013b5bd51109b5d66e1fdbaa6c09bda32d7c921b",
+    "test_idx": "139a56b5c77f96fcd5321e2cba3633cd03a5f702f59ab2b3e353bd1d9a9df522"
+  },
+  "metric_definition": {
+    "dataset_labels": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "labels": "classes present in the evaluated subset's true labels",
+    "name": "macro-F1",
+    "zero_division": 0
+  },
+  "metric_definition_commit": "91b2518af84cf7150d6f498360f5ab00ac5dc079",
+  "metrics": {
+    "per_bin": [
+      {
+        "bin_index": 0,
+        "interval": "[0,0.25)",
+        "is_tail": false,
+        "macro_f1": 0.4705056137484799,
+        "n_test": 5073,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ]
+      },
+      {
+        "bin_index": 1,
+        "interval": "[0.25,0.5)",
+        "is_tail": false,
+        "macro_f1": 0.4710269669210363,
+        "n_test": 348,
+        "true_labels": [
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          15,
+          17
+        ]
+      },
+      {
+        "bin_index": 2,
+        "interval": "[0.5,1]",
+        "is_tail": true,
+        "macro_f1": 0.510968452656524,
+        "n_test": 245,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          15,
+          17
+        ]
+      }
+    ],
+    "tail": {
+      "macro_f1": 0.510968452656524,
+      "n_test": 245,
+      "true_labels": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12,
+        15,
+        17
+      ]
+    },
+    "tail_gap": -0.03589374327194239,
+    "whole_test": {
+      "macro_f1": 0.47507470938458163,
+      "n_test": 5666,
+      "true_labels": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    "worst_bin": {
+      "bin_index": 0,
+      "interval": "[0,0.25)",
+      "macro_f1": 0.4705056137484799
+    }
+  },
+  "model": "mlp",
+  "preparation": "last",
+  "run_id": "roman-empire_mlp_last_platonov-4_seed-1",
+  "schema_version": 1,
+  "seed": 1,
+  "split": "platonov-4",
+  "training_code_version": "00bc07934e50c94cbd4415ffa974fc704dd0aafd"
+}

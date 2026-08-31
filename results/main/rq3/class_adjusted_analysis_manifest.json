@@ -1,0 +1,367 @@
+{
+  "schema_version": 1,
+  "analysis": "rq3-class-composition-adjusted-aggregation-tail-gap-contrast-against-mlp",
+  "dataset_mode": "original",
+  "datasets": [
+    "pubmed",
+    "ogbn-arxiv",
+    "roman-empire",
+    "amazon-ratings",
+    "arxiv-year"
+  ],
+  "aggregation_models": [
+    "gcn",
+    "graphsage-mean",
+    "h2gcn",
+    "gpr-gnn",
+    "acm-gcn"
+  ],
+  "reference_model": "mlp",
+  "definitions": {
+    "tail_class": "true class with at least one tail test node in the run",
+    "reference_class_distribution": "whole-test true-class proportions renormalised over tail-present classes",
+    "class_adjustment": "tail conditional confusion rows multiplied by the whole-test reference class proportions",
+    "class_adjusted_macro_f1_gap": "ordinary whole-test macro-F1 over tail-present true classes minus class-adjusted tail macro-F1",
+    "predictions_outside_tail_classes": "retained as errors for tail-present true classes",
+    "contrast": "aggregation-model class-adjusted macro-F1 gap minus the MLP class-adjusted macro-F1 gap",
+    "pairing": "same dataset, split, seed, tail-present classes, and whole-test class weights",
+    "positive_contrast": "aggregation model has a larger class-adjusted tail gap than MLP",
+    "interval": {
+      "method": "paired non-parametric percentile bootstrap",
+      "level": 0.95,
+      "resamples": 1000,
+      "base_seed": 20260717,
+      "seed_derivation": "the same per-dataset/model seed as the unadjusted RQ3 contrast, so the two figures use identical resampling indices",
+      "quantile_method": "linear"
+    }
+  },
+  "cells": [
+    {
+      "dataset": "pubmed",
+      "model": "gcn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": 0.19733399232822163,
+      "mean_model_class_adjusted_macro_f1_gap": 0.36432838327321,
+      "mean_contrast": 0.16699439094498836,
+      "bootstrap_ci": [
+        0.160295299502169,
+        0.17351291389732318
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "graphsage-mean",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": 0.19733399232822163,
+      "mean_model_class_adjusted_macro_f1_gap": 0.3503306075422769,
+      "mean_contrast": 0.15299661521405533,
+      "bootstrap_ci": [
+        0.14772011255397705,
+        0.1585067887649545
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "h2gcn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": 0.19733399232822163,
+      "mean_model_class_adjusted_macro_f1_gap": 0.29848150140836416,
+      "mean_contrast": 0.10114750908014256,
+      "bootstrap_ci": [
+        0.09550276968762217,
+        0.106669371598373
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "gpr-gnn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": 0.19733399232822163,
+      "mean_model_class_adjusted_macro_f1_gap": 0.34770462613492487,
+      "mean_contrast": 0.1503706338067033,
+      "bootstrap_ci": [
+        0.14411554111840805,
+        0.15651357650089234
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "acm-gcn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": 0.19733399232822163,
+      "mean_model_class_adjusted_macro_f1_gap": 0.32720181411617527,
+      "mean_contrast": 0.12986782178795359,
+      "bootstrap_ci": [
+        0.12346119949836176,
+        0.1362909233735203
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "gcn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": 0.10595888637825336,
+      "mean_model_class_adjusted_macro_f1_gap": 0.34978772635042216,
+      "mean_contrast": 0.24382883997216884,
+      "bootstrap_ci": [
+        0.24240263219156036,
+        0.24520500951013693
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "graphsage-mean",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": 0.10595888637825336,
+      "mean_model_class_adjusted_macro_f1_gap": 0.3656867435764691,
+      "mean_contrast": 0.25972785719821573,
+      "bootstrap_ci": [
+        0.2581859011267534,
+        0.2614454480579263
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "h2gcn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": 0.10595888637825336,
+      "mean_model_class_adjusted_macro_f1_gap": 0.29931225114772236,
+      "mean_contrast": 0.19335336476946902,
+      "bootstrap_ci": [
+        0.1918926724902844,
+        0.194718017114813
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "gpr-gnn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": 0.10595888637825336,
+      "mean_model_class_adjusted_macro_f1_gap": 0.3027317212344232,
+      "mean_contrast": 0.19677283485616995,
+      "bootstrap_ci": [
+        0.19500597453858512,
+        0.19861197447465173
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "acm-gcn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": 0.10595888637825336,
+      "mean_model_class_adjusted_macro_f1_gap": 0.22224998379586478,
+      "mean_contrast": 0.1162910974176115,
+      "bootstrap_ci": [
+        0.11464232015304096,
+        0.1179410822618512
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "gcn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": -0.02201768867697289,
+      "mean_model_class_adjusted_macro_f1_gap": -0.09622611420374515,
+      "mean_contrast": -0.07420842552677227,
+      "bootstrap_ci": [
+        -0.10131444774154413,
+        -0.05047078052447204
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "graphsage-mean",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": -0.02201768867697289,
+      "mean_model_class_adjusted_macro_f1_gap": 0.1056585300295833,
+      "mean_contrast": 0.12767621870655618,
+      "bootstrap_ci": [
+        0.10700706367615502,
+        0.14740187799142895
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "h2gcn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": -0.02201768867697289,
+      "mean_model_class_adjusted_macro_f1_gap": 0.030118425873910316,
+      "mean_contrast": 0.052136114550883204,
+      "bootstrap_ci": [
+        0.0360341099362666,
+        0.06880284700968921
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "gpr-gnn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": -0.02201768867697289,
+      "mean_model_class_adjusted_macro_f1_gap": 0.029623251669088423,
+      "mean_contrast": 0.0516409403460613,
+      "bootstrap_ci": [
+        0.035756851340878956,
+        0.06755138203566384
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "acm-gcn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": -0.02201768867697289,
+      "mean_model_class_adjusted_macro_f1_gap": -0.020255120355782304,
+      "mean_contrast": 0.0017625683211905884,
+      "bootstrap_ci": [
+        -0.01426166782244726,
+        0.01623665035025239
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "gcn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": -0.18498926570702348,
+      "mean_model_class_adjusted_macro_f1_gap": -0.5088668083186493,
+      "mean_contrast": -0.32387754261162577,
+      "bootstrap_ci": [
+        -0.3395643805581567,
+        -0.3075531096206017
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "graphsage-mean",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": -0.18498926570702348,
+      "mean_model_class_adjusted_macro_f1_gap": -0.32429130842246084,
+      "mean_contrast": -0.1393020427154374,
+      "bootstrap_ci": [
+        -0.15649139791241828,
+        -0.12133936791802286
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "h2gcn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": -0.18498926570702348,
+      "mean_model_class_adjusted_macro_f1_gap": -0.28496004188226215,
+      "mean_contrast": -0.09997077617523877,
+      "bootstrap_ci": [
+        -0.12061882280566934,
+        -0.07771199631495314
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "gpr-gnn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": -0.18498926570702348,
+      "mean_model_class_adjusted_macro_f1_gap": -0.48425058029111767,
+      "mean_contrast": -0.2992613145840942,
+      "bootstrap_ci": [
+        -0.31637655440480034,
+        -0.2809397864644268
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "acm-gcn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": -0.18498926570702348,
+      "mean_model_class_adjusted_macro_f1_gap": -0.2913897600662823,
+      "mean_contrast": -0.10640049435925887,
+      "bootstrap_ci": [
+        -0.13042199528540477,
+        -0.08226182608947201
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "gcn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": 0.01470954886501072,
+      "mean_model_class_adjusted_macro_f1_gap": 0.06053366730607615,
+      "mean_contrast": 0.045824118441065445,
+      "bootstrap_ci": [
+        0.04364144243576223,
+        0.04788271603800043
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "graphsage-mean",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": 0.01470954886501072,
+      "mean_model_class_adjusted_macro_f1_gap": 0.0014858504737765446,
+      "mean_contrast": -0.013223698391234178,
+      "bootstrap_ci": [
+        -0.01510409846229519,
+        -0.011221216158829523
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "h2gcn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": 0.01470954886501072,
+      "mean_model_class_adjusted_macro_f1_gap": 0.024656570921260872,
+      "mean_contrast": 0.009947022056250154,
+      "bootstrap_ci": [
+        0.005798477168251486,
+        0.014002155798578182
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "gpr-gnn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": 0.01470954886501072,
+      "mean_model_class_adjusted_macro_f1_gap": 0.012908492750110986,
+      "mean_contrast": -0.0018010561148997341,
+      "bootstrap_ci": [
+        -0.0040632101894380645,
+        0.0006018891272644851
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "acm-gcn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": 0.01470954886501072,
+      "mean_model_class_adjusted_macro_f1_gap": 0.008704426023023671,
+      "mean_contrast": -0.00600512284198705,
+      "bootstrap_ci": [
+        -0.008837772756683801,
+        -0.002908912319587396
+      ]
+    }
+  ],
+  "inputs": {
+    "class_adjusted_run_metrics": {
+      "path": "results/main/rq2/class_adjusted_run_metrics.csv",
+      "sha256": "4b93be748990f97df476fd87645d815b3238ef4ceb56c457b2c2242e58b430c5",
+      "column": "adjusted_macro_f1_gap"
+    },
+    "rq2_analysis_manifest": {
+      "path": "results/main/rq2/analysis_manifest.json",
+      "sha256": "f3941986e5384f97913b385b5af55c7e250bbfaa019ff785dffda15edfd18642"
+    }
+  },
+  "software": {
+    "python": "3.11.15",
+    "numpy": "2.2.6",
+    "matplotlib": "3.11.0",
+    "seaborn": "0.13.2"
+  },
+  "analysis_script": {
+    "path": "scripts/plot_rq3_mlp_contrasts.py",
+    "sha256": "5e06e8cf1f081c9abd2221b87c3acb6419e75c580584316baae43764c4bed1aa"
+  },
+  "outputs": [
+    "results/main/figures/rq3/rq3_aggregation_vs_mlp_class_adjusted_tail_gap_contrast.pdf",
+    "results/main/figures/rq3/rq3_aggregation_vs_mlp_class_adjusted_tail_gap_contrast.png",
+    "results/main/rq3/class_adjusted_mlp_tail_gap_contrasts.csv",
+    "results/main/rq3/class_adjusted_analysis_manifest.json"
+  ]
+}

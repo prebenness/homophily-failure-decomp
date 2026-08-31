@@ -1,0 +1,11 @@
+name: hfd-repro
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11.15
+  - pip=26.1.2
+  - setuptools=82.0.1
+  - wheel=0.47.0
+  - pip:
+      - -r requirements-reproducibility.txt
+      - -e .

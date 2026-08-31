@@ -1,0 +1,17 @@
+{
+  "dataset": "amazon-ratings",
+  "model": "h2gcn",
+  "split": "platonov-0",
+  "seed": 1,
+  "test_metric_pct": 50.27,
+  "reference_pct": null,
+  "grade": "unanchored",
+  "deviation_pct": null,
+  "gate_margin": null,
+  "majority_class_pct": 36.8,
+  "verdict": "sanity-ok (becomes reference)",
+  "best_epoch": 989,
+  "epochs_run": 2000,
+  "train_seconds": 73.3,
+  "code_version": "b1f4c4e40d35277144cddb220ce0944527e13ddf"
+}

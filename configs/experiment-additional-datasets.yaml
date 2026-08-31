@@ -1,0 +1,35 @@
+# Post-review extension: two datasets under the same seven-model,
+# four-preparation, thirty-run protocol as the original paper panel.
+schema_version: 1
+
+datasets:
+  - actor
+  - blogcatalog
+
+models:
+  - mlp
+  - gcn
+  - graphsage-mean
+  - h2gcn
+  - gpr-gnn
+  - linkx
+  - acm-gcn
+
+preparations:
+  - name: erm
+  - name: last
+    depends_on: erm
+  - name: head
+    depends_on: erm
+  - name: full
+
+expected_runs_per_dataset_model_preparation: 30
+expected_total_runs: 1680
+default_device: cuda
+
+run_output_files:
+  - config.json
+  - metrics.json
+  - history.json
+  - checkpoint.pt
+  - run_data.npz

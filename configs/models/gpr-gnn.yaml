@@ -1,0 +1,19 @@
+# GPR-GNN (jianhao2016/GPRGNN source defaults; hidden 64 -> 512, lin2 output
+# overridden to 512). Weight decay 5e-4 applies to the linear layers only
+# (param_groups); propagation gammas train without weight decay. Source
+# early-stopping rule: window 200 on validation loss.
+model: gpr-gnn
+z_dim: 512
+head_dropout: 0.2
+encoder:
+  hidden_dim: 512
+  out_dim: 512
+  K: 10
+  alpha: 0.1
+  dropout: 0.5
+  dprate: 0.5
+train:
+  optimizer: adam
+  lr: 0.002
+  weight_decay: 5.0e-4
+  max_epochs: 1000

@@ -1,0 +1,23 @@
+\begin{table}[H]
+  \centering
+  \caption{ERM signed tail gap: whole-test macro-F1 minus tail macro-F1.
+  Each cell gives the mean paired difference over 30 matched split--seed runs
+  and its 95\% percentile-bootstrap interval. Positive values indicate lower
+  tail performance; grey cells contain zero.}
+  \label{tab:additional-erm-tail-gap}
+  \begin{tabular}{@{\extracolsep{\fill}}lcc@{}}
+    \toprule
+    & \multicolumn{2}{c}{High-homophily tail} \\
+    \cmidrule(lr){2-3}
+    Model & Actor & BlogCatalog \\
+    \midrule
+    MLP             & \gaincell{+.054}{[.040,.068]} & \gaincell{+.091}{[.081,.101]} \\
+    GCN             & \gaincell{-.142}{[-.165,-.117]} & \gaincell{-.243}{[-.245,-.241]} \\
+    GraphSAGE-mean  & \gaincell{+.038}{[.023,.053]} & \gaincell{-.065}{[-.070,-.058]} \\
+    H2GCN-2         & \uncertaingaincell{+.005}{[-.011,.021]} & \gaincell{-.038}{[-.048,-.027]} \\
+    GPR-GNN         & \uncertaingaincell{-.007}{[-.021,.008]} & \gaincell{-.059}{[-.065,-.053]} \\
+    ACM-GCN         & \gaincell{+.056}{[.043,.069]} & \gaincell{+.100}{[.090,.110]} \\
+    LINKX           & \uncertaingaincell{+.014}{[-.003,.030]} & \gaincell{-.111}{[-.117,-.105]} \\
+    \bottomrule
+  \end{tabular}
+\end{table}

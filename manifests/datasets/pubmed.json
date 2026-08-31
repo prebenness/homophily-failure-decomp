@@ -1,0 +1,257 @@
+{
+  "dataset": "pubmed",
+  "metric": "accuracy",
+  "split_panel": "geom-gcn-10",
+  "training_seeds": [
+    1,
+    2,
+    3
+  ],
+  "n_runs": 30,
+  "graph": {
+    "num_nodes": 19717,
+    "num_edges_as_released": 88648,
+    "num_undirected_simple_edges": 44324,
+    "feature_dim": 500,
+    "num_classes": 3
+  },
+  "local_homophily": {
+    "n_labelled": 19717,
+    "n_undefined_h": 0,
+    "n_eligible": 19717,
+    "mean_h": 0.7924123137418627,
+    "direction": "homophilic",
+    "tail_side": "low-h_v",
+    "base_bins": [
+      {
+        "interval": "[0,0.25)",
+        "count": 2696,
+        "fraction_of_eligible": 0.136734797382969
+      },
+      {
+        "interval": "[0.25,0.5)",
+        "count": 524,
+        "fraction_of_eligible": 0.026576051123396054
+      },
+      {
+        "interval": "[0.5,0.75)",
+        "count": 1891,
+        "fraction_of_eligible": 0.09590708525637774
+      },
+      {
+        "interval": "[0.75,1]",
+        "count": 14606,
+        "fraction_of_eligible": 0.7407820662372572
+      }
+    ],
+    "merge_history": [],
+    "merged_bins": [
+      {
+        "interval": "[0,0.25)",
+        "base_bins": [
+          0
+        ],
+        "count": 2696,
+        "fraction_of_eligible": 0.136734797382969,
+        "is_tail": true,
+        "class_composition": {
+          "0": 878,
+          "1": 669,
+          "2": 1149
+        }
+      },
+      {
+        "interval": "[0.25,0.5)",
+        "base_bins": [
+          1
+        ],
+        "count": 524,
+        "fraction_of_eligible": 0.026576051123396054,
+        "is_tail": false,
+        "class_composition": {
+          "0": 186,
+          "1": 129,
+          "2": 209
+        }
+      },
+      {
+        "interval": "[0.5,0.75)",
+        "base_bins": [
+          2
+        ],
+        "count": 1891,
+        "fraction_of_eligible": 0.09590708525637774,
+        "is_tail": false,
+        "class_composition": {
+          "0": 530,
+          "1": 645,
+          "2": 716
+        }
+      },
+      {
+        "interval": "[0.75,1]",
+        "base_bins": [
+          3
+        ],
+        "count": 14606,
+        "fraction_of_eligible": 0.7407820662372572,
+        "is_tail": false,
+        "class_composition": {
+          "0": 2509,
+          "1": 6296,
+          "2": 5801
+        }
+      }
+    ],
+    "tail": {
+      "interval": "[0,0.25)",
+      "count": 2696,
+      "fraction_of_eligible": 0.136734797382969
+    }
+  },
+  "splits": [
+    {
+      "split_id": "geomgcn-0",
+      "n_train": 9463,
+      "n_val": 6310,
+      "n_test": 3944,
+      "n_train_tail": 1288,
+      "n_val_tail": 872,
+      "n_test_eligible": 3944,
+      "n_test_tail": 536
+    },
+    {
+      "split_id": "geomgcn-1",
+      "n_train": 9463,
+      "n_val": 6310,
+      "n_test": 3944,
+      "n_train_tail": 1333,
+      "n_val_tail": 839,
+      "n_test_eligible": 3944,
+      "n_test_tail": 524
+    },
+    {
+      "split_id": "geomgcn-2",
+      "n_train": 9463,
+      "n_val": 6310,
+      "n_test": 3944,
+      "n_train_tail": 1302,
+      "n_val_tail": 860,
+      "n_test_eligible": 3944,
+      "n_test_tail": 534
+    },
+    {
+      "split_id": "geomgcn-3",
+      "n_train": 9463,
+      "n_val": 6310,
+      "n_test": 3944,
+      "n_train_tail": 1300,
+      "n_val_tail": 837,
+      "n_test_eligible": 3944,
+      "n_test_tail": 559
+    },
+    {
+      "split_id": "geomgcn-4",
+      "n_train": 9463,
+      "n_val": 6310,
+      "n_test": 3944,
+      "n_train_tail": 1298,
+      "n_val_tail": 873,
+      "n_test_eligible": 3944,
+      "n_test_tail": 525
+    },
+    {
+      "split_id": "geomgcn-5",
+      "n_train": 9463,
+      "n_val": 6310,
+      "n_test": 3944,
+      "n_train_tail": 1251,
+      "n_val_tail": 892,
+      "n_test_eligible": 3944,
+      "n_test_tail": 553
+    },
+    {
+      "split_id": "geomgcn-6",
+      "n_train": 9463,
+      "n_val": 6310,
+      "n_test": 3944,
+      "n_train_tail": 1300,
+      "n_val_tail": 859,
+      "n_test_eligible": 3944,
+      "n_test_tail": 537
+    },
+    {
+      "split_id": "geomgcn-7",
+      "n_train": 9463,
+      "n_val": 6310,
+      "n_test": 3944,
+      "n_train_tail": 1287,
+      "n_val_tail": 857,
+      "n_test_eligible": 3944,
+      "n_test_tail": 552
+    },
+    {
+      "split_id": "geomgcn-8",
+      "n_train": 9463,
+      "n_val": 6310,
+      "n_test": 3944,
+      "n_train_tail": 1300,
+      "n_val_tail": 860,
+      "n_test_eligible": 3944,
+      "n_test_tail": 536
+    },
+    {
+      "split_id": "geomgcn-9",
+      "n_train": 9463,
+      "n_val": 6310,
+      "n_test": 3944,
+      "n_train_tail": 1303,
+      "n_val_tail": 827,
+      "n_test_eligible": 3944,
+      "n_test_tail": 566
+    }
+  ],
+  "notes": {},
+  "graph_checksums_sha256": {
+    "features": "4f1804517a3fab22c6ae1df7674c6a194acefcd242dc843930da79ce9ea6f681",
+    "simple_edge_index": "9c6d3eddb8801ca212993486c0400c3e88cc264168dd19d16ac04c79f0bd11b3"
+  },
+  "array_checksums_sha256": {
+    "base_bin": "9b0b89a246a14c035afb31baf5bdda71b6197d9129b778cf179552e11c03a661",
+    "eligible": "9194d149fd5137e9c779ffd78b39bf431249c8e4d6b8e9eff2ab5764afeed4de",
+    "geomgcn-0.test": "bc33053204a35ca8b94fa98df113ec01c02633b3b32bc8412b57b38b20c56adc",
+    "geomgcn-0.train": "a82d0082e6e05696aa97ce6e6e606ab5665c010c1b8a1c45cde8013ca261d125",
+    "geomgcn-0.val": "7ef94f0033ae4d7b213d548d59ea3d25fbb3a614fa5d52056ad48055f295f8f7",
+    "geomgcn-1.test": "2d5911949e6ac6d2b76fb2788003d0a3e6586251033c7e13c37088228e1de2f3",
+    "geomgcn-1.train": "4fc48d68118cbc4b0e56192608cb3d47e97f95cebbf8828383a8dc86eff5cf1b",
+    "geomgcn-1.val": "58a017cb19214f40bc50ad78e64ddd47d031d7fe9d6b4679c86c25da0992be0b",
+    "geomgcn-2.test": "22275c5cd74db8a468bd9e14048507047ef57fbe599f7aabce1ba88b22c71fef",
+    "geomgcn-2.train": "309a891972065e756e107ab169a70ba5f30b483e5ba7756df2eec5a57f1a581c",
+    "geomgcn-2.val": "01144ccb05f54a6a07635156255a550ef4bdaf17057127bb881ff5b43a053601",
+    "geomgcn-3.test": "7a7885883142f7cc871a4eeece164f31a3690558fbe455a13c392a41d6266f64",
+    "geomgcn-3.train": "198cf57e1b325df15b63f27a3afa4e6da19535525b6928ffa50ec9b7bc399c9a",
+    "geomgcn-3.val": "0fc202fcdc250bb2846302e0e077c83bdffd3db3c0bd221b6bf53786efe26c63",
+    "geomgcn-4.test": "82018988b3fccce142550aac49bedf37d7e4d6ae6f77c2c7ef43cc7e7de64455",
+    "geomgcn-4.train": "5a7a37f97a47fad7072194fbb2c5a5ec7bbbbafed5fbd1d9b04b82207c8e0cea",
+    "geomgcn-4.val": "3f229e4da213bd161af5cd33249c1b8e3afd1fd6e0abbb741a62cf827463272e",
+    "geomgcn-5.test": "d927fb9b5784a3606293e1952c797fb54ef5e3f11f74dbe5bf0566543a203b43",
+    "geomgcn-5.train": "2a0b784842fac5dcee664d14143aef1e60e52b578366569584d1e3854ae3ab32",
+    "geomgcn-5.val": "8f3125fbd6d03d3106b5256adedecbf1a736ccb38ff9ce616601c945b4db2059",
+    "geomgcn-6.test": "4bd4d4ec83155d60e4393f9d29c551aa7b79ea6260ae32390f06a382252a0c37",
+    "geomgcn-6.train": "cd55a4db1d19b508a24a0bc0313a6e3fa29562d5ab26f48909b1a92a60ba2c9d",
+    "geomgcn-6.val": "09efc3ad263ecb9519f5e683bee86e923907ad38df917d4bf625b6ca4f2cffcd",
+    "geomgcn-7.test": "4a6de1a2f679295a8fc049662a8bfb1ead243a0c1e768c0953366a741d76f2c0",
+    "geomgcn-7.train": "54be6be657c3006b82f1be15fa42815671730f0993b69e033865ba9ff9baba56",
+    "geomgcn-7.val": "57bb9513147c01499a402b04998164b2772492e9b537bfb44ce6b7b23d4a9c85",
+    "geomgcn-8.test": "9c18680b5966bf33aa6cfa011821cb89523c4d17d99cb53c7bd3ea4d513fcf6e",
+    "geomgcn-8.train": "dcde4ecaac117202920c5062f971f699899de260acca2630a08b0701faa8d3c4",
+    "geomgcn-8.val": "bd0323cf6b1872421c01627c85092ec1982bc584ed83f0b7f5a6827600aefc9d",
+    "geomgcn-9.test": "d86988073edd75918603cb8c719b4ef71aec4bec8dd7a20e871e5909087898f2",
+    "geomgcn-9.train": "0033ac48668ed6712c58919e2dc08a8a753b0dafc1e7289fc244eb40a2927746",
+    "geomgcn-9.val": "cffbdb82ab3041311dc2d5669ec7e679873ea45cbbb9f22bae351dd7fd372db7",
+    "h": "ff16fd6bbb8f937d1c706caf20570fc793e9ebc124eccd918d86e7061368dc03",
+    "labels": "973a30d7c0567fe67fb9026058f1105859f87d44981b7b88992d648877d174c7",
+    "merged_bin": "9b0b89a246a14c035afb31baf5bdda71b6197d9129b778cf179552e11c03a661",
+    "tail_mask": "4812a92bc78db1e080f5509e86ce1ad241f52ed80365534c9bb910fc62c5ce55"
+  }
+}

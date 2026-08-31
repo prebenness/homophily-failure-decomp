@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "analysis": "rq5-tail-vs-non-tail-macro-f1",
+  "analysis_version": "rq5-tail-vs-non-tail-macro-f1-v1",
+  "dataset_mode": "additional",
+  "definitions": {
+    "tail": "test nodes in the registered minority-pattern tail bin",
+    "non_tail": "all test nodes outside the registered tail bin",
+    "subset_macro_f1": "macro-F1 over classes present in the subset's true labels, fixed before scoring, with zero_division=0",
+    "cell_summary": "arithmetic mean over 30 registered split-seed runs"
+  },
+  "raw_store": "external run store validated against manifests/additional-dataset-runs.jsonl",
+  "validated_run_count": 1440,
+  "datasets": [
+    "actor",
+    "blogcatalog"
+  ],
+  "models": [
+    "gcn",
+    "graphsage-mean",
+    "h2gcn",
+    "gpr-gnn",
+    "acm-gcn",
+    "linkx"
+  ],
+  "preparations": [
+    "erm",
+    "last",
+    "head",
+    "full"
+  ],
+  "registered_inputs": {
+    "experiment_manifest": {
+      "path": "manifests/additional-dataset-runs.jsonl",
+      "sha256": "b703e31118217ecf7d50f3772d548690a0fcd4b2909c6f0eb976232249e78d0b"
+    },
+    "dataset_manifests": [
+      {
+        "path": "manifests/additional-datasets/actor.json",
+        "sha256": "3ed92bacd5460459e45af37086833a2722e0be2ed1cafdfb1386d2b171e3af96"
+      },
+      {
+        "path": "manifests/additional-datasets/blogcatalog.json",
+        "sha256": "9cac17cbe9f4ffb738a0e08267a745eea1f4021ec8ad9d3d7c349ce942251394"
+      }
+    ]
+  },
+  "outputs": [
+    {
+      "path": "results/additional/figures/rq5/rq5_tail_vs_non_tail_macro_f1_compact.png",
+      "sha256": "5cbf89cc8e595bf2cdfce613801af476dd3aa118e0b5d6ab1f89997f9c6a585e"
+    },
+    {
+      "path": "results/additional/figures/rq5/rq5_tail_vs_non_tail_macro_f1_compact.pdf",
+      "sha256": "e64afa178fbdbefd109899cc04129cbef8c3f9347e8c44bca55a919ff824bea9"
+    },
+    {
+      "path": "results/additional/rq5/preparation_tail_vs_non_tail_macro_f1_run_values.csv",
+      "sha256": "957693a8b4f1ee3009de50dc9e59a962beb8f9615634c2e5c278473bb640e7ce"
+    },
+    {
+      "path": "results/additional/rq5/preparation_tail_vs_non_tail_macro_f1.csv",
+      "sha256": "8b7588877de66ab57242a6e6d6a2796289420344789a465a8155421eca3a1ed1"
+    }
+  ],
+  "software": {
+    "python": "3.11.15",
+    "numpy": "2.2.6",
+    "matplotlib": "3.11.0"
+  },
+  "rendering": {
+    "dpi": 300,
+    "font_family": [
+      "Arial"
+    ]
+  }
+}

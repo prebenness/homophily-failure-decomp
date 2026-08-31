@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "analysis": "rq3-class-composition-adjusted-aggregation-tail-gap-contrast-against-mlp",
+  "dataset_mode": "additional",
+  "datasets": [
+    "actor",
+    "blogcatalog"
+  ],
+  "aggregation_models": [
+    "gcn",
+    "graphsage-mean",
+    "h2gcn",
+    "gpr-gnn",
+    "acm-gcn"
+  ],
+  "reference_model": "mlp",
+  "definitions": {
+    "tail_class": "true class with at least one tail test node in the run",
+    "reference_class_distribution": "whole-test true-class proportions renormalised over tail-present classes",
+    "class_adjustment": "tail conditional confusion rows multiplied by the whole-test reference class proportions",
+    "class_adjusted_macro_f1_gap": "ordinary whole-test macro-F1 over tail-present true classes minus class-adjusted tail macro-F1",
+    "predictions_outside_tail_classes": "retained as errors for tail-present true classes",
+    "contrast": "aggregation-model class-adjusted macro-F1 gap minus the MLP class-adjusted macro-F1 gap",
+    "pairing": "same dataset, split, seed, tail-present classes, and whole-test class weights",
+    "positive_contrast": "aggregation model has a larger class-adjusted tail gap than MLP",
+    "interval": {
+      "method": "paired non-parametric percentile bootstrap",
+      "level": 0.95,
+      "resamples": 1000,
+      "base_seed": 20260717,
+      "seed_derivation": "the same per-dataset/model seed as the unadjusted RQ3 contrast, so the two figures use identical resampling indices",
+      "quantile_method": "linear"
+    }
+  },
+  "cells": [
+    {
+      "dataset": "actor",
+      "model": "gcn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": -0.002094507146847203,
+      "mean_model_class_adjusted_macro_f1_gap": -0.18265411592695474,
+      "mean_contrast": -0.18055960878010752,
+      "bootstrap_ci": [
+        -0.2199000023343333,
+        -0.1404279898757431
+      ]
+    },
+    {
+      "dataset": "actor",
+      "model": "graphsage-mean",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": -0.002094507146847203,
+      "mean_model_class_adjusted_macro_f1_gap": -0.006929490165722753,
+      "mean_contrast": -0.0048349830188755515,
+      "bootstrap_ci": [
+        -0.032892243477714,
+        0.023497784564830867
+      ]
+    },
+    {
+      "dataset": "actor",
+      "model": "h2gcn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": -0.002094507146847203,
+      "mean_model_class_adjusted_macro_f1_gap": -0.02827586705916278,
+      "mean_contrast": -0.026181359912315568,
+      "bootstrap_ci": [
+        -0.0532144672844411,
+        0.003152223524083318
+      ]
+    },
+    {
+      "dataset": "actor",
+      "model": "gpr-gnn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": -0.002094507146847203,
+      "mean_model_class_adjusted_macro_f1_gap": -0.03708729933942686,
+      "mean_contrast": -0.034992792192579655,
+      "bootstrap_ci": [
+        -0.06025058803072701,
+        -0.010321556433828217
+      ]
+    },
+    {
+      "dataset": "actor",
+      "model": "acm-gcn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": -0.002094507146847203,
+      "mean_model_class_adjusted_macro_f1_gap": 0.046477790100652894,
+      "mean_contrast": 0.0485722972475001,
+      "bootstrap_ci": [
+        0.022694205077887802,
+        0.07709313390798048
+      ]
+    },
+    {
+      "dataset": "blogcatalog",
+      "model": "gcn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": 0.05730690309855044,
+      "mean_model_class_adjusted_macro_f1_gap": -0.2423619600514652,
+      "mean_contrast": -0.29966886315001573,
+      "bootstrap_ci": [
+        -0.3108323089036047,
+        -0.28767868438337274
+      ]
+    },
+    {
+      "dataset": "blogcatalog",
+      "model": "graphsage-mean",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": 0.05730690309855044,
+      "mean_model_class_adjusted_macro_f1_gap": -0.07102224096433053,
+      "mean_contrast": -0.12832914406288096,
+      "bootstrap_ci": [
+        -0.14184457505733042,
+        -0.11489773587799948
+      ]
+    },
+    {
+      "dataset": "blogcatalog",
+      "model": "h2gcn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": 0.05730690309855044,
+      "mean_model_class_adjusted_macro_f1_gap": -0.034107200087152116,
+      "mean_contrast": -0.09141410318570255,
+      "bootstrap_ci": [
+        -0.10475395739189905,
+        -0.07795656666954937
+      ]
+    },
+    {
+      "dataset": "blogcatalog",
+      "model": "gpr-gnn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": 0.05730690309855044,
+      "mean_model_class_adjusted_macro_f1_gap": -0.052724599709745405,
+      "mean_contrast": -0.11003150280829584,
+      "bootstrap_ci": [
+        -0.12551176367643221,
+        -0.09466374185058443
+      ]
+    },
+    {
+      "dataset": "blogcatalog",
+      "model": "acm-gcn",
+      "n_pairs": 30,
+      "mean_mlp_class_adjusted_macro_f1_gap": 0.05730690309855044,
+      "mean_model_class_adjusted_macro_f1_gap": 0.07654065946050423,
+      "mean_contrast": 0.019233756361953777,
+      "bootstrap_ci": [
+        0.00731511728084461,
+        0.03229753345329643
+      ]
+    }
+  ],
+  "inputs": {
+    "class_adjusted_run_metrics": {
+      "path": "results/additional/rq2/class_adjusted_run_metrics.csv",
+      "sha256": "c913b41f09d836f1e70c78b576fde57b0354bb4752401b216e04c12d0bb14675",
+      "column": "adjusted_macro_f1_gap"
+    },
+    "rq2_analysis_manifest": {
+      "path": "results/additional/rq2/analysis_manifest.json",
+      "sha256": "eaa5ee455d63c506fe286af191fb7af84b94163b5d302a36f7ef045f03adc4fe"
+    }
+  },
+  "software": {
+    "python": "3.11.15",
+    "numpy": "2.2.6",
+    "matplotlib": "3.11.0",
+    "seaborn": "0.13.2"
+  },
+  "analysis_script": {
+    "path": "scripts/plot_rq3_mlp_contrasts.py",
+    "sha256": "5e06e8cf1f081c9abd2221b87c3acb6419e75c580584316baae43764c4bed1aa"
+  },
+  "outputs": [
+    "results/additional/figures/rq3/rq3_aggregation_vs_mlp_class_adjusted_tail_gap_contrast.pdf",
+    "results/additional/figures/rq3/rq3_aggregation_vs_mlp_class_adjusted_tail_gap_contrast.png",
+    "results/additional/rq3/class_adjusted_mlp_tail_gap_contrasts.csv",
+    "results/additional/rq3/class_adjusted_analysis_manifest.json"
+  ]
+}

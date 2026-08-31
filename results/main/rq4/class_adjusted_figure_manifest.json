@@ -1,0 +1,100 @@
+{
+  "analysis": "RQ4 class-composition-adjusted score figure",
+  "bootstrap": {
+    "base_seed": 20260717,
+    "interval": "95% percentile",
+    "resamples": 1000,
+    "unit": "complete split-seed run"
+  },
+  "dataset_mode": "original",
+  "datasets": [
+    "pubmed",
+    "ogbn-arxiv",
+    "roman-empire",
+    "amazon-ratings",
+    "arxiv-year"
+  ],
+  "estimand": {
+    "gap": "whole component minus tail component",
+    "reference_distribution": "whole-test proportions of true classes present in the tail",
+    "tail_component": "class-adjusted tail macro-F1",
+    "whole_component": "ordinary whole-test macro-F1 over tail-present true classes"
+  },
+  "input": {
+    "path": "results/main/rq2/class_adjusted_run_metrics.csv",
+    "sha256": "4b93be748990f97df476fd87645d815b3238ef4ceb56c457b2c2242e58b430c5"
+  },
+  "model_families": {
+    "heterophily-designed": [
+      "H2GCN-2",
+      "GPR-GNN",
+      "ACM-GCN"
+    ],
+    "mlp": [
+      "MLP"
+    ],
+    "non-aggregation": [
+      "LINKX"
+    ],
+    "standard": [
+      "GCN",
+      "GraphSAGE-mean"
+    ]
+  },
+  "model_order": [
+    "MLP",
+    "GCN",
+    "GraphSAGE-mean",
+    "H2GCN-2",
+    "GPR-GNN",
+    "ACM-GCN",
+    "LINKX"
+  ],
+  "outputs": [
+    {
+      "path": "results/main/figures/rq4/rq4_class_adjusted_whole_test_and_tail_macro_f1_by_model_family.pdf",
+      "sha256": "ea24f7f2eed3b47a6dff373c4fa23a553343cbf851ac6cdfc04c434d4bc7b581"
+    },
+    {
+      "path": "results/main/figures/rq4/rq4_class_adjusted_whole_test_and_tail_macro_f1_by_model_family.png",
+      "sha256": "addb84369a9834156e16095de74187e1a140b84f82d363ca61718e3ec3703a0d"
+    },
+    {
+      "path": "results/main/rq4/class_adjusted_erm_whole_tail_macro_f1.csv",
+      "sha256": "6f0541b8f8b33ee0111764e0dceedbc48202532e21b4502b0eacce773afdaeef"
+    }
+  ],
+  "support": {
+    "amazon-ratings": {
+      "maximum_tail_classes": 5,
+      "minimum_tail_classes": 5
+    },
+    "arxiv-year": {
+      "maximum_tail_classes": 5,
+      "minimum_tail_classes": 5
+    },
+    "ogbn-arxiv": {
+      "maximum_tail_classes": 40,
+      "minimum_tail_classes": 40
+    },
+    "pubmed": {
+      "maximum_tail_classes": 3,
+      "minimum_tail_classes": 3
+    },
+    "roman-empire": {
+      "maximum_tail_classes": 14,
+      "minimum_tail_classes": 10
+    }
+  },
+  "visual_encoding": {
+    "confidence_intervals_shown": false,
+    "connector": "solid line for each dataset-model cell",
+    "model_family": "same colour mapping as main-text Figure 5",
+    "tail": "filled circle",
+    "whole_test": "filled diamond",
+    "y_axis_range": [
+      0.0,
+      1.0
+    ]
+  }
+}

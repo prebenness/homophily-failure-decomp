@@ -1,0 +1,17 @@
+{
+  "dataset": "pubmed",
+  "model": "linkx",
+  "split": "geomgcn-0",
+  "seed": 1,
+  "test_metric_pct": 80.81,
+  "reference_pct": null,
+  "grade": "unanchored",
+  "deviation_pct": null,
+  "gate_margin": null,
+  "majority_class_pct": 39.63,
+  "verdict": "sanity-ok (becomes reference)",
+  "best_epoch": 424,
+  "epochs_run": 500,
+  "train_seconds": 23.9,
+  "code_version": "b1f4c4e40d35277144cddb220ce0944527e13ddf"
+}

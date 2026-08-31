@@ -1,0 +1,25 @@
+{
+  "analysis": "main-panel-gpu-hours",
+  "run_count": 4200,
+  "preparations": [
+    "erm",
+    "last",
+    "head",
+    "full"
+  ],
+  "runs_per_preparation": 1050,
+  "duration_field": "metrics.json: checkpoint.train_seconds",
+  "duration_definition": "Time inside the optimisation loop.",
+  "gpu_hours_definition": "Sum of recorded training-loop seconds divided by 3600; every run used one CUDA GPU.",
+  "hardware": [
+    {
+      "gpu_model": "NVIDIA A100",
+      "memory_gb": 80
+    },
+    {
+      "gpu_model": "NVIDIA GeForce RTX 3080 Laptop GPU",
+      "memory_gb": 16
+    }
+  ],
+  "hardware_assignment_note": "The final raw records do not retain a reliable per-run GPU-model assignment, so GPU-hours are not partitioned by GPU model."
+}

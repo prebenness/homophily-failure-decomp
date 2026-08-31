@@ -1,0 +1,106 @@
+{
+  "analysis_script_sha256": "a642ba31ce72ffbae34bea0dca31ae9713f1b4cf2108f45fb5f24839a3267fe3",
+  "analysis_version": "true-label-support-v1",
+  "dataset": "pubmed",
+  "input_checksums_sha256": {
+    "labels": "973a30d7c0567fe67fb9026058f1105859f87d44981b7b88992d648877d174c7",
+    "merged_bin": "9b0b89a246a14c035afb31baf5bdda71b6197d9129b778cf179552e11c03a661",
+    "predictions": "d3f1f46061756afde5a25c3a88a04a020377d00ea36d1f5ce32d423f806cbdcc",
+    "tail_mask": "4812a92bc78db1e080f5509e86ce1ad241f52ed80365534c9bb910fc62c5ce55",
+    "test_idx": "4bd4d4ec83155d60e4393f9d29c551aa7b79ea6260ae32390f06a382252a0c37"
+  },
+  "metric_definition": {
+    "dataset_labels": [
+      0,
+      1,
+      2
+    ],
+    "labels": "classes present in the evaluated subset's true labels",
+    "name": "macro-F1",
+    "zero_division": 0
+  },
+  "metric_definition_commit": "91b2518af84cf7150d6f498360f5ab00ac5dc079",
+  "metrics": {
+    "per_bin": [
+      {
+        "bin_index": 0,
+        "interval": "[0,0.25)",
+        "is_tail": true,
+        "macro_f1": 0.6807994909431283,
+        "n_test": 537,
+        "true_labels": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "bin_index": 1,
+        "interval": "[0.25,0.5)",
+        "is_tail": false,
+        "macro_f1": 0.6401760704281713,
+        "n_test": 103,
+        "true_labels": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "bin_index": 2,
+        "interval": "[0.5,0.75)",
+        "is_tail": false,
+        "macro_f1": 0.7966967739204512,
+        "n_test": 377,
+        "true_labels": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "bin_index": 3,
+        "interval": "[0.75,1]",
+        "is_tail": false,
+        "macro_f1": 0.921400561089003,
+        "n_test": 2927,
+        "true_labels": [
+          0,
+          1,
+          2
+        ]
+      }
+    ],
+    "tail": {
+      "macro_f1": 0.6807994909431283,
+      "n_test": 537,
+      "true_labels": [
+        0,
+        1,
+        2
+      ]
+    },
+    "tail_gap": 0.18644775588007434,
+    "whole_test": {
+      "macro_f1": 0.8672472468232026,
+      "n_test": 3944,
+      "true_labels": [
+        0,
+        1,
+        2
+      ]
+    },
+    "worst_bin": {
+      "bin_index": 1,
+      "interval": "[0.25,0.5)",
+      "macro_f1": 0.6401760704281713
+    }
+  },
+  "model": "mlp",
+  "preparation": "last",
+  "run_id": "pubmed_mlp_last_geomgcn-6_seed-1",
+  "schema_version": 1,
+  "seed": 1,
+  "split": "geomgcn-6",
+  "training_code_version": "e3384abc853f7701f8ac9b624eba20b2838c6eaf"
+}

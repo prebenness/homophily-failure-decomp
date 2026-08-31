@@ -1,0 +1,13 @@
+dataset_order,dataset,dataset_group,designed_model_order,designed_model,designed_model_label,standard_model_order,standard_model,standard_model_label,n_pairs,mean_designed_tail_gap,mean_standard_tail_gap,mean_tail_gap_contrast,sample_std_tail_gap_contrast,bootstrap_ci_lower,bootstrap_ci_upper,bootstrap_smaller_tail_count,bootstrap_p_value,ci_excludes_zero
+0,actor,heterophilic,0,h2gcn,H2GCN-2,0,gcn,GCN,30,0.0054320258,-0.1422471109,0.1476791367,0.0796059243,0.1192082897,0.1746870585,0,0.0000000000,True
+0,actor,heterophilic,0,h2gcn,H2GCN-2,1,graphsage-mean,GraphSAGE-mean,30,0.0054320258,0.0380490456,-0.0326170198,0.0552345294,-0.0510809173,-0.0119728915,0,0.0000000000,True
+0,actor,heterophilic,1,gpr-gnn,GPR-GNN,0,gcn,GCN,30,-0.0073575510,-0.1422471109,0.1348895599,0.0912139770,0.0989959010,0.1681695214,0,0.0000000000,True
+0,actor,heterophilic,1,gpr-gnn,GPR-GNN,1,graphsage-mean,GraphSAGE-mean,30,-0.0073575510,0.0380490456,-0.0454065966,0.0552313765,-0.0650907490,-0.0253013991,0,0.0000000000,True
+0,actor,heterophilic,2,acm-gcn,ACM-GCN,0,gcn,GCN,30,0.0561936239,-0.1422471109,0.1984407349,0.0765554237,0.1719063086,0.2239634055,0,0.0000000000,True
+0,actor,heterophilic,2,acm-gcn,ACM-GCN,1,graphsage-mean,GraphSAGE-mean,30,0.0561936239,0.0380490456,0.0181445783,0.0551754291,-0.0015241632,0.0370153453,34,0.0680000000,False
+1,blogcatalog,heterophilic,0,h2gcn,H2GCN-2,0,gcn,GCN,30,-0.0384060400,-0.2433895176,0.2049834776,0.0311241319,0.1953101774,0.2165801757,0,0.0000000000,True
+1,blogcatalog,heterophilic,0,h2gcn,H2GCN-2,1,graphsage-mean,GraphSAGE-mean,30,-0.0384060400,-0.0647067758,0.0263007358,0.0369750168,0.0127274463,0.0392347855,0,0.0000000000,True
+1,blogcatalog,heterophilic,1,gpr-gnn,GPR-GNN,0,gcn,GCN,30,-0.0586982160,-0.2433895176,0.1846913016,0.0188573451,0.1787069836,0.1913687538,0,0.0000000000,True
+1,blogcatalog,heterophilic,1,gpr-gnn,GPR-GNN,1,graphsage-mean,GraphSAGE-mean,30,-0.0586982160,-0.0647067758,0.0060085598,0.0235205986,-0.0017238205,0.0145601245,79,0.1580000000,False
+1,blogcatalog,heterophilic,2,acm-gcn,ACM-GCN,0,gcn,GCN,30,0.1001938558,-0.2433895176,0.3435833734,0.0283804387,0.3332141330,0.3533579152,0,0.0000000000,True
+1,blogcatalog,heterophilic,2,acm-gcn,ACM-GCN,1,graphsage-mean,GraphSAGE-mean,30,0.1001938558,-0.0647067758,0.1649006316,0.0365868423,0.1516056276,0.1779757064,0,0.0000000000,True

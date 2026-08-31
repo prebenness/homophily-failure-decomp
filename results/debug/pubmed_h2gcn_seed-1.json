@@ -1,0 +1,17 @@
+{
+  "dataset": "pubmed",
+  "model": "h2gcn",
+  "split": "geomgcn-0",
+  "seed": 1,
+  "test_metric_pct": 89.45,
+  "reference_pct": 89.59,
+  "grade": "anchored",
+  "deviation_pct": -0.14,
+  "gate_margin": 5.0,
+  "majority_class_pct": 39.63,
+  "verdict": "ok",
+  "best_epoch": 87,
+  "epochs_run": 2000,
+  "train_seconds": 67.4,
+  "code_version": "c496ce293ef7786f4f53fd6164f84b7a6ec319b7"
+}

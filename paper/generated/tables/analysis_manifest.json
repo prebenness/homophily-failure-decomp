@@ -1,0 +1,118 @@
+{
+  "analysis": "released-result-and-compute-table-rendering",
+  "generator": "scripts/render_paper_tables.py",
+  "generator_sha256": "a825eee970416d4c58628547eb848e86e8607e946ecad86ce898753aaa8eb81e",
+  "inputs": {
+    "dataset_manifest_amazon-ratings": {
+      "path": "manifests/datasets/amazon-ratings.json",
+      "sha256": "3573700a214a08e394a6f8f596bea813b1cd09821ae1f4945d90da85d9c5a790"
+    },
+    "dataset_manifest_arxiv-year": {
+      "path": "manifests/datasets/arxiv-year.json",
+      "sha256": "af02bee587f4d8c7b49edff8b3004b69f8fbd745d6f336f93c828bd7937abae5"
+    },
+    "dataset_manifest_ogbn-arxiv": {
+      "path": "manifests/datasets/ogbn-arxiv.json",
+      "sha256": "9a163d527bc88d1e1f17b60a522ce78b5a98c66a22759600bf80ebe8c9074f4c"
+    },
+    "dataset_manifest_pubmed": {
+      "path": "manifests/datasets/pubmed.json",
+      "sha256": "d327138feef01855bf46afad129c9442117d50f902f3d89903def9ace2b262ce"
+    },
+    "dataset_manifest_roman-empire": {
+      "path": "manifests/datasets/roman-empire.json",
+      "sha256": "7f66ebd80695b1ced422f8921d63c251a8639f276329ac20681f8203d06aa2a4"
+    },
+    "fg_ccdb": {
+      "path": "results/fg_ccdb/paired_results.csv",
+      "sha256": "061a8e24efc2608439ce3bad7c08d4a5e1955b1610bde33aa979a9b9464f16f5"
+    },
+    "gpu_hours": {
+      "path": "results/main/compute/gpu_hours_by_preparation.csv",
+      "sha256": "c337a19edb01a9ad65cfa105114292ba016567bb4895cb2a1f055b6ecff53f19"
+    },
+    "rq1_accuracy": {
+      "path": "results/main/rq1/accuracy/whole_vs_tail_accuracy.csv",
+      "sha256": "20c96abc014163e6c60453b5688ff06379bf9cf88b0150430cd0ed238f11f84f"
+    },
+    "rq1_macro_f1": {
+      "path": "results/main/aggregates/erm_tail_gaps.csv",
+      "sha256": "4e3f89a70bc8a6458ba91748612aa4b1e82cbf6a733d5ee4d307ff5afc492939"
+    },
+    "rq2_adjusted": {
+      "path": "results/main/rq2/class_adjusted_cell_summary.csv",
+      "sha256": "558d4dcc4688f12d9be7be2f7c2e030df7097dfcf8071bcf4e62b09332a0d1ae"
+    },
+    "rq2_within_class": {
+      "path": "results/main/rq2/within_class_accuracy_cell_summary.csv",
+      "sha256": "9055d01484551c71aedf3aedaf513e1b70082aba78594f21c29fa72f1d2cf1d0"
+    },
+    "rq4_pairwise": {
+      "path": "results/main/rq4/pairwise_tail_gap_contrasts.csv",
+      "sha256": "48e8865a911b150acd9b396b39d579022d9a73ca47fece3f657d021365bbbab9"
+    },
+    "rq5_dfr_absolute": {
+      "path": "results/main/rq5/dfr_pubmed_sensitivity/absolute_score_summary.csv",
+      "sha256": "469f4ab957946e96b66cb746d912bb8304fc45f6620b456bc96f6ae651b3ad46"
+    },
+    "rq5_gains": {
+      "path": "results/main/aggregates/paired_gains.csv",
+      "sha256": "0d7ed38636a0854e181e25480b8ef5def26642553c93ef05cd597a540d71a9bb"
+    }
+  },
+  "outputs": {
+    "fg_ccdb_pubmed.tex": {
+      "path": "paper/generated/tables/fg_ccdb_pubmed.tex",
+      "sha256": "70bb2bdde99aa2b62990482d55e207d7fff45dff0fbff745c714eeb57c2f3899"
+    },
+    "local_homophily_groups.tex": {
+      "path": "paper/generated/tables/local_homophily_groups.tex",
+      "sha256": "60fa8032a5628f09d5e6c11c35834b7ec8bbf51335291bc1d59f537249a46fbb"
+    },
+    "rq1_accuracy_tail_gap.tex": {
+      "path": "paper/generated/tables/rq1_accuracy_tail_gap.tex",
+      "sha256": "162e8113cfdc2b130b723382983534bed2c7aa5b15ee3911158294defea1cc06"
+    },
+    "rq1_macro_f1_tail_gap.tex": {
+      "path": "paper/generated/tables/rq1_macro_f1_tail_gap.tex",
+      "sha256": "f0f2068582516f2259a25ffe7223ae4e05d21f8f34a5211ae3c306df6b93de6a"
+    },
+    "rq2_adjusted_accuracy.tex": {
+      "path": "paper/generated/tables/rq2_adjusted_accuracy.tex",
+      "sha256": "8629c448864ab791f95cfc0f7ada6e1c58b1072d7127ed53a36ae6ce2928d4aa"
+    },
+    "rq2_adjusted_macro_f1.tex": {
+      "path": "paper/generated/tables/rq2_adjusted_macro_f1.tex",
+      "sha256": "eaf0ce71bca589ae832590b5f7bd978517c806f7895c9da6226b1597bf766899"
+    },
+    "rq2_within_class_accuracy.tex": {
+      "path": "paper/generated/tables/rq2_within_class_accuracy.tex",
+      "sha256": "853eb5f9bdcafa4b967b316f0f0889a305152ef7b059ba8e79bb79d8b2f0749e"
+    },
+    "rq4_designed_vs_standard.tex": {
+      "path": "paper/generated/tables/rq4_designed_vs_standard.tex",
+      "sha256": "744460a041c800a065b3c08a572a3665849e57daad85252945c83e2809c94a08"
+    },
+    "rq5_dfr_tail_macro_f1.tex": {
+      "path": "paper/generated/tables/rq5_dfr_tail_macro_f1.tex",
+      "sha256": "e069d059501c95f7efdd0a7d7d1ee0dcaee795890f161a9f4004a5bebe5b6522"
+    },
+    "rq5_full_tail_gain.tex": {
+      "path": "paper/generated/tables/rq5_full_tail_gain.tex",
+      "sha256": "0cadbfe1aa97b1731eab98ee9d6247813b50b805ec4a8f3f33c4a04c009a38c4"
+    },
+    "rq5_head_tail_gain.tex": {
+      "path": "paper/generated/tables/rq5_head_tail_gain.tex",
+      "sha256": "746d3c279cfd6c9a0c81e7c79c7c1f09283f5cca7ea8934a86377decaaa76650"
+    },
+    "rq5_last_tail_gain.tex": {
+      "path": "paper/generated/tables/rq5_last_tail_gain.tex",
+      "sha256": "886a50bb3c0b7f16d417975786562ff1dee94d277c05434b72219831aceddfd6"
+    },
+    "training_gpu_hours.tex": {
+      "path": "paper/generated/tables/training_gpu_hours.tex",
+      "sha256": "62edeab8df544d522544aca79d2ccaa069c56b339a5ff3f68232c8300f8afcd2"
+    }
+  },
+  "schema_version": 1
+}

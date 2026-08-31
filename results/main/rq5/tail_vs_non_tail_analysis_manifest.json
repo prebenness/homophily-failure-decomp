@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "analysis": "rq5-tail-vs-non-tail-macro-f1",
+  "analysis_version": "rq5-tail-vs-non-tail-macro-f1-v1",
+  "definitions": {
+    "tail": "test nodes in the registered minority-pattern tail bin",
+    "non_tail": "all test nodes outside the registered tail bin",
+    "subset_macro_f1": "macro-F1 over classes present in the subset's true labels, fixed before scoring, with zero_division=0",
+    "cell_summary": "arithmetic mean over 30 registered split-seed runs"
+  },
+  "raw_store": "external run store validated against manifests/main-runs.jsonl",
+  "validated_run_count": 3600,
+  "datasets": [
+    "pubmed",
+    "ogbn-arxiv",
+    "roman-empire",
+    "amazon-ratings",
+    "arxiv-year"
+  ],
+  "models": [
+    "gcn",
+    "graphsage-mean",
+    "h2gcn",
+    "gpr-gnn",
+    "acm-gcn",
+    "linkx"
+  ],
+  "preparations": [
+    "erm",
+    "last",
+    "head",
+    "full"
+  ],
+  "registered_inputs": {
+    "experiment_manifest": {
+      "path": "manifests/main-runs.jsonl",
+      "sha256": "7327d6e66ede2cad7738d31f4532c497b936cffbe16e2c425e46da5c0040ebf1"
+    },
+    "dataset_manifests": [
+      {
+        "path": "manifests/datasets/pubmed.json",
+        "sha256": "d327138feef01855bf46afad129c9442117d50f902f3d89903def9ace2b262ce"
+      },
+      {
+        "path": "manifests/datasets/ogbn-arxiv.json",
+        "sha256": "9a163d527bc88d1e1f17b60a522ce78b5a98c66a22759600bf80ebe8c9074f4c"
+      },
+      {
+        "path": "manifests/datasets/roman-empire.json",
+        "sha256": "7f66ebd80695b1ced422f8921d63c251a8639f276329ac20681f8203d06aa2a4"
+      },
+      {
+        "path": "manifests/datasets/amazon-ratings.json",
+        "sha256": "3573700a214a08e394a6f8f596bea813b1cd09821ae1f4945d90da85d9c5a790"
+      },
+      {
+        "path": "manifests/datasets/arxiv-year.json",
+        "sha256": "af02bee587f4d8c7b49edff8b3004b69f8fbd745d6f336f93c828bd7937abae5"
+      }
+    ]
+  },
+  "outputs": [
+    {
+      "path": "results/main/figures/rq5/rq5_tail_vs_non_tail_macro_f1_compact.png",
+      "sha256": "5d13ce4124cb109f3aa92c822d1c10283f6b954a1a267ce8b4c54cc6eeca28d5"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_tail_vs_non_tail_macro_f1_compact.pdf",
+      "sha256": "871dea6eabec722a596f5edb094adb05f1d3c5aa731a1437b1913491db11a8ef"
+    },
+    {
+      "path": "results/main/rq5/preparation_tail_vs_non_tail_macro_f1_run_values.csv",
+      "sha256": "1b133a7330310d5a4ba62c99ce3ebb7066df8ab3dc2a86ff58c07c7c9c0d29f6"
+    },
+    {
+      "path": "results/main/rq5/preparation_tail_vs_non_tail_macro_f1.csv",
+      "sha256": "2149d8d687e8c6708a7c3b3ecd8636616921a59f1b7d782545feb50035938987"
+    }
+  ],
+  "software": {
+    "python": "3.11.15",
+    "numpy": "2.2.6",
+    "matplotlib": "3.11.0"
+  },
+  "rendering": {
+    "dpi": 300,
+    "font_family": [
+      "Arial"
+    ]
+  }
+}

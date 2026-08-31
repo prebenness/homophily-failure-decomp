@@ -1,0 +1,69 @@
+{
+  "analysis": "fg-ccdb-pubmed-recovery-sensitivity",
+  "analysis_code": {
+    "numpy_version": "2.2.6",
+    "script": "scripts/analyze_fg_ccdb.py",
+    "script_sha256": "289313f4b95596f044c5b096a0623bc592db8c0b04af227acbd99012ec0d02bd"
+  },
+  "fg_objective": {
+    "implementation": "deterministic full-batch importance-weighted cross-entropy",
+    "sampler": null,
+    "spurious_variable": "fixed merged local-homophily bin",
+    "support_policy": "fail on any empty active bin-by-class cell",
+    "target": "empirical P(bin) * empirical P(label) on eligible training nodes",
+    "weight_formula": "n_bin * n_class / (N * n_bin_class)"
+  },
+  "metric": {
+    "label_set": "classes present in each evaluated subset's true labels, fixed before predictions are evaluated",
+    "primary": "tail macro-F1",
+    "zero_division": 0
+  },
+  "paired_bootstrap": {
+    "global_seed": 20260716,
+    "interval": "two-sided percentile 95%",
+    "multiple_comparison_correction": null,
+    "quantile_method": "linear",
+    "resamples": 1000
+  },
+  "raw_roots": {
+    "canonical_erm_and_groupdro": "PATH-TO-CANONICAL-RUNS",
+    "fg": "PATH-TO-FG-CCDB-RUNS"
+  },
+  "schema_version": 1,
+  "scope": {
+    "dataset": "pubmed",
+    "erm_pairs": 90,
+    "fg_runs": 270,
+    "groupdro_comparison_runs": 270,
+    "models": [
+      "graphsage-mean",
+      "gcn",
+      "acm-gcn"
+    ],
+    "preparations": [
+      "last",
+      "head",
+      "full"
+    ],
+    "seeds": [
+      1,
+      2,
+      3
+    ],
+    "splits": [
+      "geomgcn-0",
+      "geomgcn-1",
+      "geomgcn-2",
+      "geomgcn-3",
+      "geomgcn-4",
+      "geomgcn-5",
+      "geomgcn-6",
+      "geomgcn-7",
+      "geomgcn-8",
+      "geomgcn-9"
+    ]
+  },
+  "training_code_versions": [
+    "36fbc75c6a92fdf4058c00158e22b7af0a27c9c4"
+  ]
+}

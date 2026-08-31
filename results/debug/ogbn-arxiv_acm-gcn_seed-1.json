@@ -1,0 +1,17 @@
+{
+  "dataset": "ogbn-arxiv",
+  "model": "acm-gcn",
+  "split": "ogb-time",
+  "seed": 1,
+  "test_metric_pct": 62.56,
+  "reference_pct": null,
+  "grade": "unanchored",
+  "deviation_pct": null,
+  "gate_margin": null,
+  "majority_class_pct": 22.1,
+  "verdict": "sanity-ok (becomes reference)",
+  "best_epoch": 494,
+  "epochs_run": 500,
+  "train_seconds": 86.0,
+  "code_version": "54a538d61486a6164116379a9e13e38ce7f2e103"
+}

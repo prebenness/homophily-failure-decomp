@@ -1,0 +1,71 @@
+dataset_order,dataset,dataset_group,model_order,model,model_label,model_family,scope_order,scope,scope_label,n_runs,mean_macro_f1,sample_std_macro_f1,bootstrap_ci_lower,bootstrap_ci_upper
+0,pubmed,homophilic,0,mlp,MLP,mlp,0,whole_test,Whole test,30,0.8680465693,0.0033186215,0.8668044513,0.8692289562
+0,pubmed,homophilic,0,mlp,MLP,mlp,1,tail,Tail,30,0.6707125770,0.0160951186,0.6653311510,0.6763847895
+0,pubmed,homophilic,1,gcn,GCN,standard,0,whole_test,Whole test,30,0.8751331525,0.0050640863,0.8733188704,0.8768982980
+0,pubmed,homophilic,1,gcn,GCN,standard,1,tail,Tail,30,0.5108047693,0.0198037065,0.5036306275,0.5176271003
+0,pubmed,homophilic,2,graphsage-mean,GraphSAGE-mean,standard,0,whole_test,Whole test,30,0.8847011062,0.0054563617,0.8827767445,0.8866584438
+0,pubmed,homophilic,2,graphsage-mean,GraphSAGE-mean,standard,1,tail,Tail,30,0.5343704986,0.0189276704,0.5271095609,0.5404181845
+0,pubmed,homophilic,3,h2gcn,H2GCN-2,heterophily-designed,0,whole_test,Whole test,30,0.8894371580,0.0050230797,0.8877280132,0.8911355706
+0,pubmed,homophilic,3,h2gcn,H2GCN-2,heterophily-designed,1,tail,Tail,30,0.5909556566,0.0222205079,0.5829169135,0.5981420091
+0,pubmed,homophilic,4,gpr-gnn,GPR-GNN,heterophily-designed,0,whole_test,Whole test,30,0.8939936804,0.0049801801,0.8922326963,0.8956676871
+0,pubmed,homophilic,4,gpr-gnn,GPR-GNN,heterophily-designed,1,tail,Tail,30,0.5462890543,0.0218530082,0.5384452332,0.5537628918
+0,pubmed,homophilic,5,acm-gcn,ACM-GCN,heterophily-designed,0,whole_test,Whole test,30,0.8893464040,0.0059668323,0.8873574668,0.8913088451
+0,pubmed,homophilic,5,acm-gcn,ACM-GCN,heterophily-designed,1,tail,Tail,30,0.5621445898,0.0209605892,0.5554959693,0.5690218388
+0,pubmed,homophilic,6,linkx,LINKX,non-aggregation,0,whole_test,Whole test,30,0.8083343836,0.0155489356,0.8029843320,0.8139689166
+0,pubmed,homophilic,6,linkx,LINKX,non-aggregation,1,tail,Tail,30,0.4733099961,0.0547393746,0.4530352401,0.4925300914
+1,ogbn-arxiv,homophilic,0,mlp,MLP,mlp,0,whole_test,Whole test,30,0.3489331955,0.0014361142,0.3484213870,0.3494817265
+1,ogbn-arxiv,homophilic,0,mlp,MLP,mlp,1,tail,Tail,30,0.2429743091,0.0025697750,0.2420196263,0.2438481473
+1,ogbn-arxiv,homophilic,1,gcn,GCN,standard,0,whole_test,Whole test,30,0.5217995586,0.0026224152,0.5207957875,0.5225911128
+1,ogbn-arxiv,homophilic,1,gcn,GCN,standard,1,tail,Tail,30,0.1720118323,0.0034042369,0.1707572993,0.1732601655
+1,ogbn-arxiv,homophilic,2,graphsage-mean,GraphSAGE-mean,standard,0,whole_test,Whole test,30,0.5095448323,0.0027367059,0.5085714050,0.5105123457
+1,ogbn-arxiv,homophilic,2,graphsage-mean,GraphSAGE-mean,standard,1,tail,Tail,30,0.1438580888,0.0033745208,0.1426155095,0.1450194151
+1,ogbn-arxiv,homophilic,3,h2gcn,H2GCN-2,heterophily-designed,0,whole_test,Whole test,30,0.4634307881,0.0037552056,0.4621529657,0.4647047263
+1,ogbn-arxiv,homophilic,3,h2gcn,H2GCN-2,heterophily-designed,1,tail,Tail,30,0.1641185370,0.0043989729,0.1624311603,0.1656663103
+1,ogbn-arxiv,homophilic,4,gpr-gnn,GPR-GNN,heterophily-designed,0,whole_test,Whole test,30,0.4312275214,0.0058261706,0.4291215700,0.4332554819
+1,ogbn-arxiv,homophilic,4,gpr-gnn,GPR-GNN,heterophily-designed,1,tail,Tail,30,0.1284958002,0.0050105676,0.1268205733,0.1302284082
+1,ogbn-arxiv,homophilic,5,acm-gcn,ACM-GCN,heterophily-designed,0,whole_test,Whole test,30,0.4022231236,0.0042308149,0.4007697950,0.4037735887
+1,ogbn-arxiv,homophilic,5,acm-gcn,ACM-GCN,heterophily-designed,1,tail,Tail,30,0.1799731398,0.0041543847,0.1785654030,0.1813744278
+1,ogbn-arxiv,homophilic,6,linkx,LINKX,non-aggregation,0,whole_test,Whole test,30,0.2699648865,0.0174232329,0.2637224391,0.2754870324
+1,ogbn-arxiv,homophilic,6,linkx,LINKX,non-aggregation,1,tail,Tail,30,0.0910901916,0.0068416687,0.0887842966,0.0934299673
+2,roman-empire,heterophilic,0,mlp,MLP,mlp,0,whole_test,Whole test,30,0.5663043469,0.0375503505,0.5527539416,0.5794832562
+2,roman-empire,heterophilic,0,mlp,MLP,mlp,1,tail,Tail,30,0.5883220356,0.0723616734,0.5671029535,0.6122670448
+2,roman-empire,heterophilic,1,gcn,GCN,standard,0,whole_test,Whole test,30,0.6608291744,0.0202787732,0.6539282868,0.6679875682
+2,roman-empire,heterophilic,1,gcn,GCN,standard,1,tail,Tail,30,0.7570552886,0.0693853371,0.7320285177,0.7803496387
+2,roman-empire,heterophilic,2,graphsage-mean,GraphSAGE-mean,standard,0,whole_test,Whole test,30,0.8159877290,0.0149270507,0.8108037867,0.8214836755
+2,roman-empire,heterophilic,2,graphsage-mean,GraphSAGE-mean,standard,1,tail,Tail,30,0.7103291989,0.0884704618,0.6782111873,0.7431435600
+2,roman-empire,heterophilic,3,h2gcn,H2GCN-2,heterophily-designed,0,whole_test,Whole test,30,0.6519869097,0.0274279833,0.6432741479,0.6613410969
+2,roman-empire,heterophilic,3,h2gcn,H2GCN-2,heterophily-designed,1,tail,Tail,30,0.6218684838,0.0687857669,0.5969846742,0.6472129079
+2,roman-empire,heterophilic,4,gpr-gnn,GPR-GNN,heterophily-designed,0,whole_test,Whole test,30,0.7234945405,0.0306902217,0.7128946809,0.7343603594
+2,roman-empire,heterophilic,4,gpr-gnn,GPR-GNN,heterophily-designed,1,tail,Tail,30,0.6938712888,0.0684305726,0.6705965218,0.7201759814
+2,roman-empire,heterophilic,5,acm-gcn,ACM-GCN,heterophily-designed,0,whole_test,Whole test,30,0.6370148316,0.0317492444,0.6264027839,0.6492349562
+2,roman-empire,heterophilic,5,acm-gcn,ACM-GCN,heterophily-designed,1,tail,Tail,30,0.6572699519,0.0601155510,0.6372709840,0.6786629323
+2,roman-empire,heterophilic,6,linkx,LINKX,non-aggregation,0,whole_test,Whole test,30,0.2229687403,0.0388280064,0.2090602481,0.2373437788
+2,roman-empire,heterophilic,6,linkx,LINKX,non-aggregation,1,tail,Tail,30,0.2604966885,0.0643547196,0.2387758882,0.2835420464
+3,amazon-ratings,heterophilic,0,mlp,MLP,mlp,0,whole_test,Whole test,30,0.3968684889,0.0071388389,0.3943300178,0.3994426532
+3,amazon-ratings,heterophilic,0,mlp,MLP,mlp,1,tail,Tail,30,0.5818577546,0.0478999576,0.5653740924,0.5991709592
+3,amazon-ratings,heterophilic,1,gcn,GCN,standard,0,whole_test,Whole test,30,0.4079215448,0.0110132992,0.4038212132,0.4118902998
+3,amazon-ratings,heterophilic,1,gcn,GCN,standard,1,tail,Tail,30,0.9167883531,0.0160906319,0.9107573610,0.9221496544
+3,amazon-ratings,heterophilic,2,graphsage-mean,GraphSAGE-mean,standard,0,whole_test,Whole test,30,0.4669600226,0.0080194970,0.4643446415,0.4698323788
+3,amazon-ratings,heterophilic,2,graphsage-mean,GraphSAGE-mean,standard,1,tail,Tail,30,0.7912513310,0.0318732569,0.7803460431,0.8021746999
+3,amazon-ratings,heterophilic,3,h2gcn,H2GCN-2,heterophily-designed,0,whole_test,Whole test,30,0.4313638824,0.0076305218,0.4286181522,0.4341376376
+3,amazon-ratings,heterophilic,3,h2gcn,H2GCN-2,heterophily-designed,1,tail,Tail,30,0.7163239243,0.0465376927,0.6999422517,0.7326432738
+3,amazon-ratings,heterophilic,4,gpr-gnn,GPR-GNN,heterophily-designed,0,whole_test,Whole test,30,0.3994370833,0.0106270281,0.3957690035,0.4031124622
+3,amazon-ratings,heterophilic,4,gpr-gnn,GPR-GNN,heterophily-designed,1,tail,Tail,30,0.8836876636,0.0259905543,0.8737969801,0.8919530989
+3,amazon-ratings,heterophilic,5,acm-gcn,ACM-GCN,heterophily-designed,0,whole_test,Whole test,30,0.3935305489,0.0058542494,0.3915009793,0.3956927352
+3,amazon-ratings,heterophilic,5,acm-gcn,ACM-GCN,heterophily-designed,1,tail,Tail,30,0.6849203090,0.0583767865,0.6656866542,0.7034410812
+3,amazon-ratings,heterophilic,6,linkx,LINKX,non-aggregation,0,whole_test,Whole test,30,0.4246670359,0.0179487634,0.4176383287,0.4301593663
+3,amazon-ratings,heterophilic,6,linkx,LINKX,non-aggregation,1,tail,Tail,30,0.7134301847,0.0642226020,0.6920965300,0.7360825178
+4,arxiv-year,heterophilic,0,mlp,MLP,mlp,0,whole_test,Whole test,30,0.2621627325,0.0051329381,0.2601953360,0.2640075796
+4,arxiv-year,heterophilic,0,mlp,MLP,mlp,1,tail,Tail,30,0.2474531836,0.0069604943,0.2447967142,0.2498055441
+4,arxiv-year,heterophilic,1,gcn,GCN,standard,0,whole_test,Whole test,30,0.3062275118,0.0056308259,0.3043039491,0.3082029873
+4,arxiv-year,heterophilic,1,gcn,GCN,standard,1,tail,Tail,30,0.2456938445,0.0075494734,0.2431319953,0.2482992149
+4,arxiv-year,heterophilic,2,graphsage-mean,GraphSAGE-mean,standard,0,whole_test,Whole test,30,0.2295270839,0.0042871221,0.2279524423,0.2309888443
+4,arxiv-year,heterophilic,2,graphsage-mean,GraphSAGE-mean,standard,1,tail,Tail,30,0.2280412334,0.0052079725,0.2260584247,0.2299212804
+4,arxiv-year,heterophilic,3,h2gcn,H2GCN-2,heterophily-designed,0,whole_test,Whole test,30,0.3428484296,0.0050610567,0.3410956636,0.3445865544
+4,arxiv-year,heterophilic,3,h2gcn,H2GCN-2,heterophily-designed,1,tail,Tail,30,0.3181918586,0.0144374651,0.3131305537,0.3231392571
+4,arxiv-year,heterophilic,4,gpr-gnn,GPR-GNN,heterophily-designed,0,whole_test,Whole test,30,0.2920143233,0.0041581543,0.2906108891,0.2934787262
+4,arxiv-year,heterophilic,4,gpr-gnn,GPR-GNN,heterophily-designed,1,tail,Tail,30,0.2791058306,0.0057553941,0.2771562836,0.2810945011
+4,arxiv-year,heterophilic,5,acm-gcn,ACM-GCN,heterophily-designed,0,whole_test,Whole test,30,0.2652359817,0.0070785956,0.2628585548,0.2677170665
+4,arxiv-year,heterophilic,5,acm-gcn,ACM-GCN,heterophily-designed,1,tail,Tail,30,0.2565315557,0.0105322300,0.2527134489,0.2603742169
+4,arxiv-year,heterophilic,6,linkx,LINKX,non-aggregation,0,whole_test,Whole test,30,0.4269431723,0.0104833645,0.4231782143,0.4306913002
+4,arxiv-year,heterophilic,6,linkx,LINKX,non-aggregation,1,tail,Tail,30,0.3687643966,0.0222538369,0.3611132450,0.3764003725

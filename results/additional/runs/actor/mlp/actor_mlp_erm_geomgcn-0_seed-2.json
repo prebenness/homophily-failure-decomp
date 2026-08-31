@@ -1,0 +1,120 @@
+{
+  "analysis_script_sha256": "3312cbd9560dc7564ffe668e6daf1f3f0e66d41a7c5343423f1fac60a87b95d0",
+  "analysis_version": "true-label-support-v1",
+  "dataset": "actor",
+  "input_checksums_sha256": {
+    "labels": "697482f1b5f45e095c1723513016cecea43c757d2f5f779c3042a95aada7894b",
+    "merged_bin": "51060fc42524e46e089c9f6ea3bd72d3a8d9a57a0c8facbb7c45cd45247944cc",
+    "predictions": "9231af434e308268b1b27dbcdb9f9a1faca426c8d029f3c8fed28607255735aa",
+    "tail_mask": "a4ba1fc2a21852b30f368f3592f29c938d59dcc1e0c9505c5b84e38a09f5440b",
+    "test_idx": "e4e3ef2c0d399e7325f7e19410e4e578a4bdfa056b50bdfffb1ee1bddfe13b2b"
+  },
+  "metric_definition": {
+    "dataset_labels": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "labels": "classes present in the evaluated subset's true labels",
+    "name": "macro-F1",
+    "zero_division": 0
+  },
+  "metric_definition_commit": "91b2518af84cf7150d6f498360f5ab00ac5dc079",
+  "metrics": {
+    "per_bin": [
+      {
+        "bin_index": 0,
+        "interval": "[0,0.25)",
+        "is_tail": false,
+        "macro_f1": 0.28740356668063866,
+        "n_test": 932,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "bin_index": 1,
+        "interval": "[0.25,0.5)",
+        "is_tail": false,
+        "macro_f1": 0.2552763472614167,
+        "n_test": 332,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "bin_index": 2,
+        "interval": "[0.5,0.75)",
+        "is_tail": false,
+        "macro_f1": 0.24823364751562282,
+        "n_test": 162,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "bin_index": 3,
+        "interval": "[0.75,1]",
+        "is_tail": true,
+        "macro_f1": 0.3599751011515718,
+        "n_test": 94,
+        "true_labels": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    ],
+    "tail": {
+      "macro_f1": 0.3599751011515718,
+      "n_test": 94,
+      "true_labels": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "tail_gap": -0.0709455927541005,
+    "whole_test": {
+      "macro_f1": 0.28902950839747127,
+      "n_test": 1520,
+      "true_labels": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "worst_bin": {
+      "bin_index": 2,
+      "interval": "[0.5,0.75)",
+      "macro_f1": 0.24823364751562282
+    }
+  },
+  "model": "mlp",
+  "preparation": "erm",
+  "run_id": "actor_mlp_erm_geomgcn-0_seed-2",
+  "schema_version": 1,
+  "seed": 2,
+  "split": "geomgcn-0",
+  "training_code_version": "55bda6604749a84f8f47df19f15486bdd1c811c8"
+}

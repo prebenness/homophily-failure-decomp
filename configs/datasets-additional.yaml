@@ -1,0 +1,11 @@
+# Post-review dataset extension. This registry is deliberately separate from
+# the five datasets used by the original 4,200-run panel.
+
+data_root: artifacts/data
+array_dir: artifacts/additional-dataset-manifests
+manifest_dir: manifests/additional-datasets
+summary_path: results/additional-datasets/dataset-stats.md
+
+datasets:
+  - actor
+  - blogcatalog

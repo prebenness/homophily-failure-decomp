@@ -1,0 +1,107 @@
+{
+  "analysis": "released-result-and-compute-table-rendering",
+  "dataset_mode": "additional",
+  "datasets": [
+    "actor",
+    "blogcatalog"
+  ],
+  "generator": "scripts/render_paper_tables.py",
+  "generator_sha256": "a825eee970416d4c58628547eb848e86e8607e946ecad86ce898753aaa8eb81e",
+  "inputs": {
+    "dataset_manifest_actor": {
+      "path": "manifests/additional-datasets/actor.json",
+      "sha256": "3ed92bacd5460459e45af37086833a2722e0be2ed1cafdfb1386d2b171e3af96"
+    },
+    "dataset_manifest_blogcatalog": {
+      "path": "manifests/additional-datasets/blogcatalog.json",
+      "sha256": "9cac17cbe9f4ffb738a0e08267a745eea1f4021ec8ad9d3d7c349ce942251394"
+    },
+    "gpu_hours": {
+      "path": "results/additional/compute/gpu_hours_by_preparation.csv",
+      "sha256": "e3624651700bb6bb28c22e28259493cc11b74e825eb2ca230997d18a91bf5822"
+    },
+    "recovered_shares": {
+      "path": "results/additional/aggregates/recovered_shares.csv",
+      "sha256": "9c16f7f0f86953ac396c0e2c054889583752b9457d22d1a54c4d9aadd1338c98"
+    },
+    "rq1_accuracy": {
+      "path": "results/additional/rq1/accuracy/whole_vs_tail_accuracy.csv",
+      "sha256": "c19f9e751bee12c3d7d7d37f95697e01ce5fbd8a229f5c2c5fa673c790deb755"
+    },
+    "rq1_macro_f1": {
+      "path": "results/additional/aggregates/erm_tail_gaps.csv",
+      "sha256": "1776286845154453c79906263b1a82d317054331ff58dfbfc5ae97d419ddb9a4"
+    },
+    "rq2_adjusted": {
+      "path": "results/additional/rq2/class_adjusted_cell_summary.csv",
+      "sha256": "2df2e4c3037d016193f88b4f09bb22815e25b49185babb4fdaa781931a9644ec"
+    },
+    "rq2_within_class": {
+      "path": "results/additional/rq2/within_class_accuracy_cell_summary.csv",
+      "sha256": "7a89c77ea559e7396c80b421f686f42514eec8a0e020a58d9be324259b0eb0b0"
+    },
+    "rq4_pairwise": {
+      "path": "results/additional/rq4/pairwise_tail_gap_contrasts.csv",
+      "sha256": "2f0085d453e2f17a3e77e79b85665ba6e381b858a5782437bba84aafc15710fb"
+    },
+    "rq5_gains": {
+      "path": "results/additional/aggregates/paired_gains.csv",
+      "sha256": "1439c7aceea85ac70a9703b8c12a9d6a88cb68b70de8396999a20e9c8861266a"
+    }
+  },
+  "outputs": {
+    "local_homophily_groups.tex": {
+      "path": "results/additional/tables/local_homophily_groups.tex",
+      "sha256": "15645956047b198779883be812b13ecc4f5627dfdccdd537055239b2d6e71f54"
+    },
+    "rq1_accuracy_tail_gap.tex": {
+      "path": "results/additional/tables/rq1_accuracy_tail_gap.tex",
+      "sha256": "38d87674dbd3337aa09cbc5643d447abdc1111fe6799bc2228032153baa77e91"
+    },
+    "rq1_macro_f1_tail_gap.tex": {
+      "path": "results/additional/tables/rq1_macro_f1_tail_gap.tex",
+      "sha256": "a7b0944d7523469bb9c6f6833c864c3b62116643732a66e705fd9b167d920cd0"
+    },
+    "rq2_adjusted_accuracy.tex": {
+      "path": "results/additional/tables/rq2_adjusted_accuracy.tex",
+      "sha256": "29d72c35e65c3be0e298377877543cd57032fa9d6337c487bb01065d65640813"
+    },
+    "rq2_adjusted_macro_f1.tex": {
+      "path": "results/additional/tables/rq2_adjusted_macro_f1.tex",
+      "sha256": "5a9997f30ae724c7905c688670ad204a75b93c103ab0d0ae49a7f31549b040c2"
+    },
+    "rq2_head_recovered_share.tex": {
+      "path": "results/additional/tables/rq2_head_recovered_share.tex",
+      "sha256": "9a19d43d6ef65eb035863a5342cd99a42add651dfac40811853fde46a6808080"
+    },
+    "rq2_last_recovered_share.tex": {
+      "path": "results/additional/tables/rq2_last_recovered_share.tex",
+      "sha256": "306b5d7f32c324a922e5f8d6ee272b9219e2cacee29795ddd05683474b8c2ca5"
+    },
+    "rq2_within_class_accuracy.tex": {
+      "path": "results/additional/tables/rq2_within_class_accuracy.tex",
+      "sha256": "e16e63c9f6748a7c5470cd352945495dabc3c312d7019572f28db858f32b818c"
+    },
+    "rq4_designed_vs_standard.tex": {
+      "path": "results/additional/tables/rq4_designed_vs_standard.tex",
+      "sha256": "25d0728e81236f3970e71459e2ed953bbccbec7d0350d8dfa61829d4e5364600"
+    },
+    "rq5_full_tail_gain.tex": {
+      "path": "results/additional/tables/rq5_full_tail_gain.tex",
+      "sha256": "cf9237989f398a28ebde33aed21f85155f9f281867061ad10fc57c7549b270c0"
+    },
+    "rq5_head_tail_gain.tex": {
+      "path": "results/additional/tables/rq5_head_tail_gain.tex",
+      "sha256": "61ae40082636e476fe80d9ca8fdd77f31a2f6573bcde4d1a00ca33b1fbb80bb3"
+    },
+    "rq5_last_tail_gain.tex": {
+      "path": "results/additional/tables/rq5_last_tail_gain.tex",
+      "sha256": "6d4c3470cad620841d33d3f069c81d1af5e88f48462b5994e235515760f3e0ba"
+    },
+    "training_gpu_hours.tex": {
+      "path": "results/additional/tables/training_gpu_hours.tex",
+      "sha256": "613f538df9df763b4f0fb13582bd5475ebaceb87aeb17c78e96a6d503bd7b80d"
+    }
+  },
+  "schema_version": 1
+}

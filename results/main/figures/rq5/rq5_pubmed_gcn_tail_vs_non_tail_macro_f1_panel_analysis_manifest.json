@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "analysis": "rq5-pubmed-gcn-recovery-example-panel",
+  "definition": "mean tail and non-tail macro-F1 across the 30 registered PubMed GCN split-seed runs for each preparation",
+  "input": {
+    "path": "results/main/rq5/preparation_tail_vs_non_tail_macro_f1.csv",
+    "sha256": "2149d8d687e8c6708a7c3b3ecd8636616921a59f1b7d782545feb50035938987"
+  },
+  "outputs": [
+    {
+      "path": "results/main/figures/rq5/rq5_pubmed_gcn_tail_vs_non_tail_macro_f1_panel.png",
+      "sha256": "857b648c42471ad5a8e1408e9bbcd838285e8dae31986a138b5b92a87bc742e4"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_pubmed_gcn_tail_vs_non_tail_macro_f1_panel.pdf",
+      "sha256": "e0f188758f936924d5daa5d961694ff46fcc35bb82ecf0bf4e085819d4603ec6"
+    }
+  ],
+  "values": {
+    "preparations": [
+      "erm",
+      "last",
+      "head",
+      "full"
+    ],
+    "tail_macro_f1": [
+      0.5116268276075027,
+      0.5369903395386504,
+      0.6199695068168934,
+      0.6335724468640501
+    ],
+    "non_tail_macro_f1": [
+      0.9333321486348275,
+      0.8906704717235293,
+      0.8160141057668964,
+      0.7879378462006696
+    ]
+  },
+  "software": {
+    "python": "3.11.15",
+    "numpy": "2.2.6",
+    "matplotlib": "3.11.0"
+  },
+  "rendering": {
+    "dpi": 300,
+    "transparent": true
+  }
+}

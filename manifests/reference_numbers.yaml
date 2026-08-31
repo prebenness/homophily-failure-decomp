@@ -1,0 +1,51 @@
+# Baseline validation gate (model-hyperparameter-defaults.md, "Reference
+# numbers for the baseline validation gate").
+#
+# Eleven cells have a trustworthy anchor: a published number sharing code
+# lineage, splits, and protocol with our configuration, with small known
+# deviations. Gate: flag if whole-test performance is more than
+# gate_margin_points from the anchor; a flag means investigate before the
+# grid launches and record the resolution in the manifest note.
+#
+# All other cells use no reference number. Their gate is:
+#   1. parity unit tests for hand-ported encoders (source code and port
+#      produce equal outputs on the same synthetic graph, same weights);
+#   2. sanity bounds: clearly above the majority-class rate, sane runtime,
+#      convergence within budget;
+#   3. cross-checking against the anchored cells in the same row/column;
+#      for GPR-GNN and ogbn-arxiv, parity and sanity are the entire gate
+#      (stability evidence arrives with the confirmatory 30-run grid).
+# The debug result of each unanchored cell becomes its recorded reference.
+
+gate_margin_points: 5.0
+
+anchors:
+  roman-empire:
+    mlp:            {value: 65.88, std: 0.38, source: "Platonov et al. (arXiv:2302.11640), Table 4", deviation: "theirs is best depth over {1..5}, ours fixed at 5"}
+    gcn:            {value: 73.69, std: 0.74, source: "Platonov et al., Table 4", deviation: "best depth vs fixed 5"}
+    graphsage-mean: {value: 85.74, std: 0.67, source: "Platonov et al., Table 4", deviation: "best depth vs fixed 5"}
+    gat:            {value: 80.87, std: 0.30, source: "Platonov et al., Table 4", deviation: "best depth vs fixed 5 (optional model)"}
+  amazon-ratings:
+    mlp:            {value: 45.90, std: 0.52, source: "Platonov et al., Table 4", deviation: "best depth vs fixed 5"}
+    gcn:            {value: 48.70, std: 0.63, source: "Platonov et al., Table 4", deviation: "best depth vs fixed 5"}
+    graphsage-mean: {value: 53.63, std: 0.39, source: "Platonov et al., Table 4", deviation: "best depth vs fixed 5"}
+    gat:            {value: 49.09, std: 0.63, source: "Platonov et al., Table 4", deviation: "best depth vs fixed 5 (optional model)"}
+  pubmed:
+    h2gcn:          {value: 89.59, std: 0.33, source: "Zhu et al. (arXiv:2006.11468), Table 5", deviation: "width 64 vs our 73; shared readout"}
+    acm-gcn:        {value: 91.01, std: 0.70, source: "Luan et al. (arXiv:2210.07606), Table 1", deviation: "their splits stated as the same 60/20/20 family, files not verified identical"}
+  arxiv-year:
+    linkx:
+      value: 56.00
+      std: 1.34
+      source: "Lim et al. (arXiv:2110.14446), Table 3"
+      deviation: "their number is tuned, ours uses repository defaults; they kept the graph directed, we symmetrise"
+      flag_resolution: >-
+        2026-07-09: debug run scored 47.21 (deviation -8.79, FLAG). Training
+        curve inspected (500 epochs, seed 1, whole-split metrics only): clean
+        convergence — val acc rises from the 28.8 majority rate to a 46.9 peak
+        at epoch ~44, then a stable 44-45 plateau while train loss goes to
+        0.01; checkpoint selection took the peak. No instability or failure to
+        train. Deficit attributed to this anchor's documented deviations
+        (tuned vs repository-default hyperparameters; directed vs symmetrised
+        graph — edge direction is real signal for year prediction). Cell
+        passes the gate's intent; 47.21 stands as the recorded debug result.

@@ -1,0 +1,22 @@
+\begin{table}[H]
+  \centering
+  \caption{
+    Per-class non-tail accuracy minus tail accuracy, averaged equally over classes. Each cell reports the mean over the 30 runs and the 95\% percentile-bootstrap interval. Grey cells denote confidence intervals that contain zero.
+  }
+  \label{tab:additional-rq2-class-macro-accuracy}
+  \begin{tabular}{@{\extracolsep{\fill}}lcc@{}}
+    \toprule
+    & \multicolumn{2}{c}{High-homophily tail} \\
+    \cmidrule(lr){2-3}
+    Model & Actor & BlogCatalog \\
+    \midrule
+    MLP              & \uncertaingaincell{-.009}{[-.032,.014]} & \gaincell{+.046}{[.037,.058]} \\
+    GCN              & \gaincell{-.197}{[-.231,-.160]} & \gaincell{-.282}{[-.285,-.279]} \\
+    GraphSAGE-mean   & \uncertaingaincell{-.011}{[-.036,.013]} & \gaincell{-.084}{[-.090,-.075]} \\
+    H2GCN-2          & \gaincell{-.039}{[-.066,-.018]} & \gaincell{-.049}{[-.057,-.040]} \\
+    GPR-GNN          & \gaincell{-.046}{[-.069,-.024]} & \gaincell{-.066}{[-.075,-.057]} \\
+    ACM-GCN          & \gaincell{+.046}{[.025,.064]} & \gaincell{+.066}{[.056,.076]} \\
+    LINKX            & \gaincell{-.024}{[-.048,-.003]} & \gaincell{-.133}{[-.143,-.123]} \\
+    \bottomrule
+  \end{tabular}
+\end{table}

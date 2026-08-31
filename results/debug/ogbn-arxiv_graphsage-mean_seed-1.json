@@ -1,0 +1,17 @@
+{
+  "dataset": "ogbn-arxiv",
+  "model": "graphsage-mean",
+  "split": "ogb-time",
+  "seed": 1,
+  "test_metric_pct": 71.68,
+  "reference_pct": null,
+  "grade": "unanchored",
+  "deviation_pct": null,
+  "gate_margin": null,
+  "majority_class_pct": 22.1,
+  "verdict": "sanity-ok (becomes reference)",
+  "best_epoch": 999,
+  "epochs_run": 1000,
+  "train_seconds": 651.8,
+  "code_version": "54a538d61486a6164116379a9e13e38ce7f2e103"
+}

@@ -1,0 +1,21 @@
+dataset_order,dataset,dataset_group,model_order,model,model_label,model_family,scope_order,scope,scope_label,n_runs,mean_macro_f1,sample_std_macro_f1,bootstrap_ci_lower,bootstrap_ci_upper
+0,actor,heterophilic,0,gcn,GCN,standard,0,whole_test,Whole test,30,0.2576031353,0.0120113422,0.2532452558,0.2618513686
+0,actor,heterophilic,0,gcn,GCN,standard,1,tail,Tail,30,0.3998502463,0.0697505605,0.3743104105,0.4237470209
+0,actor,heterophilic,1,graphsage-mean,GraphSAGE-mean,standard,0,whole_test,Whole test,30,0.3471754083,0.0100566499,0.3437485872,0.3506060580
+0,actor,heterophilic,1,graphsage-mean,GraphSAGE-mean,standard,1,tail,Tail,30,0.3091263627,0.0451909107,0.2947530741,0.3267146706
+0,actor,heterophilic,2,h2gcn,H2GCN-2,heterophily-designed,0,whole_test,Whole test,30,0.3177228287,0.0244634771,0.3087060422,0.3261014473
+0,actor,heterophilic,2,h2gcn,H2GCN-2,heterophily-designed,1,tail,Tail,30,0.3122908029,0.0448885595,0.2978226479,0.3273483370
+0,actor,heterophilic,3,gpr-gnn,GPR-GNN,heterophily-designed,0,whole_test,Whole test,30,0.2871943778,0.0324582188,0.2765197946,0.2984006006
+0,actor,heterophilic,3,gpr-gnn,GPR-GNN,heterophily-designed,1,tail,Tail,30,0.2945519288,0.0446355368,0.2786168299,0.3106369236
+0,actor,heterophilic,4,acm-gcn,ACM-GCN,heterophily-designed,0,whole_test,Whole test,30,0.2919030578,0.0248958991,0.2823656190,0.3006202405
+0,actor,heterophilic,4,acm-gcn,ACM-GCN,heterophily-designed,1,tail,Tail,30,0.2357094339,0.0351310963,0.2239427406,0.2482791168
+1,blogcatalog,heterophilic,0,gcn,GCN,standard,0,whole_test,Whole test,30,0.7561284693,0.0062095583,0.7540077036,0.7584285091
+1,blogcatalog,heterophilic,0,gcn,GCN,standard,1,tail,Tail,30,0.9995179869,0.0018343597,0.9987949672,1.0000000000
+1,blogcatalog,heterophilic,1,graphsage-mean,GraphSAGE-mean,standard,0,whole_test,Whole test,30,0.9092809761,0.0044606484,0.9076013110,0.9108429307
+1,blogcatalog,heterophilic,1,graphsage-mean,GraphSAGE-mean,standard,1,tail,Tail,30,0.9739877519,0.0170541838,0.9680955074,0.9796418911
+1,blogcatalog,heterophilic,2,h2gcn,H2GCN-2,heterophily-designed,0,whole_test,Whole test,30,0.9008879782,0.0063227158,0.8986373376,0.9030435035
+1,blogcatalog,heterophilic,2,h2gcn,H2GCN-2,heterophily-designed,1,tail,Tail,30,0.9392940181,0.0333008947,0.9276034712,0.9499811907
+1,blogcatalog,heterophilic,3,gpr-gnn,GPR-GNN,heterophily-designed,0,whole_test,Whole test,30,0.9123254120,0.0054798239,0.9104749884,0.9142553823
+1,blogcatalog,heterophilic,3,gpr-gnn,GPR-GNN,heterophily-designed,1,tail,Tail,30,0.9710236281,0.0175495307,0.9649027904,0.9770026783
+1,blogcatalog,heterophilic,4,acm-gcn,ACM-GCN,heterophily-designed,0,whole_test,Whole test,30,0.7685190765,0.0128926687,0.7639145274,0.7728850472
+1,blogcatalog,heterophilic,4,acm-gcn,ACM-GCN,heterophily-designed,1,tail,Tail,30,0.6683252207,0.0292892385,0.6583305074,0.6782156660

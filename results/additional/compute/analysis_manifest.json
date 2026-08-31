@@ -1,0 +1,35 @@
+{
+  "analysis": "additional-panel-gpu-hours",
+  "dataset_mode": "additional",
+  "datasets": [
+    "actor",
+    "blogcatalog"
+  ],
+  "run_count": 1680,
+  "preparations": [
+    "erm",
+    "last",
+    "head",
+    "full"
+  ],
+  "runs_per_preparation": 420,
+  "duration_field": "metrics.json: checkpoint.train_seconds",
+  "duration_definition": "Time inside the optimisation loop.",
+  "gpu_hours_definition": "Sum of recorded training-loop seconds divided by 3600; every run used one GPU through PyTorch's cuda device interface (also used by ROCm).",
+  "hardware": [
+    {
+      "gpu_model": "AMD Instinct MI210",
+      "memory_gb": null
+    },
+    {
+      "gpu_model": "NVIDIA A100-PCIE-40GB",
+      "memory_gb": null
+    },
+    {
+      "gpu_model": "NVIDIA A100-SXM4-80GB",
+      "memory_gb": null
+    }
+  ],
+  "hardware_assignment_note": "GPU model names for Actor and BlogCatalog are read from config.accelerator.gpu_name. Runs without a recorded name are omitted from this inventory. Per-run accelerator memory was not recorded, so memory_gb is blank.",
+  "registered_run_panel_exact_match": true
+}

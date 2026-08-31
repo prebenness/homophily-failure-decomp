@@ -1,0 +1,283 @@
+{
+  "dataset": "roman-empire",
+  "metric": "accuracy",
+  "split_panel": "platonov-10",
+  "training_seeds": [
+    1,
+    2,
+    3
+  ],
+  "n_runs": 30,
+  "graph": {
+    "num_nodes": 22662,
+    "num_edges_as_released": 65854,
+    "num_undirected_simple_edges": 32927,
+    "feature_dim": 300,
+    "num_classes": 18
+  },
+  "local_homophily": {
+    "n_labelled": 22662,
+    "n_undefined_h": 0,
+    "n_eligible": 22662,
+    "mean_h": 0.046047879669139924,
+    "direction": "heterophilic",
+    "tail_side": "high-h_v",
+    "base_bins": [
+      {
+        "interval": "[0,0.25)",
+        "count": 20297,
+        "fraction_of_eligible": 0.8956402788809461
+      },
+      {
+        "interval": "[0.25,0.5)",
+        "count": 1353,
+        "fraction_of_eligible": 0.059703468361133175
+      },
+      {
+        "interval": "[0.5,0.75)",
+        "count": 931,
+        "fraction_of_eligible": 0.04108198746800812
+      },
+      {
+        "interval": "[0.75,1]",
+        "count": 81,
+        "fraction_of_eligible": 0.003574265289912629
+      }
+    ],
+    "merge_history": [
+      "merged [0.75,1] (n=81) into [0.5,0.75) (n=931)"
+    ],
+    "merged_bins": [
+      {
+        "interval": "[0,0.25)",
+        "base_bins": [
+          0
+        ],
+        "count": 20297,
+        "fraction_of_eligible": 0.8956402788809461,
+        "is_tail": false,
+        "class_composition": {
+          "0": 942,
+          "1": 3145,
+          "2": 3007,
+          "3": 2500,
+          "4": 2024,
+          "5": 908,
+          "6": 1197,
+          "7": 1080,
+          "8": 845,
+          "9": 622,
+          "10": 632,
+          "11": 391,
+          "12": 342,
+          "13": 365,
+          "14": 329,
+          "15": 310,
+          "16": 312,
+          "17": 1346
+        }
+      },
+      {
+        "interval": "[0.25,0.5)",
+        "base_bins": [
+          1
+        ],
+        "count": 1353,
+        "fraction_of_eligible": 0.059703468361133175,
+        "is_tail": false,
+        "class_composition": {
+          "0": 1,
+          "1": 12,
+          "2": 101,
+          "3": 1,
+          "4": 224,
+          "5": 315,
+          "6": 25,
+          "8": 6,
+          "9": 62,
+          "10": 36,
+          "11": 31,
+          "12": 50,
+          "15": 4,
+          "17": 485
+        }
+      },
+      {
+        "interval": "[0.5,1]",
+        "base_bins": [
+          2,
+          3
+        ],
+        "count": 1012,
+        "fraction_of_eligible": 0.04465625275792075,
+        "is_tail": true,
+        "class_composition": {
+          "0": 1,
+          "1": 6,
+          "2": 25,
+          "3": 1,
+          "4": 239,
+          "5": 136,
+          "6": 22,
+          "8": 1,
+          "9": 105,
+          "10": 49,
+          "11": 23,
+          "12": 36,
+          "15": 5,
+          "17": 363
+        }
+      }
+    ],
+    "tail": {
+      "interval": "[0.5,1]",
+      "count": 1012,
+      "fraction_of_eligible": 0.04465625275792075
+    }
+  },
+  "splits": [
+    {
+      "split_id": "platonov-0",
+      "n_train": 11331,
+      "n_val": 5665,
+      "n_test": 5666,
+      "n_train_tail": 495,
+      "n_val_tail": 282,
+      "n_test_eligible": 5666,
+      "n_test_tail": 235
+    },
+    {
+      "split_id": "platonov-1",
+      "n_train": 11331,
+      "n_val": 5665,
+      "n_test": 5666,
+      "n_train_tail": 520,
+      "n_val_tail": 247,
+      "n_test_eligible": 5666,
+      "n_test_tail": 245
+    },
+    {
+      "split_id": "platonov-2",
+      "n_train": 11331,
+      "n_val": 5665,
+      "n_test": 5666,
+      "n_train_tail": 503,
+      "n_val_tail": 251,
+      "n_test_eligible": 5666,
+      "n_test_tail": 258
+    },
+    {
+      "split_id": "platonov-3",
+      "n_train": 11331,
+      "n_val": 5665,
+      "n_test": 5666,
+      "n_train_tail": 513,
+      "n_val_tail": 266,
+      "n_test_eligible": 5666,
+      "n_test_tail": 233
+    },
+    {
+      "split_id": "platonov-4",
+      "n_train": 11331,
+      "n_val": 5665,
+      "n_test": 5666,
+      "n_train_tail": 502,
+      "n_val_tail": 265,
+      "n_test_eligible": 5666,
+      "n_test_tail": 245
+    },
+    {
+      "split_id": "platonov-5",
+      "n_train": 11331,
+      "n_val": 5665,
+      "n_test": 5666,
+      "n_train_tail": 520,
+      "n_val_tail": 274,
+      "n_test_eligible": 5666,
+      "n_test_tail": 218
+    },
+    {
+      "split_id": "platonov-6",
+      "n_train": 11331,
+      "n_val": 5665,
+      "n_test": 5666,
+      "n_train_tail": 513,
+      "n_val_tail": 245,
+      "n_test_eligible": 5666,
+      "n_test_tail": 254
+    },
+    {
+      "split_id": "platonov-7",
+      "n_train": 11331,
+      "n_val": 5665,
+      "n_test": 5666,
+      "n_train_tail": 516,
+      "n_val_tail": 260,
+      "n_test_eligible": 5666,
+      "n_test_tail": 236
+    },
+    {
+      "split_id": "platonov-8",
+      "n_train": 11331,
+      "n_val": 5665,
+      "n_test": 5666,
+      "n_train_tail": 512,
+      "n_val_tail": 241,
+      "n_test_eligible": 5666,
+      "n_test_tail": 259
+    },
+    {
+      "split_id": "platonov-9",
+      "n_train": 11331,
+      "n_val": 5665,
+      "n_test": 5666,
+      "n_train_tail": 495,
+      "n_val_tail": 244,
+      "n_test_eligible": 5666,
+      "n_test_tail": 273
+    }
+  ],
+  "notes": {},
+  "graph_checksums_sha256": {
+    "features": "01eb128241adc3b32c46de6dd9b73a8d9d7d7a317db467f52c01b9c6e1b456b5",
+    "simple_edge_index": "62103899eb69ad778ded6e88813f5da7ef1a6931a9989fefd0b93cf8622653fd"
+  },
+  "array_checksums_sha256": {
+    "base_bin": "a07d1428c9fb95c6762d0843af7d3e543f8f0f72f3060fc318174ec7ba9a456d",
+    "eligible": "2e1e1948fdf974b6a23f2cd27329e65b7296763c741d2216fef643af30d807b9",
+    "h": "141e28409f9decae1099ae1c80c937197609d6113e72733fd40f0b9fc1f810ac",
+    "labels": "9be3c1257b4cfebeca26f57787166dfd3d76b5db7b0fc6376d82e14a8aa23e13",
+    "merged_bin": "e0c85dc1937e855b06017f39fd4d19c41535248cf4fc3d25659c7e8b462bb830",
+    "platonov-0.test": "5c6d9fda7c74017b4438691b96d662e4ffd21d54ef7a8cd9d74871ed6c19d594",
+    "platonov-0.train": "56d1d90363c4afab1ccda192fb0a70dfd55dbe13c61a0b5cc006c8c6d93ccdf5",
+    "platonov-0.val": "1b4c96db859033674736ae42b060d73bb758995481f6aea9f2ee6672915ed175",
+    "platonov-1.test": "ba1191c50abd6ab17f1c0118628df2d273d4762fc6e842ce2e5afa90e07a56d8",
+    "platonov-1.train": "d1df997f1b1f944c5ed672762e17baef221b8574247ab766ded6f75db45ac60d",
+    "platonov-1.val": "05cfc88701d03c8a6f2dd21de360fe4e9bd9cd423ff4db9ab9792e95e1f21a85",
+    "platonov-2.test": "a8e48a294cf9d019cfd171593fe569fcf10535cc7ac3bb8870a576ef63e73567",
+    "platonov-2.train": "ef3b39788d85785bb2001c9f0d2bb0eb8050aa00b26451c7f6b6170848cd00b3",
+    "platonov-2.val": "357336ccaa356810bccf254fd7ec7ffc039c613811030790c818388d61e750ee",
+    "platonov-3.test": "c25bc2291eb1900b7db229788bfdcac717aeff7a11191498ec83bf4619348df0",
+    "platonov-3.train": "23142da3f7f2cc80cf15c173f9202b2c701ff901a3800dd9aa1abee098d8001a",
+    "platonov-3.val": "33d90c0bc3cba43b7845628b2da0465b1e7f96a33b52905915611880d08dab90",
+    "platonov-4.test": "139a56b5c77f96fcd5321e2cba3633cd03a5f702f59ab2b3e353bd1d9a9df522",
+    "platonov-4.train": "6abe77dc34b62e6115542b6d7192287831f7abb36849ee8c4815f64a41d18538",
+    "platonov-4.val": "dd3a96abe2224af7075101e849e24e270284afbb100ca5c269d91424aaf704c8",
+    "platonov-5.test": "60a61430f9ab206ee2e52941cfb3d6c565798492a8e6e1fb74f5aeec41afb519",
+    "platonov-5.train": "30f2526b250d4f55e874aea11505a8dd2f8bdb0476e3311cf959acc7d66512aa",
+    "platonov-5.val": "e53901f4fd8439672ce70d91dc5546e9f6c811a75eeb4fd653a59c95d8e21936",
+    "platonov-6.test": "b81cb4706f04a4b1af5f75eadc5106b4cd765837150887c86d6c18fcf6f543eb",
+    "platonov-6.train": "e7c7b93cf41741d24ee5dd0ffa70dba6cb0ba258aec4ed21335ef90c7e16da7d",
+    "platonov-6.val": "47aa3994b42d813ff8a74c7df972d53df0ac8b1a7551dfd38dcaa56275038c15",
+    "platonov-7.test": "53feaed86681d85e332af11eaccbd692cd837bac4866e22e40ebe97752a90357",
+    "platonov-7.train": "58ef3dfcf361276957ab980b3bcd9807430df75a5d039afae478d6a26f15f43d",
+    "platonov-7.val": "80938c268ce340c4af64c25a2e6bf68084328b698858a2dedb76f0979e9975ed",
+    "platonov-8.test": "f06e45285d17c20c95325bab94b1dfdf4d6ba5ecb90c46d7e71725cd114f64ab",
+    "platonov-8.train": "cdd75ed904d9014d87a91d39468a49b42d8e54dad4c87a0b240ac369f4f60c2e",
+    "platonov-8.val": "07f52734945877c3ed4470e898a1962593b6b69b63a79105eca69115164cdced",
+    "platonov-9.test": "bf13fcc34c646b742754651dbb71c5ad250afb4644508d35fa0660facf28244c",
+    "platonov-9.train": "e9dc5b3331a55994400ef7b26046b026290f4247c683c4c43020cd6359c2670f",
+    "platonov-9.val": "0c0d6bbe7caeee8e6b8e9a075ed89408ed9b15e9db0e22fac2fc128d1d9303b6",
+    "tail_mask": "02f75c1305067d9622712324013b5bd51109b5d66e1fdbaa6c09bda32d7c921b"
+  }
+}

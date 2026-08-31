@@ -1,0 +1,22 @@
+\begin{table}[H]
+  \centering
+  \caption{
+    Class-adjusted macro-F1 tail gaps for all models on Actor and BlogCatalog. Entries are the mean and 95\% bootstrap interval across 30 runs. Grey cells include zero, and $\dagger$ marks cells whose unadjusted macro-F1 tail gap includes zero.
+  }
+  \label{tab:additional-rq2-adjusted-macro-f1}
+  \begin{tabular}{@{\extracolsep{\fill}}lcc@{}}
+    \toprule
+    & \multicolumn{2}{c}{High-homophily tail} \\
+    \cmidrule(lr){2-3}
+    Model & Actor & BlogCatalog \\
+    \midrule
+    MLP              & \uncertaingaincell{-.002}{[-.021,.015]} & \gaincell{+.057}{[.046,.068]} \\
+    GCN              & \gaincell{-.183}{[-.214,-.149]} & \gaincell{-.242}{[-.245,-.240]} \\
+    GraphSAGE-mean   & \uncertaingaincell{-.007}{[-.026,.012]} & \gaincell{-.071}{[-.077,-.065]} \\
+    H2GCN-2          & \gaincell{-.028^{\dagger}}{[-.050,-.009]} & \gaincell{-.034}{[-.043,-.025]} \\
+    GPR-GNN          & \gaincell{-.037^{\dagger}}{[-.057,-.017]} & \gaincell{-.053}{[-.062,-.044]} \\
+    ACM-GCN          & \gaincell{+.046}{[.029,.064]} & \gaincell{+.077}{[.066,.085]} \\
+    LINKX            & \uncertaingaincell{-.005^{\dagger}}{[-.026,.014]} & \gaincell{-.113}{[-.120,-.104]} \\
+    \bottomrule
+  \end{tabular}
+\end{table}

@@ -1,0 +1,2022 @@
+{
+  "schema_version": 1,
+  "analysis": "rq5-absolute-tail-and-whole-test-macro-f1-by-preparation",
+  "dataset_mode": "original",
+  "analysis_version": "true-label-support-v1",
+  "datasets": [
+    "pubmed",
+    "ogbn-arxiv",
+    "roman-empire",
+    "amazon-ratings",
+    "arxiv-year"
+  ],
+  "models": [
+    "mlp",
+    "gcn",
+    "graphsage-mean",
+    "h2gcn",
+    "gpr-gnn",
+    "linkx",
+    "acm-gcn"
+  ],
+  "plotted_models": [
+    "gcn",
+    "graphsage-mean",
+    "h2gcn",
+    "gpr-gnn",
+    "acm-gcn",
+    "linkx"
+  ],
+  "preparations": [
+    "erm",
+    "last",
+    "head",
+    "full"
+  ],
+  "definitions": {
+    "scores": {
+      "tail": "macro-F1 on the registered minority-pattern tail",
+      "whole_test": "macro-F1 on the complete test set"
+    },
+    "cell_mean": "arithmetic mean over 30 split-seed runs",
+    "tail_interval": {
+      "method": "non-parametric percentile bootstrap over complete runs",
+      "level": 0.95,
+      "resamples": 1000,
+      "base_seed": 20260723,
+      "seed_derivation": "SHA256(base seed, dataset, model, preparation, absolute-tail-macro-f1)",
+      "quantile_method": "linear"
+    }
+  },
+  "score_summaries": [
+    {
+      "dataset": "pubmed",
+      "model": "mlp",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6598028608889485,
+      "mean_whole_test_macro_f1": 0.8680465693152101,
+      "tail_bootstrap_ci": [
+        0.6546110829189173,
+        0.6650098653484505
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "mlp",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6753289616578314,
+      "mean_whole_test_macro_f1": 0.8658055299821749,
+      "tail_bootstrap_ci": [
+        0.6705257298003954,
+        0.6808358029289557
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "mlp",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.681112188144361,
+      "mean_whole_test_macro_f1": 0.8599066439776236,
+      "tail_bootstrap_ci": [
+        0.674962034314242,
+        0.6870823758019227
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "mlp",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6642906368709431,
+      "mean_whole_test_macro_f1": 0.8387284904216699,
+      "tail_bootstrap_ci": [
+        0.6584638085029331,
+        0.6703458236988322
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "gcn",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.5116268276075027,
+      "mean_whole_test_macro_f1": 0.8751331525420779,
+      "tail_bootstrap_ci": [
+        0.5052071840253668,
+        0.5178414451728589
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "gcn",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.5369903395386504,
+      "mean_whole_test_macro_f1": 0.8447384159402296,
+      "tail_bootstrap_ci": [
+        0.5310385466001447,
+        0.5423413142908241
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "gcn",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6199695068168934,
+      "mean_whole_test_macro_f1": 0.7907451508763785,
+      "tail_bootstrap_ci": [
+        0.6141483469040233,
+        0.6260556731916831
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "gcn",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6335724468640501,
+      "mean_whole_test_macro_f1": 0.7695660545590026,
+      "tail_bootstrap_ci": [
+        0.6280891831981259,
+        0.638611925374583
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "graphsage-mean",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.5321717714766587,
+      "mean_whole_test_macro_f1": 0.8847011061579602,
+      "tail_bootstrap_ci": [
+        0.5258012604133785,
+        0.537671902138703
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "graphsage-mean",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6478216417648734,
+      "mean_whole_test_macro_f1": 0.8486863409369458,
+      "tail_bootstrap_ci": [
+        0.6351371644060376,
+        0.6602106598542017
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "graphsage-mean",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6879272609181388,
+      "mean_whole_test_macro_f1": 0.8183727261954787,
+      "tail_bootstrap_ci": [
+        0.6775580152140108,
+        0.6974716423213312
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "graphsage-mean",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6942946072471351,
+      "mean_whole_test_macro_f1": 0.8076449962114787,
+      "tail_bootstrap_ci": [
+        0.6888986149760317,
+        0.7002783055901315
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "h2gcn",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.5903638867003735,
+      "mean_whole_test_macro_f1": 0.8894371580160104,
+      "tail_bootstrap_ci": [
+        0.5832351316152206,
+        0.5978506863180637
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "h2gcn",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6472419088957984,
+      "mean_whole_test_macro_f1": 0.8561058077095546,
+      "tail_bootstrap_ci": [
+        0.6341733158790456,
+        0.6595771444309291
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "h2gcn",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6386402400019769,
+      "mean_whole_test_macro_f1": 0.8727831243559667,
+      "tail_bootstrap_ci": [
+        0.628338363462,
+        0.6493618787465766
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "h2gcn",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.654671550844404,
+      "mean_whole_test_macro_f1": 0.8692619656519375,
+      "tail_bootstrap_ci": [
+        0.6495588028548254,
+        0.6600674042320657
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "gpr-gnn",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.5438461173238927,
+      "mean_whole_test_macro_f1": 0.8939936804141705,
+      "tail_bootstrap_ci": [
+        0.5375908952621015,
+        0.549980560941372
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "gpr-gnn",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.56558786661046,
+      "mean_whole_test_macro_f1": 0.8790885749756809,
+      "tail_bootstrap_ci": [
+        0.5580778598878686,
+        0.5741922416953772
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "gpr-gnn",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.560516014383217,
+      "mean_whole_test_macro_f1": 0.8678952750170497,
+      "tail_bootstrap_ci": [
+        0.5538002784973202,
+        0.5671720172322802
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "gpr-gnn",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6392397965209977,
+      "mean_whole_test_macro_f1": 0.8582449296638857,
+      "tail_bootstrap_ci": [
+        0.6323334001431686,
+        0.6458087175133539
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "linkx",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.4765203962233064,
+      "mean_whole_test_macro_f1": 0.8083343835610975,
+      "tail_bootstrap_ci": [
+        0.45787632736575473,
+        0.4950707795590893
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "linkx",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.5046296864672388,
+      "mean_whole_test_macro_f1": 0.7801649207457062,
+      "tail_bootstrap_ci": [
+        0.4951264574891918,
+        0.5146740545432376
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "linkx",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.5404574978260404,
+      "mean_whole_test_macro_f1": 0.7446131290529892,
+      "tail_bootstrap_ci": [
+        0.5302674069853828,
+        0.5524782619572282
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "linkx",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.5654161419177497,
+      "mean_whole_test_macro_f1": 0.7890015257690314,
+      "tail_bootstrap_ci": [
+        0.5584243937882758,
+        0.5724031959185721
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "acm-gcn",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.5571120651106624,
+      "mean_whole_test_macro_f1": 0.8893464039612787,
+      "tail_bootstrap_ci": [
+        0.5497932484124962,
+        0.5636398461520296
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "acm-gcn",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.5624519386853243,
+      "mean_whole_test_macro_f1": 0.8838117221302543,
+      "tail_bootstrap_ci": [
+        0.5551993161450675,
+        0.5691334133227568
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "acm-gcn",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.5750485535445494,
+      "mean_whole_test_macro_f1": 0.8817932736632764,
+      "tail_bootstrap_ci": [
+        0.5685270716575205,
+        0.5816184763060646
+      ]
+    },
+    {
+      "dataset": "pubmed",
+      "model": "acm-gcn",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6583004883136798,
+      "mean_whole_test_macro_f1": 0.8545884431251406,
+      "tail_bootstrap_ci": [
+        0.6509984973873701,
+        0.6644403985691214
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "mlp",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.24649254697042722,
+      "mean_whole_test_macro_f1": 0.34893319547066654,
+      "tail_bootstrap_ci": [
+        0.24564988652264758,
+        0.24738960651046152
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "mlp",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.2542143038791628,
+      "mean_whole_test_macro_f1": 0.31737774072979813,
+      "tail_bootstrap_ci": [
+        0.2529426231495705,
+        0.2554788487542135
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "mlp",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.2784143157289684,
+      "mean_whole_test_macro_f1": 0.31330425557383085,
+      "tail_bootstrap_ci": [
+        0.27722658706403686,
+        0.2796103666573282
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "mlp",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.2698690784485278,
+      "mean_whole_test_macro_f1": 0.29353357890548504,
+      "tail_bootstrap_ci": [
+        0.26852571166871736,
+        0.27118322308930715
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "gcn",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.18987575672414436,
+      "mean_whole_test_macro_f1": 0.5217995586162992,
+      "tail_bootstrap_ci": [
+        0.18849383071914344,
+        0.19112956976348877
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "gcn",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.2262078427512412,
+      "mean_whole_test_macro_f1": 0.4703087834572946,
+      "tail_bootstrap_ci": [
+        0.22487075117347377,
+        0.2274883060513184
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "gcn",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.2794815925276819,
+      "mean_whole_test_macro_f1": 0.36711118324590064,
+      "tail_bootstrap_ci": [
+        0.2779689456897323,
+        0.28098427863753866
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "gcn",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.28349291760664835,
+      "mean_whole_test_macro_f1": 0.30125127130432866,
+      "tail_bootstrap_ci": [
+        0.28077011285481285,
+        0.2862331050267175
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "graphsage-mean",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.15400816848590101,
+      "mean_whole_test_macro_f1": 0.5095448323446943,
+      "tail_bootstrap_ci": [
+        0.15262061989483566,
+        0.15545016019396407
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "graphsage-mean",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.20742965424255302,
+      "mean_whole_test_macro_f1": 0.46893878601452116,
+      "tail_bootstrap_ci": [
+        0.20563483167187666,
+        0.20918114606752697
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "graphsage-mean",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.27544041882399156,
+      "mean_whole_test_macro_f1": 0.3609413003880799,
+      "tail_bootstrap_ci": [
+        0.273700441695501,
+        0.27687405410187677
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "graphsage-mean",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.2821076129840971,
+      "mean_whole_test_macro_f1": 0.3154166366820656,
+      "tail_bootstrap_ci": [
+        0.2804310198694401,
+        0.2838555883578882
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "h2gcn",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.16228744976713977,
+      "mean_whole_test_macro_f1": 0.4634307881093715,
+      "tail_bootstrap_ci": [
+        0.1605773539753226,
+        0.16389948847494135
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "h2gcn",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.23869103338480552,
+      "mean_whole_test_macro_f1": 0.35835867714292896,
+      "tail_bootstrap_ci": [
+        0.23634487424773482,
+        0.24110450101935216
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "h2gcn",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.23150329942611741,
+      "mean_whole_test_macro_f1": 0.4035215010201197,
+      "tail_bootstrap_ci": [
+        0.22946950931149515,
+        0.23378846394129404
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "h2gcn",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.2435655480018417,
+      "mean_whole_test_macro_f1": 0.33247452903536484,
+      "tail_bootstrap_ci": [
+        0.24129085448908105,
+        0.245812752507659
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "gpr-gnn",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.12668309601121044,
+      "mean_whole_test_macro_f1": 0.43122752139759124,
+      "tail_bootstrap_ci": [
+        0.12451516063797362,
+        0.12873720676773065
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "gpr-gnn",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.21976737672937627,
+      "mean_whole_test_macro_f1": 0.3043010334602216,
+      "tail_bootstrap_ci": [
+        0.21864241824949576,
+        0.22088714932942569
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "gpr-gnn",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.25524204103536896,
+      "mean_whole_test_macro_f1": 0.2846653998075373,
+      "tail_bootstrap_ci": [
+        0.25295504649529205,
+        0.25751240955877464
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "gpr-gnn",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.20085799120481118,
+      "mean_whole_test_macro_f1": 0.32424581711223166,
+      "tail_bootstrap_ci": [
+        0.19854981999823934,
+        0.20316854469418535
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "linkx",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.09715876904887177,
+      "mean_whole_test_macro_f1": 0.2699648864686328,
+      "tail_bootstrap_ci": [
+        0.09415335395260332,
+        0.10019457487872376
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "linkx",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.11488791013184062,
+      "mean_whole_test_macro_f1": 0.27888365701808393,
+      "tail_bootstrap_ci": [
+        0.1124235630012795,
+        0.11714960757137524
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "linkx",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.12108012312511789,
+      "mean_whole_test_macro_f1": 0.28472108112676675,
+      "tail_bootstrap_ci": [
+        0.11879130286213815,
+        0.12340013128442694
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "linkx",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.12798681745180696,
+      "mean_whole_test_macro_f1": 0.28803915190792967,
+      "tail_bootstrap_ci": [
+        0.1261092845266595,
+        0.1298850966821728
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "acm-gcn",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.1777041093890412,
+      "mean_whole_test_macro_f1": 0.40222312362345547,
+      "tail_bootstrap_ci": [
+        0.17607234271252206,
+        0.17922109572478587
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "acm-gcn",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.2494539922126364,
+      "mean_whole_test_macro_f1": 0.31027776228818194,
+      "tail_bootstrap_ci": [
+        0.2473140215284488,
+        0.25154281886648566
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "acm-gcn",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.23283249064859654,
+      "mean_whole_test_macro_f1": 0.3874095682836657,
+      "tail_bootstrap_ci": [
+        0.23048683011823104,
+        0.23520355176868815
+      ]
+    },
+    {
+      "dataset": "ogbn-arxiv",
+      "model": "acm-gcn",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.24149296192849565,
+      "mean_whole_test_macro_f1": 0.30638464272058763,
+      "tail_bootstrap_ci": [
+        0.23958387642925155,
+        0.2434501008858974
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "mlp",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.5047118365647052,
+      "mean_whole_test_macro_f1": 0.5263572789733708,
+      "tail_bootstrap_ci": [
+        0.47928677151818505,
+        0.5292578743393253
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "mlp",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.5730419446989435,
+      "mean_whole_test_macro_f1": 0.4823084186996297,
+      "tail_bootstrap_ci": [
+        0.5482387062984863,
+        0.5975445688749988
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "mlp",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.565330719708704,
+      "mean_whole_test_macro_f1": 0.5071293733837408,
+      "tail_bootstrap_ci": [
+        0.5402273330607962,
+        0.5895647093778977
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "mlp",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.561302375999223,
+      "mean_whole_test_macro_f1": 0.4924279224324891,
+      "tail_bootstrap_ci": [
+        0.5386627801183635,
+        0.5858649847497209
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "gcn",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.7002583332114655,
+      "mean_whole_test_macro_f1": 0.6754902581183371,
+      "tail_bootstrap_ci": [
+        0.6805821093684367,
+        0.721454148723882
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "gcn",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.7003069036445247,
+      "mean_whole_test_macro_f1": 0.6326710539999195,
+      "tail_bootstrap_ci": [
+        0.676433137228306,
+        0.7216521143530198
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "gcn",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6836682867821339,
+      "mean_whole_test_macro_f1": 0.6394648538719,
+      "tail_bootstrap_ci": [
+        0.6526242819406937,
+        0.7129392289609078
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "gcn",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6608961532860823,
+      "mean_whole_test_macro_f1": 0.5136427533696599,
+      "tail_bootstrap_ci": [
+        0.6295545431827132,
+        0.6908678998579598
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "graphsage-mean",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6640256365171858,
+      "mean_whole_test_macro_f1": 0.8243033105282435,
+      "tail_bootstrap_ci": [
+        0.6360498759689387,
+        0.6935763791987734
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "graphsage-mean",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6636151888643538,
+      "mean_whole_test_macro_f1": 0.8183265540242708,
+      "tail_bootstrap_ci": [
+        0.6371511076042843,
+        0.6897484811394736
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "graphsage-mean",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6628801443232385,
+      "mean_whole_test_macro_f1": 0.8014242972339695,
+      "tail_bootstrap_ci": [
+        0.637000370015606,
+        0.6899194405945024
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "graphsage-mean",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.7003815463588798,
+      "mean_whole_test_macro_f1": 0.7294633309528046,
+      "tail_bootstrap_ci": [
+        0.6761265769660516,
+        0.7257628187938069
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "h2gcn",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.5467416514896303,
+      "mean_whole_test_macro_f1": 0.6434094495963587,
+      "tail_bootstrap_ci": [
+        0.524983521708996,
+        0.5685526522947164
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "h2gcn",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.587902984082723,
+      "mean_whole_test_macro_f1": 0.5549705356763025,
+      "tail_bootstrap_ci": [
+        0.566827295892796,
+        0.609216784166834
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "h2gcn",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.5913572263818667,
+      "mean_whole_test_macro_f1": 0.49672545776833454,
+      "tail_bootstrap_ci": [
+        0.5684011957756697,
+        0.6146644854828502
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "h2gcn",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6309402942541069,
+      "mean_whole_test_macro_f1": 0.491862077516967,
+      "tail_bootstrap_ci": [
+        0.6084645962647574,
+        0.6546669792690898
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "gpr-gnn",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6257236978286784,
+      "mean_whole_test_macro_f1": 0.7029937934557952,
+      "tail_bootstrap_ci": [
+        0.6042955362420945,
+        0.6493832413240642
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "gpr-gnn",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6658422631446925,
+      "mean_whole_test_macro_f1": 0.6483996118112622,
+      "tail_bootstrap_ci": [
+        0.645260025150936,
+        0.6866725384310791
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "gpr-gnn",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6796651862024472,
+      "mean_whole_test_macro_f1": 0.6208866857013621,
+      "tail_bootstrap_ci": [
+        0.6564612444286332,
+        0.7035252390753625
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "gpr-gnn",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6798104794484657,
+      "mean_whole_test_macro_f1": 0.6139798561166127,
+      "tail_bootstrap_ci": [
+        0.6561508554945022,
+        0.7032347523382411
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "linkx",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.19447263781905988,
+      "mean_whole_test_macro_f1": 0.2401820867840625,
+      "tail_bootstrap_ci": [
+        0.18019089982215894,
+        0.20902912122895587
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "linkx",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.2444856548231606,
+      "mean_whole_test_macro_f1": 0.24664852901916207,
+      "tail_bootstrap_ci": [
+        0.2309268307520563,
+        0.25821411695519425
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "linkx",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.258634852754004,
+      "mean_whole_test_macro_f1": 0.27785753024664905,
+      "tail_bootstrap_ci": [
+        0.24105142565408205,
+        0.27471586346627713
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "linkx",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.25247127699235944,
+      "mean_whole_test_macro_f1": 0.2436885200352423,
+      "tail_bootstrap_ci": [
+        0.23996870037013948,
+        0.2651130308112579
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "acm-gcn",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.5646067074793777,
+      "mean_whole_test_macro_f1": 0.5989408453759766,
+      "tail_bootstrap_ci": [
+        0.5449889264501027,
+        0.5861634756559361
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "acm-gcn",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.5966456853301375,
+      "mean_whole_test_macro_f1": 0.5296192546404785,
+      "tail_bootstrap_ci": [
+        0.5738156372121146,
+        0.6218964392534546
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "acm-gcn",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6208319072255594,
+      "mean_whole_test_macro_f1": 0.5127496180176631,
+      "tail_bootstrap_ci": [
+        0.5926404052116131,
+        0.6483078789148501
+      ]
+    },
+    {
+      "dataset": "roman-empire",
+      "model": "acm-gcn",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6070465968419189,
+      "mean_whole_test_macro_f1": 0.5231563468665611,
+      "tail_bootstrap_ci": [
+        0.5858033695044962,
+        0.6269147828851223
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "mlp",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.4411455599196584,
+      "mean_whole_test_macro_f1": 0.3968684888953164,
+      "tail_bootstrap_ci": [
+        0.4337578010935838,
+        0.4488106073159698
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "mlp",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.43632521164398896,
+      "mean_whole_test_macro_f1": 0.378468724174538,
+      "tail_bootstrap_ci": [
+        0.42256202944182664,
+        0.45175225467785196
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "mlp",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.45872643001100394,
+      "mean_whole_test_macro_f1": 0.37993759561327395,
+      "tail_bootstrap_ci": [
+        0.44373141908390773,
+        0.4726484421464842
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "mlp",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.3425127653108481,
+      "mean_whole_test_macro_f1": 0.30430793520054567,
+      "tail_bootstrap_ci": [
+        0.3317592196287818,
+        0.35383443304915985
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "gcn",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.8156667540369501,
+      "mean_whole_test_macro_f1": 0.40792154476757203,
+      "tail_bootstrap_ci": [
+        0.7989810395573124,
+        0.8320925506247081
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "gcn",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.5710170850423408,
+      "mean_whole_test_macro_f1": 0.3463782189686558,
+      "tail_bootstrap_ci": [
+        0.5462267086399224,
+        0.5936298327704028
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "gcn",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.8196176184508863,
+      "mean_whole_test_macro_f1": 0.3666393640940538,
+      "tail_bootstrap_ci": [
+        0.8023543871464132,
+        0.8353986470808609
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "gcn",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6657375663104432,
+      "mean_whole_test_macro_f1": 0.3357533825678794,
+      "tail_bootstrap_ci": [
+        0.6455787157113643,
+        0.6876370968115667
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "graphsage-mean",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6633989761108536,
+      "mean_whole_test_macro_f1": 0.46696002262354763,
+      "tail_bootstrap_ci": [
+        0.6509561822542054,
+        0.6743828045906795
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "graphsage-mean",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6464232733057381,
+      "mean_whole_test_macro_f1": 0.45434356207867493,
+      "tail_bootstrap_ci": [
+        0.6334116846995701,
+        0.6597028498108011
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "graphsage-mean",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.7058340767073932,
+      "mean_whole_test_macro_f1": 0.4553315868838971,
+      "tail_bootstrap_ci": [
+        0.6919844165374102,
+        0.7204567343945552
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "graphsage-mean",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.5790081673602187,
+      "mean_whole_test_macro_f1": 0.3179729696673031,
+      "tail_bootstrap_ci": [
+        0.5614877715917366,
+        0.5971284359544254
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "h2gcn",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6227762943234161,
+      "mean_whole_test_macro_f1": 0.4313638824251264,
+      "tail_bootstrap_ci": [
+        0.6081867672132275,
+        0.6384589257085466
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "h2gcn",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6484333318322081,
+      "mean_whole_test_macro_f1": 0.3795897496624706,
+      "tail_bootstrap_ci": [
+        0.6192586807947981,
+        0.6736397951806931
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "h2gcn",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.657173833290709,
+      "mean_whole_test_macro_f1": 0.35877416052277067,
+      "tail_bootstrap_ci": [
+        0.6345334357346082,
+        0.6797903659380705
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "h2gcn",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.611976835947404,
+      "mean_whole_test_macro_f1": 0.33975965415238907,
+      "tail_bootstrap_ci": [
+        0.5880309847532494,
+        0.6341459861872029
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "gpr-gnn",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.8183515491284096,
+      "mean_whole_test_macro_f1": 0.39943708329484534,
+      "tail_bootstrap_ci": [
+        0.8025828869763028,
+        0.8329069701269642
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "gpr-gnn",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.8139695492131485,
+      "mean_whole_test_macro_f1": 0.389229008423067,
+      "tail_bootstrap_ci": [
+        0.7955112080872214,
+        0.8308068609661698
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "gpr-gnn",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.8206234897713508,
+      "mean_whole_test_macro_f1": 0.3881371264376671,
+      "tail_bootstrap_ci": [
+        0.8097797376154579,
+        0.8315778320728537
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "gpr-gnn",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.5309192858469701,
+      "mean_whole_test_macro_f1": 0.29006910444114786,
+      "tail_bootstrap_ci": [
+        0.4938382359217989,
+        0.573301349079833
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "linkx",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.5820713510278408,
+      "mean_whole_test_macro_f1": 0.4246670359244497,
+      "tail_bootstrap_ci": [
+        0.5658088878252125,
+        0.6015167525681185
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "linkx",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.5812961764120144,
+      "mean_whole_test_macro_f1": 0.4138450514073144,
+      "tail_bootstrap_ci": [
+        0.5661846355389861,
+        0.5951463042931732
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "linkx",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.584274245590993,
+      "mean_whole_test_macro_f1": 0.4220377725256556,
+      "tail_bootstrap_ci": [
+        0.5686315378474728,
+        0.5997324133206882
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "linkx",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6571929644032092,
+      "mean_whole_test_macro_f1": 0.37664172837611276,
+      "tail_bootstrap_ci": [
+        0.6307317263285817,
+        0.6838464748550064
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "acm-gcn",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.6013233528051555,
+      "mean_whole_test_macro_f1": 0.3935305488844756,
+      "tail_bootstrap_ci": [
+        0.5852456007697988,
+        0.6190392934218046
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "acm-gcn",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.5810383212573099,
+      "mean_whole_test_macro_f1": 0.36536369411440683,
+      "tail_bootstrap_ci": [
+        0.5607559520932832,
+        0.6024748601887785
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "acm-gcn",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.592415195864707,
+      "mean_whole_test_macro_f1": 0.3776725261146828,
+      "tail_bootstrap_ci": [
+        0.5769906885277921,
+        0.6080064267586995
+      ]
+    },
+    {
+      "dataset": "amazon-ratings",
+      "model": "acm-gcn",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.5410062828907442,
+      "mean_whole_test_macro_f1": 0.33923581451629004,
+      "tail_bootstrap_ci": [
+        0.5227445774340097,
+        0.5594734481643139
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "mlp",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.2344395326245509,
+      "mean_whole_test_macro_f1": 0.2621627324550277,
+      "tail_bootstrap_ci": [
+        0.23215789600592857,
+        0.23663295347387517
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "mlp",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.25022483843390075,
+      "mean_whole_test_macro_f1": 0.25566503248494904,
+      "tail_bootstrap_ci": [
+        0.24677894097228856,
+        0.2536324632092177
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "mlp",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.2637724891463226,
+      "mean_whole_test_macro_f1": 0.24413918290242656,
+      "tail_bootstrap_ci": [
+        0.26094245669222005,
+        0.26647972253310337
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "mlp",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.23328959492484003,
+      "mean_whole_test_macro_f1": 0.25310663515857335,
+      "tail_bootstrap_ci": [
+        0.23094125444041885,
+        0.23559327730183316
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "gcn",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.23664271402754988,
+      "mean_whole_test_macro_f1": 0.30622751177663665,
+      "tail_bootstrap_ci": [
+        0.23273819568283813,
+        0.2405465561419476
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "gcn",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.2781023596760622,
+      "mean_whole_test_macro_f1": 0.2981073280978162,
+      "tail_bootstrap_ci": [
+        0.27290799650129666,
+        0.2838835888569189
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "gcn",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.3229150667943489,
+      "mean_whole_test_macro_f1": 0.38183141918637975,
+      "tail_bootstrap_ci": [
+        0.32013919449664247,
+        0.32546739891193865
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "gcn",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.25847558525362097,
+      "mean_whole_test_macro_f1": 0.2814724825615306,
+      "tail_bootstrap_ci": [
+        0.25473570307024934,
+        0.2619405456018276
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "graphsage-mean",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.22996652335090229,
+      "mean_whole_test_macro_f1": 0.22952708385701,
+      "tail_bootstrap_ci": [
+        0.2274344845975905,
+        0.23260570101579944
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "graphsage-mean",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.27698447341167853,
+      "mean_whole_test_macro_f1": 0.25290046788945636,
+      "tail_bootstrap_ci": [
+        0.2736585449959623,
+        0.28031944000956205
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "graphsage-mean",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.2943875614936591,
+      "mean_whole_test_macro_f1": 0.3070002476086183,
+      "tail_bootstrap_ci": [
+        0.2922674059819177,
+        0.2964809026504477
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "graphsage-mean",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.24747096462387813,
+      "mean_whole_test_macro_f1": 0.2313059429287285,
+      "tail_bootstrap_ci": [
+        0.24445121968810973,
+        0.2508414113228791
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "h2gcn",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.3431066946575508,
+      "mean_whole_test_macro_f1": 0.3428484295516751,
+      "tail_bootstrap_ci": [
+        0.33918246924577095,
+        0.34701044389939395
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "h2gcn",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.350020785170431,
+      "mean_whole_test_macro_f1": 0.3436091971893344,
+      "tail_bootstrap_ci": [
+        0.34633102454924597,
+        0.35389430335943606
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "h2gcn",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.3720450265452798,
+      "mean_whole_test_macro_f1": 0.35619915112669415,
+      "tail_bootstrap_ci": [
+        0.36892966264836213,
+        0.3755868473194628
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "h2gcn",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.325644320952239,
+      "mean_whole_test_macro_f1": 0.33306075297018367,
+      "tail_bootstrap_ci": [
+        0.3227224678011655,
+        0.3287795144480287
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "gpr-gnn",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.3074348958435707,
+      "mean_whole_test_macro_f1": 0.2920143233199241,
+      "tail_bootstrap_ci": [
+        0.30463211715946276,
+        0.3101408053104357
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "gpr-gnn",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.3159870513558874,
+      "mean_whole_test_macro_f1": 0.2773247717557672,
+      "tail_bootstrap_ci": [
+        0.3145312939034919,
+        0.3174005934752658
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "gpr-gnn",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.3173199647938898,
+      "mean_whole_test_macro_f1": 0.2906020282521665,
+      "tail_bootstrap_ci": [
+        0.3157784963162034,
+        0.31875498469670116
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "gpr-gnn",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.3129694094255967,
+      "mean_whole_test_macro_f1": 0.2662751344857325,
+      "tail_bootstrap_ci": [
+        0.3106421788218367,
+        0.31523498547057865
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "linkx",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.3574839239235731,
+      "mean_whole_test_macro_f1": 0.4269431722615501,
+      "tail_bootstrap_ci": [
+        0.3511926834469739,
+        0.3640235676560509
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "linkx",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.372998899984915,
+      "mean_whole_test_macro_f1": 0.4419779791070676,
+      "tail_bootstrap_ci": [
+        0.36898068496220754,
+        0.3773121222447693
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "linkx",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.37802581324203105,
+      "mean_whole_test_macro_f1": 0.4437483028086013,
+      "tail_bootstrap_ci": [
+        0.37431569379917073,
+        0.3820648531225529
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "linkx",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.4180623332477477,
+      "mean_whole_test_macro_f1": 0.4369182573293465,
+      "tail_bootstrap_ci": [
+        0.41202654482169726,
+        0.4244497143500044
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "acm-gcn",
+      "preparation": "erm",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.2896637758458512,
+      "mean_whole_test_macro_f1": 0.26523598169839646,
+      "tail_bootstrap_ci": [
+        0.28726083370382705,
+        0.2917303282363741
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "acm-gcn",
+      "preparation": "last",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.29612029840767556,
+      "mean_whole_test_macro_f1": 0.27665357856634915,
+      "tail_bootstrap_ci": [
+        0.293953444029355,
+        0.29841800105483146
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "acm-gcn",
+      "preparation": "head",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.3566654105107031,
+      "mean_whole_test_macro_f1": 0.32551752530145084,
+      "tail_bootstrap_ci": [
+        0.35168074387162945,
+        0.3616126868110298
+      ]
+    },
+    {
+      "dataset": "arxiv-year",
+      "model": "acm-gcn",
+      "preparation": "full",
+      "n_runs": 30,
+      "mean_tail_macro_f1": 0.30488555085209,
+      "mean_whole_test_macro_f1": 0.2719404350486834,
+      "tail_bootstrap_ci": [
+        0.30227254926450986,
+        0.30727594572509725
+      ]
+    }
+  ],
+  "software": {
+    "python": "3.11.15",
+    "numpy": "2.2.6",
+    "matplotlib": "3.11.0",
+    "seaborn": "0.13.2"
+  },
+  "analysis_script": {
+    "path": "scripts/analyze_rq5_preparations.py",
+    "sha256": "018fbbe664f5ef87879229a7c020fc11b2fe6b1fb59f32eaaebee085e84c03c8"
+  },
+  "input_run_sets": {
+    "amazon-ratings/acm-gcn": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "d4bd2251618375ea67a6b05ecd69ff232963f7f0f828c957ccb88d571798b972"
+    },
+    "amazon-ratings/gcn": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "79570a1e1821a188eeb174c7f703f27a9a379880f67e9256fc0d9e42930a2a0b"
+    },
+    "amazon-ratings/gpr-gnn": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "2dbf8e51408e9776bb1dd8127abee7a84dc5cd5b1daf18e2e94c38ce9c0df4f3"
+    },
+    "amazon-ratings/graphsage-mean": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "7f0966e28847e34f7b2ed416d4cbb4b3c90d635c3bef38f053658322b92372d8"
+    },
+    "amazon-ratings/h2gcn": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "5fc91f6ff3ae77edefd030dc5528b1164a64e8baf6fec37567febe439edb2e1a"
+    },
+    "amazon-ratings/linkx": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "73fda8ab80b0b23d59354333a338347a1d926491156cee7a68cc2a9c1e1fb4a0"
+    },
+    "amazon-ratings/mlp": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "5a936f90760fb82c8c81a476db543fe6395baf159e6df9e1fc80bcb919150230"
+    },
+    "arxiv-year/acm-gcn": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "d607509c2004046c759d332377992d9231461c38ebeb03722c051ce5867798d3"
+    },
+    "arxiv-year/gcn": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "4a212c94cc8d1c2bfb8486cfaa0cd61f2b32a4c7f71f7c789994fff79d305f3c"
+    },
+    "arxiv-year/gpr-gnn": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "c3ce1a2e7248c3b51557bb52b0704ade8cac7505d39faadedf92575b487fca45"
+    },
+    "arxiv-year/graphsage-mean": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "2305a7d8dab9ff5b966fe128fcb56a0587725f9b0fb5fc72870f168370a2504a"
+    },
+    "arxiv-year/h2gcn": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "e949ed49cf2a3a61e60ae3800e8343b71bfb3ec03d89c8b4be63e234465980d9"
+    },
+    "arxiv-year/linkx": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "2dff0fe5bc8f1eeeabe4a68d45b373f39bf9977c836e05c75423fac36afb7df7"
+    },
+    "arxiv-year/mlp": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "d87e0198b040578195f9adba05a3941eed2e7e9f18f06495cb961715ee1410e9"
+    },
+    "ogbn-arxiv/acm-gcn": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "6771003e439d0b191589640ab4d524a1a9bc9bbbf80c7d498c476f1906a69eb2"
+    },
+    "ogbn-arxiv/gcn": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "96bacf03d99959c0b45428b459ed46ad6240f2bf058e606c3217575c276dac8f"
+    },
+    "ogbn-arxiv/gpr-gnn": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "08c03e2158a885afdbd5a9d34c5ea9565ebc77e85ec02eaeb28d460a9bebfbe8"
+    },
+    "ogbn-arxiv/graphsage-mean": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "26d4372aa52b9761a7d6ede198db1a878e6b3573bea39242086c4f4acc17e983"
+    },
+    "ogbn-arxiv/h2gcn": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "c26269aa447800d782e2788633761306469a92eb54501b0a11b439832020f7ff"
+    },
+    "ogbn-arxiv/linkx": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "993bb0a6b0e51c26a993f7877ae2a1fd78bb527da81e236bf050460cc279a4d0"
+    },
+    "ogbn-arxiv/mlp": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "ff025e970a93f4ace484429f38aff72d67e7f06daed6574b3c7f2979362b3676"
+    },
+    "pubmed/acm-gcn": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "af5c63ce0cd21c9a10249ad4ab3fc57549561f6ec98ad98181fc5c10113b44fc"
+    },
+    "pubmed/gcn": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "5e6b23216df3419bec488828266eec1cb897c890d9030590bd30ae22a8771c84"
+    },
+    "pubmed/gpr-gnn": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "4a19049a007e8cb3997d91846d3618eb4dea11c997969e15ee3c0821868e099f"
+    },
+    "pubmed/graphsage-mean": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "cefaf0d0270d9bca30ae85a564cb99d798147660195180928745efa6b91caa37"
+    },
+    "pubmed/h2gcn": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "dfb3e9f0534ab74bef8d5e2128604534cfbc3cce0451f5c731fdc284a87bcb8d"
+    },
+    "pubmed/linkx": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "8a3ebe7251c3bd28904b5c30ff7505d611b7f5dda280bcc32ed2e9bdd9008607"
+    },
+    "pubmed/mlp": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "4daab5c68660d9bd7e0aa6e8b04af49bfb0be1e8e8e01983dc5dbb3c264add61"
+    },
+    "roman-empire/acm-gcn": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "ad6c2b6905cc6a7394b67c3815820d06536d41e4e8d546ffa5711cb5f4021a64"
+    },
+    "roman-empire/gcn": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "7becbc2c4922e9926e05496801a43dd26dee09255da4675f6c3bf59cfa9ee01b"
+    },
+    "roman-empire/gpr-gnn": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "ca4be0f7f2b5eb32b8da5bad1cfed9a1e02f5fea828280f7481ccc72c8bb16a5"
+    },
+    "roman-empire/graphsage-mean": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "451f91ffed66d2f7e5005971985581a4476cca30b24f2a490205296b3a5cbb39"
+    },
+    "roman-empire/h2gcn": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "4443b3f97697019079131c5b9b3d7032093bb6c0a0b47963898ad8abd3116534"
+    },
+    "roman-empire/linkx": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "3e5cdec1ec793024155786b71f48c3993b93bd84f5f082eb9c40016e6cdcf07b"
+    },
+    "roman-empire/mlp": {
+      "preparations": 4,
+      "runs_per_preparation": 30,
+      "combined_sha256": "3afc194c39fceb982c57acf9f0a88842549fb725f883b5e7f12d87051938e24e"
+    }
+  },
+  "outputs": [
+    {
+      "path": "results/main/rq5/preparation_tail_macro_f1.csv",
+      "sha256": "1f358424a56df8728ffeaeda8fc34d7de7ec60d8fd9d0da9c69e21d2180ce53c"
+    },
+    {
+      "path": "results/main/rq5/preparation_tail_vs_whole_macro_f1.csv",
+      "sha256": "e3fc0513080015575f2c2e727d5d0e350674dbfc49f66835dd294dfec2093a42"
+    },
+    {
+      "path": "results/main/rq5/README.md",
+      "sha256": "81a230921bdb220aaf5ec80e6b5b47badc8a2b820904471be091015689451f9d"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_pubmed_tail_macro_f1_by_preparation.pdf",
+      "sha256": "74f6819512c2978d5c54cea99f05b93474d8d480612ffb75634e81f17b9f35ef"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_pubmed_tail_macro_f1_by_preparation.png",
+      "sha256": "7c6d33aca1fc35f5b8f45469ad5caea7ba077a0be558892df649e69475f7b153"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_pubmed_tail_vs_whole_macro_f1_by_preparation.pdf",
+      "sha256": "8cc6cb349c077275de440c6c760ebd5108ef27a4e74925caa76157ca9b2e9407"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_pubmed_tail_vs_whole_macro_f1_by_preparation.png",
+      "sha256": "ca8d3aca9ed6411c4edd19d29ab8840387103f1b5fbf51fb032e8c3a1f5dc4dd"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_ogbn-arxiv_tail_macro_f1_by_preparation.pdf",
+      "sha256": "50c1aeb7d3fe36777074784c968a393e60f476f13c8d5505f1daa7005527dbab"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_ogbn-arxiv_tail_macro_f1_by_preparation.png",
+      "sha256": "500d29f2d7dd06de7609ff889b7c12f229b9ac4803ff01a918bdc74770e1304d"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_ogbn-arxiv_tail_vs_whole_macro_f1_by_preparation.pdf",
+      "sha256": "834d694f6380635bc0078bf9d272abc1dfc785da415e750b469a55615c3bf580"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_ogbn-arxiv_tail_vs_whole_macro_f1_by_preparation.png",
+      "sha256": "82d577912da7182d653d1e6bda2ad01c614e1c6c37d4d9df5a94fa92ab667e2b"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_roman-empire_tail_macro_f1_by_preparation.pdf",
+      "sha256": "2e10362395e4908671d9ff7fffd389089adb2c1966a14dfee4e5034ad8b5852b"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_roman-empire_tail_macro_f1_by_preparation.png",
+      "sha256": "736801119826e218ae437384d4c3e7e5e90680f6716c6d272673236b32204719"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_roman-empire_tail_vs_whole_macro_f1_by_preparation.pdf",
+      "sha256": "2d49eefb1c0ea1e82a79cc6bf9f2d6ca0649695a58bded22ea5c3a646aad4711"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_roman-empire_tail_vs_whole_macro_f1_by_preparation.png",
+      "sha256": "902bfee782c8efc893e2cd37a7b847bbd4f79b6dd680711f40faffec5927843d"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_amazon-ratings_tail_macro_f1_by_preparation.pdf",
+      "sha256": "ffe882cc720b76bbe5ecb18d00a9afc532d7f0d814400cda90dac3b40ed26ae8"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_amazon-ratings_tail_macro_f1_by_preparation.png",
+      "sha256": "41c6f14d131bca24a7eb262828d51aa115c8071152dcc50e91909b80da80c6a1"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_amazon-ratings_tail_vs_whole_macro_f1_by_preparation.pdf",
+      "sha256": "2dd3895a7fbbbea250bda6b841ee6767a67bd30c169449aa07c81e931ba268fd"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_amazon-ratings_tail_vs_whole_macro_f1_by_preparation.png",
+      "sha256": "a1a5788bc4715aeef72eb76d80104d44eb43cf544ad8131ebfe73e27e31d915c"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_arxiv-year_tail_macro_f1_by_preparation.pdf",
+      "sha256": "4c3bc8e33170e71f8ab14e775c5abe427ee7797731efd33a4dd32d3039a7eca6"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_arxiv-year_tail_macro_f1_by_preparation.png",
+      "sha256": "86f4827b4ffea7c36a8ea57b60df6dec0302e5babd10338b406020a6ebec81be"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_arxiv-year_tail_vs_whole_macro_f1_by_preparation.pdf",
+      "sha256": "ad962a57cfa7babba48d7e905de4e1ab9fb5400aa30706232ac980d6152824de"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_arxiv-year_tail_vs_whole_macro_f1_by_preparation.png",
+      "sha256": "db00fa0350acd362df759cbc0a945d605cb06204f9deee32ef060f242d1fa2b0"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_tail_vs_whole_macro_f1_compact.pdf",
+      "sha256": "e21cfb72b1f8b16e85d981a42b72c3926b09e19fc47ec1d9e80e4c303c84fefc"
+    },
+    {
+      "path": "results/main/figures/rq5/rq5_tail_vs_whole_macro_f1_compact.png",
+      "sha256": "128777da8e581459d0a57dc2da0b6267448fd17eec70dc8a2945bc6d5a19ac20"
+    }
+  ]
+}
