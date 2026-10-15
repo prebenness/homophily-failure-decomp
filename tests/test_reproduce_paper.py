@@ -47,6 +47,10 @@ def test_full_build_contains_every_current_analysis_stage(tmp_path: Path) -> Non
     assert "--pubmed-summary-root" in merge and "--large-summary-root" in merge
     assert scripts.index("analyze_large_edge_dose_response.py") < scripts.index("analyze_edge_dose_response_full.py")
     assert "--allow-reference-only" not in commands[-1]
+    sign_index = scripts.index("summarize_edge_sign_agreement.py")
+    assert "--allow-missing-reverse" not in commands[sign_index]
+    assert sign_index > scripts.index("analyze_reverse_edge_dose_response.py")
+    assert sign_index > max(i for i, s in enumerate(scripts) if s == "plot_edge_dose_response_composite.py")
     assert "recalculate_macro_f1.py" in scripts
     assert "plot_rq1_composite.py" in scripts
     rq1_commands = [
@@ -139,6 +143,9 @@ def test_derived_build_does_not_read_raw_archive() -> None:
     assert "--allow-reference-only" in commands[-1]
     reverse_plot = commands[scripts.index("plot_reverse_edge_dose_response.py")]
     assert "--skip-missing" in reverse_plot
+    sign_index = scripts.index("summarize_edge_sign_agreement.py")
+    assert "--allow-missing-reverse" in commands[sign_index]
+    assert sign_index > scripts.index("plot_reverse_edge_dose_response.py")
 
 
 def test_full_build_requires_fresh_dfr_results(tmp_path: Path) -> None:

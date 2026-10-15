@@ -212,7 +212,7 @@
       "analysis_generator": "scripts/analyze_reverse_edge_dose_response.py",
       "generated_path": "results/reverse_edge_perturbation/erm/reverse_edge_perturbation_erm.pdf",
       "reference_only_until_regenerated": true,
-      "note": "Published reference PDF. Accepted compact summaries are not included in this checkout; fresh reverse inference and analysis generate the required summaries.",
+      "note": "Published reference PDF. The accepted compact summaries are included; plot_reverse_edge_dose_response.py regenerates the figure from them.",
       "sha256": "a83b07dad0d5334c7449517f951cec8a0977911f67c6748c39e43ef72a0cbcfe"
     },
     {
@@ -223,7 +223,7 @@
       "analysis_generator": "scripts/analyze_reverse_edge_dose_response.py",
       "generated_path": "results/reverse_edge_perturbation/last/reverse_edge_perturbation_last.pdf",
       "reference_only_until_regenerated": true,
-      "note": "Published reference PDF. Accepted compact summaries are not included in this checkout; fresh reverse inference and analysis generate the required summaries.",
+      "note": "Published reference PDF. The accepted compact summaries are included; plot_reverse_edge_dose_response.py regenerates the figure from them.",
       "sha256": "86d032e52047af27ba1a9184049d571892b4ad3fb4e83c6693cec40af9aba60b"
     },
     {
@@ -234,7 +234,7 @@
       "analysis_generator": "scripts/analyze_reverse_edge_dose_response.py",
       "generated_path": "results/reverse_edge_perturbation/head/reverse_edge_perturbation_head.pdf",
       "reference_only_until_regenerated": true,
-      "note": "Published reference PDF. Accepted compact summaries are not included in this checkout; fresh reverse inference and analysis generate the required summaries.",
+      "note": "Published reference PDF. The accepted compact summaries are included; plot_reverse_edge_dose_response.py regenerates the figure from them.",
       "sha256": "1f382175a936aa2eceaf36e7d6cc22743c0a0be3d9ab08d7eff21cab30ecebd9"
     },
     {
@@ -245,7 +245,7 @@
       "analysis_generator": "scripts/analyze_reverse_edge_dose_response.py",
       "generated_path": "results/reverse_edge_perturbation/full/reverse_edge_perturbation_full.pdf",
       "reference_only_until_regenerated": true,
-      "note": "Published reference PDF. Accepted compact summaries are not included in this checkout; fresh reverse inference and analysis generate the required summaries.",
+      "note": "Published reference PDF. The accepted compact summaries are included; plot_reverse_edge_dose_response.py regenerates the figure from them.",
       "sha256": "b112d18ae2b528369c50ac7f6f81cfdbfa9d734f6335c46f6f4b982cce5b75c0"
     }
   ],

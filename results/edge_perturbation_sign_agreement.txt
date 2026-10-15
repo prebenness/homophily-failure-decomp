@@ -1,0 +1,35 @@
+Appendix J: sign agreement with higher local homophily improving tail macro-F1
+
+Unit: one treatment/control comparison per dataset, model, direction,
+nonzero dose and preparation. Compare the plotted mean macro-F1 values
+(30 checkpoints within each of five graph replicates, then average replicates).
+Exclude dose zero. Count exact equal means as ties in the denominator.
+No significance filter or rounding threshold is applied.
+
+Expected treatment-minus-control sign:
+  Forward: positive for PubMed/ogbn-arxiv; negative for the other three datasets.
+  Reverse: negative for PubMed/ogbn-arxiv; positive for the other three datasets.
+Pool comparison counts, not figure percentages. The main-text subset is not counted twice.
+
+Per appendix figure (identified by filename so manuscript renumbering is harmless):
+  forward / erm: 534/564 = 94.680851% (opposite: 30; ties: 0)
+    edge_perturbation_dose_response.pdf
+  forward / last: 519/564 = 92.021277% (opposite: 45; ties: 0)
+    edge_perturbation_dose_response_last.pdf
+  forward / head: 519/564 = 92.021277% (opposite: 45; ties: 0)
+    edge_perturbation_dose_response_head.pdf
+  forward / full: 505/564 = 89.539007% (opposite: 59; ties: 0)
+    edge_perturbation_dose_response_full.pdf
+  reverse / erm: 280/294 = 95.238095% (opposite: 14; ties: 0)
+    reverse_edge_perturbation_erm.pdf
+  reverse / last: 279/294 = 94.897959% (opposite: 15; ties: 0)
+    reverse_edge_perturbation_last.pdf
+  reverse / head: 277/294 = 94.217687% (opposite: 17; ties: 0)
+    reverse_edge_perturbation_head.pdf
+  reverse / full: 282/294 = 95.918367% (opposite: 12; ties: 0)
+    reverse_edge_perturbation_full.pdf
+
+Pooled comparisons:
+  All forward preparations: 2077/2256 = 92.065603% (opposite: 179; ties: 0)
+  All reverse preparations: 1118/1176 = 95.068027% (opposite: 58; ties: 0)
+  All directions and preparations: 3195/3432 = 93.094406% (opposite: 237; ties: 0)

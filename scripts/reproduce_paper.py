@@ -359,6 +359,10 @@ def build_commands(
             command("plot_rq5_pubmed_gcn_recovery_panel.py"),
             command("generate_local_homophily_bin_figure.py"),
             *edge_figure_commands,
+            command(
+                "summarize_edge_sign_agreement.py",
+                *(["--allow-missing-reverse"] if derived_only else []),
+            ),
             command("render_paper_tables.py"),
             command("render_rq2_recovered_share_tables.py"),
             command(

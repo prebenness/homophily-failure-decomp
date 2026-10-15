@@ -67,6 +67,10 @@ under `paper/generated/tables/`. The forward analysis regenerates all 30
 model-dataset combinations from the same run. Fresh training may give different
 numerical results while following the same experimental method.
 
+The workflow also writes `results/edge_perturbation_sign_agreement.txt`, with
+the percentage of nonzero-dose treatment/control comparisons supporting higher
+homophily for each Appendix J figure and pooled across both directions.
+
 For a quick rebuild from the compact summaries already in Git:
 
 ```bash
@@ -74,8 +78,8 @@ python scripts/analyse_results.py --derived-only
 ```
 
 This does not rerun inference. Figures requiring node-level arrays keep their
-published copies. Reverse compact summaries are not included in the release;
-when absent, this command explicitly retains the four published reverse figures.
+published copies. The included reverse compact summaries regenerate all four
+reverse figures and their sign-agreement percentages.
 
 The lower-level scripts expose filters for individual datasets, models,
 preparations, splits, and seeds. See [the raw-result

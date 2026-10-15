@@ -447,11 +447,18 @@ done
 ```
 
 Every complete matrix must produce 5,940 graph-replicate summary rows and
-1,188 plotted dose rows. Finish by checking the registered paper artifacts:
+1,188 plotted dose rows. Compute the per-figure and pooled sign percentages
+from the compact summaries, then check the registered paper artifacts:
 
 ```bash
+python scripts/summarize_edge_sign_agreement.py --allow-missing-reverse
 python scripts/verify_paper_artifacts.py
 ```
+
+The percentages and counts are saved in
+`results/edge_perturbation_sign_agreement.txt`. Missing reverse summaries are
+marked unavailable; the forward subtotal is never reported as the full experiment.
+Once all reverse summaries exist, the same command includes both directions.
 
 The full `scripts/analyse_results.py` workflow runs these analysis and figure
 commands automatically, using the relative roots above. Complete the

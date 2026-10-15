@@ -162,6 +162,7 @@ python scripts/analyze_reverse_edge_dose_response.py \
   --input-root "$OUTPUT_ROOT" --graph-root "$GRAPH_ROOT" \
   --output-root results/reverse_edge_perturbation \
   --paper-output-dir paper/figures
+python scripts/summarize_edge_sign_agreement.py
 ```
 
 The analyzer checks exact checkpoint and treatment/control pairing before
@@ -180,14 +181,17 @@ redraw the four plots without loading checkpoints or graph arrays:
 
 ```sh
 python scripts/plot_reverse_edge_dose_response.py
+python scripts/summarize_edge_sign_agreement.py
 ```
 
-The supplied PDFs are reference copies from the manuscript. Their accepted
-compact summaries are not included in this checkout. Until those summaries
-are supplied or a fresh run is completed, the command reports missing inputs.
-The overall compact-only reproduction workflow uses `--skip-missing`, which
-explicitly reports that these four reference PDFs were retained. It does not
-claim to have regenerated or validated their numerical contents.
+With the forward summaries present, the sign-summary command writes
+`results/edge_perturbation_sign_agreement.txt`: counts and percentages for each
+Appendix J figure, each direction, and all comparisons pooled together.
+
+The compact summaries used for the supplied manuscript PDFs are included.
+The plotting and sign-summary commands therefore work without model checkpoints
+or graph arrays. A fresh inference and analysis run replaces these summaries
+with the new run's results.
 
 Fresh runs use the same registered datasets, checkpoint panel, graph
 interventions and aggregation. Their scores and PDF bytes need not equal the
