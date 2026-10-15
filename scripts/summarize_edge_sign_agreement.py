@@ -2,6 +2,7 @@
 
 Read the same compact summaries as the eight appendix figures. Each nonzero
 dataset/model/dose pair receives one vote within its direction and preparation.
+An additional tally gives each subplot one vote using majority band separation.
 The main-text two-model figure is a subset and is not counted again.
 """
 
@@ -13,7 +14,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Sequence
 
-from plot_edge_dose_response_composite import load_summary as load_forward_summary
+from plot_edge_dose_response_composite import SummaryRow, load_summary as load_forward_summary
 from plot_reverse_edge_dose_response import load_summary as load_reverse_summary
 
 
@@ -180,6 +181,134 @@ def build_report(counts: dict[tuple[str, str], Counts | None]) -> str:
     return "\n".join(lines) + "\n"
 
 
+@dataclass(frozen=True)
+class Subplot:
+    dataset: str
+    model: str
+    orange: int
+    blue: int
+    undecided: int
+
+    @property
+    def total(self) -> int:
+        return self.orange + self.blue + self.undecided
+
+    @property
+    def winner(self) -> str:
+        if 2 * self.orange > self.total:
+            return "orange"
+        if 2 * self.blue > self.total:
+            return "blue"
+        return "undecided"
+
+
+def classify_subplots(rows: Sequence[SummaryRow]) -> list[Subplot]:
+    """Compare displayed mean +/- one-SD bands, then take a strict majority."""
+    pairs = {}
+    for row in rows:
+        if row.p_percent == 0:
+            continue
+        pair = pairs.setdefault((row.dataset, row.model, row.p_percent), {})
+        if row.condition not in ("treatment", "control") or row.condition in pair:
+            raise ValueError("Invalid or duplicate treatment/control row")
+        pair[row.condition] = row
+    doses = {}
+    for (dataset, model, _), pair in pairs.items():
+        if set(pair) != {"treatment", "control"}:
+            raise ValueError("Incomplete treatment/control pair")
+        orange, blue = pair["treatment"], pair["control"]
+        if orange.mean_macro_f1 - orange.sd_macro_f1 > blue.mean_macro_f1 + blue.sd_macro_f1:
+            winner = "orange"
+        elif blue.mean_macro_f1 - blue.sd_macro_f1 > orange.mean_macro_f1 + orange.sd_macro_f1:
+            winner = "blue"
+        else:
+            winner = "undecided"
+        counts = doses.setdefault((dataset, model), {"orange": 0, "blue": 0, "undecided": 0})
+        counts[winner] += 1
+    if not doses:
+        raise ValueError("No nonzero-dose comparisons")
+    return [Subplot(dataset, model, **counts)
+            for (dataset, model), counts in sorted(doses.items())]
+
+
+def collect_subplots(
+    results_root: Path, *, allow_missing_reverse: bool = False,
+) -> dict[tuple[str, str], list[Subplot] | None]:
+    panels = {}
+    for direction in ("forward", "reverse"):
+        for preparation in PREPARATIONS:
+            path = summary_path(results_root, direction, preparation)
+            if direction == "reverse" and not path.is_file() and allow_missing_reverse:
+                panels[direction, preparation] = None
+                continue
+            rows = (load_forward_summary(path) if direction == "forward"
+                    else load_reverse_summary(path, preparation)[0])
+            panels[direction, preparation] = classify_subplots(rows)
+    return panels
+
+
+def expected_colour(direction: str, dataset: str) -> str:
+    sign = FORWARD_SIGN[dataset] * (1 if direction == "forward" else -1)
+    return "orange" if sign > 0 else "blue"
+
+
+def subplot_tally(panels: Sequence[tuple[str, list[Subplot] | None]]) -> str:
+    if any(subplots is None for _, subplots in panels):
+        return "UNAVAILABLE (required numerical summaries missing)"
+    colours = {"orange": 0, "blue": 0, "undecided": 0}
+    support = oppose = 0
+    for direction, subplots in panels:
+        for subplot in subplots:
+            winner = subplot.winner
+            colours[winner] += 1
+            if winner != "undecided":
+                if winner == expected_colour(direction, subplot.dataset):
+                    support += 1
+                else:
+                    oppose += 1
+    total = sum(colours.values())
+    return (f"orange: {colours['orange']}; blue: {colours['blue']}; "
+            f"undecided: {colours['undecided']}; "
+            f"supports higher homophily: {support}/{total} = {100.0 * support / total:.6f}%; "
+            f"opposes: {oppose}")
+
+
+def build_subplot_report(panels: dict[tuple[str, str], list[Subplot] | None]) -> str:
+    lines = [
+        "", "Additional tally: one vote per model/dataset subplot", "",
+        "Bands are the plotted mean +/- one standard deviation across graph replicates,",
+        "not confidence intervals. Orange is treatment; blue is control.",
+        "At a nonzero dose, orange wins only if its lower band edge exceeds blue's",
+        "upper edge; blue wins only under the reverse inequality. Overlap or touching",
+        "is undecided. A subplot wins only when one colour wins at MORE THAN HALF",
+        "of ALL its nonzero doses, including undecided doses in that denominator.",
+        "Otherwise the subplot is undecided. Each subplot receives one vote regardless",
+        "of its number of doses. This is a descriptive tally, not a significance test.",
+        "", "Per appendix figure:",
+    ]
+    for (direction, preparation), subplots in panels.items():
+        lines.append(f"  {direction} / {preparation}: {subplot_tally([(direction, subplots)])}")
+    lines.extend(["", "Pooled subplots:"])
+    for direction in ("forward", "reverse"):
+        selected = [(direction, panels[direction, p]) for p in PREPARATIONS]
+        lines.append(f"  All {direction} preparations: {subplot_tally(selected)}")
+    selected = [(direction, subplots) for (direction, _), subplots in panels.items()]
+    lines.append(f"  All directions and preparations: {subplot_tally(selected)}")
+    lines.extend(["", "Individual subplot dose counts (zero-dose baseline excluded):"])
+    for (direction, preparation), subplots in panels.items():
+        if subplots is None:
+            lines.append(f"  {direction} / {preparation}: UNAVAILABLE")
+            continue
+        for subplot in subplots:
+            lines.append(
+                f"  {direction} / {preparation} / {subplot.dataset} / {subplot.model}: "
+                f"orange {subplot.orange}, blue {subplot.blue}, undecided {subplot.undecided} "
+                f"of {subplot.total}; subplot={subplot.winner}; "
+                f"expected={expected_colour(direction, subplot.dataset)}"
+            )
+    return "\n".join(lines) + "\n"
+
+
 def main(argv=None) -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--results-root", type=Path, default=REPO_ROOT / "results")
@@ -188,6 +317,9 @@ def main(argv=None) -> None:
                         help="report available figures and mark reverse/overall totals unavailable")
     args = parser.parse_args(argv)
     report = build_report(collect_counts(
+        args.results_root, allow_missing_reverse=args.allow_missing_reverse,
+    ))
+    report += build_subplot_report(collect_subplots(
         args.results_root, allow_missing_reverse=args.allow_missing_reverse,
     ))
     output = args.output or args.results_root / REPORT_NAME

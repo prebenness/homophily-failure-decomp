@@ -70,6 +70,9 @@ numerical results while following the same experimental method.
 The workflow also writes `results/edge_perturbation_sign_agreement.txt`, with
 the percentage of nonzero-dose treatment/control comparisons supporting higher
 homophily for each Appendix J figure and pooled across both directions.
+It also tallies one vote per subplot: a line must have non-overlapping plotted
+mean-plus/minus-one-standard-deviation bands above the other line at more than
+half of all nonzero doses; otherwise the subplot is undecided.
 
 For a quick rebuild from the compact summaries already in Git:
 
