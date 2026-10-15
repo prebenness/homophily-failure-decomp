@@ -1,122 +1,83 @@
 # Decomposing failure on rare homophily nodes
 
-This repository contains the experiment code and the generated results,
-figures, and tables used in the paper.
-
-## Double-blind review
-
-This repository is maintained as an anonymous research artefact during
-double-blind review. It must not contain personal identifiers,
-institution-specific information, absolute machine paths, account-owned URLs,
-or cluster-specific operational files. Site-specific scheduler controls and
-runtime state are kept outside Git and transferred directly to the compute
-system.
+Experiment code, registered inputs, numerical results, and figure and table
+generators for the paper.
 
 ## Setup
 
-```powershell
+```bash
 conda env create -f environment.yml
 conda activate hfd-repro
-```
-
-## Reproduce the paper results
-
-Start with the registered datasets and training panels:
-
-```powershell
+python -m pip install -e .
+python -m pip install -r requirements-reverse-inference.txt
 python scripts/download_datasets.py
-python scripts/train_models.py
 ```
 
-The first command downloads all seven datasets to `artifacts/data/` and
-reconstructs the registered splits and local-homophily groups under
-`artifacts/manifests/`. The five original datasets and the Actor/BlogCatalog
-appendix extension have separate registered run panels.
+The dataset command downloads all seven datasets and reconstructs the registered
+splits and local-homophily groups. Run the commands below from the repository
+root. Full training and graph evaluation require substantial compute; the
+experiment guides describe the resource requirements.
 
-The second command runs the original 4,200-run panel, the 1,680-run
-Actor/BlogCatalog panel, and the two PubMed appendix sensitivity panels. It
-writes resumable run directories under `artifacts/`. The complete training
-workload is substantial.
+## Reproduce from training
 
-Before running the paper analysis, complete the separate Slurm workflow for
-the Appendix J edge-perturbation experiment in
-[`docs/edge-dose-response.md`](docs/edge-dose-response.md). If the full
-`train_models.py` panel has already completed, point `HFD_CHECKPOINT_ROOT` at
-`artifacts/runs` and skip the workflow's `train-erm` step; those 900 ERM
-checkpoints are already part of the registered 4,200-run panel. The workflow
-writes the validated ERM input expected at
-`outputs/edge-dose-response-expansion/actual/final/`.
+```bash
+python scripts/train_models.py --device cuda
+```
 
-The same guide covers the `last`, `head`, and `full` recovery-checkpoint
-panels. The portable evaluators authenticate their checkpoint, graph, result,
-and figure inputs. Site-specific scheduler controls, paths, queue helpers, and
-runtime state are intentionally kept outside Git and supplied locally. The
-single validated release root is
-`outputs/edge-dose-response-recovery/`, with one
-`actual/<preparation>/final/` directory for each recovery preparation.
+This trains the 4,200 main runs, the 1,680 Actor/BlogCatalog runs, and the PubMed
+Deep Feature Reweighting (DFR) and fixed-group class-conditional balancing
+(FG-CCDB) sensitivity panels. Run directories are resumable and written under
+`artifacts/`.
 
-Then regenerate the analyses and publication assets:
+## Reproduce from checkpoints
 
-```powershell
+Place the supplied run directories in `artifacts/runs/`,
+`artifacts/additional-dataset-runs/`, `artifacts/dfr-pubmed-runs/`, and
+`artifacts/fg-ccdb-pubmed-runs/`, then regenerate the predictions and metrics:
+
+```bash
+python scripts/evaluate_checkpoints.py --device cuda
+```
+
+Each model run needs its original `config.json` and `checkpoint.pt`. DFR runs
+need their saved `coefficients.npz` (including the fitted scaler) and their
+parent ERM checkpoint. The evaluation command uses the registered dataset
+inputs, does not train or refit models, and writes `run_data.npz` and
+`metrics.json` in each supplied run directory. The root options shown by
+`--help` support checkpoint stores in other locations. Checkpoint packages and
+large raw outputs are separate inputs; they are not included in Git.
+
+## Generate the figures and tables
+
+After either route, run the [forward edge-perturbation
+experiment](docs/edge-dose-response.md) and the [reverse edge-perturbation
+experiment](docs/reverse-edge-inference.md). These guides generate the
+graph pairs and evaluate the checkpoints on them. The reverse guide's complete
+workflow is also available as `python scripts/run_reverse_edge_workflow.py
+--device cuda`. Then run:
+
+```bash
 python scripts/analyse_results.py
 ```
 
-The analysis command regenerates the analyses and publication assets. The
-release inventory contains 23 figures and 25 data-derived tables. Its
-principal outputs are:
+This recomputes the analyses from the supplied run stores and graph evaluations,
+including all forward and reverse panels. It writes numerical summaries under
+`results/`, publication figures under `paper/figures/`, and LaTeX table fragments
+under `paper/generated/tables/`. The forward analysis regenerates all 30
+model-dataset combinations from the same run. Fresh training may give different
+numerical results while following the same experimental method.
 
-```text
-results/main/             main numerical analyses
-results/additional/       Actor and BlogCatalog appendix analyses
-results/fg_ccdb/          FG-CCDB appendix analysis
-results/edge_perturbation_dose_response_full/ compact Appendix J summaries
-results/edge_perturbation_dose_response_preparation_{last,head,full}/ recovery summaries
-results/edge_perturbation_dose_response_composite_{last,head,full}/ recovery figures
-results/main/figures/     generated paper figures
-results/additional/figures/ generated additional-dataset figures
-paper/generated/tables/   generated LaTeX table fragments
-```
+For a quick rebuild from the compact summaries already in Git:
 
-Publication-ready figure files are under `paper/figures/`; their generated
-counterparts are under `results/main/figures/` and
-`results/additional/figures/`.
-
-The data-derived tables are generated under `paper/generated/`.
-
-Actor and BlogCatalog were added after preregistration. Actor uses the ten
-fixed Geom-GCN splits with three training seeds per split. BlogCatalog uses
-one pinned GAug/OpenGSL split with 30 training seeds. Both therefore have 30
-runs per model and preparation.
-
-## Useful checks
-
-```powershell
-python scripts/train_models.py --dry-run
+```bash
 python scripts/analyse_results.py --derived-only
-pytest
 ```
 
-`--derived-only` rebuilds the outputs based on tracked compact summaries. The
-continuous RQ1 figures and the RQ5 tail/non-tail figure require node-level raw
-arrays; reproduce them by running the registered panels or by supplying the
-raw stores described in `docs/raw-result-store.md`.
+This does not rerun inference. Figures requiring node-level arrays keep their
+published copies. Reverse compact summaries are not included in the release;
+when absent, this command explicitly retains the four published reverse figures.
 
-The full Appendix J matrix is regenerated by first completing the raw Slurm
-workflow in [`docs/edge-dose-response.md`](docs/edge-dose-response.md). After
-that validation passes, the first command below authenticates the consolidated
-checkpoint-level expansion output and combines it with the six submitted
-GCN/GraphSAGE summaries. The second command plots the resulting compact
-summary and updates the release PDF:
-
-```powershell
-python scripts/analyze_edge_dose_response_full.py
-python scripts/plot_edge_dose_response_composite.py
-```
-
-By default, the analyzer reads `baseline_rows.jsonl`, `paired_rows.jsonl`, and
-`validation.json` from
-`outputs/edge-dose-response-expansion/actual/final/`. Roman-empire is
-registered through 70%; the other four datasets are registered through 100%.
-
-The lower-level runners and analysis scripts remain available under
-`scripts/` for filtered runs and individual analyses.
+The lower-level scripts expose filters for individual datasets, models,
+preparations, splits, and seeds. See [the raw-result
+layout](docs/raw-result-store.md) for run contents. Machine-specific scheduler
+scripts and runtime state belong outside the repository.

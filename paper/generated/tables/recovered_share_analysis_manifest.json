@@ -1,0 +1,26 @@
+{
+  "eligibility": "full-model mean gain >= 0.03 and its 95% paired-bootstrap interval excludes zero; numerator significance is not required",
+  "eligible_counts": {
+    "head": 19,
+    "last": 19
+  },
+  "generator": "scripts/render_rq2_recovered_share_tables.py",
+  "generator_sha256": "a1e3adf641f2ff65c4a80cef6ea5b2852047820725b463b1b3318dd291ba0030",
+  "ineligible_display": "em dash",
+  "input": {
+    "path": "results/main/aggregates/paired_gains.csv",
+    "sha256": "0d7ed38636a0854e181e25480b8ef5def26642553c93ef05cd597a540d71a9bb"
+  },
+  "outputs": {
+    "rq2_head_recovered_share.tex": {
+      "sha256": "6e3b1d61336f5a80f4a04824b755819332f163c11ce39e58064930780e1a06d3"
+    },
+    "rq2_last_recovered_share.tex": {
+      "sha256": "983cbfce2d8eced6ee1b0ef71df17e66e5da39a6c396181548aa3ebf36aadbac"
+    }
+  },
+  "shares_above_0.7": {
+    "head": 13,
+    "last": 8
+  }
+}

@@ -966,7 +966,6 @@ def render_rq5_gain(
 
 def render_rq2_recovered_share(
     recovered_rows: list[dict[str, str]],
-    gain_rows: list[dict[str, str]],
     *,
     preparation: str,
 ) -> str:
@@ -990,16 +989,6 @@ def render_rq2_recovered_share(
             and row.get("model") in graph_models
         ),
     )
-    gain_panel = index_complete_panel(
-        gain_rows,
-        key_fields=("dataset", "model"),
-        expected_keys=expected,
-        name=f"RQ2 {preparation} gain input",
-        predicate=lambda row: (
-            row.get("preparation") == preparation
-            and row.get("model") in graph_models
-        ),
-    )
     rq_label = "RQ2a" if preparation == "last" else "RQ2b"
     refit = "final-layer" if preparation == "last" else "head"
     rho = "last" if preparation == "last" else "head"
@@ -1008,10 +997,9 @@ def render_rq2_recovered_share(
         r"  \centering",
         (
             f"  \\caption{{\\textbf{{{rq_label}}}. Recovered share "
-            f"\\(\\rho_{{\\mathrm{{{rho}}}}}\\) after {refit} refitting; "
-            "cells are grey when the 95\\% paired-bootstrap interval for the "
-            "numerator contains zero or "
-            "\\(\\hat A_{\\mathrm{full}}-\\hat A_{\\mathrm{ERM}}<0.03\\).}"
+            f"\\(\\rho_{{\\mathrm{{{rho}}}}}\\) after {refit} refitting. "
+            "An em dash indicates that the full-model gain is below 0.03 "
+            "or its 95\\% paired-bootstrap interval includes zero.}"
         ),
         (
             "  \\label{"
@@ -1055,21 +1043,18 @@ def render_rq2_recovered_share(
         cells: list[str] = []
         for dataset in DATASET_ORDER:
             recovered = recovered_panel[(dataset, model)]
-            gain = gain_panel[(dataset, model)]
             denominator = float(recovered["full_mean_paired_gain"])
-            if denominator == 0.0:
-                raise ValueError(
-                    f"{dataset}/{model}: full-model mean gain is zero"
-                )
-            value = float(recovered["mean_paired_gain"]) / denominator
-            qualified = parse_bool(
-                recovered["qualifies"], field="qualifies"
-            ) and parse_bool(
-                gain["ci_excludes_zero"], field="ci_excludes_zero"
+            lower = float(recovered["full_bootstrap_ci_lower"])
+            upper = float(recovered["full_bootstrap_ci_upper"])
+            qualified = denominator >= 0.03 and (
+                lower > 0.0 or upper < 0.0
             )
-            cell = "$" + f"{value:.3f}" + "$"
-            if not qualified:
-                cell = r"\cellcolor{black!10}" + cell
+            cell = r"\textemdash"
+            if qualified:
+                value = float(recovered["mean_paired_gain"]) / denominator
+                cell = "$" + f"{value:.3f}" + "$"
+                if cell == "$-0.000$":
+                    cell = "$0.000$"
             cells.append(cell)
         lines.append(
             f"    {MODEL_LABELS[model]} & " + " & ".join(cells) + r" \\"
@@ -1417,12 +1402,10 @@ def render_all(
             **core_rendered,
             "rq2_last_recovered_share.tex": render_rq2_recovered_share(
                 inputs["recovered_shares"],
-                inputs["rq5_gains"],
                 preparation="last",
             ),
             "rq2_head_recovered_share.tex": render_rq2_recovered_share(
                 inputs["recovered_shares"],
-                inputs["rq5_gains"],
                 preparation="head",
             ),
             "rq4_designed_vs_standard.tex": render_rq4_pairwise(

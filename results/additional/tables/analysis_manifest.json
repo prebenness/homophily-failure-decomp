@@ -6,7 +6,7 @@
     "blogcatalog"
   ],
   "generator": "scripts/render_paper_tables.py",
-  "generator_sha256": "a825eee970416d4c58628547eb848e86e8607e946ecad86ce898753aaa8eb81e",
+  "generator_sha256": "12bac80eaae5180f9b1e320878fbf439b09f12a48cb186b9fbcb6dca916e69a1",
   "inputs": {
     "dataset_manifest_actor": {
       "path": "manifests/additional-datasets/actor.json",
@@ -72,11 +72,11 @@
     },
     "rq2_head_recovered_share.tex": {
       "path": "results/additional/tables/rq2_head_recovered_share.tex",
-      "sha256": "9a19d43d6ef65eb035863a5342cd99a42add651dfac40811853fde46a6808080"
+      "sha256": "f1804e4b5b37d537b9da1132be14b42e9149575a640db8572f579a754085e886"
     },
     "rq2_last_recovered_share.tex": {
       "path": "results/additional/tables/rq2_last_recovered_share.tex",
-      "sha256": "306b5d7f32c324a922e5f8d6ee272b9219e2cacee29795ddd05683474b8c2ca5"
+      "sha256": "92b9d4fe48e0cc7041cccd2e11fd257908a26cb03617b24005a56f8df67aa469"
     },
     "rq2_within_class_accuracy.tex": {
       "path": "results/additional/tables/rq2_within_class_accuracy.tex",

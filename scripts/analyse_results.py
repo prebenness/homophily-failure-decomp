@@ -23,6 +23,12 @@ DEFAULT_EDGE_DOSE_RESPONSE_FINAL_ROOT = (
 DEFAULT_EDGE_DOSE_RESPONSE_RECOVERY_ROOT = (
     REPO_ROOT / "outputs" / "edge-dose-response-recovery"
 )
+EXTRA_ROOT_DEFAULTS = {
+    "edge_dose_response_pubmed_root": REPO_ROOT / "artifacts" / "edge-dose-response" / "legacy" / "pubmed" / "actual",
+    "edge_dose_response_large_root": REPO_ROOT / "artifacts" / "edge-dose-response" / "legacy" / "large" / "actual",
+    "reverse_edge_output_root": REPO_ROOT / "artifacts" / "reverse-edge-inference",
+    "reverse_edge_graph_root": REPO_ROOT / "artifacts" / "reverse-edge-graphs",
+}
 
 
 def build_command(args: argparse.Namespace) -> list[str]:
@@ -67,6 +73,10 @@ def build_command(args: argparse.Namespace) -> list[str]:
             )
         if args.validate_raw_arrays:
             command.append("--validate-raw-arrays")
+        for name, default in EXTRA_ROOT_DEFAULTS.items():
+            command.extend([f"--{name.replace('_', '-')}", str(getattr(args, name, default))])
+        if getattr(args, "include_training_times", False):
+            command.append("--include-training-times")
     if args.dry_run:
         command.append("--dry-run")
     return command
@@ -109,9 +119,12 @@ def parse_args() -> argparse.Namespace:
         default=DEFAULT_EDGE_DOSE_RESPONSE_RECOVERY_ROOT,
         help=(
             "validated three-preparation Appendix J output produced by the "
-            "tracked recovery controller"
+            "portable recovery evaluator"
         ),
     )
+    for name, default in EXTRA_ROOT_DEFAULTS.items():
+        parser.add_argument(f"--{name.replace('_', '-')}", type=Path, default=default)
+    parser.add_argument("--include-training-times", action="store_true")
     parser.add_argument(
         "--validate-raw-arrays",
         action="store_true",
@@ -124,8 +137,8 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
-    if args.derived_only and args.validate_raw_arrays:
-        parser.error("--validate-raw-arrays cannot be used with --derived-only")
+    if args.derived_only and (args.validate_raw_arrays or args.include_training_times):
+        parser.error("raw-array validation and training times cannot use --derived-only")
     return args
 
 

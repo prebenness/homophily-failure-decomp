@@ -70,3 +70,20 @@ def test_release_pdf_is_exact_copy_of_generated_pdf(tmp_path: Path) -> None:
     plt.close(figure)
 
     assert outputs["pdf"].read_bytes() == paper_output.read_bytes()
+
+
+def test_main_text_subset_uses_the_same_numerical_series() -> None:
+    rows = NAMESPACE["load_summary"](NAMESPACE["DEFAULT_SUMMARY"])
+    figure = NAMESPACE["build_figure"](rows, main_text=True)
+    try:
+        assert len(figure.axes) == 10
+        assert tuple(figure.get_size_inches()) == (5.5, 2.3)
+        for index, axis in enumerate(figure.axes):
+            model = ("gcn", "graphsage-mean")[index // 5]
+            dataset = NAMESPACE["DATASETS"][index % 5][0]
+            expected = sorted((row.p_percent, row.mean_macro_f1) for row in rows
+                              if row.model == model and row.dataset == dataset
+                              and row.condition == "treatment")
+            assert list(zip(axis.lines[0].get_xdata(), axis.lines[0].get_ydata())) == expected
+    finally:
+        plt.close(figure)

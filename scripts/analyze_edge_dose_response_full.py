@@ -635,7 +635,26 @@ def dose_from_replicates(
     return dose_rows
 
 
-def prior_summary_paths(results_root: Path = REPO_ROOT / "results") -> dict[str, dict[str, Path]]:
+def prior_summary_paths(
+    results_root: Path = REPO_ROOT / "results", *,
+    pubmed_root: Path | None = None, large_root: Path | None = None,
+) -> dict[str, dict[str, Path]]:
+    if pubmed_root is not None and large_root is not None:
+        return {
+            dataset: {
+                kind: root / filename
+                for kind, filename in (
+                    ("dose", "dose_response_summary.csv"),
+                    ("replicate", "replicate_summary.csv"),
+                    ("manifest", "analysis_manifest.json"),
+                )
+            }
+            for dataset, root in (
+                ("pubmed", pubmed_root),
+                ("ogbn-arxiv", large_root / "ogbn-arxiv"),
+                ("arxiv-year", large_root / "arxiv-year"),
+            )
+        }
     return {
         "pubmed": {
             "dose": results_root
@@ -705,7 +724,7 @@ def load_prior_summaries(
             path = dataset_paths[kind]
             if not path.is_file():
                 raise FileNotFoundError(f"prior result not found: {path}")
-            input_hashes[path.relative_to(REPO_ROOT).as_posix()] = file_sha256(path)
+            input_hashes[f"{dataset}/{path.name}"] = file_sha256(path)
 
         raw_replicates = _load_csv(dataset_paths["replicate"], REPLICATE_FIELDS)
         expected_replicate_keys = {
@@ -882,7 +901,7 @@ def analyze(
     )
     if preparation == "erm":
         if prior_paths is None:
-            prior_paths = prior_summary_paths()
+            raise ValueError("ERM analysis requires explicit two-model summary paths")
         prior_replicates, prior_dose, prior_hashes = load_prior_summaries(
             prior_paths
         )
@@ -914,11 +933,7 @@ def analyze(
     sources = {
         "expansion": {
             "design_id": source_validation["design_id"],
-            "experiment_code_version": (
-                EXPANSION_CODE_VERSION
-                if preparation == "erm"
-                else source_validation.get("experiment_revision")
-            ),
+            "experiment_code_version": source_validation.get("experiment_revision"),
             "validated_at": source_validation.get("validated_at"),
             "graph_catalog_sha256": source_validation["graph_catalog_sha256"],
             "input_sha256": expansion_validation["raw_input_sha256"],
@@ -1005,7 +1020,15 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     )
     parser.add_argument("--final-root", type=Path)
     parser.add_argument("--output-root", type=Path)
-    return parser.parse_args(argv)
+    parser.add_argument("--pubmed-summary-root", type=Path)
+    parser.add_argument("--large-summary-root", type=Path)
+    args = parser.parse_args(argv)
+    if args.preparation == "erm":
+        if args.pubmed_summary_root is None or args.large_summary_root is None:
+            parser.error("ERM requires --pubmed-summary-root and --large-summary-root")
+    elif args.pubmed_summary_root is not None or args.large_summary_root is not None:
+        parser.error("two-model ERM summaries cannot be used for recovery preparations")
+    return args
 
 
 def main(argv: Sequence[str] | None = None) -> None:
@@ -1016,6 +1039,12 @@ def main(argv: Sequence[str] | None = None) -> None:
         final_root.expanduser().resolve(),
         output_root.expanduser().resolve(),
         preparation=args.preparation,
+        prior_paths=(
+            prior_summary_paths(
+                pubmed_root=args.pubmed_summary_root.expanduser().resolve(),
+                large_root=args.large_summary_root.expanduser().resolve(),
+            ) if args.preparation == "erm" else None
+        ),
     )
     validation = manifest["validation"]
     print(

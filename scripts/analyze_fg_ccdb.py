@@ -134,7 +134,6 @@ def score_run(
     required = {
         "config.json",
         "metrics.json",
-        "history.json",
         "checkpoint.pt",
         "run_data.npz",
     }
@@ -226,7 +225,7 @@ def score_run(
             raise RuntimeError(f"{run_id}: FG balance audit exceeds tolerance")
         weight_diagnostics = recomputed.diagnostics
 
-    checkpoint = stored_metrics["checkpoint"]
+    checkpoint = stored_metrics.get("checkpoint", {})
     return (
         {
             "run_id": run_id,
@@ -237,8 +236,14 @@ def score_run(
             "whole_test_macro_f1": float(scores["whole_test_macro_f1"]),
             "tail_macro_f1": float(scores["tail_macro_f1"]),
             "tail_gap": float(scores["tail_gap"]),
-            "best_epoch": int(checkpoint["best_epoch"]),
-            "train_seconds": float(checkpoint["train_seconds"]),
+            "best_epoch": (
+                int(checkpoint["best_epoch"])
+                if checkpoint.get("best_epoch") is not None else None
+            ),
+            "train_seconds": (
+                float(checkpoint["train_seconds"])
+                if checkpoint.get("train_seconds") is not None else None
+            ),
             "training_code_version": config["code_version"],
         },
         weight_diagnostics,

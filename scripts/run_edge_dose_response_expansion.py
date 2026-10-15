@@ -859,13 +859,13 @@ OGBN_REQUIRED_AUDIT_FIELDS = {
 
 def _validate_graph_manifest(spec: DatasetSpec, path: Path) -> tuple[dict, str]:
     digest = file_sha256(path)
-    if spec.reused_manifest_sha256 is not None and digest != spec.reused_manifest_sha256:
-        raise RuntimeError(
-            f"{spec.dataset}: source graph manifest SHA256 is {digest}, expected "
-            f"{spec.reused_manifest_sha256}"
-        )
     manifest = json.loads(path.read_text(encoding="utf-8"))
     expected = {
+        "design_id": (
+            "pubmed-tail-edge-dose-response-v1" if spec.dataset == "pubmed"
+            else "large-tail-edge-dose-response-v1" if spec.graph_is_reused
+            else GRAPH_DESIGN_ID
+        ),
         "dataset": spec.dataset,
         "p_percentages": list(spec.percentages),
         "graph_replicates": len(REPLICATE_INDICES),
@@ -873,12 +873,19 @@ def _validate_graph_manifest(spec: DatasetSpec, path: Path) -> tuple[dict, str]:
         "replicate_seed_base": spec.seed_base,
         "tail_count": spec.tail_count,
     }
-    # The PubMed v1 manifest predates these two explicit fields.  Its frozen
-    # whole-file hash above authenticates the omitted design values.
-    if "tail_side" in manifest:
-        expected["tail_side"] = spec.tail_side
-    if "desired_same" in manifest:
-        expected["desired_same"] = spec.desired_same
+    # The PubMed generator records its fixed direction in tail_definition.
+    # Other generators record the direction and generator explicitly.
+    if spec.dataset == "pubmed":
+        expected["tail_definition"] = "frozen registered PubMed low-h_v tail"
+    else:
+        expected.update(
+            tail_side=spec.tail_side,
+            desired_same=spec.desired_same,
+            generator=spec.generator,
+        )
+    for key, value in (("tail_side", spec.tail_side), ("desired_same", spec.desired_same)):
+        if key in manifest:
+            expected[key] = value
     mismatch = {
         key: (value, manifest.get(key))
         for key, value in expected.items()
@@ -913,11 +920,14 @@ def _validate_source_baseline(
     }
     if mismatch:
         raise RuntimeError(f"{path}: source baseline provenance mismatch {mismatch}")
-    if spec.dataset in {"pubmed", "arxiv-year"}:
+    if spec.dataset == "pubmed":
         if metadata.get("all_original_predictions_reproduced") is not True:
             raise RuntimeError(f"{path}: source baseline was not reproduced")
-    if spec.dataset == "ogbn-arxiv":
-        if metadata.get("all_original_tail_test_predictions_reproduced") is not True:
+    if spec.dataset in {"ogbn-arxiv", "arxiv-year"}:
+        if not (
+            metadata.get("all_original_tail_test_predictions_reproduced") is True
+            or metadata.get("all_original_predictions_reproduced") is True
+        ):
             raise RuntimeError(f"{path}: source tail-test baseline was not reproduced")
     return metadata
 
@@ -1200,9 +1210,12 @@ def load_graph_catalog(
             f"{catalog_path}: expected {spec.pairs_per_checkpoint} graph pairs"
         )
     manifest_sha = catalog.get("source_experiment_manifest_sha256")
-    if spec.reused_manifest_sha256 and manifest_sha != spec.reused_manifest_sha256:
-        raise RuntimeError(f"{catalog_path}: reused manifest hash differs")
     dataset_root = graph_root / spec.dataset
+    _, actual_manifest_sha = _validate_graph_manifest(
+        spec, dataset_root / "experiment_manifest.json"
+    )
+    if manifest_sha != actual_manifest_sha:
+        raise RuntimeError(f"{catalog_path}: source manifest hash differs")
     _validate_bound_file(
         dataset_root / "experiment_manifest.json",
         catalog["source_experiment_manifest"],

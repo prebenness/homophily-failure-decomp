@@ -278,3 +278,21 @@ def test_tracked_full_summary_manifest_matches_compact_outputs() -> None:
     assert all(module._is_sha256(value) for value in expansion["input_sha256"].values())
     for filename, expected in manifest["generated_outputs_sha256"].items():
         assert module.file_sha256(output_root / filename) == expected
+
+
+def test_erm_cli_requires_explicit_two_model_summaries() -> None:
+    module = load_module()
+    with pytest.raises(SystemExit):
+        module.parse_args([])
+    args = module.parse_args([
+        "--pubmed-summary-root", "fresh/pubmed", "--large-summary-root", "fresh/large",
+    ])
+    paths = module.prior_summary_paths(
+        pubmed_root=args.pubmed_summary_root, large_root=args.large_summary_root,
+    )
+    assert paths["pubmed"]["dose"] == Path("fresh/pubmed/dose_response_summary.csv")
+    assert paths["ogbn-arxiv"]["replicate"] == Path("fresh/large/ogbn-arxiv/replicate_summary.csv")
+    with pytest.raises(SystemExit):
+        module.parse_args([
+            "--preparation", "head", "--pubmed-summary-root", "fresh/pubmed",
+        ])

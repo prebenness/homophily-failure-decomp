@@ -60,6 +60,54 @@ def test_additional_matrix_tables_use_the_accepted_paper_width() -> None:
     assert r"\begin{tabular}{@{\extracolsep{\fill}}lcc@{}}" in rendered
 
 
+def test_additional_recovered_shares_keep_uncertain_numerators() -> None:
+    NAMESPACE["configure_dataset_mode"]("additional")
+    rows = NAMESPACE["read_csv"](
+        REPO_ROOT / "results/additional/aggregates/recovered_shares.csv"
+    )
+    try:
+        last = NAMESPACE["render_rq2_recovered_share"](rows, preparation="last")
+        head = NAMESPACE["render_rq2_recovered_share"](rows, preparation="head")
+        assert r"H2GCN-2 & $0.155$ & \textemdash" in last
+        assert r"GCN & $0.140$ & \textemdash" in head
+        for rendered in (last, head):
+            assert rendered.count(r"\textemdash") == 5
+            assert r"\cellcolor" not in rendered
+    finally:
+        NAMESPACE["configure_dataset_mode"]("original")
+
+
+@pytest.mark.parametrize(
+    "gain,lower,upper,expected",
+    [(0.03, 0.01, 0.05, "$0.000$"),
+     (0.029, 0.01, 0.05, r"\textemdash"),
+     (0.1, 0.0, 0.2, r"\textemdash"),
+     (0.0, -0.01, 0.01, r"\textemdash")],
+)
+def test_additional_recovered_share_denominator_controls_eligibility(
+    gain, lower, upper, expected
+) -> None:
+    NAMESPACE["configure_dataset_mode"]("additional")
+    rows = NAMESPACE["read_csv"](
+        REPO_ROOT / "results/additional/aggregates/recovered_shares.csv"
+    )
+    for row in rows:
+        if row["dataset"] == "actor" and row["model"] == "gcn":
+            row.update(
+                mean_paired_gain="0",
+                full_mean_paired_gain=str(gain),
+                full_bootstrap_ci_lower=str(lower),
+                full_bootstrap_ci_upper=str(upper),
+            )
+    try:
+        rendered = NAMESPACE["render_rq2_recovered_share"](
+            rows, preparation="head"
+        )
+        assert f"GCN & {expected} & " + r"\textemdash" in rendered
+    finally:
+        NAMESPACE["configure_dataset_mode"]("original")
+
+
 def test_manifest_records_every_input_and_output() -> None:
     rendered, input_paths = NAMESPACE["render_all"](
         REPO_ROOT / "results" / "main"

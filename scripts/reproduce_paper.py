@@ -36,10 +36,15 @@ def build_commands(
     additional_raw_root: Path | None = None,
     edge_dose_response_final_root: Path | None = None,
     edge_dose_response_recovery_root: Path | None = None,
+    edge_dose_response_pubmed_root: Path | None = None,
+    edge_dose_response_large_root: Path | None = None,
+    reverse_edge_output_root: Path | None = None,
+    reverse_edge_graph_root: Path | None = None,
     derived_only: bool,
     dfr_raw_root: Path | None = None,
     fg_raw_root: Path | None = None,
     validate_raw_arrays: bool = False,
+    include_training_times: bool = False,
 ) -> list[list[str]]:
     commands: list[list[str]] = []
     if not derived_only:
@@ -59,6 +64,16 @@ def build_commands(
                 "--edge-dose-response-recovery-root is required unless "
                 "--derived-only is used"
             )
+        for name, root in (
+            ("dfr-raw-root", dfr_raw_root),
+            ("fg-raw-root", fg_raw_root),
+            ("edge-dose-response-pubmed-root", edge_dose_response_pubmed_root),
+            ("edge-dose-response-large-root", edge_dose_response_large_root),
+            ("reverse-edge-output-root", reverse_edge_output_root),
+            ("reverse-edge-graph-root", reverse_edge_graph_root),
+        ):
+            if root is None:
+                raise ValueError(f"--{name} is required unless --derived-only is used")
         if validate_raw_arrays:
             commands.extend(
                 [
@@ -85,7 +100,6 @@ def build_commands(
         commands.extend(
             [
                 command("recalculate_macro_f1.py", "--raw-root", raw_root),
-                command("analyze_training_compute.py", "--raw-dir", raw_root),
                 command("analyze_rq1_accuracy.py", "--raw-root", raw_root),
                 command(
                     "plot_rq1_composite.py",
@@ -108,13 +122,6 @@ def build_commands(
                 command("analyze_rq2_within_class.py", "--raw-root", raw_root),
                 command(
                     "recalculate_macro_f1.py",
-                    "--dataset-mode",
-                    "additional",
-                    "--additional-raw-root",
-                    additional_raw_root,
-                ),
-                command(
-                    "analyze_training_compute.py",
                     "--dataset-mode",
                     "additional",
                     "--additional-raw-root",
@@ -158,6 +165,12 @@ def build_commands(
                 ),
             ]
         )
+        if include_training_times:
+            commands.extend([
+                command("analyze_training_compute.py", "--raw-dir", raw_root),
+                command("analyze_training_compute.py", "--dataset-mode", "additional",
+                        "--additional-raw-root", additional_raw_root),
+            ])
         if dfr_raw_root is not None:
             commands.append(
                 command(
@@ -190,13 +203,38 @@ def build_commands(
                     raw_root,
                 )
             )
+        # Regenerate all six two-model cells from this run before combining
+        # them with the 24-cell expansion. Never silently reuse release scores.
+        pubmed_summary_root = REPO_ROOT / "results" / "edge_perturbation_dose_response_pubmed"
+        large_summary_root = REPO_ROOT / "results" / "edge_perturbation_dose_response_large"
+        commands.append(command(
+            "analyze_pubmed_edge_dose_response.py", "--input-root",
+            edge_dose_response_pubmed_root, "--output-root", pubmed_summary_root,
+        ))
+        assert edge_dose_response_large_root is not None
+        for dataset in ("ogbn-arxiv", "arxiv-year"):
+            commands.append(command(
+                "analyze_large_edge_dose_response.py", "--dataset", dataset,
+                "--input-root", edge_dose_response_large_root / dataset,
+                "--output-root", large_summary_root / dataset,
+            ))
         commands.append(
             command(
                 "analyze_edge_dose_response_full.py",
                 "--final-root",
                 edge_dose_response_final_root,
+                "--pubmed-summary-root", pubmed_summary_root,
+                "--large-summary-root", large_summary_root,
             )
         )
+
+        commands.append(command(
+            "analyze_reverse_edge_dose_response.py",
+            "--input-root", reverse_edge_output_root,
+            "--graph-root", reverse_edge_graph_root,
+            "--output-root", REPO_ROOT / "results" / "reverse_edge_perturbation",
+            "--paper-output-dir", REPO_ROOT / "paper" / "figures",
+        ))
         for preparation in RECOVERY_PREPARATIONS:
             commands.append(
                 command(
@@ -310,6 +348,11 @@ def build_commands(
                 / f"edge_perturbation_dose_response_{preparation}.pdf",
             )
         )
+    edge_figure_commands.append(command("plot_edge_dose_response_composite.py", "--main-text"))
+    if derived_only:
+        edge_figure_commands.append(command(
+            "plot_reverse_edge_dose_response.py", "--skip-missing",
+        ))
 
     commands.extend(
         [
@@ -317,6 +360,7 @@ def build_commands(
             command("generate_local_homophily_bin_figure.py"),
             *edge_figure_commands,
             command("render_paper_tables.py"),
+            command("render_rq2_recovered_share_tables.py"),
             command(
                 "generate_local_homophily_bin_figure.py",
                 "--dataset-mode",
@@ -331,6 +375,7 @@ def build_commands(
             command(
                 "verify_paper_artifacts.py",
                 "--require-generated",
+                *(["--allow-reference-only"] if derived_only else []),
             ),
         ]
     )
@@ -384,17 +429,26 @@ def main() -> None:
         "--dfr-raw-root",
         type=Path,
         help=(
-            "optional directory containing the 90 post-registration PubMed "
-            "DFR runs; when supplied, regenerate their tracked analysis"
+            "directory containing the 90 PubMed "
+            "DFR runs"
         ),
     )
     parser.add_argument(
         "--fg-raw-root",
         type=Path,
         help=(
-            "optional directory containing the 270 post-registration PubMed "
-            "FG-CCDB runs; when supplied, regenerate their tracked analysis"
+            "directory containing the 270 PubMed "
+            "FG-CCDB runs"
         ),
+    )
+    for name in (
+        "edge-dose-response-pubmed-root", "edge-dose-response-large-root",
+        "reverse-edge-output-root", "reverse-edge-graph-root",
+    ):
+        parser.add_argument(f"--{name}", type=Path)
+    parser.add_argument(
+        "--include-training-times", action="store_true",
+        help="also summarize recorded training times, if training histories are available",
     )
     parser.add_argument(
         "--validate-raw-arrays",
@@ -408,83 +462,29 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    raw_root = args.raw_root.expanduser().resolve() if args.raw_root else None
-    additional_raw_root = (
-        args.additional_raw_root.expanduser().resolve()
-        if args.additional_raw_root
-        else None
+    root_names = (
+        "raw_root", "additional_raw_root", "dfr_raw_root", "fg_raw_root",
+        "edge_dose_response_final_root", "edge_dose_response_recovery_root",
+        "edge_dose_response_pubmed_root", "edge_dose_response_large_root",
+        "reverse_edge_output_root", "reverse_edge_graph_root",
     )
-    edge_dose_response_final_root = (
-        args.edge_dose_response_final_root.expanduser().resolve()
-        if args.edge_dose_response_final_root
-        else None
-    )
-    edge_dose_response_recovery_root = (
-        args.edge_dose_response_recovery_root.expanduser().resolve()
-        if args.edge_dose_response_recovery_root
-        else None
-    )
-    dfr_raw_root = (
-        args.dfr_raw_root.expanduser().resolve()
-        if args.dfr_raw_root
-        else None
-    )
-    fg_raw_root = (
-        args.fg_raw_root.expanduser().resolve()
-        if args.fg_raw_root
-        else None
-    )
-    if args.derived_only and (
-        additional_raw_root is not None
-        or edge_dose_response_final_root is not None
-        or edge_dose_response_recovery_root is not None
-        or dfr_raw_root is not None
-        or fg_raw_root is not None
-    ):
+    roots = {
+        name: getattr(args, name).expanduser().resolve() if getattr(args, name) else None
+        for name in root_names
+    }
+    if args.derived_only and any(root is not None for root in roots.values()):
         parser.error("raw-run roots cannot be used with --derived-only")
-    if args.derived_only and args.validate_raw_arrays:
-        parser.error("--validate-raw-arrays cannot be used with --derived-only")
+    if args.derived_only and (args.validate_raw_arrays or args.include_training_times):
+        parser.error("raw-array validation and training times require raw-run roots")
     if not args.dry_run:
-        if raw_root is not None and not raw_root.is_dir():
-            raise FileNotFoundError(f"Raw run store not found: {raw_root}")
-        if additional_raw_root is not None and not additional_raw_root.is_dir():
-            raise FileNotFoundError(
-                "Additional raw run store not found: "
-                f"{additional_raw_root}"
-            )
-        if (
-            edge_dose_response_final_root is not None
-            and not edge_dose_response_final_root.is_dir()
-        ):
-            raise FileNotFoundError(
-                "Edge-dose-response final store not found: "
-                f"{edge_dose_response_final_root}"
-            )
-        if (
-            edge_dose_response_recovery_root is not None
-            and not edge_dose_response_recovery_root.is_dir()
-        ):
-            raise FileNotFoundError(
-                "Edge-dose-response recovery store not found: "
-                f"{edge_dose_response_recovery_root}"
-            )
-        if dfr_raw_root is not None and not dfr_raw_root.is_dir():
-            raise FileNotFoundError(
-                f"DFR raw run store not found: {dfr_raw_root}"
-            )
-        if fg_raw_root is not None and not fg_raw_root.is_dir():
-            raise FileNotFoundError(
-                f"FG-CCDB raw run store not found: {fg_raw_root}"
-            )
+        for name, root in roots.items():
+            if root is not None and not root.is_dir():
+                raise FileNotFoundError(f"{name.replace('_', '-')} not found: {root}")
     commands = build_commands(
-        raw_root,
-        additional_raw_root=additional_raw_root,
-        edge_dose_response_final_root=edge_dose_response_final_root,
-        edge_dose_response_recovery_root=edge_dose_response_recovery_root,
+        **roots,
         derived_only=args.derived_only,
-        dfr_raw_root=dfr_raw_root,
-        fg_raw_root=fg_raw_root,
         validate_raw_arrays=args.validate_raw_arrays,
+        include_training_times=args.include_training_times,
     )
     run_commands(commands, dry_run=args.dry_run)
 

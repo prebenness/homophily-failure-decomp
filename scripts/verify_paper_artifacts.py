@@ -5,11 +5,60 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 from pathlib import Path
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MANIFEST = REPO_ROOT / "paper" / "artifacts.json"
+
+
+def check_manuscript(manuscript_root: Path, payload: dict) -> list[str]:
+    """Compare active TeX inputs with the inventory without building the paper."""
+    errors = []
+    root = manuscript_root.resolve()
+    pending = [root / "main.tex"]
+    sources: dict[Path, str] = {}
+    while pending:
+        path = pending.pop().resolve()
+        if path in sources:
+            continue
+        if not path.is_relative_to(root):
+            errors.append("manuscript input leaves the supplied manuscript directory")
+            continue
+        if not path.is_file():
+            errors.append(f"missing manuscript input: {path.name}")
+            continue
+        source = re.sub(r"(?<!\\)%[^\n]*", "", path.read_text(encoding="utf-8"))
+        sources[path] = source
+        for name in re.findall(r"\\(?:input|include)\s*\{([^}]+)\}", source):
+            included = root / name
+            if not included.suffix:
+                included = included.with_suffix(".tex")
+            pending.append(included)
+    text = "\n".join(sources.values())
+    labels = re.findall(r"\\label\s*\{((?:fig|tab):[^}]+)\}", text)
+    if len(labels) != len(set(labels)):
+        errors.append("manuscript contains duplicate figure or table labels")
+    expected = {item["label"] for key in ("figures", "tables") for item in payload[key]}
+    manual = set(payload.get("manual_table_labels", []))
+    for label in sorted(set(labels) - expected - manual):
+        errors.append(f"unregistered manuscript figure or table: {label}")
+    for label in sorted(expected - set(labels)):
+        errors.append(f"registered artifact is absent from manuscript: {label}")
+    declared = {
+        Path(item["artifact_path"]).relative_to("paper").as_posix()
+        for item in payload["figures"]
+    }
+    for name in re.findall(r"\\includegraphics(?:\[[^]]*\])?\s*\{([^}]+)\}", text):
+        path = Path(name)
+        if not path.suffix:
+            path = path.with_suffix(".pdf")
+        if path.as_posix() not in declared:
+            errors.append(f"unregistered manuscript figure file: {name}")
+        if not (root / path).is_file():
+            errors.append(f"missing manuscript figure file: {name}")
+    return errors
 
 
 def file_sha256(path: Path) -> str:
@@ -49,6 +98,9 @@ def verify_inventory(
     *,
     require_generated: bool = False,
     require_generated_byte_match: bool = False,
+    verify_reference_hashes: bool = False,
+    allow_reference_only: bool = False,
+    manuscript_root: Path | None = None,
 ) -> dict[str, int]:
     payload = read_manifest(manifest_path)
     errors: list[str] = []
@@ -56,6 +108,7 @@ def verify_inventory(
     table_labels: set[str] = set()
     generated_present = 0
     generated_byte_matches = 0
+    reference_only = 0
     declared_figure_paths: set[Path] = set()
 
     for figure in payload["figures"]:
@@ -76,7 +129,7 @@ def verify_inventory(
             continue
 
         expected_hash = figure.get("sha256")
-        if expected_hash and file_sha256(artifact_path) != expected_hash:
+        if verify_reference_hashes and expected_hash and file_sha256(artifact_path) != expected_hash:
             errors.append(f"{label}: release asset hash differs")
 
         generated_path_text = figure.get("generated_path")
@@ -84,13 +137,17 @@ def verify_inventory(
             generated_path = REPO_ROOT / generated_path_text
             if generated_path.is_file():
                 generated_present += 1
-                if expected_hash and file_sha256(generated_path) == expected_hash:
+                if file_sha256(generated_path) == file_sha256(artifact_path):
                     generated_byte_matches += 1
                 elif require_generated_byte_match:
                     errors.append(
                         f"{label}: regenerated PDF is not byte-identical to "
                         "the tracked release PDF"
                     )
+            elif figure.get("reference_only_until_regenerated") is True:
+                reference_only += 1
+                if require_generated and not allow_reference_only:
+                    errors.append(f"{label}: missing regenerated artifact {generated_path}")
             elif require_generated:
                 errors.append(
                     f"{label}: missing regenerated artifact {generated_path}"
@@ -121,7 +178,7 @@ def verify_inventory(
                     errors.append(
                         f"{label}: generated table must contain one label"
                     )
-            elif require_generated:
+            else:
                 errors.append(
                     f"{label}: missing regenerated table {generated_path}"
                 )
@@ -156,6 +213,8 @@ def verify_inventory(
             f"expected {expected_table_count} data-derived tables; "
             f"found {len(table_labels)}"
         )
+    if manuscript_root is not None:
+        errors.extend(check_manuscript(manuscript_root, payload))
     if errors:
         raise RuntimeError("\n".join(errors))
 
@@ -164,6 +223,7 @@ def verify_inventory(
         "tables": len(table_labels),
         "generated_present": generated_present,
         "generated_byte_matches": generated_byte_matches,
+        "reference_only": reference_only,
     }
 
 
@@ -172,18 +232,30 @@ def main() -> None:
     parser.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
     parser.add_argument("--require-generated", action="store_true")
     parser.add_argument("--require-generated-byte-match", action="store_true")
+    parser.add_argument("--verify-reference-hashes", action="store_true",
+                        help="optional check against the original published figure hashes")
+    parser.add_argument("--allow-reference-only", action="store_true",
+                        help="allow explicitly declared reference plots lacking compact inputs")
+    parser.add_argument("--manuscript-root", type=Path,
+                        help="read main.tex and its inputs to detect omitted figures or tables")
     args = parser.parse_args()
 
     counts = verify_inventory(
         args.manifest.resolve(),
         require_generated=args.require_generated,
         require_generated_byte_match=args.require_generated_byte_match,
+        verify_reference_hashes=args.verify_reference_hashes,
+        allow_reference_only=args.allow_reference_only,
+        manuscript_root=args.manuscript_root,
     )
     print(
         "verified "
         f"{counts['figures']} figures, {counts['tables']} tables, "
         f"{counts['generated_present']} regenerated artifacts"
     )
+    if counts["reference_only"]:
+        print(f"{counts['reference_only']} reverse plots retained as reference copies; "
+              "their numerical regeneration was not checked")
 
 
 if __name__ == "__main__":

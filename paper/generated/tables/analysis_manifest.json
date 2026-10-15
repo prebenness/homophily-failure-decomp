@@ -1,7 +1,7 @@
 {
   "analysis": "released-result-and-compute-table-rendering",
   "generator": "scripts/render_paper_tables.py",
-  "generator_sha256": "a825eee970416d4c58628547eb848e86e8607e946ecad86ce898753aaa8eb81e",
+  "generator_sha256": "12bac80eaae5180f9b1e320878fbf439b09f12a48cb186b9fbcb6dca916e69a1",
   "inputs": {
     "dataset_manifest_amazon-ratings": {
       "path": "manifests/datasets/amazon-ratings.json",

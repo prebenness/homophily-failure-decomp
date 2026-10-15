@@ -1109,6 +1109,7 @@ def test_graph_manifest_allows_pubmed_v1_omissions(
 ) -> None:
     manifest = {
         "design_id": "pubmed-tail-edge-dose-response-v1",
+        "tail_definition": "frozen registered PubMed low-h_v tail",
         "dataset": "pubmed",
         "p_percentages": list(range(0, 101, 5)),
         "graph_replicates": 5,
@@ -1119,7 +1120,7 @@ def test_graph_manifest_allows_pubmed_v1_omissions(
     }
     path = tmp_path / "experiment_manifest.json"
     NAMESPACE["atomic_json"](path, manifest)
-    spec = replace(SPECS["pubmed"], reused_manifest_sha256=None)
+    spec = SPECS["pubmed"]
     observed, digest = NAMESPACE["_validate_graph_manifest"](spec, path)
     assert observed == manifest
     assert len(digest) == 64
@@ -1151,7 +1152,17 @@ def test_legacy_catalog_can_be_relocated(tmp_path: Path) -> None:
     baseline_path = dataset_root / "baseline" / "metadata.json"
     manifest_path.parent.mkdir(parents=True)
     baseline_path.parent.mkdir(parents=True)
-    manifest_path.write_text("{}", encoding="utf-8")
+    NAMESPACE["atomic_json"](manifest_path, {
+        "design_id": "pubmed-tail-edge-dose-response-v1",
+        "tail_definition": "frozen registered PubMed low-h_v tail",
+        "dataset": spec.dataset,
+        "p_percentages": list(spec.percentages),
+        "graph_replicates": 5,
+        "graph_replicate_indices": [1, 2, 3, 4, 5],
+        "replicate_seed_base": spec.seed_base,
+        "tail_count": spec.tail_count,
+        "actual_generation_attempts": spec.generation_max_attempts,
+    })
     baseline_path.write_text("{}", encoding="utf-8")
     entries = []
     for replicate in NAMESPACE["REPLICATE_INDICES"]:
@@ -1174,7 +1185,7 @@ def test_legacy_catalog_can_be_relocated(tmp_path: Path) -> None:
         "design_id": NAMESPACE["DESIGN_ID"],
         "dataset": spec.dataset,
         "graph_root_binding": "/old/absolute/cluster/path",
-        "source_experiment_manifest_sha256": "not-frozen-in-test",
+        "source_experiment_manifest_sha256": NAMESPACE["file_sha256"](manifest_path),
         "source_experiment_manifest": NAMESPACE["_file_record"](manifest_path),
         "source_baseline_metadata": NAMESPACE["_file_record"](baseline_path),
         "pair_count": 5,

@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "expected_counts": {
-    "figures": 23,
-    "tables": 25
+    "figures": 28,
+    "tables": 27
   },
   "figures": [
     {
-      "label": "fig:local-homophily-gap",
+      "label": "fig:overview",
       "artifact_path": "paper/figures/decomposing-heterophilic.drawio.pdf",
       "kind": "versioned-source",
       "generator": null,
@@ -192,6 +192,61 @@
       "generator": "scripts/plot_rq4_class_adjusted_model_families.py",
       "generated_path": "results/additional/figures/rq4/rq4_class_adjusted_whole_test_and_tail_macro_f1_by_model_family.pdf",
       "sha256": "403ba4b4dc34d6e666679841982676da62fa19833443314ae8ed2c4cb2205a84"
+    },
+    {
+      "label": "fig:edge-perturbation-dose-response-main",
+      "artifact_path": "paper/figures/edge_perturbation_dose_response_gcn_graphsage.pdf",
+      "kind": "generated",
+      "generator": "scripts/plot_edge_dose_response_composite.py",
+      "generator_arguments": [
+        "--main-text"
+      ],
+      "generated_path": "results/edge_perturbation_dose_response_composite/edge_perturbation_dose_response_gcn_graphsage.pdf",
+      "sha256": "935c6d75544e647a8ccb41d061f6eade44ffc6fa523f9441b295a24930780774"
+    },
+    {
+      "label": "fig:reverse-edge-perturbation-dose-response",
+      "artifact_path": "paper/figures/reverse_edge_perturbation_erm.pdf",
+      "kind": "generated",
+      "generator": "scripts/plot_reverse_edge_dose_response.py",
+      "analysis_generator": "scripts/analyze_reverse_edge_dose_response.py",
+      "generated_path": "results/reverse_edge_perturbation/erm/reverse_edge_perturbation_erm.pdf",
+      "reference_only_until_regenerated": true,
+      "note": "Published reference PDF. Accepted compact summaries are not included in this checkout; fresh reverse inference and analysis generate the required summaries.",
+      "sha256": "a83b07dad0d5334c7449517f951cec8a0977911f67c6748c39e43ef72a0cbcfe"
+    },
+    {
+      "label": "fig:reverse-edge-perturbation-dose-response-last",
+      "artifact_path": "paper/figures/reverse_edge_perturbation_last.pdf",
+      "kind": "generated",
+      "generator": "scripts/plot_reverse_edge_dose_response.py",
+      "analysis_generator": "scripts/analyze_reverse_edge_dose_response.py",
+      "generated_path": "results/reverse_edge_perturbation/last/reverse_edge_perturbation_last.pdf",
+      "reference_only_until_regenerated": true,
+      "note": "Published reference PDF. Accepted compact summaries are not included in this checkout; fresh reverse inference and analysis generate the required summaries.",
+      "sha256": "86d032e52047af27ba1a9184049d571892b4ad3fb4e83c6693cec40af9aba60b"
+    },
+    {
+      "label": "fig:reverse-edge-perturbation-dose-response-head",
+      "artifact_path": "paper/figures/reverse_edge_perturbation_head.pdf",
+      "kind": "generated",
+      "generator": "scripts/plot_reverse_edge_dose_response.py",
+      "analysis_generator": "scripts/analyze_reverse_edge_dose_response.py",
+      "generated_path": "results/reverse_edge_perturbation/head/reverse_edge_perturbation_head.pdf",
+      "reference_only_until_regenerated": true,
+      "note": "Published reference PDF. Accepted compact summaries are not included in this checkout; fresh reverse inference and analysis generate the required summaries.",
+      "sha256": "1f382175a936aa2eceaf36e7d6cc22743c0a0be3d9ab08d7eff21cab30ecebd9"
+    },
+    {
+      "label": "fig:reverse-edge-perturbation-dose-response-full",
+      "artifact_path": "paper/figures/reverse_edge_perturbation_full.pdf",
+      "kind": "generated",
+      "generator": "scripts/plot_reverse_edge_dose_response.py",
+      "analysis_generator": "scripts/analyze_reverse_edge_dose_response.py",
+      "generated_path": "results/reverse_edge_perturbation/full/reverse_edge_perturbation_full.pdf",
+      "reference_only_until_regenerated": true,
+      "note": "Published reference PDF. Accepted compact summaries are not included in this checkout; fresh reverse inference and analysis generate the required summaries.",
+      "sha256": "b112d18ae2b528369c50ac7f6f81cfdbfa9d734f6335c46f6f4b982cce5b75c0"
     }
   ],
   "tables": [
@@ -344,6 +399,22 @@
       "kind": "generated",
       "generator": "scripts/render_paper_tables.py",
       "generated_path": "paper/generated/additional-datasets/rq2_head_recovered_share.tex"
+    },
+    {
+      "label": "tab:rho-last-recovered-share",
+      "kind": "generated",
+      "generator": "scripts/render_rq2_recovered_share_tables.py",
+      "generated_path": "paper/generated/tables/rq2_last_recovered_share.tex"
+    },
+    {
+      "label": "tab:rho-head-recovered-share",
+      "kind": "generated",
+      "generator": "scripts/render_rq2_recovered_share_tables.py",
+      "generated_path": "paper/generated/tables/rq2_head_recovered_share.tex"
     }
+  ],
+  "manual_table_labels": [
+    "tab:models",
+    "tab:deviations"
   ]
 }

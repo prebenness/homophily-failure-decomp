@@ -27,6 +27,10 @@ def test_full_build_contains_every_current_analysis_stage(tmp_path: Path) -> Non
         additional_raw_root=tmp_path / "additional",
         edge_dose_response_final_root=tmp_path / "edge-final",
         edge_dose_response_recovery_root=tmp_path / "edge-recovery",
+        edge_dose_response_pubmed_root=tmp_path / "edge-pubmed",
+        edge_dose_response_large_root=tmp_path / "edge-large",
+        reverse_edge_output_root=tmp_path / "reverse-output",
+        reverse_edge_graph_root=tmp_path / "reverse-graphs",
         derived_only=False,
         dfr_raw_root=dfr_root,
         fg_raw_root=fg_root,
@@ -35,6 +39,14 @@ def test_full_build_contains_every_current_analysis_stage(tmp_path: Path) -> Non
 
     assert scripts[0] == "recalculate_macro_f1.py"
     assert "verify_raw_store.py" not in scripts
+    assert "analyze_training_compute.py" not in scripts
+    assert "analyze_reverse_edge_dose_response.py" in scripts
+    assert "analyze_pubmed_edge_dose_response.py" in scripts
+    assert scripts.count("analyze_large_edge_dose_response.py") == 2
+    merge = commands[scripts.index("analyze_edge_dose_response_full.py")]
+    assert "--pubmed-summary-root" in merge and "--large-summary-root" in merge
+    assert scripts.index("analyze_large_edge_dose_response.py") < scripts.index("analyze_edge_dose_response_full.py")
+    assert "--allow-reference-only" not in commands[-1]
     assert "recalculate_macro_f1.py" in scripts
     assert "plot_rq1_composite.py" in scripts
     rq1_commands = [
@@ -84,9 +96,9 @@ def test_full_build_contains_every_current_analysis_stage(tmp_path: Path) -> Non
         for invocation in commands
         if Path(invocation[1]).name == "plot_edge_dose_response_composite.py"
     ]
-    assert len(edge_plot_commands) == 4
+    assert len(edge_plot_commands) == 5
     for preparation, invocation in zip(
-        module.RECOVERY_PREPARATIONS, edge_plot_commands[1:], strict=True
+        module.RECOVERY_PREPARATIONS, edge_plot_commands[1:4], strict=True
     ):
         assert str(
             module.REPO_ROOT
@@ -97,8 +109,9 @@ def test_full_build_contains_every_current_analysis_stage(tmp_path: Path) -> Non
         assert invocation[-1].endswith(
             f"edge_perturbation_dose_response_{preparation}.pdf"
         )
-    assert scripts[-5:] == [
+    assert scripts[-6:] == [
         "render_paper_tables.py",
+        "render_rq2_recovered_share_tables.py",
         "generate_local_homophily_bin_figure.py",
         "render_paper_tables.py",
         "sync_additional_paper_artifacts.py",
@@ -119,25 +132,23 @@ def test_derived_build_does_not_read_raw_archive() -> None:
     assert scripts.count("render_paper_tables.py") == 2
     assert "sync_additional_paper_artifacts.py" in scripts
     assert "generate_local_homophily_bin_figure.py" in scripts
-    assert scripts.count("plot_edge_dose_response_composite.py") == 4
+    assert scripts.count("plot_edge_dose_response_composite.py") == 5
     assert scripts[-1] == "verify_paper_artifacts.py"
+    assert "--allow-reference-only" in commands[-1]
+    reverse_plot = commands[scripts.index("plot_reverse_edge_dose_response.py")]
+    assert "--skip-missing" in reverse_plot
 
 
-def test_full_build_can_use_tracked_dfr_summary(
-    tmp_path: Path,
-) -> None:
+def test_full_build_requires_fresh_dfr_results(tmp_path: Path) -> None:
     module = load_module()
-    commands = module.build_commands(
-        tmp_path,
-        additional_raw_root=tmp_path / "additional",
-        edge_dose_response_final_root=tmp_path / "edge-final",
-        edge_dose_response_recovery_root=tmp_path / "edge-recovery",
-        derived_only=False,
-    )
-    scripts = [Path(invocation[1]).name for invocation in commands]
-
-    assert "analyze_dfr_pubmed.py" not in scripts
-    assert "analyze_fg_ccdb.py" not in scripts
+    with pytest.raises(ValueError, match="dfr-raw-root"):
+        module.build_commands(
+            tmp_path,
+            additional_raw_root=tmp_path / "additional",
+            edge_dose_response_final_root=tmp_path / "edge-final",
+            edge_dose_response_recovery_root=tmp_path / "edge-recovery",
+            derived_only=False,
+        )
 
 
 def test_full_build_can_run_the_optional_array_audit(
@@ -149,7 +160,13 @@ def test_full_build_can_run_the_optional_array_audit(
         additional_raw_root=tmp_path / "additional",
         edge_dose_response_final_root=tmp_path / "edge-final",
         edge_dose_response_recovery_root=tmp_path / "edge-recovery",
+        edge_dose_response_pubmed_root=tmp_path / "edge-pubmed",
+        edge_dose_response_large_root=tmp_path / "edge-large",
+        reverse_edge_output_root=tmp_path / "reverse-output",
+        reverse_edge_graph_root=tmp_path / "reverse-graphs",
         derived_only=False,
+        dfr_raw_root=tmp_path / "dfr",
+        fg_raw_root=tmp_path / "fg",
         validate_raw_arrays=True,
     )
 
@@ -198,3 +215,22 @@ def test_full_build_requires_edge_dose_response_recovery_root(
             edge_dose_response_final_root=tmp_path / "edge-final",
             derived_only=False,
         )
+
+
+def test_training_times_are_optional(tmp_path: Path) -> None:
+    module = load_module()
+    commands = module.build_commands(
+        tmp_path,
+        additional_raw_root=tmp_path,
+        edge_dose_response_final_root=tmp_path,
+        edge_dose_response_recovery_root=tmp_path,
+        edge_dose_response_pubmed_root=tmp_path,
+        edge_dose_response_large_root=tmp_path,
+        reverse_edge_output_root=tmp_path,
+        reverse_edge_graph_root=tmp_path,
+        dfr_raw_root=tmp_path,
+        fg_raw_root=tmp_path,
+        derived_only=False,
+        include_training_times=True,
+    )
+    assert sum(Path(c[1]).name == "analyze_training_compute.py" for c in commands) == 2

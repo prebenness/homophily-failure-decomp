@@ -107,6 +107,11 @@ def test_analysis_entry_point_uses_repository_local_run_roots() -> None:
         str(module["DEFAULT_EDGE_DOSE_RESPONSE_FINAL_ROOT"]),
         "--edge-dose-response-recovery-root",
         str(module["DEFAULT_EDGE_DOSE_RESPONSE_RECOVERY_ROOT"]),
+        *[
+            value
+            for name, default in module["EXTRA_ROOT_DEFAULTS"].items()
+            for value in (f"--{name.replace('_', '-')}", str(default))
+        ],
     ]
 
 

@@ -1,0 +1,2 @@
+-r requirements-reproducibility.txt
+pypdf==6.1.1

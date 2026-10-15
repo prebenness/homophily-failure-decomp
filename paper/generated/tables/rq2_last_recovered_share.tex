@@ -1,0 +1,21 @@
+\begin{table}[H]
+  \centering
+  \caption{\textbf{RQ2a}. Recovered share \(\rho_{\mathrm{last}}\) after final-layer refitting. An em dash indicates that the full-model gain is below 0.03 or its 95\% paired-bootstrap interval includes zero.}
+  \label{tab:rho-last-recovered-share}
+  \setlength{\tabcolsep}{5.5pt}
+  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lccccc@{}}
+    \toprule
+    & \multicolumn{2}{c}{Low-homophily tail}
+    & \multicolumn{3}{c}{High-homophily tail} \\
+    \cmidrule(lr){2-3}\cmidrule(lr){4-6}
+    Model & PubMed & \texttt{ogbn-arxiv} & Roman-empire & Amazon-ratings & \texttt{arxiv-year} \\
+    \midrule
+    GCN & $0.208$ & $0.388$ & \textemdash & \textemdash & \textemdash \\
+    GraphSAGE-mean & $0.713$ & $0.417$ & $-0.011$ & \textemdash & \textemdash \\
+    H2GCN-2 & $0.884$ & $0.940$ & $0.489$ & \textemdash & \textemdash \\
+    GPR-GNN & $0.228$ & $1.255$ & $0.742$ & \textemdash & \textemdash \\
+    ACM-GCN & $0.053$ & $1.125$ & $0.755$ & \textemdash & \textemdash \\
+    LINKX & $0.316$ & $0.575$ & $0.862$ & $-0.010$ & $0.256$ \\
+    \bottomrule
+  \end{tabular*}
+\end{table}

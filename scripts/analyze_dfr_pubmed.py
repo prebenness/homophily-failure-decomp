@@ -41,8 +41,8 @@ be ``dfr_l1_joint_balanced_v1``.
 
 Canonical runs are direct children of ``--canonical-raw-root`` and use the
 existing ``pubmed_{model}_{preparation}_{split}_seed-{seed}`` identifier.
-Their active ``metrics.json`` must identify the true-label-support
-canonicalisation and their ``run_data.npz`` must contain the same evaluation
+Their active ``metrics.json`` must agree with true-label-support macro-F1
+recomputed from ``run_data.npz``, which must contain the same evaluation
 arrays.
 
 The default invocation requires the complete 90-run validation-refit panel.
@@ -641,14 +641,8 @@ def load_canonical_run(
         },
         path=config_path,
     )
-    canonicalisation = stored_metrics.get("canonicalization")
-    if not isinstance(canonicalisation, dict):
-        raise RuntimeError(f"{run_id}: active metrics lack canonicalisation provenance")
-    if canonicalisation.get("version") != CANONICAL_ANALYSIS_VERSION:
-        raise RuntimeError(
-            f"{run_id}: expected canonicalisation "
-            f"{CANONICAL_ANALYSIS_VERSION!r}"
-        )
+    # Fresh training and checkpoint evaluation already use true-label support.
+    # Verify the scores below rather than require an archival migration marker.
     validate_recorded_checksums(config, manifest, split, run_id)
     arrays = load_run_arrays(data_path)
     validate_fixed_arrays(arrays, manifest, split, run_id)
