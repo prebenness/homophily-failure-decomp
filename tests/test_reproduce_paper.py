@@ -109,12 +109,13 @@ def test_full_build_contains_every_current_analysis_stage(tmp_path: Path) -> Non
         assert invocation[-1].endswith(
             f"edge_perturbation_dose_response_{preparation}.pdf"
         )
-    assert scripts[-6:] == [
+    assert scripts[-7:] == [
         "render_paper_tables.py",
         "render_rq2_recovered_share_tables.py",
         "generate_local_homophily_bin_figure.py",
         "render_paper_tables.py",
         "sync_additional_paper_artifacts.py",
+        "sync_main_paper_figures.py",
         "verify_paper_artifacts.py",
     ]
 
@@ -131,6 +132,7 @@ def test_derived_build_does_not_read_raw_archive() -> None:
     assert scripts.count("plot_rq3_mlp_contrasts.py") == 2
     assert scripts.count("render_paper_tables.py") == 2
     assert "sync_additional_paper_artifacts.py" in scripts
+    assert "--derived-only" in commands[scripts.index("sync_main_paper_figures.py")]
     assert "generate_local_homophily_bin_figure.py" in scripts
     assert scripts.count("plot_edge_dose_response_composite.py") == 5
     assert scripts[-1] == "verify_paper_artifacts.py"
@@ -234,3 +236,40 @@ def test_training_times_are_optional(tmp_path: Path) -> None:
         include_training_times=True,
     )
     assert sum(Path(c[1]).name == "analyze_training_compute.py" for c in commands) == 2
+
+
+@pytest.mark.parametrize("derived_only", [False, True])
+def test_compact_figures_consume_refreshed_linkx_results(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, derived_only: bool,
+) -> None:
+    module = load_module()
+    roots = {} if derived_only else {
+        name: tmp_path for name in (
+            "additional_raw_root", "dfr_raw_root", "fg_raw_root",
+            "edge_dose_response_final_root", "edge_dose_response_recovery_root",
+            "edge_dose_response_pubmed_root", "edge_dose_response_large_root",
+            "reverse_edge_output_root", "reverse_edge_graph_root",
+        )
+    }
+    commands = module.build_commands(
+        None if derived_only else tmp_path, derived_only=derived_only, **roots,
+    )
+    linkx_results = {"main": "old", "additional": "old"}
+    plotted = {}
+
+    def run(invocation, **kwargs):
+        script = Path(invocation[1]).name
+        mode = (
+            invocation[invocation.index("--dataset-mode") + 1]
+            if "--dataset-mode" in invocation else "main"
+        )
+        if script == "analyze_rq5_preparations.py":
+            linkx_results[mode] = "fresh"
+        elif script == "plot_compact_main_figures.py":
+            plotted[mode] = linkx_results[mode]
+
+    monkeypatch.setattr(module.subprocess, "run", run)
+    module.run_commands(commands, dry_run=False)
+    assert plotted == {"main": "fresh", "additional": "fresh"}
+    assert Path(commands[-2][1]).name == "sync_main_paper_figures.py"
+    assert ("--derived-only" in commands[-2]) == derived_only

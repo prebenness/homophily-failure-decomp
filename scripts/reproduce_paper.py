@@ -270,8 +270,8 @@ def build_commands(
             command("plot_rq3_mlp_contrasts.py"),
             command("analyze_rq4_model_families.py"),
             command("plot_rq4_class_adjusted_model_families.py"),
-            command("plot_compact_main_figures.py"),
             command("analyze_rq5_preparations.py"),
+            command("plot_compact_main_figures.py"),
             command(
                 "plot_rq1_rq2_paired_forest.py",
                 "--dataset-mode",
@@ -297,12 +297,12 @@ def build_commands(
                 "additional",
             ),
             command(
-                "plot_compact_main_figures.py",
+                "analyze_rq5_preparations.py",
                 "--dataset-mode",
                 "additional",
             ),
             command(
-                "analyze_rq5_preparations.py",
+                "plot_compact_main_figures.py",
                 "--dataset-mode",
                 "additional",
             ),
@@ -372,6 +372,10 @@ def build_commands(
                 "additional",
             ),
             command("sync_additional_paper_artifacts.py"),
+            command(
+                "sync_main_paper_figures.py",
+                *(["--derived-only"] if derived_only else []),
+            ),
             command(
                 "verify_paper_artifacts.py",
                 "--require-generated",
